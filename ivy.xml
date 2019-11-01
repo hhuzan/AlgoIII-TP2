@@ -1,0 +1,20 @@
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="AlgoII-TP2"/>
+
+     <configurations>
+        <conf name="analysis"  description="analysis jars"/>
+        <conf name="build" description="binary jars"/>
+    </configurations>
+    
+
+    <dependencies>
+    	<!-- Descarga el task para Junit5 de ant y todas las dependencias necesarias
+    		(incluye Junit4 y Junit5) -->
+    	<!-- https://mvnrepository.com/artifact/org.apache.ant/ant-junitlauncher -->
+		<dependency org="org.apache.ant" name="ant-junitlauncher" rev="1.10.5"/>
+
+	   
+
+    </dependencies>
+
+</ivy-module>    
