@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class UnidadTest {
+class UnidadTest {
 
 	@Test
-	public void test00ConstructorUnidadNoDevuelveNull() {
+	void test00ConstructorUnidadNoDevuelveNull() {
 		Unidad unidad = new Unidad();
 		assertNotNull(unidad);
 	}
