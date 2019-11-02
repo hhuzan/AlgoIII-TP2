@@ -1,17 +1,20 @@
 <ivy-module version="2.0">
-    <info organisation="org.apache" module="fiuba.algo3.tp2"/>
+    <info organisation="org.apache" module="AlgoIII-TP2"/>
 
      <configurations>
         <conf name="analysis"  description="analysis jars"/>
         <conf name="build" description="binary jars"/>
     </configurations>
+    
 
     <dependencies>
-        <dependency org="org.mockito" name="mockito-all" rev="1.9.0" conf="build->default"/>
-        <dependency org="com.googlecode.json-simple" name="json-simple" rev="1.1.1" conf="build->default"/>
-        <dependency org="org.junit.jupiter" name="junit-jupiter-api" rev="5.2.0" conf="build->default"/>
-        <dependency org="junit" name="junit" rev="4.11" conf="build->default"/>
-        <dependency org="net.sourceforge.cobertura" name="cobertura" rev="2.1.1" conf="build->default"/>
-        <dependency org="pmd" name="pmd" rev="4.3" conf="analysis->default"/>
+    	<!-- Descarga el task para Junit5 de ant y todas las dependencias necesarias
+    		(incluye Junit4 y Junit5) -->
+    	<!-- https://mvnrepository.com/artifact/org.apache.ant/ant-junitlauncher -->
+		<dependency org="org.apache.ant" name="ant-junitlauncher" rev="1.10.5"/>
+
+	   
+
     </dependencies>
-</ivy-module>
+
+</ivy-module>    
