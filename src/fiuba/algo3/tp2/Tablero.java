@@ -1,4 +1,4 @@
-package modelo;
+package fiuba.algo3.tp2;
 
 public class Tablero {
 	private final int tamanio=20;
