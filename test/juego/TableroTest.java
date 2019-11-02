@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class TableroTest {
 
 	@Test
-	void testNotNullConstructo() {
+	void test00ConstructorTableroNoDevuelveNull() {
 		Tablero tablero = new Tablero();
 		assertNotNull(tablero);
 	}
