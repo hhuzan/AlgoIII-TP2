@@ -1,6 +1,10 @@
 language: java
 jdk:
+<<<<<<< HEAD
  - oraclejdk13
 
 before_script:
    - sudo apt-get install ant-optional
+=======
+ - oraclejdk13
+>>>>>>> branch 'master' of https://github.com/hhuzan/AlgoIII-TP2
