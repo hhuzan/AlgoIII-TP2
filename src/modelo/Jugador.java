@@ -1,4 +1,4 @@
-package juego;
+package modelo;
 
 public class Jugador {
 
