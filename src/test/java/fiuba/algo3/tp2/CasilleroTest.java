@@ -21,7 +21,7 @@ public class CasilleroTest {
 	}
 
 	@Test
-	public void test02ColocoUnidadCasilleroNoEstaVacio() {
+	public void test02ColocoUnidadEnCasilleroEntoncesNoEstaVacio() {
 		Casillero casillero = new Casillero();
 		Unidad soldado = new Soldado();
 		casillero.colocar(soldado);
