@@ -12,5 +12,12 @@ public class Tablero {
 			}
 		}
 	}
+
+	public void agregarEntidadATablero(int fila, int columna, Entidad entidadAAgregar, Jugador jugador){
+
+		casilleros[fila][columna].colocar(entidadAAgregar);
+		entidadAAgregar.restarAJugador(jugador);
+
+	}
 }
 	
