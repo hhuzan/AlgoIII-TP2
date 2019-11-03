@@ -1,13 +1,13 @@
 package fiuba.algo3.tp2;
 
 public class Casillero {
-	Unidad unidad;
+	Entidad entidad;
 
-	public void colocar(Unidad unidad) {
-		this.unidad = unidad;
+	public void colocar(Entidad entidad) {
+		this.entidad = entidad;
 	}
 
 	public boolean estaVacio() { // TODO refactorizar
-		return unidad == null;
+		return entidad == null;
 	}
 }

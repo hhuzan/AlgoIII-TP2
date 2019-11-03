@@ -1,5 +1,5 @@
 package fiuba.algo3.tp2;
 
-public class Curandero extends Unidad {
+public class Curandero extends Entidad {
 
 }
