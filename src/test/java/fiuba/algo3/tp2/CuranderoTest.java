@@ -7,7 +7,7 @@ public class CuranderoTest {
 
 	@Test
 	public void test00ConstructorCuranderoNoDevuelveNull() {
-		Curandero curandero = new Curandero();
+		Curandero curandero = new Curandero(new Jugador());
 		assertNotNull(curandero);
 	}
 

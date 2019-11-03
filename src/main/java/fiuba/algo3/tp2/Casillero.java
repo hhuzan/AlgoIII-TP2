@@ -5,6 +5,7 @@ public class Casillero {
 
 	public void colocar(Entidad entidad) {
 		this.entidad = entidad;
+		entidad.restarAJugador();
 	}
 
 	public boolean estaVacio() { // TODO refactorizar

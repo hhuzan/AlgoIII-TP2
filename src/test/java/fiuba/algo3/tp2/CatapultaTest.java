@@ -7,7 +7,7 @@ public class CatapultaTest {
 
 	@Test
 	public void test00ConstructorCatapultaNoDevuelveNull() {
-		Catapulta catapulta = new Catapulta();
+		Catapulta catapulta = new Catapulta(new Jugador());
 		assertNotNull(catapulta);
 	}
 
