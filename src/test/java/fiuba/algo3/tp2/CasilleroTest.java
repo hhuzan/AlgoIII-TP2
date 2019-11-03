@@ -25,7 +25,7 @@ public class CasilleroTest {
 		Casillero casillero = new Casillero();
 		Unidad soldado = new Soldado();
 		casillero.colocar(soldado);
-		assertFalse(casillero.estaVacio());
+		assertTrue(casillero.estaVacio());
 	}
 
 }
