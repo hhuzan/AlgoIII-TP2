@@ -1,12 +1,10 @@
 package fiuba.algo3.tp2;
 
-public class Entidad {
+public abstract class Entidad {
 	private int vida;
 	private int costo;
+	private Jugador duenio;
 
 
-	public void restarAJugador(Jugador jugador){
-
-		jugador.restarPuntos(this.costo);
-	}
+    public abstract void restarAJugador();
 }

@@ -16,8 +16,9 @@ public class TableroTest {
 	public void test01CAgregoUnaEntidadAlTableroYLeRestoVidaAlJugador() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
+		Jinete jinete = new Jinete(jugador);
 
-		tablero.agregarEntidadATablero(1,1,new Jinete(), jugador);
+		tablero.agregarEntidadATablero(1,1,jinete);
 		assertEquals(17, jugador.obtenerPuntos());
 	}
 
@@ -26,8 +27,8 @@ public class TableroTest {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 
-		tablero.agregarEntidadATablero(1,1,new Jinete(), jugador);
-		tablero.agregarEntidadATablero(1,2,new Jinete(), jugador);
+		tablero.agregarEntidadATablero(1,1,new Jinete(jugador));
+		tablero.agregarEntidadATablero(1,2,new Jinete(jugador));
 		assertEquals(14, jugador.obtenerPuntos());
 	}
 

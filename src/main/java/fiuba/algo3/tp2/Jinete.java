@@ -4,10 +4,15 @@ public class Jinete extends Entidad {
 
     private int vida = 100;
     private int costo = 3;
+    private Jugador duenio;
 
-    public void restarAJugador(Jugador jugador){
+    public Jinete(Jugador duenio) {
+       this.duenio = duenio;
+    }
 
-        jugador.restarPuntos(this.costo);
+    @Override
+    public void restarAJugador() {
+        duenio.restarPuntos(this.costo);
     }
 
 

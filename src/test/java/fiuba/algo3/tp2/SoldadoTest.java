@@ -7,7 +7,7 @@ public class SoldadoTest {
 
 	@Test
 	public void test00ConstructorSoldadoNoDevuelveNull() {
-		Soldado soldado = new Soldado();
+		Soldado soldado = new Soldado(new Jugador());
 		assertNotNull(soldado);
 	}
 

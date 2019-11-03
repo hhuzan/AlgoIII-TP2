@@ -26,7 +26,8 @@ public class JugadorTest {
 		jugador.restarPuntos(5);
 		assertEquals(5, jugador.obtenerPuntos());
 	}
-	
+
+
 
 
 
