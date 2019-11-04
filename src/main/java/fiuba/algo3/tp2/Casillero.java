@@ -8,7 +8,17 @@ public class Casillero {
 		entidad.restarAJugador();
 	}
 
+	public void setEntidad(Entidad entidad) {
+		this.entidad = entidad;
+	}
+
 	public boolean estaVacio() { // TODO refactorizar
 		return entidad == null;
+	}
+
+	public Entidad sacar() {
+		Entidad respuesta = entidad;
+		entidad = null;
+		return respuesta;
 	}
 }
