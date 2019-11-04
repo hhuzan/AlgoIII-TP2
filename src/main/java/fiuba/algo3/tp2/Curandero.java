@@ -2,7 +2,7 @@ package fiuba.algo3.tp2;
 
 public class Curandero extends Entidad {
 
-    private int vida = 75;
+//    private int vida = 75;
     private int costo = 2;
     private Jugador duenio;
 
