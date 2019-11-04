@@ -6,32 +6,30 @@ public class Tablero {
 
 	public Tablero() {
 		casilleros = new Casillero[tamanio][tamanio];
-		for (int i = 0; i < tamanio; i++) {
-			for (int j = 0; j < tamanio; j++) {
-				casilleros[i][j] = new Casillero();
+		for (int fila = 0; fila < tamanio; fila++) {
+			for (int columna = 0; columna < tamanio; columna++) {
+				casilleros[fila][columna] = new Casillero();
 			}
 		}
 	}
 
-	public void agregarEntidadATablero(int fila, int columna, Entidad entidadAAgregar) {
-
-		casilleros[fila][columna].colocar(entidadAAgregar);
-
+	public void agregar(int fila, int columna, Entidad entidad) {
+		casilleros[fila][columna].colocar(entidad);
 	}
 
-	public void moverArriba(int fila, int columna) {
+	public void moverArriba(int fila, int columna) { //TODO agregar execpcion limites
 		casilleros[fila - 1][columna].setEntidad(casilleros[fila][columna].sacar());
 	}
 
-	public void moverAbajo(int fila, int columna) {
+	public void moverAbajo(int fila, int columna) { //TODO agregar execpcion limites
 		casilleros[fila + 1][columna].setEntidad(casilleros[fila][columna].sacar());
 	}
 
-	public void moverIzquierda(int fila, int columna) {
+	public void moverIzquierda(int fila, int columna) { //TODO agregar execpcion limites
 		casilleros[fila][columna - 1].setEntidad(casilleros[fila][columna].sacar());
 	}
 
-	public void moverDerecha(int fila, int columna) {
+	public void moverDerecha(int fila, int columna) { //TODO agregar execpcion limites
 		casilleros[fila][columna + 1].setEntidad(casilleros[fila][columna].sacar());
 	}
 
