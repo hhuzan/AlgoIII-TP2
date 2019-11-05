@@ -13,14 +13,14 @@ public abstract class Sector {
 		return entidad;
 	}
 
+	public Estado getEstado() {
+		return estado;
+	}
+	
 	public void setEntidad(Entidad entidad) {
 		this.entidad = entidad;
 		estado = new Ocupado(this);
 	}
-
-	public abstract void colocar(Aliado aliado);
-
-	public abstract void colocar(Enemigo enemigo);
 
 	public boolean estaVacio() { // TODO sacar? modificar?
 		return estado.estaVacio();
@@ -33,8 +33,8 @@ public abstract class Sector {
 		return respuesta;
 	}
 
-	public void colocar_(Entidad entidad) {
-		estado = estado.colocar(entidad);
-	}
+	public abstract void colocar(Aliado aliado);
+
+	public abstract void colocar(Enemigo enemigo);
 
 }
