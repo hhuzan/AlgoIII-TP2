@@ -22,7 +22,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		Entidad jinete = new Aliado(new Jinete(jugador));
 
-		tablero.agregar(jinete, 1, 1);
+		tablero.colocar(jinete, 1, 1);
 		assertEquals(17, jugador.obtenerPuntos());
 	}
 
@@ -31,8 +31,8 @@ public class TableroTest {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 
-		tablero.agregar(new Aliado(new Jinete(jugador)), 1, 1);
-		tablero.agregar(new Aliado(new Jinete(jugador)), 1, 2);
+		tablero.colocar(new Aliado(new Jinete(jugador)), 1, 1);
+		tablero.colocar(new Aliado(new Jinete(jugador)), 1, 2);
 		assertEquals(14, jugador.obtenerPuntos());
 	}
 
@@ -42,7 +42,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int fila = 5;
 		int columna = 10;
-		tablero.agregar(new Aliado(new Soldado(jugador)), fila, columna);
+		tablero.colocar(new Aliado(new Soldado(jugador)), fila, columna);
 		assertFalse(tablero.estaVacio(fila, columna));
 	}
 
@@ -52,7 +52,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int fila = 15;
 		int columna = 10;
-		tablero.agregar(new Enemigo(new Soldado(jugador)), fila, columna);
+		tablero.colocar(new Enemigo(new Soldado(jugador)), fila, columna);
 		assertFalse(tablero.estaVacio(fila, columna));
 	}
 
@@ -62,7 +62,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int fila = 5;
 		int columna = 10;
-		tablero.agregar(new Enemigo(new Soldado(jugador)), fila, columna);
+		tablero.colocar(new Enemigo(new Soldado(jugador)), fila, columna);
 		assertTrue(tablero.estaVacio(fila, columna));
 	}
 
@@ -72,7 +72,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int fila = 15;
 		int columna = 10;
-		tablero.agregar(new Aliado(new Soldado(jugador)), fila, columna);
+		tablero.colocar(new Aliado(new Soldado(jugador)), fila, columna);
 		assertTrue(tablero.estaVacio(fila, columna));
 	}
 
@@ -82,9 +82,9 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int fila = 5;
 		int columna = 10;
-		tablero.agregar(new Aliado(new Soldado(jugador)), fila, columna);
+		tablero.colocar(new Aliado(new Soldado(jugador)), fila, columna);
 		assertThrows(CasilleroOcupadoException.class, () -> {
-			tablero.agregar(new Aliado(new Soldado(jugador)), fila, columna);
+			tablero.colocar(new Aliado(new Soldado(jugador)), fila, columna);
 		});
 
 	}
@@ -95,7 +95,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
 		int columnaOrigen = 10;
-		tablero.agregar(new Aliado(new Soldado(jugador)),filaOrigen, columnaOrigen);
+		tablero.colocar(new Aliado(new Soldado(jugador)),filaOrigen, columnaOrigen);
 		tablero.moverArriba(filaOrigen, columnaOrigen);
 		assertTrue(tablero.estaVacio(filaOrigen, columnaOrigen));
 		assertFalse(tablero.estaVacio(filaOrigen - 1, columnaOrigen));
@@ -107,7 +107,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
 		int columnaOrigen = 10;
-		tablero.agregar(new Aliado(new Soldado(jugador)),filaOrigen, columnaOrigen);
+		tablero.colocar(new Aliado(new Soldado(jugador)),filaOrigen, columnaOrigen);
 		tablero.moverAbajo(filaOrigen, columnaOrigen);
 		assertTrue(tablero.estaVacio(filaOrigen, columnaOrigen));
 		assertFalse(tablero.estaVacio(filaOrigen + 1, columnaOrigen));
@@ -119,7 +119,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
 		int columnaOrigen = 10;
-		tablero.agregar(new Aliado(new Soldado(jugador)),filaOrigen, columnaOrigen);
+		tablero.colocar(new Aliado(new Soldado(jugador)),filaOrigen, columnaOrigen);
 		tablero.moverIzquierda(filaOrigen, columnaOrigen);
 		assertTrue(tablero.estaVacio(filaOrigen, columnaOrigen));
 		assertFalse(tablero.estaVacio(filaOrigen, columnaOrigen - 1));
@@ -131,7 +131,7 @@ public class TableroTest {
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
 		int columnaOrigen = 10;
-		tablero.agregar(new Aliado(new Soldado(jugador)),filaOrigen, columnaOrigen);
+		tablero.colocar(new Aliado(new Soldado(jugador)),filaOrigen, columnaOrigen);
 		tablero.moverDerecha(filaOrigen, columnaOrigen);
 		assertTrue(tablero.estaVacio(filaOrigen, columnaOrigen));
 		assertFalse(tablero.estaVacio(filaOrigen, columnaOrigen + 1));

@@ -22,7 +22,7 @@ public class Tablero {
 		}
 	}
 
-	public void agregar(Entidad entidad, int fila, int columna) {
+	public void colocar(Entidad entidad, int fila, int columna) {
 		entidad.colocarEn(casilleros[fila][columna]);
 	}
 
