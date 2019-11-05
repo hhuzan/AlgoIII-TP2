@@ -10,7 +10,7 @@ public class SectorAliado extends Sector {
 
 	@Override
 	public void colocar(Enemigo enemigo) {
-		// TODO Auto-generated method stub
+		// TODO Agregar Excepcion?
 	}
 
 }

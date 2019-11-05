@@ -36,7 +36,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test03AgregoEntidadPosionNoQuedaVacia() {
+	public void TEST10AgregoAliadoEnSectorAliadoPosionNoQuedaVacia() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 5;
@@ -46,7 +46,37 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test04MoverArribar() {
+	public void TEST11AgregoEnemigoEnSectorEnemigoPosionNoQuedaVacia() {
+		Tablero tablero = new Tablero();
+		Jugador jugador = new Jugador();
+		int fila = 15;
+		int columna = 10;
+		tablero.agregar(new Enemigo(new Soldado(jugador)), fila, columna);
+		assertFalse(tablero.estaVacio(fila, columna));
+	}
+
+	@Test
+	public void TEST12AgregoEnemigoEnSectorAliadoPosionQuedaVacia() {
+		Tablero tablero = new Tablero();
+		Jugador jugador = new Jugador();
+		int fila = 5;
+		int columna = 10;
+		tablero.agregar(new Enemigo(new Soldado(jugador)), fila, columna);
+		assertTrue(tablero.estaVacio(fila, columna));
+	}
+
+	@Test
+	public void TEST13AgregoAliadoEnSectorEnemigoPosionQuedaVacia() {
+		Tablero tablero = new Tablero();
+		Jugador jugador = new Jugador();
+		int fila = 15;
+		int columna = 10;
+		tablero.agregar(new Aliado(new Soldado(jugador)), fila, columna);
+		assertTrue(tablero.estaVacio(fila, columna));
+	}
+
+	@Test
+	public void test30MoverArribar() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
@@ -58,7 +88,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test05MoverAbajo() {
+	public void test31MoverAbajo() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
@@ -70,7 +100,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test06MoverIzquierda() {
+	public void test32MoverIzquierda() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
@@ -82,7 +112,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test07MoverDerecha() {
+	public void test33MoverDerecha() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
