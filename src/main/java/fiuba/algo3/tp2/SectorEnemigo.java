@@ -2,6 +2,10 @@ package fiuba.algo3.tp2;
 
 public class SectorEnemigo extends Sector {
 
+	public SectorEnemigo() {
+		super();
+	}
+
 	@Override
 	public void colocar(Aliado aliado) {
 		// TODO Agregar Excepcion?
@@ -9,8 +13,7 @@ public class SectorEnemigo extends Sector {
 
 	@Override
 	public void colocar(Enemigo enemigo) {
-		setEntidad(enemigo);
-		enemigo.restarAJugador();
+		colocar_(enemigo);
 	}
 
 }

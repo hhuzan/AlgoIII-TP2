@@ -27,7 +27,8 @@ public class Tablero {
 	}
 
 	public void moverArriba(int fila, int columna) { // TODO agregar execpcion limites
-		casilleros[fila - 1][columna].setEntidad(casilleros[fila][columna].sacar());
+		Entidad aux = casilleros[fila][columna].sacar();
+		casilleros[fila - 1][columna].setEntidad(aux);
 	}
 
 	public void moverAbajo(int fila, int columna) { // TODO agregar execpcion limites

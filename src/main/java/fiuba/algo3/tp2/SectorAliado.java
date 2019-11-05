@@ -2,10 +2,13 @@ package fiuba.algo3.tp2;
 
 public class SectorAliado extends Sector {
 
+	public SectorAliado() {
+		super();
+	}
+
 	@Override
 	public void colocar(Aliado aliado) {
-		setEntidad(aliado);
-		aliado.restarAJugador();
+		colocar_(aliado);
 	}
 
 	@Override
