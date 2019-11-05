@@ -11,20 +11,20 @@ public class CasilleroTest {
 
 	@Test
 	public void test00ConstructorCasilleroNoDevuelveNull() {
-		Casillero casillero = new Casillero(new SectorAliado());
+		Casillero casillero = new CasilleroAliado();
 		assertNotNull(casillero);
 	}
 
 	@Test
 	public void test01CasilleroNuevoEstaVacio() {
-		Casillero casillero = new Casillero(new SectorAliado());
+		Casillero casillero = new CasilleroAliado();
 		assertTrue(casillero.estaVacio());
 	}
 
 	@Test
 	public void test02ColocoUnidadEnCasilleroEntoncesNoEstaVacio() {
 		Jugador jugador = new Jugador();
-		Casillero casillero = new Casillero(new SectorAliado());
+		Casillero casillero = new CasilleroAliado();
 		Aliado soldado = new Aliado(new Soldado(jugador));
 		casillero.colocar(soldado);
 		assertFalse(casillero.estaVacio());
@@ -33,7 +33,7 @@ public class CasilleroTest {
 	@Test
 	public void test03Coloco2UnidadesEnCasilleroArrojaExcepcion() {
 		Jugador jugador = new Jugador();
-		Casillero casillero = new Casillero(new SectorAliado());
+		Casillero casillero = new CasilleroAliado();
 		Aliado unSoldado = new Aliado(new Soldado(jugador));
 		Aliado otroSoldado = new Aliado(new Soldado(jugador));
 		casillero.colocar(unSoldado);

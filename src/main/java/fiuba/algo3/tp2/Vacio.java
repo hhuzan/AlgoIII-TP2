@@ -1,10 +1,10 @@
 package fiuba.algo3.tp2;
 
 public class Vacio implements Estado {
-	private Sector sector;
+	private Casillero casillero;
 
-	public Vacio(Sector sector) {
-		this.sector = sector;
+	public Vacio(Casillero casillero) {
+		this.casillero = casillero;
 	}
 
 	@Override
@@ -14,14 +14,14 @@ public class Vacio implements Estado {
 
 	@Override
 	public Estado colocar(Entidad entidad) {
-		sector.setEntidad(entidad);
+		casillero.setEntidad(entidad);
 		entidad.restarAJugador();
-		return new Ocupado(sector);
+		return new Ocupado(casillero);
 	}
 
 	@Override
 	public Entidad getEntidad() {
-		return sector.getEntidad();
+		return casillero.getEntidad();
 	}
 
 }

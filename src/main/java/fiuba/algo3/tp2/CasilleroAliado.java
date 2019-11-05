@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2;
 
-public class SectorAliado extends Sector {
+public class CasilleroAliado extends Casillero {
 
 	@Override
 	public void colocar(Aliado aliado) {

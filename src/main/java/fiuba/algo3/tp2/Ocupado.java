@@ -1,10 +1,10 @@
 package fiuba.algo3.tp2;
 
 public class Ocupado implements Estado{
-	private Sector sector;
+	private Casillero casillero;
 
-	public Ocupado(Sector sector) {
-		this.sector = sector;
+	public Ocupado(Casillero casillero) {
+		this.casillero = casillero;
 	}
 
 	@Override
@@ -19,7 +19,7 @@ public class Ocupado implements Estado{
 
 	@Override
 	public Entidad getEntidad() {
-		return sector.getEntidad();
+		return casillero.getEntidad();
 	}
 
 }
