@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2;
 
 public abstract class Sector {
-	Entidad entidad;
+	private Entidad entidad;
 
 	public void setEntidad(Entidad entidad) {
 		this.entidad = entidad;		
