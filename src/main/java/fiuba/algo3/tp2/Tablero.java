@@ -6,9 +6,18 @@ public class Tablero {
 
 	public Tablero() {
 		casilleros = new Casillero[tamanio][tamanio];
-		for (int fila = 0; fila < tamanio; fila++) {
+
+		// Arma sector aliado (parte superior)
+		for (int fila = 0; fila < tamanio / 2; fila++) {
 			for (int columna = 0; columna < tamanio; columna++) {
-				casilleros[fila][columna] = new Casillero();
+				casilleros[fila][columna] = new Casillero(new SectorAliado());
+			}
+		}
+
+		// Arma sector enemigo (parte inferior)
+		for (int fila = tamanio / 2; fila < tamanio; fila++) {
+			for (int columna = 0; columna < tamanio; columna++) {
+				casilleros[fila][columna] = new Casillero(new SectorEnemigo());
 			}
 		}
 	}
@@ -17,19 +26,19 @@ public class Tablero {
 		entidad.colocarEn(casilleros[fila][columna]);
 	}
 
-	public void moverArriba(int fila, int columna) { //TODO agregar execpcion limites
+	public void moverArriba(int fila, int columna) { // TODO agregar execpcion limites
 		casilleros[fila - 1][columna].setEntidad(casilleros[fila][columna].sacar());
 	}
 
-	public void moverAbajo(int fila, int columna) { //TODO agregar execpcion limites
+	public void moverAbajo(int fila, int columna) { // TODO agregar execpcion limites
 		casilleros[fila + 1][columna].setEntidad(casilleros[fila][columna].sacar());
 	}
 
-	public void moverIzquierda(int fila, int columna) { //TODO agregar execpcion limites
+	public void moverIzquierda(int fila, int columna) { // TODO agregar execpcion limites
 		casilleros[fila][columna - 1].setEntidad(casilleros[fila][columna].sacar());
 	}
 
-	public void moverDerecha(int fila, int columna) { //TODO agregar execpcion limites
+	public void moverDerecha(int fila, int columna) { // TODO agregar execpcion limites
 		casilleros[fila][columna + 1].setEntidad(casilleros[fila][columna].sacar());
 	}
 

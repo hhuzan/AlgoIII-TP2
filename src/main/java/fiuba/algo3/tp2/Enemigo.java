@@ -7,7 +7,7 @@ public class Enemigo extends Entidad {
 	}
 
 	@Override
-	protected void colocarEn(Casillero casillero) {
+	public void colocarEn(Casillero casillero) {
 		casillero.colocar(this);
 	}
 

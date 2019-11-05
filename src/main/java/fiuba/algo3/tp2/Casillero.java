@@ -1,29 +1,30 @@
 package fiuba.algo3.tp2;
 
 public class Casillero {
-	private Entidad entidad;
+	private Sector sector;
+
+	public Casillero(Sector sector) {
+		this.sector = sector;
+	}
 
 	public void colocar(Aliado aliado) {
-		this.entidad = aliado;
-		aliado.restarAJugador();
+		sector.colocar(aliado);
 	}
 
 	public void colocar(Enemigo enemigo) {
-		this.entidad = enemigo;
-		enemigo.restarAJugador();
+		sector.colocar(enemigo);
 	}
 
 	public void setEntidad(Entidad entidad) {
-		this.entidad = entidad;
+		sector.setEntidad(entidad);
 	}
 
-	public boolean estaVacio() { // TODO refactorizar
-		return entidad == null;
+	public boolean estaVacio() {
+		return sector.estaVacio();
 	}
 
 	public Entidad sacar() {
-		Entidad respuesta = entidad;
-		entidad = null;
-		return respuesta;
+		return sector.sacar();
 	}
+
 }

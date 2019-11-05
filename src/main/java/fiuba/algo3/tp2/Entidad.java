@@ -14,6 +14,6 @@ public abstract class Entidad {
 		tipo.restarAJugador();
 	}
 
-	protected abstract void colocarEn(Casillero casillero);
+	public abstract void colocarEn(Casillero casillero);
 
 }

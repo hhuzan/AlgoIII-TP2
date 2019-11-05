@@ -10,20 +10,20 @@ public class CasilleroTest {
 
 	@Test
 	public void test00ConstructorCasilleroNoDevuelveNull() {
-		Casillero casillero = new Casillero();
+		Casillero casillero = new Casillero(new SectorAliado());
 		assertNotNull(casillero);
 	}
 
 	@Test
 	public void test01CasilleroNuevoEstaVacio() {
-		Casillero casillero = new Casillero();
+		Casillero casillero = new Casillero(new SectorAliado());
 		assertTrue(casillero.estaVacio());
 	}
 
 	@Test
 	public void test02ColocoUnidadEnCasilleroEntoncesNoEstaVacio() {
 		Jugador jugador = new Jugador();
-		Casillero casillero = new Casillero();
+		Casillero casillero = new Casillero(new SectorAliado());
 		Aliado soldado = new Aliado(new Soldado(jugador));
 		casillero.colocar(soldado);
 		assertFalse(casillero.estaVacio());
