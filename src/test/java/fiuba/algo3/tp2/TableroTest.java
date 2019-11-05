@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -73,6 +74,19 @@ public class TableroTest {
 		int columna = 10;
 		tablero.agregar(new Aliado(new Soldado(jugador)), fila, columna);
 		assertTrue(tablero.estaVacio(fila, columna));
+	}
+
+	@Test
+	public void test20Agrego2AliadosEnMismoCasilleroAliadoArrojaExcepcion() {
+		Tablero tablero = new Tablero();
+		Jugador jugador = new Jugador();
+		int fila = 5;
+		int columna = 10;
+		tablero.agregar(new Aliado(new Soldado(jugador)), fila, columna);
+		assertThrows(CasilleroOcupadoException.class, () -> {
+			tablero.agregar(new Aliado(new Soldado(jugador)), fila, columna);
+		});
+
 	}
 
 	@Test

@@ -14,8 +14,7 @@ public class Ocupado implements Estado{
 
 	@Override
 	public Estado colocar(Entidad entidad) {
-		// TODO Agregar excepcion???
-		return this;
+		throw new CasilleroOcupadoException();
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package fiuba.algo3.tp2;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -29,4 +30,15 @@ public class CasilleroTest {
 		assertFalse(casillero.estaVacio());
 	}
 
+	@Test
+	public void test03Coloco2UnidadesEnCasilleroArrojaExcepcion() {
+		Jugador jugador = new Jugador();
+		Casillero casillero = new Casillero(new SectorAliado());
+		Aliado unSoldado = new Aliado(new Soldado(jugador));
+		Aliado otroSoldado = new Aliado(new Soldado(jugador));
+		casillero.colocar(unSoldado);
+		assertThrows(CasilleroOcupadoException.class, () -> {
+			casillero.colocar(otroSoldado);
+		});
+	}
 }
