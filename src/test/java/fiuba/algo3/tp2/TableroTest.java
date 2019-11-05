@@ -36,7 +36,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void TEST10AgregoAliadoEnSectorAliadoPosionNoQuedaVacia() {
+	public void test10AgregoAliadoEnSectorAliadoPosionNoQuedaVacia() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 5;
@@ -46,7 +46,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void Test11AgregoEnemigoEnSectorEnemigoPosionNoQuedaVacia() {
+	public void test11AgregoEnemigoEnSectorEnemigoPosionNoQuedaVacia() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 15;
@@ -56,7 +56,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void Test12AgregoEnemigoEnSectorAliadoPosionQuedaVacia() {
+	public void test12AgregoEnemigoEnSectorAliadoPosionQuedaVacia() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 5;
@@ -66,7 +66,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void TEST13AgregoAliadoEnSectorEnemigoPosionQuedaVacia() {
+	public void test13AgregoAliadoEnSectorEnemigoPosionQuedaVacia() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 15;
