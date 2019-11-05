@@ -1,17 +1,17 @@
 package fiuba.algo3.tp2;
 
-public class Soldado extends Entidad {
+public class Soldado extends Tipo {
 
 //    private int vida = 100;
     private int costo = 1;
-    private Jugador duenio;
-
-    public Soldado(Jugador duenio) {
-        this.duenio = duenio;
-    }
-
+ 
+    public Soldado(Jugador propietario) {
+		setPropietario(propietario);
+	};
+ 
     @Override
     public void restarAJugador() {
-        duenio.restarPuntos(this.costo);
+        getPropietario().restarPuntos(this.costo);
     }
+
 }

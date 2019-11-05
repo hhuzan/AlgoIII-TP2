@@ -22,8 +22,9 @@ public class CasilleroTest {
 
 	@Test
 	public void test02ColocoUnidadEnCasilleroEntoncesNoEstaVacio() {
+		Jugador jugador = new Jugador();
 		Casillero casillero = new Casillero();
-		Entidad soldado = new Soldado(new Jugador());
+		Aliado soldado = new Aliado(new Soldado(jugador));
 		casillero.colocar(soldado);
 		assertFalse(casillero.estaVacio());
 	}

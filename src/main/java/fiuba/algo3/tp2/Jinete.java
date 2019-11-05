@@ -1,19 +1,17 @@
 package fiuba.algo3.tp2;
 
-public class Jinete extends Entidad {
+public class Jinete extends Tipo {
 
 //    private int vida = 100;
-    private int costo = 3;
-    private Jugador duenio;
+	private int costo = 3;
 
-    public Jinete(Jugador duenio) {
-       this.duenio = duenio;
-    }
+	public Jinete(Jugador propietario) {
+		setPropietario(propietario);
+	};
 
-    @Override
-    public void restarAJugador() {
-        duenio.restarPuntos(this.costo);
-    }
-
+	@Override
+	public void restarAJugador() {
+		getPropietario().restarPuntos(this.costo);
+	}
 
 }

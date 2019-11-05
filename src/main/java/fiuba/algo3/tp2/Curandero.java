@@ -1,17 +1,17 @@
 package fiuba.algo3.tp2;
 
-public class Curandero extends Entidad {
+public class Curandero extends Tipo {
 
 //    private int vida = 75;
-    private int costo = 2;
-    private Jugador duenio;
+	private int costo = 2;
 
-    public Curandero(Jugador duenio) {
-        this.duenio = duenio;
-    }
+	public Curandero(Jugador propietario) {
+		setPropietario(propietario);
+	}
 
-    @Override
-    public void restarAJugador() {
-        duenio.restarPuntos(this.costo);
-    }
+	@Override
+	public void restarAJugador() {
+		getPropietario().restarPuntos(costo);
+	}
+
 }

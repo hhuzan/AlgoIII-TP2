@@ -13,8 +13,8 @@ public class Tablero {
 		}
 	}
 
-	public void agregar(int fila, int columna, Entidad entidad) {
-		casilleros[fila][columna].colocar(entidad);
+	public void agregar(Entidad entidad, int fila, int columna) {
+		entidad.colocarEn(casilleros[fila][columna]);
 	}
 
 	public void moverArriba(int fila, int columna) { //TODO agregar execpcion limites

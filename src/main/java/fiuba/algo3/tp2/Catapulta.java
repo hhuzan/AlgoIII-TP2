@@ -1,18 +1,17 @@
 package fiuba.algo3.tp2;
 
-public class Catapulta extends Entidad {
+public class Catapulta extends Tipo {
 
 //    private int vida = 50;
     private int costo = 5;
-    private Jugador duenio;
-
-    public Catapulta(Jugador duenio) {
-        this.duenio = duenio;
-    }
+    
+	public Catapulta(Jugador propietario) {
+		setPropietario(propietario);
+	}
 
     @Override
     public void restarAJugador() {
-        duenio.restarPuntos(this.costo);
+        getPropietario().restarPuntos(costo);
     }
 
 }

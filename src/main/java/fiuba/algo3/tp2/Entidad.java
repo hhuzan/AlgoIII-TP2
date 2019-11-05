@@ -1,11 +1,19 @@
 package fiuba.algo3.tp2;
 
 public abstract class Entidad {
+
+	private Tipo tipo;
 //	private int vida;
 //	private int costo;
-//	private Jugador duenio;
 
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 
-    public abstract void restarAJugador();
-    
+	public void restarAJugador() {
+		tipo.restarAJugador();
+	}
+
+	protected abstract void colocarEn(Casillero casillero);
+
 }
