@@ -37,4 +37,8 @@ public abstract class Casillero {
 
 	public abstract void colocar(Enemigo enemigo);
 
+	public void moverA(Casillero desde) {
+		estado.moverA()
+	}
+
 }
