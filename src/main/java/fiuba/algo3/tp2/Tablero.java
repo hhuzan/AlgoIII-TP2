@@ -4,9 +4,9 @@ public class Tablero {
 	private final int tamanio = 20;
 	private Casillero casilleros[][];
 
-	private Entidad removerEntidadDeCasillero(int fila, int columna) {
-		return casilleros[fila][columna].popEntidad();
-	}
+//	private Entidad removerEntidadDeCasillero(int fila, int columna) {
+//		return casilleros[fila][columna].popEntidad();
+//	}
 
 	private Entidad obtenerEntidadDeCasillero(Casillero casillero) {
 		return casillero.getEntidad();
