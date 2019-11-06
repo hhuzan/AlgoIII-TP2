@@ -19,6 +19,7 @@ public class Jugador {
         return this.puntos;
     }
 
+<<<<<<< HEAD
     public void agregarSoldado() {
     	agregar(creadorEntidades.CrearSoldado(this));
     }
@@ -36,6 +37,9 @@ public class Jugador {
     }
     
     private void agregar(Entidad entidad) {
+=======
+    public void agregarEntidad(Entidad entidad) {
+>>>>>>> branch 'master' of https://github.com/hhuzan/AlgoIII-TP2
     	restarPuntos(entidad.getCosto());
     	entidades.add(entidad);
     }

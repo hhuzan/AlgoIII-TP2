@@ -18,5 +18,17 @@ public abstract class Entidad {
 		return tipo.getCosto();
 	}
 
+	public int getVida() {
+		return tipo.getVida();
+	}
+
+	public void atacar(Entidad entidad, int distancia) {
+		tipo.atacar(entidad, distancia);
+	}
+
+	public void recibirDanio(int danio, int distancia) {
+		tipo.recibirDanio(danio, distancia);
+	}
+
 	public abstract void colocarEn(Casillero casillero);
 }

@@ -166,7 +166,21 @@ public class TableroTest {
 
 	@Test
 	public void test35SoldadoAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
-
+		int fila = 9;
+		int columna = 1;	
+		Tablero tablero = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Entidad soldado1 = new Aliado(new Soldado(jugador1));
+		Entidad soldado2 = new Enemigo(new Soldado(jugador2));
+		jugador1.agregarEntidad(soldado1);
+		jugador2.agregarEntidad(soldado2);
+		tablero.colocar(soldado1, fila, columna);
+		tablero.colocar(soldado2, fila + 1, columna);
+		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
+		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
+		tablero.atacar(casilleroOrigen, casilleroDestino);
+		assertTrue(soldado2.getVida() == 90);
 	}
 
 }
