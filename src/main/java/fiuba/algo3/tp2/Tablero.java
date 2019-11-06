@@ -4,6 +4,10 @@ public class Tablero {
 	private final int tamanio = 20;
 	private Casillero casilleros[][];
 
+	private Entidad obtenerEntidadDeCasillero(int fila, int columna) {
+		return casilleros[fila][columna].sacar();
+	}
+	
 	public Tablero() {
 		casilleros = new Casillero[tamanio][tamanio];
 
@@ -27,20 +31,25 @@ public class Tablero {
 	}
 
 	public void moverArriba(int fila, int columna) { // TODO agregar execpcion limites
-		Entidad aux = casilleros[fila][columna].sacar();
-		casilleros[fila - 1][columna].setEntidad(aux);
+		Entidad entidad = obtenerEntidadDeCasillero(fila, columna);
+		entidad.colocarEn(casilleros[fila-1][columna]);
+		// Ya tenemos el método colocar en, reusemoslo.
+		//casilleros[fila - 1][columna].setEntidad(aux);
 	}
 
 	public void moverAbajo(int fila, int columna) { // TODO agregar execpcion limites
-		casilleros[fila + 1][columna].setEntidad(casilleros[fila][columna].sacar());
+		Entidad entidad = obtenerEntidadDeCasillero(fila, columna);
+		entidad.colocarEn(casilleros[fila + 1][columna]);
 	}
 
 	public void moverIzquierda(int fila, int columna) { // TODO agregar execpcion limites
-		casilleros[fila][columna - 1].setEntidad(casilleros[fila][columna].sacar());
+		Entidad entidad = obtenerEntidadDeCasillero(fila, columna);
+		entidad.colocarEn(casilleros[fila][columna - 1]);
 	}
 
 	public void moverDerecha(int fila, int columna) { // TODO agregar execpcion limites
-		casilleros[fila][columna + 1].setEntidad(casilleros[fila][columna].sacar());
+		Entidad entidad = obtenerEntidadDeCasillero(fila, columna);
+		entidad.colocarEn(casilleros[fila][columna + 1]);
 	}
 
 	public boolean estaVacio(int fila, int columna) {

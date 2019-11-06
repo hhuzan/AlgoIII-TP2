@@ -17,7 +17,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test01AgregoUnaJineteAlTableroYLeRestoVidaAlJugador() {
+	public void test01AgregoUnaJineteAlTableroYLeRestoTresPuntosAlJugador() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		Entidad jinete = new Aliado(new Jinete(jugador));
@@ -27,7 +27,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test02AgregoDosJinetesAlTableroYLeRestoVidaAlJugador() {
+	public void test02AgregoDosJinetesAlTableroYLeRestoSeisPuntosAlJugador() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 
@@ -135,6 +135,25 @@ public class TableroTest {
 		tablero.moverDerecha(filaOrigen, columnaOrigen);
 		assertTrue(tablero.estaVacio(filaOrigen, columnaOrigen));
 		assertFalse(tablero.estaVacio(filaOrigen, columnaOrigen + 1));
+	}
+
+	@Test
+	public void test34MoverEntidadACasilleroOcupadoArrojaExcepcion() {
+		Tablero tablero = new Tablero();
+		Jugador jugador = new Jugador();
+		int filaOrigen = 1;
+		int columnaOrigen = 1;
+		tablero.colocar(new Aliado(new Soldado(jugador)), filaOrigen, columnaOrigen);
+		tablero.colocar(new Aliado(new Soldado(jugador)), filaOrigen, columnaOrigen + 1);
+		assertThrows(CasilleroOcupadoException.class, () -> {
+			tablero.moverDerecha(filaOrigen, columnaOrigen);
+		});
+
+	}
+
+	@Test 
+	public void test35SoldadoAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+		
 	}
 
 }

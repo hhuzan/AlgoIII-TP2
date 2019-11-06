@@ -10,6 +10,11 @@ public class Jinete extends Tipo {
 	};
 
 	@Override
+	public int getCosto() {
+		return this.costo;
+	}
+
+	@Override
 	public void restarAJugador() {
 		getPropietario().restarPuntos(this.costo);
 	}

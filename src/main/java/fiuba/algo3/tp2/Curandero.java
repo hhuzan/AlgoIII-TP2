@@ -10,6 +10,11 @@ public class Curandero extends Tipo {
 	}
 
 	@Override
+	public int getCosto() {
+		return this.costo;
+	}
+
+	@Override
 	public void restarAJugador() {
 		getPropietario().restarPuntos(costo);
 	}

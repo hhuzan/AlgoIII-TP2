@@ -10,5 +10,4 @@ public class Enemigo extends Entidad {
 	public void colocarEn(Casillero casillero) {
 		casillero.colocar(this);
 	}
-
 }

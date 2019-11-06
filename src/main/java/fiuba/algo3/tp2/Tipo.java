@@ -12,5 +12,6 @@ public abstract class Tipo {
 	}
 	
 	public abstract void restarAJugador();
+	public abstract int getCosto();
 
 }
