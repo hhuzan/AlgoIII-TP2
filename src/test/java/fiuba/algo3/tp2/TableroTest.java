@@ -183,4 +183,22 @@ public class TableroTest {
 		assertTrue(soldado2.getVida() == 90);
 	}
 
+	@Test
+	public void test356JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado 
+		int columna = 1;	
+		Tablero tablero = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Entidad jinete1 = new Aliado(new Jinete(jugador1));
+		Entidad jinete2 = new Enemigo(new Jinete(jugador2));
+		jugador1.agregarEntidad(jinete1);
+		jugador2.agregarEntidad(jinete2);
+		tablero.colocar(jinete1, fila, columna);
+		tablero.colocar(jinete2, fila + 1, columna);
+		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
+		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
+		tablero.atacar(casilleroOrigen, casilleroDestino);
+		assertTrue(jinete2.getVida() == 95);
+	}
 }
