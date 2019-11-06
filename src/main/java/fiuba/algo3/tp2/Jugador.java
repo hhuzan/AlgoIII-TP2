@@ -35,7 +35,7 @@ public class Jugador {
     	agregar(creadorEntidades.CrearCatapulta(this));
     }
     
-    private void agregar(Entidad entidad) {
+    public void agregar(Entidad entidad) {
     	restarPuntos(entidad.getCosto());
     	entidades.add(entidad);
     }
