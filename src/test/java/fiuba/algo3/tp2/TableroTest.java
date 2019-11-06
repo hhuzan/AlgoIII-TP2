@@ -192,8 +192,8 @@ public class TableroTest {
 		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
 		Entidad jinete1 = new Aliado(new Jinete(jugador1));
 		Entidad jinete2 = new Enemigo(new Jinete(jugador2));
-		jugador1.agregarEntidad(jinete1);
-		jugador2.agregarEntidad(jinete2);
+		jugador1.agregar(jinete1);
+		jugador2.agregar(jinete2);
 		tablero.colocar(jinete1, fila, columna);
 		tablero.colocar(jinete2, fila + 1, columna);
 		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
