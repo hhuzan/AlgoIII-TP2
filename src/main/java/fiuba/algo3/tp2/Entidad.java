@@ -14,6 +14,9 @@ public abstract class Entidad {
 		tipo.restarAJugador();
 	}
 
-	public abstract void colocarEn(Casillero casillero);
+	public int getCosto() {
+		return tipo.getCosto();
+	}
 
+	public abstract void colocarEn(Casillero casillero);
 }

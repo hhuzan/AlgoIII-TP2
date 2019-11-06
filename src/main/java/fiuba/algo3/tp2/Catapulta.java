@@ -9,6 +9,11 @@ public class Catapulta extends Tipo {
 		setPropietario(propietario);
 	}
 
+	@Override
+	public int getCosto() {
+		return this.costo;
+	}
+
     @Override
     public void restarAJugador() {
         getPropietario().restarPuntos(costo);
