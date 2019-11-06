@@ -7,7 +7,7 @@ public class CasilleroEnemigo extends Casillero {
 	}
 	
 	public CasilleroEnemigo(int fila, int columna) {
-		super();
+		super(fila, columna);
 	}
 
 	@Override
@@ -18,6 +18,16 @@ public class CasilleroEnemigo extends Casillero {
 	@Override
 	public void colocar(Enemigo enemigo) {
 		getEstado().colocar(enemigo);
+	}
+
+	@Override
+	public int getFila() {
+		return this.fila;
+	} 
+
+	@Override 
+	public int getColumna() {
+		return this.columna;
 	}
 
 }

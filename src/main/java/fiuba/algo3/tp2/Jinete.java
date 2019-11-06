@@ -11,6 +11,13 @@ public class Jinete extends Tipo {
 		setPropietario(propietario);
 	};
 
+    private int obtenerDanio(int distancia) {
+        if(distancia == 1)
+            return danioCuerpo;
+        else
+            return danioDistancia;
+    }
+
 	@Override
 	public int getCosto() {
 		return this.costo;
@@ -38,13 +45,7 @@ public class Jinete extends Tipo {
 			- 	Si no hay ningún aliado cercano y hay enemigos cercanos , su arma de ataque es una Espada y 
 				únicamente puede atacar a enemigos en distancia corta.
         */
-        int danio = 0;
-        if(distancia == 1) {
-            danio = danioCuerpo;
-        } else {
-            danio = danioDistancia;
-        }
-
+        int danio = obtenerDanio(distancia);
         // Podemos agregar this, si queremos que el atacado sepa quien es el atacante
         entidadAtacada.recibirDanio(danio, distancia);
      

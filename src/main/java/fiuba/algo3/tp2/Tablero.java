@@ -13,13 +13,10 @@ public class Tablero {
 	}
 
 	private int calcularDistancia(Casillero origen, Casillero destino) {
-		// TODO: Hacer la logica
-		/*
-		Distancia Cercana: consta de una distancia de 1 a 2 casilleros (en cualquier dirección)
-		Distancia Media: consta de una distancia de 3 a 5 (en cualquier dirección)
-		Distancia Lejana: consta de una distancia de 6 a Infinito (en cualquier dirección)
-		*/
-		return 1;
+		if( (origen.getFila() - destino.getFila() != 0) && (origen.getColumna() - destino.getColumna() != 0) ) 
+			return Math.min(Math.abs(origen.getFila() - destino.getFila()), Math.abs(origen.getColumna() - destino.getColumna()));
+		else
+			return Math.max(Math.abs(origen.getFila() - destino.getFila()), Math.abs(origen.getColumna() - destino.getColumna()));
 	}
 
 	public Tablero() {
@@ -72,6 +69,7 @@ public class Tablero {
 		Entidad entidadOrigen = obtenerEntidadDeCasillero(origen);
 		Entidad entidadDestino = obtenerEntidadDeCasillero(destino);
 		int distancia = calcularDistancia(origen, destino);
+		System.out.println(distancia);
 		entidadOrigen.atacar(entidadDestino, distancia);
 	}	
 }
