@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Jugador {
 
 	private List<Entidad> entidades = new ArrayList<Entidad>();
+	private CreadorEntidades creadorEntidades;
 
     private int puntos = 20;
 
@@ -18,7 +19,23 @@ public class Jugador {
         return this.puntos;
     }
 
-    public void agregar(Entidad entidad) {
+    public void agregarSoldado() {
+    	agregar(creadorEntidades.CrearSoldado(this));
+    }
+    
+    public void agregarJinete() {
+    	agregar(creadorEntidades.CrearJinete(this));
+    }
+    
+    public void agregarCurandero() {
+    	agregar(creadorEntidades.CrearCurandero(this));
+    }
+    
+    public void agregarCatapulta() {
+    	agregar(creadorEntidades.CrearCatapulta(this));
+    }
+    
+    private void agregar(Entidad entidad) {
     	restarPuntos(entidad.getCosto());
     	entidades.add(entidad);
     }
