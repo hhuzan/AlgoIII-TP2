@@ -13,13 +13,14 @@ public class Jugador {
         this.puntos -= puntos;
     }
 
-    public int obtenerPuntos() {
+    public int getPuntos() {
 
         return this.puntos;
     }
 
-    public void agregarEntidad(Entidad entidad) {
+    public void agregar(Entidad entidad) {
     	restarPuntos(entidad.getCosto());
     	entidades.add(entidad);
     }
+
 }

@@ -23,7 +23,7 @@ public class TableroTest {
 		Entidad jinete = new Aliado(new Jinete(jugador));
 
 		tablero.colocar(jinete, 1, 1);
-		assertEquals(17, jugador.obtenerPuntos());
+		assertEquals(17, jugador.getPuntos());
 	}
 
 	@Test
@@ -33,7 +33,7 @@ public class TableroTest {
 
 		tablero.colocar(new Aliado(new Jinete(jugador)), 1, 1);
 		tablero.colocar(new Aliado(new Jinete(jugador)), 1, 2);
-		assertEquals(14, jugador.obtenerPuntos());
+		assertEquals(14, jugador.getPuntos());
 	}
 
 	@Test
