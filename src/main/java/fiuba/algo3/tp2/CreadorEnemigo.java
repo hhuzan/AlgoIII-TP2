@@ -3,22 +3,22 @@ package fiuba.algo3.tp2;
 public class CreadorEnemigo implements CreadorEntidades {
 
 	@Override
-	public Entidad CrearSoldado(Jugador jugador) {
+	public Entidad crearSoldado(Jugador jugador) {
 		return new Enemigo(new Soldado(jugador));
 	}
 
 	@Override
-	public Entidad CrearJinete(Jugador jugador) {
+	public Entidad crearJinete(Jugador jugador) {
 		return new Enemigo(new Jinete(jugador));
 	}
 
 	@Override
-	public Entidad CrearCurandero(Jugador jugador) {
+	public Entidad crearCurandero(Jugador jugador) {
 		return new Enemigo(new Curandero(jugador));
 	}
 
 	@Override
-	public Entidad CrearCatapulta(Jugador jugador) {
+	public Entidad crearCatapulta(Jugador jugador) {
 		return new Enemigo(new Catapulta(jugador));
 	}
 

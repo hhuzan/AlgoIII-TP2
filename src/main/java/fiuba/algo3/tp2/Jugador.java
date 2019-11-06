@@ -30,19 +30,19 @@ public class Jugador {
 	}
 
 	public void agregarSoldado() {
-		agregar(creadorEntidades.CrearSoldado(this));
+		agregar(creadorEntidades.crearSoldado(this));
 	}
 
 	public void agregarJinete() {
-		agregar(creadorEntidades.CrearJinete(this));
+		agregar(creadorEntidades.crearJinete(this));
 	}
 
 	public void agregarCurandero() {
-		agregar(creadorEntidades.CrearCurandero(this));
+		agregar(creadorEntidades.crearCurandero(this));
 	}
 
 	public void agregarCatapulta() {
-		agregar(creadorEntidades.CrearCatapulta(this));
+		agregar(creadorEntidades.crearCatapulta(this));
 	}
 
 	public void agregar(Entidad entidad) { // TODO revisar
