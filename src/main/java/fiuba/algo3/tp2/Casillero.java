@@ -2,11 +2,19 @@ package fiuba.algo3.tp2;
 
 public abstract class Casillero {
 
-	private Entidad entidad;
-	private Estado estado;
+	protected Entidad entidad;
+	protected Estado estado;
+	protected int fila;
+	protected int columna;
 
 	public Casillero() {
 		estado = new Vacio(this);
+	}
+	
+	public Casillero(int fila, int columna) {
+		estado = new Vacio(this);
+		this.fila = fila;
+		this.columna = columna;
 	}
 
 	public Entidad getEntidad() {
@@ -26,7 +34,7 @@ public abstract class Casillero {
 		return estado.estaVacio();
 	}
 
-	public Entidad sacar() {
+	public Entidad popEntidad() {
 		Entidad respuesta = entidad;
 		entidad = null;
 		estado = new Vacio(this);

@@ -13,5 +13,8 @@ public abstract class Tipo {
 	
 	public abstract void restarAJugador();
 	public abstract int getCosto();
+	public abstract int getVida();
+	public abstract void atacar(Entidad entidad, int distancia);
+	public abstract void recibirDanio(int danio, int distancia);
 
 }
