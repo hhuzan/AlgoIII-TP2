@@ -7,8 +7,15 @@ public class Jugador {
 
 	private List<Entidad> entidades = new ArrayList<Entidad>();
 	private CreadorEntidades creadorEntidades;
-
 	private int puntos = 20;
+
+	public Jugador() {  //TODO ver como queda el constructor
+		
+	}
+	
+	public Jugador(CreadorEntidades creadorEntidades) {
+		this.creadorEntidades = creadorEntidades;
+	}
 
 	public void restarPuntos(int puntos) throws PuntosInsuficientesException {
 		if (this.puntos >= puntos)
@@ -38,9 +45,14 @@ public class Jugador {
 		agregar(creadorEntidades.CrearCatapulta(this));
 	}
 
-	public void agregar(Entidad entidad) {
-		restarPuntos(entidad.getCosto());
-		entidades.add(entidad);
+	public void agregar(Entidad entidad) { // TODO revisar
+		try {
+			restarPuntos(entidad.getCosto());
+			entidades.add(entidad);
+		}
+		catch (PuntosInsuficientesException e) {
+			throw e;
+		}
 	}
 
 }

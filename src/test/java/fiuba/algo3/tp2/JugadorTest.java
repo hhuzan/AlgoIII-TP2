@@ -1,7 +1,11 @@
 package fiuba.algo3.tp2;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.Test;
 
 public class JugadorTest {
@@ -25,6 +29,18 @@ public class JugadorTest {
 		jugador.restarPuntos(10);
 		jugador.restarPuntos(5);
 		assertEquals(5, jugador.getPuntos());
+	}
+
+	@Test
+	public void test10AgregaEntidadesAJugadorQuedaSinPuntosArrojaException() {
+		Jugador jugador = new Jugador(new CreadorAliado()); // TODO: Refactor esto..
+		jugador.agregarCatapulta();
+		jugador.agregarCatapulta();
+		jugador.agregarCatapulta();
+		jugador.agregarCatapulta();
+		assertThrows(PuntosInsuficientesException.class, () -> {
+			jugador.agregarCatapulta();
+		});
 	}
 
 }
