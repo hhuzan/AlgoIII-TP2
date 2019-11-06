@@ -13,8 +13,10 @@ public class Tablero {
 	}
 
 	private int calcularDistancia(Casillero origen, Casillero destino) {
-		// TODO: Hacer la logica
-		return 1;
+		if( (origen.getFila() - destino.getFila() != 0) && (origen.getColumna() - destino.getColumna() != 0) ) 
+			return Math.min(Math.abs(origen.getFila() - destino.getFila()), Math.abs(origen.getColumna() - destino.getColumna()));
+		else
+			return Math.max(Math.abs(origen.getFila() - destino.getFila()), Math.abs(origen.getColumna() - destino.getColumna()));
 	}
 
 	public Tablero() {
@@ -67,6 +69,7 @@ public class Tablero {
 		Entidad entidadOrigen = obtenerEntidadDeCasillero(origen);
 		Entidad entidadDestino = obtenerEntidadDeCasillero(destino);
 		int distancia = calcularDistancia(origen, destino);
+		System.out.println(distancia);
 		entidadOrigen.atacar(entidadDestino, distancia);
 	}	
 }

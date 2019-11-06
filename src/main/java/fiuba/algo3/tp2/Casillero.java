@@ -45,6 +45,10 @@ public abstract class Casillero {
 
 	public abstract void colocar(Enemigo enemigo);
 
+	public abstract int getFila();
+
+	public abstract int getColumna();
+
 	public void moverDesde(Casillero casillero) {
 		estado = estado.moverDesde(casillero);
 	}

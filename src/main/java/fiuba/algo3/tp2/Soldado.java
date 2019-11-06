@@ -11,6 +11,10 @@ public class Soldado extends Tipo {
 		setPropietario(propietario);
 	};
  
+    private int obtenerDanio(int distancia) {
+        return danioCuerpo;
+    }
+
  	@Override
 	public int getCosto() {
 		return this.costo;
@@ -40,12 +44,7 @@ public class Soldado extends Tipo {
                 soldados se va a mover en la dirección solicitada. En caso que uno no pueda moverse al casillero, 
                 únicamente ese Soldado se quedará quieto, y los demás si se moverán]
         */
-        int danio = 0;
-        if(distancia == 1) {
-            danio = danioCuerpo;
-        } else {
-            danio = danioDistancia;
-        }
+        int danio = obtenerDanio(distancia);
 
         // Podemos agregar this, si queremos que el atacado sepa quien es el atacante
         entidadAtacada.recibirDanio(danio, distancia);
