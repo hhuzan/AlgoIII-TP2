@@ -16,7 +16,7 @@ public class JugadorTest {
 	public void test01PuedoSacarlePuntosAlJugador() {
 		Jugador jugador = new Jugador();
 		jugador.restarPuntos(10);
-		assertEquals(10, jugador.obtenerPuntos());
+		assertEquals(10, jugador.getPuntos());
 	}
 
 	@Test
@@ -24,12 +24,7 @@ public class JugadorTest {
 		Jugador jugador = new Jugador();
 		jugador.restarPuntos(10);
 		jugador.restarPuntos(5);
-		assertEquals(5, jugador.obtenerPuntos());
+		assertEquals(5, jugador.getPuntos());
 	}
-
-
-
-
-
 
 }

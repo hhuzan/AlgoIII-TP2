@@ -45,4 +45,8 @@ public abstract class Casillero {
 
 	public abstract void colocar(Enemigo enemigo);
 
+	public void moverDesde(Casillero casillero) {
+		estado = estado.moverDesde(casillero);
+	}
+
 }

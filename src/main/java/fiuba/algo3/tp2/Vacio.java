@@ -24,4 +24,10 @@ public class Vacio implements Estado {
 		return casillero.getEntidad();
 	}
 
+	@Override
+	public Estado moverDesde(Casillero origen) {
+		casillero.setEntidad(origen.sacar());
+		return new Ocupado(casillero);
+	}
+
 }

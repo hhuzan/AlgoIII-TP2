@@ -22,4 +22,9 @@ public class Ocupado implements Estado{
 		return casillero.getEntidad();
 	}
 
+	@Override
+	public Estado moverDesde(Casillero casillero) {
+		throw new CasilleroOcupadoException();
+	}
+
 }
