@@ -1,9 +1,9 @@
 package fiuba.algo3.tp2;
 
 import static org.junit.Assert.assertNotNull;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class AliadoTest {
+public class AliadoTest {
 
 	@Test
 	public void test00ConstructorAliadoNoDevuelveNull() {
