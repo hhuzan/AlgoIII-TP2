@@ -18,7 +18,7 @@ public class Jugador {
         return this.puntos;
     }
 
-    public void agregar(Entidad entidad) {
+    public void agregarEntidad(Entidad entidad) {
     	restarPuntos(entidad.getCosto());
     	entidades.add(entidad);
     }
