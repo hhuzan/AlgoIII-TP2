@@ -59,4 +59,10 @@ public class Jugador {
 		}
 	}
 
+	public void removerEntidad(Entidad entidad) {
+		entidades.remove(entidad);
+		if(entidades.size() == 0)
+			throw new JugadorPierdeException();
+	}
+
 }

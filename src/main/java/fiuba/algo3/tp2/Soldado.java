@@ -9,6 +9,13 @@ public class Soldado extends Tipo {
 		setPropietario(propietario);
 	};
  
+<<<<<<< HEAD
+    private int obtenerDanio(int distancia){
+        return danioCuerpo;
+    }
+
+=======
+>>>>>>> master
  	@Override
 	public int getCosto() {
 		return this.costo;
@@ -45,7 +52,11 @@ public class Soldado extends Tipo {
     }
 
     @Override 
+<<<<<<< HEAD
+    public void recibirDanio(Entidad entidad, int danio, int distancia) {
+=======
     public void recibirAtaque(int danio, int distancia) {
+>>>>>>> master
         restarVida(danio);
     }
 

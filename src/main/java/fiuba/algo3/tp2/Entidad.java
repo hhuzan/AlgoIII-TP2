@@ -26,8 +26,13 @@ public abstract class Entidad {
 		tipo.atacar(destino, distancia);
 	}
 
+<<<<<<< HEAD
+	public void recibirDanio(int danio, int distancia) {
+		tipo.recibirDanio(this, danio, distancia);
+=======
 	public void recibirAtaque(int danio, int distancia) {
 		tipo.recibirAtaque(danio, distancia);
+>>>>>>> master
 	}
 
 	public abstract void colocarEn(Casillero casillero);

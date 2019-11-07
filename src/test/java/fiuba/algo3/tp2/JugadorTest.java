@@ -43,6 +43,8 @@ public class JugadorTest {
 		});
 	}
 
+<<<<<<< HEAD
+=======
 	@Test 
 	public void test04AgregarEntidadesAlJugadorAgregaLaEntidadCorrecta() {
 		Jugador jugador = new Jugador();
@@ -59,5 +61,6 @@ public class JugadorTest {
 		jugador.agregar(entidad1);
 		assertFalse(jugador.esEntidadDeJugador(entidad2));
 	}
+>>>>>>> master
 
 }
