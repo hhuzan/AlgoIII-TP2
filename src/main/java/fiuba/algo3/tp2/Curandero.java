@@ -19,11 +19,15 @@ public class Curandero extends Tipo {
 		return this.costo;
 	}
 
-	private void restarVida(int vida) {
-		// Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades
-		// del jugador
-		this.vida -= vida;
-	}
+    private void restarVida(Entidad entidad, int vida) {
+        // Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
+        this.vida -= vida;
+
+        if(this.vida <= 0) {
+            // Sacar del casillero primero
+            getPropietario().removerEntidad(entidad);
+        }
+    }
 
 	@Override
 	public void restarAJugador() {
@@ -41,7 +45,7 @@ public class Curandero extends Tipo {
 
 	@Override
 	public void recibirAtaque(Entidad entidad, int danio, int distancia) {
-		restarVida(danio);
+		restarVida(entidad, danio);
 	}
 
 }
