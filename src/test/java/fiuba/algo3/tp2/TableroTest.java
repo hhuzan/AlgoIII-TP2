@@ -57,23 +57,25 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test12AgregoEnemigoEnSectorAliadoPosionQuedaVacia() {
+	public void test12AgregoEnemigoEnSectorAliadoArrojaExcepcion() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 5;
 		int columna = 10;
-		tablero.colocar(new Enemigo(new Soldado(jugador)), fila, columna);
-		assertTrue(tablero.estaVacio(fila, columna));
+		assertThrows(ColocarEntidadException.class, () -> {
+			tablero.colocar(new Enemigo(new Soldado(jugador)), fila, columna);
+		});
 	}
 
 	@Test
-	public void test13AgregoAliadoEnSectorEnemigoPosionQuedaVacia() {
+	public void test13AgregoAliadoEnSectorEnemigoArrojaExcepcion() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 15;
 		int columna = 10;
-		tablero.colocar(new Aliado(new Soldado(jugador)), fila, columna);
-		assertTrue(tablero.estaVacio(fila, columna));
+		assertThrows(ColocarEntidadException.class, () -> {
+			tablero.colocar(new Aliado(new Soldado(jugador)), fila, columna);
+		});
 	}
 
 	@Test

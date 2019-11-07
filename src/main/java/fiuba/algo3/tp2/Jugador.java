@@ -29,6 +29,10 @@ public class Jugador {
 		return this.puntos;
 	}
 
+	public boolean esEntidadDeJugador(Entidad entidad) {
+		return entidades.contains(entidad);
+	}
+
 	public void agregarSoldado() {
 		agregar(creadorEntidades.crearSoldado(this));
 	}

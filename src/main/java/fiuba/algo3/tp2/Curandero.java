@@ -30,14 +30,18 @@ public class Curandero extends Tipo {
 	}
 
 	@Override
-    public void atacar(Entidad entidadAtacada, int distancia) {
+    public void atacar(Casillero destino, int distancia) {
         /*   Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.
         */
      
     }
 
     @Override 
+<<<<<<< HEAD
     public void recibirDanio(Entidad entidad, int danio, int distancia) {
+=======
+    public void recibirAtaque(int danio, int distancia) {
+>>>>>>> master
         restarVida(danio);
     }
 

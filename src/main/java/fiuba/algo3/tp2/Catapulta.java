@@ -30,7 +30,7 @@ public class Catapulta extends Tipo {
     }
 
 	@Override
-    public void atacar(Entidad entidadAtacada, int distancia) {
+    public void atacar(Casillero destino, int distancia) {
         /*  - No puede moverse en toda la partida.
 			- Ataca en una distancia lejana únicamente. [Puede dañar tanto a Enemigos como Aliados]
 			- Causa daño a la primera unidad enemiga alcanzada, y a todas las unidades directamente contiguas, 
@@ -41,7 +41,11 @@ public class Catapulta extends Tipo {
     }
 
     @Override 
+<<<<<<< HEAD
     public void recibirDanio(Entidad entidad, int danio, int distancia) {
+=======
+    public void recibirAtaque(int danio, int distancia) {
+>>>>>>> master
         restarVida(danio);
     }
 }
