@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.Excepciones;
+package fiuba.algo3.tp2.excepciones;
 
 @SuppressWarnings("serial")
 public class TipoNoPuedeSerCuradoException extends RuntimeException {

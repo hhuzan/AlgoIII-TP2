@@ -2,8 +2,8 @@ package fiuba.algo3.tp2;
 
 import java.util.List;
 
-import fiuba.algo3.tp2.Excepciones.JugadorPierdeException;
-import fiuba.algo3.tp2.Excepciones.PuntosInsuficientesException;
+import fiuba.algo3.tp2.excepciones.JugadorPierdeException;
+import fiuba.algo3.tp2.excepciones.PuntosInsuficientesException;
 
 import java.util.ArrayList;
 

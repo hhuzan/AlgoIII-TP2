@@ -8,8 +8,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import fiuba.algo3.tp2.Excepciones.CasilleroOcupadoException;
-import fiuba.algo3.tp2.Excepciones.ColocarEntidadException;
+import fiuba.algo3.tp2.excepciones.CasilleroOcupadoException;
+import fiuba.algo3.tp2.excepciones.ColocarEntidadException;
 
 public class CasilleroTest {
 

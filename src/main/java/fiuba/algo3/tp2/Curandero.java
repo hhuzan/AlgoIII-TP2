@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.Excepciones.TipoNoPuedeAtacarException;
+import fiuba.algo3.tp2.excepciones.TipoNoPuedeAtacarException;
 
 public class Curandero extends Tipo {
 

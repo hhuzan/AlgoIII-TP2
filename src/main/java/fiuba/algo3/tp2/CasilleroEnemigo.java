@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.Excepciones.ColocarEntidadException;
+import fiuba.algo3.tp2.excepciones.ColocarEntidadException;
 
 public class CasilleroEnemigo extends Casillero {
 
