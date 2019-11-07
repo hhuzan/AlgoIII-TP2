@@ -9,6 +9,7 @@ El historial de construcciones en Travis puede verse [aquí](https://travis-ci.o
 Los comandos para Build y Test en Maven son:
 
 -mvn test (testea todo el proyecto)
+
 -mvn compile (compila todo el proyecto)
 
-Enlace del proyecto en GitHub: https://github.com/hhuzan/AlgoIII-TP2
+Proyecto en GitHub: https://github.com/hhuzan/AlgoIII-TP2
