@@ -6,8 +6,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
-
-import fiuba.algo3.tp2.excepciones.*;
+import fiuba.algo3.tp2.excepciones.CasilleroOcupadoException;
+import fiuba.algo3.tp2.excepciones.ColocarEntidadException;
+import fiuba.algo3.tp2.excepciones.JugadorPierdeException;
 
 public class TableroTest {
 
