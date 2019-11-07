@@ -9,36 +9,39 @@ public class Curandero extends Tipo {
 		setPropietario(propietario);
 	}
 
-    @Override 
-    public int getVida() {
-        return this.vida;
-    }
+	@Override
+	public int getVida() {
+		return this.vida;
+	}
 
 	@Override
 	public int getCosto() {
 		return this.costo;
 	}
 
-    private void restarVida(int vida) {
-        // Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
-        this.vida -= vida;
-    }
-    
+	private void restarVida(int vida) {
+		// Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades
+		// del jugador
+		this.vida -= vida;
+	}
+
 	@Override
 	public void restarAJugador() {
 		getPropietario().restarPuntos(costo);
 	}
 
 	@Override
-    public void atacar(Casillero destino, int distancia) {
-        /*   Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.
-        */
-     
-    }
+	public void atacar(Casillero destino, int distancia) {
+		/*
+		 * Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia
+		 * cercana.
+		 */
 
-    @Override 
-    public void recibirAtaque(int danio, int distancia) {
-        restarVida(danio);
-    }
+	}
+
+	@Override
+	public void recibirAtaque(Entidad entidad, int danio, int distancia) {
+		restarVida(danio);
+	}
 
 }

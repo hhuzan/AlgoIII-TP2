@@ -19,7 +19,7 @@ public class Soldado extends Tipo {
         return this.vida;
     }
 
-    private void restarVida(int vida) {
+    private void restarVida(Entidad entidad,int vida) {
         // TODO: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
         // y tambien sacarlo del tablero
     	this.vida -= vida;
@@ -45,8 +45,8 @@ public class Soldado extends Tipo {
     }
 
     @Override 
-    public void recibirAtaque(int danio, int distancia) {
-        restarVida(danio);
+    public void recibirAtaque(Entidad entidad, int danio, int distancia) {
+        restarVida(entidad,danio);
     }
 
 }
