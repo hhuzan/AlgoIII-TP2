@@ -15,20 +15,20 @@ public class CasilleroTest {
 
 	@Test
 	public void test00ConstructorCasilleroNoDevuelveNull() {
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		assertNotNull(casillero);
 	}
 
 	@Test
 	public void test01CasilleroNuevoEstaVacio() {
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		assertTrue(casillero.estaVacio());
 	}
 
 	@Test
 	public void test02ColocoUnidadEnCasilleroEntoncesNoEstaVacio() {
 		Jugador jugador = new Jugador();
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		Aliado soldado = new Aliado(new Soldado(jugador));
 		casillero.colocar(soldado);
 		assertFalse(casillero.estaVacio());
@@ -37,7 +37,7 @@ public class CasilleroTest {
 	@Test
 	public void test03Coloco2UnidadesEnCasilleroArrojaExcepcion() {
 		Jugador jugador = new Jugador();
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		Aliado unSoldado = new Aliado(new Soldado(jugador));
 		Aliado otroSoldado = new Aliado(new Soldado(jugador));
 		casillero.colocar(unSoldado);
@@ -47,15 +47,8 @@ public class CasilleroTest {
 	}
 
 	@Test
-	public void test04CreoCasilleroConFilaYColumnaYEsasSonSusCoordenadas() {
-		Casillero casillero = new CasilleroAliado(1, 2);
-		assertEquals(1, casillero.getFila());
-		assertEquals(2, casillero.getColumna());
-	}
-
-	@Test
 	public void test05ColocoUnidadAliadaEnCasilleroAliadoYSeAlmacena() {
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		Aliado aliado = new Aliado(new Soldado(new Jugador()));
 		casillero.colocar(aliado);
 		assertEquals(aliado, casillero.getEntidad());
@@ -63,7 +56,7 @@ public class CasilleroTest {
 
 	@Test
 	public void test06ColocoUnidadAliadaEnCasilleroEnemigoYArrojaExcepcion() {
-		Casillero casillero = new CasilleroEnemigo(10, 1);
+		Casillero casillero = new CasilleroEnemigo();
 		Aliado aliado = new Aliado(new Soldado(new Jugador()));
 		assertThrows(ColocarEntidadException.class, () -> {
 			casillero.colocar(aliado);
@@ -72,7 +65,7 @@ public class CasilleroTest {
 
 	@Test
 	public void test07ColocoUnaEntidadEnElCasilleroYSeAlmacena() {
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		Aliado soldado = new Aliado(new Soldado(new Jugador()));
 		casillero.setEntidad(soldado);
 		assertEquals(soldado, casillero.getEntidad());
@@ -80,7 +73,7 @@ public class CasilleroTest {
 
 	@Test
 	public void test08ColocoUnaEntidadEnElCasilleroYAlRemoverlaLaObtengo() {
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		Aliado soldado = new Aliado(new Soldado(new Jugador()));
 		casillero.setEntidad(soldado);
 		Entidad entidad = casillero.popEntidad();
@@ -89,7 +82,7 @@ public class CasilleroTest {
 
 	@Test
 	public void test09ColocoUnaEntidadEnElCasilleroYAlRemoverlaElCasilleroEstaVacio() {
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		Aliado soldado = new Aliado(new Soldado(new Jugador()));
 		casillero.setEntidad(soldado);
 		casillero.popEntidad();
@@ -98,8 +91,8 @@ public class CasilleroTest {
 
 	@Test
 	public void test10ColocoUnaEntidadEnUnCasilleroYLuegoAlMoverlaEstaEnElCasilleroDestino() {
-		Casillero casilleroOrigen = new CasilleroAliado(1, 1);
-		Casillero casilleroDestino = new CasilleroAliado(1, 2);
+		Casillero casilleroOrigen = new CasilleroAliado();
+		Casillero casilleroDestino = new CasilleroAliado();
 		Aliado soldado = new Aliado(new Soldado(new Jugador()));
 		casilleroOrigen.setEntidad(soldado);
 		casilleroDestino.moverDesde(casilleroOrigen);

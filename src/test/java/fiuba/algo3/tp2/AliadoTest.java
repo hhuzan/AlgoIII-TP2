@@ -18,7 +18,7 @@ public class AliadoTest {
 	@Test
 	public void test01ColocamosAliadoEnCasilleroAliadoYAliadoYQuedaAlmacenado() {
 		Aliado aliado = new Aliado(new Soldado(new Jugador()));
-		Casillero casillero = new CasilleroAliado(1, 1);
+		Casillero casillero = new CasilleroAliado();
 		aliado.colocarEn(casillero);
 		assertEquals(aliado, casillero.getEntidad());
 	}
@@ -26,7 +26,7 @@ public class AliadoTest {
 	@Test
 	public void test02ColocamosAliadoEnCasilleroEnemigoYObtenemosUnaExcepcion() {
 		Aliado aliado = new Aliado(new Soldado(new Jugador()));
-		Casillero casillero = new CasilleroEnemigo(10, 1);
+		Casillero casillero = new CasilleroEnemigo();
 		assertThrows(ColocarEntidadException.class, () -> {
 			aliado.colocarEn(casillero);
 		});

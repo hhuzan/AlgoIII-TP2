@@ -17,14 +17,14 @@ public class Tablero {
 		// Arma sector aliado (parte superior)
 		for (int fila = 0; fila < tamanio / 2; fila++) {
 			for (int columna = 0; columna < tamanio; columna++) {
-				casilleros[fila][columna] = new CasilleroAliado(fila, columna);
+				casilleros[fila][columna] = new CasilleroAliado();
 			}
 		}
 
 		// Arma sector enemigo (parte inferior)
 		for (int fila = tamanio / 2; fila < tamanio; fila++) {
 			for (int columna = 0; columna < tamanio; columna++) {
-				casilleros[fila][columna] = new CasilleroEnemigo(fila, columna);
+				casilleros[fila][columna] = new CasilleroEnemigo();
 			}
 		}
 	}
@@ -66,5 +66,5 @@ public class Tablero {
 		int distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
 		curador.curar(curado, distancia);
 	}
-	
+
 }
