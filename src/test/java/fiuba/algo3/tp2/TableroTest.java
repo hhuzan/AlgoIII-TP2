@@ -186,7 +186,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test356JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+	public void test36JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
 		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado 
 		int columna = 1;	
 		Tablero tablero = new Tablero();
@@ -203,4 +203,24 @@ public class TableroTest {
 		tablero.atacar(casilleroOrigen, casilleroDestino);
 		assertTrue(jinete2.getVida() == 95);
 	}
+	
+	@Test
+	public void test37CatapultaAliadaAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+		int fila = 9;
+		int columna = 1;	
+		Tablero tablero = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Entidad catapulta1 = new Aliado(new Catapulta(jugador1));
+		Entidad soldado2 = new Enemigo(new Soldado(jugador2));
+		jugador1.agregar(catapulta1);
+		jugador2.agregar(soldado2);
+		tablero.colocar(catapulta1, fila, columna);
+		tablero.colocar(soldado2, fila + 3, columna);
+		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
+		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 3, columna);
+		tablero.atacar(casilleroOrigen, casilleroDestino);
+		assertTrue(soldado2.getVida() == 80);
+	}
+
 }
