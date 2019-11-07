@@ -5,3 +5,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 El historial de construcciones en Travis puede verse [aquí](https://travis-ci.org/hhuzan/AlgoIII-TP2/builds) y la medición de cobertura con CodeCov [aquí](https://codecov.io/gh/hhuzan/AlgoIII-TP2).
+
+Los comandos para Build y Test en Maven son:
+
+-mvn test (testea todo el proyecto)
+-mvn compile (compila todo el proyecto)
+
+Enlace del proyecto en GitHub: https://github.com/hhuzan/AlgoIII-TP2
