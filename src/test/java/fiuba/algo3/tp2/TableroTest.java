@@ -169,99 +169,93 @@ public class TableroTest {
 	@Test
 	public void test14SoldadoAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
 		int fila = 9;
-		int columna = 1;	
+		int columna = 1;
 		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad soldado1 = new Aliado(new Soldado(jugador1));
 		Entidad soldado2 = new Enemigo(new Soldado(jugador2));
 		jugador1.agregar(soldado1);
 		jugador2.agregar(soldado2);
 		tablero.colocar(soldado1, fila, columna);
 		tablero.colocar(soldado2, fila + 1, columna);
-		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
-		tablero.atacar(casilleroOrigen, casilleroDestino);
+		tablero.atacar(fila, columna, fila + 1, columna);
 		assertTrue(soldado2.getVida() == 90);
 	}
 
 	@Test
 	public void test15JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
-		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
+		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero
+						// enemigo/aliado
 		int columna = 1;
 		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad jinete1 = new Aliado(new Jinete(jugador1));
 		Entidad jinete2 = new Enemigo(new Jinete(jugador2));
 		jugador1.agregar(jinete1);
 		jugador2.agregar(jinete2);
 		tablero.colocar(jinete1, fila, columna);
 		tablero.colocar(jinete2, fila + 1, columna);
-		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
-		tablero.atacar(casilleroOrigen, casilleroDestino);
+		tablero.atacar(fila, columna, fila + 1, columna);
 		assertTrue(jinete2.getVida() == 95);
 	}
 
 	@Test
 	public void test16CatapultaAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
-		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
+		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero
+						// enemigo/aliado
 		int columna = 1;
 		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad catapulta = new Aliado(new Catapulta(jugador1));
 		Entidad jinete = new Enemigo(new Jinete(jugador2));
 		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
 		tablero.colocar(catapulta, fila, columna);
 		tablero.colocar(jinete, fila + 2, columna);
-		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 2, columna);
-		tablero.atacar(casilleroOrigen, casilleroDestino);
+		tablero.atacar(fila, columna, fila + 2, columna);
 		assertTrue(jinete.getVida() == 80);
 	}
 
-	@Test 
+	@Test
 	public void test17CuranderoAliadoCuraPiezaAliadaYSumaVidaADichaPieza() {
-		int fila = 7; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
+		int fila = 7; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero
+						// enemigo/aliado
 		int columna = 1;
 		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad curandero = new Aliado(new Curandero(jugador1));
 		Entidad jinete = new Aliado(new Jinete(jugador2));
 		jugador1.agregar(curandero);
 		jugador2.agregar(jinete);
 		tablero.colocar(curandero, fila, columna);
 		tablero.colocar(jinete, fila + 1, columna);
-		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
-		tablero.curar(casilleroOrigen, casilleroDestino);
-		assertTrue(jinete.getVida() == 115);		
+		tablero.curar(fila, columna, fila + 1, columna);
+		assertTrue(jinete.getVida() == 115);
 	}
 
-	 @Test
-	 public void test18UnJugadorSeQuedaSinEntidadesYPierde(){
-	 	int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
-	 	int columna = 1;
-	 	Tablero tablero = new Tablero();
-	 	Jugador jugador1 = new Jugador();
-	 	Jugador jugador2 = new Jugador();
-	 	Entidad jinete1 = new Aliado(new Jinete(jugador1));
-	 	Entidad jinete2 = new Enemigo(new Jinete(jugador2));
-	 	jugador1.agregar(jinete1);
-	 	jugador2.agregar(jinete2);
-	 	tablero.colocar(jinete1, fila, columna);
-	 	tablero.colocar(jinete2, fila + 1, columna);
-	 	Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
-	 	Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
-	 	for(int i = 0; i < 19; i++) {
-	 		tablero.atacar(casilleroOrigen, casilleroDestino);
-	 	}
-	 	assertThrows(JugadorPierdeException.class, () -> {
-	 		tablero.atacar(casilleroOrigen, casilleroDestino);
-	 	});
-	 }
+	@Test
+	public void test18UnJugadorSeQuedaSinEntidadesYPierde() {
+		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero
+						// enemigo/aliado
+		int columna = 1;
+		Tablero tablero = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Entidad jinete1 = new Aliado(new Jinete(jugador1));
+		Entidad jinete2 = new Enemigo(new Jinete(jugador2));
+		jugador1.agregar(jinete1);
+		jugador2.agregar(jinete2);
+		tablero.colocar(jinete1, fila, columna);
+		tablero.colocar(jinete2, fila + 1, columna);
+		for (int i = 0; i < 19; i++) {
+			tablero.atacar(fila, columna, fila + 1, columna);
+		}
+		assertThrows(JugadorPierdeException.class, () -> {
+			tablero.atacar(fila, columna, fila + 1, columna);
+		});
+	}
 }

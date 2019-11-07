@@ -17,21 +17,21 @@ public class CuranderoTest {
 		assertNotNull(curandero);
 	}
 
-	@Test 
+	@Test
 	public void test01CreamosUnCuranderoYSuCostoEsElEsperado() {
 		int costoCurandero = 2;
 		Curandero curandero = new Curandero(new Jugador());
 		assertEquals(costoCurandero, curandero.getCosto());
 	}
 
-	@Test 
+	@Test
 	public void test02CreamosUnCuranderoYSuVidaEsLaEsperada() {
 		int vidaCurandero = 75;
 		Curandero curandero = new Curandero(new Jugador());
 		assertEquals(vidaCurandero, curandero.getVida());
 	}
 
-	@Test 
+	@Test
 	public void test03CreamosUnCuranderoYRestamosPuntosDeCostoAlJugador() {
 		int costoCurandero = 2;
 		int puntosJugadorNuevo = 20;
@@ -41,39 +41,31 @@ public class CuranderoTest {
 		assertEquals(puntosJugadorNuevo - costoCurandero, jugador.getPuntos());
 	}
 
-	@Test 
+	@Test
 	public void test04CuramosConUnCuranderoYElAliadoSumaVida() {
-		int fila = 1; 
-		int columna = 1;
-		Tablero tablero = new Tablero();
+		int distancia = 1;
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad curandero = new Aliado(new Curandero(jugador1));
 		Entidad jinete = new Aliado(new Jinete(jugador2));
 		jugador1.agregar(curandero);
 		jugador2.agregar(jinete);
-		tablero.colocar(jinete, fila + 1, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
-		curandero.curar(casilleroDestino, 1);
+		curandero.curar(jinete, distancia);
 		assertTrue(jinete.getVida() == 115);
 	}
 
-	@Test 
+	@Test
 	public void test05CuranderCuraACatapultaArrojaExcepcion() {
-		int fila = 1; 
-		int columna = 1;
-		Tablero tablero = new Tablero();
+		int distancia = 1;
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad curandero = new Aliado(new Curandero(jugador1));
 		Entidad catapulta = new Aliado(new Catapulta(jugador2));
 		jugador1.agregar(curandero);
 		jugador2.agregar(catapulta);
-		tablero.colocar(catapulta, fila + 1, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
 		assertThrows(TipoNoPuedeSerCuradoException.class, () -> {
-			curandero.curar(casilleroDestino, 1);
-		});	
+			curandero.curar(catapulta, distancia);
+		});
 	}
 
 	// Test 06: Falla al curar de distancia media o lejana

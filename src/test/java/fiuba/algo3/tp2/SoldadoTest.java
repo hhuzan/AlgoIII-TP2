@@ -31,18 +31,14 @@ public class SoldadoTest {
 
 	@Test 
 	public void test04AtacamosConUnSoldadoYLaPiezaEnemigaPierdeVida() {
-		int fila = 9; 
-		int columna = 1;
-		Tablero tablero = new Tablero();
+		int distancia = 1;
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
 		Entidad soldado = new Aliado(new Soldado(jugador1));
 		Entidad jinete = new Enemigo(new Jinete(jugador2));
 		jugador1.agregar(soldado);
 		jugador2.agregar(jinete);
-		tablero.colocar(jinete, fila + 1, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
-		soldado.atacar(casilleroDestino, 1);
+		soldado.atacar(jinete, distancia);
 		assertEquals(90, jinete.getVida());
 	}
 

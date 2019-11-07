@@ -22,12 +22,12 @@ public abstract class Entidad {
 		return tipo.getVida();
 	}
 
-	public void atacar(Casillero destino, int distancia) {
-		tipo.atacar(destino, distancia);
+	public void atacar(Entidad atacado, int distancia) {
+		tipo.atacar(atacado, distancia);
 	}
 
-	public void curar(Casillero destino, int distancia) {
-		tipo.curar(destino, distancia);
+	public void curar(Entidad curado, int distancia) {
+		tipo.curar(curado, distancia);
 	}
 
 	public void recibirAtaque(int danio, int distancia) {

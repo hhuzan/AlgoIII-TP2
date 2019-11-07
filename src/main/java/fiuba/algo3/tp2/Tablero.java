@@ -8,15 +8,11 @@ public class Tablero {
 //		return casilleros[fila][columna].popEntidad();
 //	}
 
-	private Entidad obtenerEntidadDeCasillero(Casillero casillero) {
-		return casillero.getEntidad();
-	}
-
-	private int calcularDistancia(Casillero origen, Casillero destino) {
-		if( (origen.getFila() - destino.getFila() != 0) && (origen.getColumna() - destino.getColumna() != 0) ) 
-			return Math.min(Math.abs(origen.getFila() - destino.getFila()), Math.abs(origen.getColumna() - destino.getColumna()));
+	private int calcularDistancia(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
+		if ((filaOrigen - filaDestino != 0) && (columnaOrigen - columnaDestino != 0))
+			return Math.min(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
 		else
-			return Math.max(Math.abs(origen.getFila() - destino.getFila()), Math.abs(origen.getColumna() - destino.getColumna()));
+			return Math.max(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
 	}
 
 	public Tablero() {
@@ -37,43 +33,41 @@ public class Tablero {
 		}
 	}
 
-	public Casillero obtenerCasilleroPorPosicion(int fila, int columna) {
-		return casilleros[fila][columna];
-	}
-
 	public void colocar(Entidad entidad, int fila, int columna) {
 		entidad.colocarEn(casilleros[fila][columna]);
 	}
 
 	public void moverArriba(int fila, int columna) { // TODO agregar execpcion limites
-		obtenerCasilleroPorPosicion(fila-1, columna).moverDesde(casilleros[fila][columna]);
+		casilleros[fila - 1][columna].moverDesde(casilleros[fila][columna]);
 	}
 
 	public void moverAbajo(int fila, int columna) { // TODO agregar execpcion limites
-		obtenerCasilleroPorPosicion(fila+1, columna).moverDesde(casilleros[fila][columna]);
+		casilleros[fila + 1][columna].moverDesde(casilleros[fila][columna]);
 	}
 
 	public void moverIzquierda(int fila, int columna) { // TODO agregar execpcion limites
-		obtenerCasilleroPorPosicion(fila, columna-1).moverDesde(casilleros[fila][columna]);
+		casilleros[fila][columna - 1].moverDesde(casilleros[fila][columna]);
 	}
 
 	public void moverDerecha(int fila, int columna) { // TODO agregar execpcion limites
-		obtenerCasilleroPorPosicion(fila, columna+1).moverDesde(casilleros[fila][columna]);
+		casilleros[fila][columna + 1].moverDesde(casilleros[fila][columna]);
 	}
 
 	public boolean estaVacio(int fila, int columna) {
 		return casilleros[fila][columna].estaVacio();
 	}
 
-	public void atacar(Casillero origen, Casillero destino) {
-//		Casillero origen = casilleros[filaOrigen][columnaOrigen];
-//		Casillero destino = casilleros[filaDestino][columnaDestino];
-		int distancia = calcularDistancia(origen, destino);
-		origen.atacar(destino, distancia);
-	}	
+	public void atacar(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
+		Entidad atacante = casilleros[filaOrigen][columnaOrigen].getEntidad();
+		Entidad atacado = casilleros[filaDestino][columnaDestino].getEntidad();
+		int distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
+		atacante.atacar(atacado, distancia);
+	}
 
-	public void curar(Casillero origen, Casillero destino) {
-		int distancia = calcularDistancia(origen, destino);
-		origen.curar(destino, distancia);
+	public void curar(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
+		Entidad curador = casilleros[filaOrigen][columnaOrigen].getEntidad();
+		Entidad curado = casilleros[filaDestino][columnaDestino].getEntidad();
+		int distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
+		curador.curar(curado, distancia);
 	}
 }

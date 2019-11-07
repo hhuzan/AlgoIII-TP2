@@ -22,11 +22,10 @@ public class Jinete extends Tipo {
     }
 
     private void restarVida(Entidad entidad, int vida) {
-        // Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
         this.vida -= vida;
 
         if(this.vida <= 0) {
-            // Sacar del casillero primero
+            // TODO Sacar del casillero primero
             getPropietario().removerEntidad(entidad);
         }
     }
@@ -41,19 +40,19 @@ public class Jinete extends Tipo {
 	}
 
 	@Override
-    public void atacar(Casillero destino, int distancia) {
+    public void atacar(Entidad atacado, int distancia) {
         /*  - 	Si hay al menos un Soldado de Infantería aliado cerca o no hay ningún enemigo cerca, 
         		su arma de ataque es un Arco y Flecha y únicamente puede atacar a enemigos en distancia media..
 			- 	Si no hay ningún aliado cercano y hay enemigos cercanos , su arma de ataque es una Espada y 
 				únicamente puede atacar a enemigos en distancia corta.
         */
         int danio = CalculadorDanio.danio(this,distancia);
-        destino.recibirAtaque(danio, distancia);
+        atacado.recibirAtaque(danio, distancia);
      
     }
 
     @Override 
-    public void curar(Casillero destino, int distancia) {
+    public void curar(Entidad curado, int distancia) {
         throw new TipoNoPuedeCurarException();
     }
 

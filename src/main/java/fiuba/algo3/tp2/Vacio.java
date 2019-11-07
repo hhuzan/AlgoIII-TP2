@@ -32,24 +32,4 @@ public class Vacio implements Estado {
 		return new Ocupado(casillero);
 	}
 
-	@Override 
-	public void atacar(Casillero destino, int distancia) {
-		throw new CasilleroVacioException();
-	}
-
-	@Override 
-	public void recibirAtaque(int danio, int distancia) {
-		throw new CasilleroVacioException();
-	}
-
-	@Override 
-	public void curar(Casillero destino, int distancia) {
-		throw new CasilleroVacioException();
-	}
-
-	@Override 
-	public void recibirCuracion(int curacion, int distancia) {
-		throw new CasilleroVacioException();
-	}
-
 }

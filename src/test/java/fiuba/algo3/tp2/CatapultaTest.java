@@ -15,21 +15,21 @@ public class CatapultaTest {
 		assertNotNull(catapulta);
 	}
 
-	@Test 
+	@Test
 	public void test01CreamosUnaCatapultaYSuCostoEsElEsperado() {
 		int costoCatapulta = 5;
 		Catapulta catapulta = new Catapulta(new Jugador());
 		assertEquals(costoCatapulta, catapulta.getCosto());
 	}
 
-	@Test 
+	@Test
 	public void test02CreamosUnaCatapultaYSuVidaEsLaEsperada() {
 		int vidaCatapulta = 50;
 		Catapulta catapulta = new Catapulta(new Jugador());
 		assertEquals(vidaCatapulta, catapulta.getVida());
 	}
 
-	@Test 
+	@Test
 	public void test03CreamosUnaCatapultaYRestamosPuntosDeCostoAlJugador() {
 		int costoCatapulta = 5;
 		int puntosJugadorNuevo = 20;
@@ -39,38 +39,30 @@ public class CatapultaTest {
 		assertEquals(puntosJugadorNuevo - costoCatapulta, jugador.getPuntos());
 	}
 
-	@Test 
+	@Test
 	public void test04AtacamosConUnaCatapultaYElEnemigoRecibeDanio() {
-		int fila = 9; 
-		int columna = 1;
-		Tablero tablero = new Tablero();
+		int distancia = 2;
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad catapulta = new Aliado(new Catapulta(jugador1));
 		Entidad jinete = new Enemigo(new Jinete(jugador2));
 		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
-		tablero.colocar(jinete, fila + 2, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 2, columna);
-		catapulta.atacar(casilleroDestino, 2);
+		catapulta.atacar(jinete, distancia);
 		assertTrue(jinete.getVida() == 80);
 	}
 
-	@Test 
+	@Test
 	public void test05AtacamosConUnaCatapultaYElAliadoRecibeDanio() {
-		int fila = 2; 
-		int columna = 1;
-		Tablero tablero = new Tablero();
+		int distancia = 2;
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad catapulta = new Aliado(new Catapulta(jugador1));
 		Entidad jinete = new Aliado(new Jinete(jugador1));
 		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
-		tablero.colocar(jinete, fila + 2, columna);
-		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 2, columna);
-		catapulta.atacar(casilleroDestino, 2);
-		assertTrue(jinete.getVida() == 80);		
+		catapulta.atacar(jinete, distancia);
+		assertTrue(jinete.getVida() == 80);
 	}
 
 	// Test 06: Catapulta no puede moverse

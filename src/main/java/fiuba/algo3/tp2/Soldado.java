@@ -22,9 +22,12 @@ public class Soldado extends Tipo {
     }
 
     private void restarVida(Entidad entidad,int vida) {
-        // TODO: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
-        // y tambien sacarlo del tablero
-    	this.vida -= vida;
+        this.vida -= vida;
+
+        if(this.vida <= 0) {
+            // TODO Sacar del casillero primero
+            getPropietario().removerEntidad(entidad);
+        }
     }
 
     private void sumarVida(int vida) {
@@ -37,7 +40,7 @@ public class Soldado extends Tipo {
     }
 
     @Override
-    public void atacar(Casillero destino, int distancia) {
+    public void atacar(Entidad atacado, int distancia) {
         /*  - Puede atacar a un enemigo a corta distancia.
             -   Si hay más de 3 Soldados contiguos (en cualquier dirección) se comportan como un Batallón y 
                 PUEDEN moverse los 3 al mismo tiempo en el mismo turno. [Esto significa que cada uno de los 
@@ -47,11 +50,11 @@ public class Soldado extends Tipo {
         int danio = CalculadorDanio.danio(this, 1); 
 
         // Podemos agregar this, si queremos que el atacado sepa quien es el atacante
-        destino.recibirAtaque(danio, distancia);
+        atacado.recibirAtaque(danio, distancia);
     }
 
     @Override 
-    public void curar(Casillero destino, int distancia) {
+    public void curar(Entidad curador, int distancia) {
         throw new TipoNoPuedeCurarException();
     }
 

@@ -23,7 +23,6 @@ public class Catapulta extends Tipo {
     }
 
     private void restarVida(Entidad entidad, int vida) {
-        // Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
         this.vida -= vida;
 
         if(this.vida <= 0) {
@@ -38,7 +37,7 @@ public class Catapulta extends Tipo {
     }
 
 	@Override
-    public void atacar(Casillero destino, int distancia) {
+    public void atacar(Entidad atacado, int distancia) {
         /*  - No puede moverse en toda la partida.
 			- Ataca en una distancia lejana únicamente. [Puede dañar tanto a Enemigos como Aliados]
 			- Causa daño a la primera unidad enemiga alcanzada, y a todas las unidades directamente contiguas, 
@@ -46,7 +45,7 @@ public class Catapulta extends Tipo {
 			(y así sucesivamente)
         */
         int danio = CalculadorDanio.danio(this,distancia);
-        destino.recibirAtaque(danio, distancia);
+        atacado.recibirAtaque(danio, distancia);
     }
 
     @Override 
@@ -55,7 +54,7 @@ public class Catapulta extends Tipo {
     }
 
     @Override
-    public void curar(Casillero destino, int distancia) {
+    public void curar(Entidad curado, int distancia) {
         throw new TipoNoPuedeCurarException();
     }
 
