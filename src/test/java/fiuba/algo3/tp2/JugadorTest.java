@@ -30,7 +30,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void test10AgregaEntidadesAJugadorQuedaSinPuntosArrojaException() {
+	public void test03AgregaEntidadesAJugadorQuedaSinPuntosArrojaException() {
 		Jugador jugador = new Jugador(new CreadorAliado()); // TODO: Refactor esto..
 		jugador.agregarCatapulta();
 		jugador.agregarCatapulta();
@@ -40,5 +40,6 @@ public class JugadorTest {
 			jugador.agregarCatapulta();
 		});
 	}
+
 
 }

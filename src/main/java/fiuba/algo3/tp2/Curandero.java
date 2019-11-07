@@ -37,7 +37,7 @@ public class Curandero extends Tipo {
     }
 
     @Override 
-    public void recibirDanio(int danio, int distancia) {
+    public void recibirDanio(Entidad entidad, int danio, int distancia) {
         restarVida(danio);
     }
 

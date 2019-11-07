@@ -27,7 +27,7 @@ public abstract class Entidad {
 	}
 
 	public void recibirDanio(int danio, int distancia) {
-		tipo.recibirDanio(danio, distancia);
+		tipo.recibirDanio(this, danio, distancia);
 	}
 
 	public abstract void colocarEn(Casillero casillero);
