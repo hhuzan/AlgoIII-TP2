@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.Excepciones.CasilleroOcupadoException;
+
 public class Ocupado implements Estado{
 	private Casillero casillero;
 

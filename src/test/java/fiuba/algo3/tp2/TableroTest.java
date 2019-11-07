@@ -5,8 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.Test;
+import fiuba.algo3.tp2.Excepciones.*;
 
 public class TableroTest {
 

@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
@@ -36,13 +37,13 @@ public class SoldadoTest {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
 		Entidad soldado = new Aliado(new Soldado(jugador1));
-		Entidad jinete = new Aliado(new Jinete(jugador2));
+		Entidad jinete = new Enemigo(new Jinete(jugador2));
 		jugador1.agregar(soldado);
 		jugador2.agregar(jinete);
 		tablero.colocar(jinete, fila + 1, columna);
 		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
-		soldado.curar(casilleroDestino, 1);
-		assertTrue(jinete.getVida() == 90);
+		soldado.atacar(casilleroDestino, 1);
+		assertEquals(90, jinete.getVida());
 	}
 
 	// Test 5: No puede atacar enemigo a distancia media o lejana 

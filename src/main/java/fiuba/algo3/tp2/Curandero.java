@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.Excepciones.TipoNoPuedeAtacarException;
+
 public class Curandero extends Tipo {
 
 	private int vida = 75;

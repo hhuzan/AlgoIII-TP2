@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.Excepciones.TipoNoPuedeCurarException;
+
 public class Jinete extends Tipo {
 
 	private int vida = 100;

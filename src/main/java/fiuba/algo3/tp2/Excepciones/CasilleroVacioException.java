@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.Excepciones;
 
 @SuppressWarnings("serial")
 public class CasilleroVacioException extends RuntimeException {

@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
+import fiuba.algo3.tp2.Excepciones.PuntosInsuficientesException;
+
 public class JugadorTest {
 
 	@Test

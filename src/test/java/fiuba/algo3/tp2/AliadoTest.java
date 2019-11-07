@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
 
+import fiuba.algo3.tp2.Excepciones.ColocarEntidadException;
+
 public class AliadoTest {
 
 	@Test

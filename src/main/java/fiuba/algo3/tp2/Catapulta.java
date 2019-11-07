@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.Excepciones.TipoNoPuedeCurarException;
+import fiuba.algo3.tp2.Excepciones.TipoNoPuedeSerCuradoException;
+
 public class Catapulta extends Tipo {
 
 	private int vida = 50;
