@@ -169,10 +169,10 @@ public class TableroTest {
 	@Test
 	public void test35SoldadoAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
 		int fila = 9;
-		int columna = 1;	
+		int columna = 1;
 		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad soldado1 = new Aliado(new Soldado(jugador1));
 		Entidad soldado2 = new Enemigo(new Soldado(jugador2));
 		jugador1.agregar(soldado1);
@@ -187,11 +187,12 @@ public class TableroTest {
 
 	@Test
 	public void test36JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
-		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado 
-		int columna = 1;	
+		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero
+						// enemigo/aliado
+		int columna = 1;
 		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad jinete1 = new Aliado(new Jinete(jugador1));
 		Entidad jinete2 = new Enemigo(new Jinete(jugador2));
 		jugador1.agregar(jinete1);
@@ -203,14 +204,14 @@ public class TableroTest {
 		tablero.atacar(casilleroOrigen, casilleroDestino);
 		assertTrue(jinete2.getVida() == 95);
 	}
-	
+
 	@Test
 	public void test37CatapultaAliadaAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
 		int fila = 9;
-		int columna = 1;	
+		int columna = 1;
 		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad catapulta1 = new Aliado(new Catapulta(jugador1));
 		Entidad soldado2 = new Enemigo(new Soldado(jugador2));
 		jugador1.agregar(catapulta1);
@@ -220,7 +221,8 @@ public class TableroTest {
 		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
 		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 3, columna);
 		tablero.atacar(casilleroOrigen, casilleroDestino);
-		assertTrue(soldado2.getVida() == 80);
+		assertEquals(80, soldado2.getVida());
+//		assertTrue(soldado2.getVida() == 80);
 	}
 
 }

@@ -3,8 +3,8 @@ package fiuba.algo3.tp2;
 public class Catapulta extends Tipo {
 
 	private int vida = 50;
-    private int costo = 5;
-    
+	private int costo = 5;
+
 	public Catapulta(Jugador propietario) {
 		setPropietario(propietario);
 	}
@@ -14,34 +14,40 @@ public class Catapulta extends Tipo {
 		return this.costo;
 	}
 
-    @Override 
-    public int getVida() {
-        return this.vida;
-    }
+	@Override
+	public int getVida() {
+		return this.vida;
+	}
 
-    private void restarVida(int vida) {
-        // Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
-        this.vida -= vida;
-    }
-
-    @Override
-    public void restarAJugador() {
-        getPropietario().restarPuntos(costo);
-    }
+	private void restarVida(int vida) {
+		// Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades
+		// del jugador
+		this.vida -= vida;
+	}
 
 	@Override
-    public void atacar(Casillero destino, int distancia) {
-        /*  - No puede moverse en toda la partida.
-			- Ataca en una distancia lejana únicamente. [Puede dañar tanto a Enemigos como Aliados]
-			- Causa daño a la primera unidad enemiga alcanzada, y a todas las unidades directamente contiguas, 
-			y si a su vez la segunda unidad tiene otra unidad contigua, también causa el mismo daño 
-			(y así sucesivamente)
-        */
-     
-    }
+	public void restarAJugador() {
+		getPropietario().restarPuntos(costo);
+	}
 
-    @Override 
-    public void recibirAtaque(int danio, int distancia) {
-        restarVida(danio);
-    }
+	@Override
+	public void atacar(Casillero destino, int distancia) {
+		/*
+		 * - No puede moverse en toda la partida. - Ataca en una distancia lejana
+		 * únicamente. [Puede dañar tanto a Enemigos como Aliados] - Causa daño a la
+		 * primera unidad enemiga alcanzada, y a todas las unidades directamente
+		 * contiguas, y si a su vez la segunda unidad tiene otra unidad contigua,
+		 * también causa el mismo daño (y así sucesivamente)
+		 */
+		int danio = CalculadorDanio.danio(this, 1);
+
+		// Podemos agregar this, si queremos que el atacado sepa quien es el atacante
+		destino.recibirAtaque(danio, distancia);
+
+	}
+
+	@Override
+	public void recibirAtaque(int danio, int distancia) {
+		restarVida(danio);
+	}
 }
