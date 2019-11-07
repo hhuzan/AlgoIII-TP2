@@ -40,4 +40,14 @@ public class Vacio implements Estado {
 		throw new CasilleroVacioException();
 	}
 
+	@Override 
+	public void curar(Casillero destino, int distancia) {
+		throw new CasilleroVacioException();
+	}
+
+	@Override 
+	public void recibirCuracion(int curacion, int distancia) {
+		throw new CasilleroVacioException();
+	}
+
 }

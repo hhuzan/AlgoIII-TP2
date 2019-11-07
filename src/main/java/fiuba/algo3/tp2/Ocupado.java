@@ -38,4 +38,16 @@ public class Ocupado implements Estado{
 		Entidad entidad = getEntidad();
 		entidad.recibirAtaque(danio, distancia);
 	}
+
+	@Override 
+	public void curar(Casillero destino, int distancia) {
+		Entidad entidad = getEntidad();
+		entidad.curar(destino, distancia);
+	}
+
+	@Override 
+	public void recibirCuracion(int curacion, int distancia) {
+		Entidad entidad = getEntidad();
+		entidad.recibirCuracion(curacion, distancia);
+	}
 }

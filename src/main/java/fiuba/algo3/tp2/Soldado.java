@@ -25,6 +25,10 @@ public class Soldado extends Tipo {
     	this.vida -= vida;
     }
 
+    private void sumarVida(int vida) {
+        this.vida += vida;
+    }
+    
     @Override
     public void restarAJugador() {
         getPropietario().restarPuntos(this.costo);
@@ -45,8 +49,18 @@ public class Soldado extends Tipo {
     }
 
     @Override 
+    public void curar(Casillero destino, int distancia) {
+        throw new TipoNoPuedeCurarException();
+    }
+
+    @Override 
     public void recibirAtaque(int danio, int distancia) {
         restarVida(danio);
+    }
+
+    @Override
+    public void recibirCuracion(int curacion, int distancia) {
+        sumarVida(curacion);
     }
 
 }

@@ -4,6 +4,7 @@ public class Curandero extends Tipo {
 
 	private int vida = 75;
 	private int costo = 2;
+    private int curacion = 15;
 
 	public Curandero(Jugador propietario) {
 		setPropietario(propietario);
@@ -23,6 +24,10 @@ public class Curandero extends Tipo {
         // Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
         this.vida -= vida;
     }
+
+    private void sumarVida(int vida) {
+        this.vida += vida;
+    }
     
 	@Override
 	public void restarAJugador() {
@@ -31,9 +36,15 @@ public class Curandero extends Tipo {
 
 	@Override
     public void atacar(Casillero destino, int distancia) {
-        /*   Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.
-        */
-     
+        throw new TipoNoPuedeAtacarException();
+    }
+
+    @Override 
+    public void curar(Casillero destino, int distancia) {
+        /*Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.*/
+        int curacion = this.curacion;
+
+        destino.recibirCuracion(curacion, distancia);
     }
 
     @Override 
@@ -41,4 +52,8 @@ public class Curandero extends Tipo {
         restarVida(danio);
     }
 
+    @Override
+    public void recibirCuracion(int curacion, int distancia) {
+        sumarVida(curacion);
+    }
 }

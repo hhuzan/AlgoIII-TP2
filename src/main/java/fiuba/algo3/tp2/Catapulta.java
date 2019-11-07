@@ -44,7 +44,17 @@ public class Catapulta extends Tipo {
     }
 
     @Override 
+    public void curar(Casillero destino, int distancia) {
+        throw new TipoNoPuedeCurarException();
+    }
+
+    @Override 
     public void recibirAtaque(int danio, int distancia) {
         restarVida(danio);
+    }
+
+    @Override 
+    public void recibirCuracion(int curacion, int distancia) {
+        throw new TipoNoPuedeSerCuradoException();
     }
 }

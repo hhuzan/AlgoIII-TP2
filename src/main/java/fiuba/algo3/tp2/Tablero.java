@@ -71,4 +71,9 @@ public class Tablero {
 		int distancia = calcularDistancia(origen, destino);
 		origen.atacar(destino, distancia);
 	}	
+
+	public void curar(Casillero origen, Casillero destino) {
+		int distancia = calcularDistancia(origen, destino);
+		origen.curar(destino, distancia);
+	}
 }

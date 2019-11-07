@@ -45,10 +45,17 @@ public abstract class Casillero {
 		estado.atacar(destino, distancia);
 	}
 
+	public void curar(Casillero destino, int distancia) {
+		estado.curar(destino, distancia);
+	}
+
 	public void recibirAtaque(int danio, int distancia) {
 		estado.recibirAtaque(danio, distancia);
 	}
 
+	public void recibirCuracion(int curacion, int distancia) {
+		estado.recibirCuracion(curacion, distancia);
+	}
 	public abstract void colocar(Aliado aliado);
 
 	public abstract void colocar(Enemigo enemigo);
