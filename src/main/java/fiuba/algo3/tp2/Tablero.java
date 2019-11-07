@@ -6,8 +6,13 @@ public class Tablero {
 
 	private Distancia calcularDistancia(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
 
-		int distancia = Math.min(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
+		int distancia;
 		
+		if ((filaOrigen - filaDestino != 0) && (columnaOrigen - columnaDestino != 0))
+			distancia = Math.min(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
+		else
+			distancia = Math.max(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));		
+
 		if(distancia < 3)
 			return new DistanciaCercana(distancia);
 		else if(distancia  < 6)
