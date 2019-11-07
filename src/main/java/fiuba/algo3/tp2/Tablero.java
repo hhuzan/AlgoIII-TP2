@@ -4,10 +4,6 @@ public class Tablero {
 	private final int tamanio = 20;
 	private Casillero casilleros[][];
 
-//	private Entidad removerEntidadDeCasillero(int fila, int columna) {
-//		return casilleros[fila][columna].popEntidad();
-//	}
-
 	private int calcularDistancia(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
 		if ((filaOrigen - filaDestino != 0) && (columnaOrigen - columnaDestino != 0))
 			return Math.min(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
@@ -70,4 +66,5 @@ public class Tablero {
 		int distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
 		curador.curar(curado, distancia);
 	}
+	
 }
