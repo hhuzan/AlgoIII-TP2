@@ -37,13 +37,14 @@ public class Jinete extends Tipo {
 				únicamente puede atacar a enemigos en distancia corta.
         */
         int danio = CalculadorDanio.danio(this,distancia);
-
         destino.recibirAtaque(danio, distancia);
      
     }
 
     @Override 
     public void recibirAtaque(int danio, int distancia) {
+        System.out.println("Jinete recibe");
+        System.out.println(danio);
         restarVida(danio);
     }
 

@@ -27,4 +27,15 @@ public class Ocupado implements Estado{
 		throw new CasilleroOcupadoException();
 	}
 
+	@Override 
+	public void atacar(Casillero destino, int distancia) {
+		Entidad entidad = getEntidad();
+		entidad.atacar(destino, distancia);
+	}
+
+	@Override 
+	public void recibirAtaque(int danio, int distancia) {
+		Entidad entidad = getEntidad();
+		entidad.recibirAtaque(danio, distancia);
+	}
 }

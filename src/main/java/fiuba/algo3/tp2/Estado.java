@@ -6,5 +6,7 @@ public interface Estado {
 	public Estado colocar(Entidad entidad) throws CasilleroOcupadoException;
 	public Entidad getEntidad();
 	public Estado moverDesde(Casillero origen);
+	public void atacar(Casillero destino, int distancia);
+	public void recibirAtaque(int danio, int distancia);
 
 }

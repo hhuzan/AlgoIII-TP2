@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2;
 
 public class CalculadorDanio {
+  
   public static int danio(Soldado soldado,int distancia) {
   	if (distancia <= 1)
   		return 10;

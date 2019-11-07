@@ -2,8 +2,8 @@ package fiuba.algo3.tp2;
 
 public abstract class Casillero {
 
-	protected Entidad entidad;
-	protected Estado estado;
+	private Entidad entidad;
+	private Estado estado;
 	protected int fila;
 	protected int columna;
 
@@ -42,12 +42,11 @@ public abstract class Casillero {
 	}
 
 	public void atacar(Casillero destino, int distancia) {
-		entidad.atacar(destino, distancia);
-//		entidadOrigen.atacar(entidadDestino, distancia);
+		estado.atacar(destino, distancia);
 	}
 
 	public void recibirAtaque(int danio, int distancia) {
-		entidad.recibirAtaque(danio, distancia);
+		estado.recibirAtaque(danio, distancia);
 	}
 
 	public abstract void colocar(Aliado aliado);

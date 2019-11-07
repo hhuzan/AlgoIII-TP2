@@ -38,8 +38,8 @@ public class Catapulta extends Tipo {
 			(y así sucesivamente)
         */
         int danio = CalculadorDanio.danio(this,distancia);
-                //obtenerDanio(distancia);
-        // Podemos agregar this, si queremos que el atacado sepa quien es el atacante
+        System.out.println("Catapulta ataca");
+        System.out.println(danio);
         destino.recibirAtaque(danio, distancia);
     }
 
