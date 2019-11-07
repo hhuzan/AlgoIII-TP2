@@ -45,12 +45,12 @@ public class Curandero extends Tipo {
     }
 
     @Override 
-    }
-        destino.recibirCuracion(curacion, distancia);
-
-        int curacion = this.curacion;
-        /*Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.*/
     public void curar(Casillero destino, int distancia) {
+        /*Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.*/
+        int curacion = this.curacion;
+
+        destino.recibirCuracion(curacion, distancia);
+    }
 
 	@Override
 	public void recibirAtaque(Entidad entidad, int danio, int distancia) {

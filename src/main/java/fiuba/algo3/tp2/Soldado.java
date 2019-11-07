@@ -52,6 +52,8 @@ public class Soldado extends Tipo {
     public void curar(Casillero destino, int distancia) {
         throw new TipoNoPuedeCurarException();
     }
+
+    @Override
     public void recibirAtaque(Entidad entidad, int danio, int distancia) {
         restarVida(entidad,danio);
     }

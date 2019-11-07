@@ -43,17 +43,17 @@ public class Catapulta extends Tipo {
 			(y así sucesivamente)
         */
         int danio = CalculadorDanio.danio(this,distancia);
-        System.out.println("Catapulta ataca");
-        System.out.println(danio);
         destino.recibirAtaque(danio, distancia);
     }
 
     @Override 
     public void recibirAtaque(Entidad entidad, int danio, int distancia) {
         restarVida(entidad, danio);
+    }
+
+    @Override
     public void curar(Casillero destino, int distancia) {
         throw new TipoNoPuedeCurarException();
-    }
     }
 
     @Override 
