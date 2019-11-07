@@ -11,4 +11,40 @@ public class SoldadoTest {
 		assertNotNull(soldado);
 	}
 
+	@Test 
+	public void test01CreamosUnSoldadoYSuVidaEsLaEsperada() {
+		int vidaSoldado = 100;
+		Soldado soldado = new Soldado(new Jugador());
+		assertEquals(vidaSoldado, soldado.getVida());
+	}
+
+	@Test 
+	public void test03CreamosUnSoldadoYRestamosPuntosDeCostoAlJugador() {
+		int costoSoldado = 1;
+		int puntosJugadorNuevo = 20;
+		Jugador jugador = new Jugador();
+		Soldado soldado = new Soldado(jugador);
+		soldado.restarAJugador();
+		assertEquals(puntosJugadorNuevo - costoSoldado, jugador.getPuntos());
+	}
+
+	@Test 
+	public void test04AtacamosConUnSoldadoYLaPiezaEnemigaPierdeVida() {
+		int fila = 9; 
+		int columna = 1;
+		Tablero tablero = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Entidad soldado = new Aliado(new Soldado(jugador1));
+		Entidad jinete = new Aliado(new Jinete(jugador2));
+		jugador1.agregar(soldado);
+		jugador2.agregar(jinete);
+		tablero.colocar(jinete, fila + 1, columna);
+		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
+		soldado.curar(casilleroDestino, 1);
+		assertTrue(jinete.getVida() == 90);
+	}
+
+	// Test 5: No puede atacar enemigo a distancia media o lejana 
+	// Test 6: Ver lo de los 3 soldados contiguos...
 }

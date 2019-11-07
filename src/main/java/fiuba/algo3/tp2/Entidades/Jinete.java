@@ -64,5 +64,4 @@ public class Jinete extends Tipo {
     public void recibirCuracion(int curacion, int distancia) {
         sumarVida(curacion);
     }
-
 }
