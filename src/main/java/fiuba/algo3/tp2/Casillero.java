@@ -7,16 +7,19 @@ public abstract class Casillero {
 	protected int fila;
 	protected int columna;
 
-	public Casillero() {
-		estado = new Vacio(this);
-	}
-	
+//	public Casillero() {
+//		estado = new Vacio(this);
+//	}
+
 	public Casillero(int fila, int columna) {
 		estado = new Vacio(this);
 		this.fila = fila;
 		this.columna = columna;
 	}
 
+	public abstract void colocar(Aliado aliado);
+
+	public abstract void colocar(Enemigo enemigo);
 	public Entidad getEntidad() {
 		return entidad;
 	}
@@ -41,15 +44,13 @@ public abstract class Casillero {
 		return respuesta;
 	}
 
-	public abstract void colocar(Aliado aliado);
+	public int getFila() {
+		return this.fila;
+	} 
 
-	public abstract void colocar(Enemigo enemigo);
-
-	public abstract int getFila();
-
-	public abstract int getColumna();
-
-
+	public int getColumna() {
+		return this.columna;
+	}
 
 	public void moverDesde(Casillero casillero) {
 		estado = estado.moverDesde(casillero);

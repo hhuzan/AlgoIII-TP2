@@ -4,9 +4,9 @@ import fiuba.algo3.tp2.Excepciones.ColocarEntidadException;
 
 public class CasilleroAliado extends Casillero {
 
-	public CasilleroAliado() {
-		super();
-	}
+//	public CasilleroAliado() {
+//		super();
+//	}
 
 	public CasilleroAliado(int fila, int columna) {
 		super(fila, columna);
@@ -21,17 +21,5 @@ public class CasilleroAliado extends Casillero {
 	public void colocar(Enemigo enemigo) {
 		throw new ColocarEntidadException();
 	}
-
-	@Override
-	public int getFila() {
-		return this.fila;
-	} 
-
-	@Override 
-	public int getColumna() {
-		return this.columna;
-	}
-
-
 
 }

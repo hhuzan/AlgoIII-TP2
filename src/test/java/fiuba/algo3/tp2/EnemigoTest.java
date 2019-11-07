@@ -15,18 +15,18 @@ public class EnemigoTest {
 		assertNotNull(enemigo);
 	}
 
-	@Test 
+	@Test
 	public void test01ColocamosEnemigoEnCasilleroEnemigoYEnemigoQuedaAlmacenado() {
 		Enemigo enemigo = new Enemigo(new Soldado(new Jugador()));
-		Casillero casillero = new CasilleroEnemigo();
+		Casillero casillero = new CasilleroEnemigo(10, 1);
 		enemigo.colocarEn(casillero);
 		assertEquals(enemigo, casillero.getEntidad());
 	}
 
-	@Test 
+	@Test
 	public void test02ColocamosEnemigoEnCasilleroAliadoYObtenemosUnaExcepcion() {
 		Enemigo enemigo = new Enemigo(new Soldado(new Jugador()));
-		Casillero casillero = new CasilleroAliado();
+		Casillero casillero = new CasilleroAliado(1, 1);
 		assertThrows(ColocarEntidadException.class, () -> {
 			enemigo.colocarEn(casillero);
 		});
