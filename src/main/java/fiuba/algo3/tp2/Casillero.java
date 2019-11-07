@@ -41,6 +41,15 @@ public abstract class Casillero {
 		return respuesta;
 	}
 
+	public void atacar(Casillero destino, int distancia) {
+		entidad.atacar(destino, distancia);
+//		entidadOrigen.atacar(entidadDestino, distancia);
+	}
+
+	public void recibirAtaque(int danio, int distancia) {
+		entidad.recibirAtaque(danio, distancia);
+	}
+
 	public abstract void colocar(Aliado aliado);
 
 	public abstract void colocar(Enemigo enemigo);
@@ -48,6 +57,8 @@ public abstract class Casillero {
 	public abstract int getFila();
 
 	public abstract int getColumna();
+
+
 
 	public void moverDesde(Casillero casillero) {
 		estado = estado.moverDesde(casillero);
