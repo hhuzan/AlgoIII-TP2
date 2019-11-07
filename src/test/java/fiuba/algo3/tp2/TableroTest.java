@@ -223,6 +223,47 @@ public class TableroTest {
 		assertTrue(jinete.getVida() == 80);
 	}
 
+	@Test 
+	public void test38CuranderoAliadoCuraPiezaAliadaYSumaVidaADichaPieza() {
+		int fila = 7; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
+		int columna = 1;
+		Tablero tablero = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Entidad curandero = new Aliado(new Curandero(jugador1));
+		Entidad jinete = new Aliado(new Jinete(jugador2));
+		jugador1.agregar(curandero);
+		jugador2.agregar(jinete);
+		tablero.colocar(curandero, fila, columna);
+		tablero.colocar(jinete, fila + 1, columna);
+		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
+		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
+		tablero.curar(casilleroOrigen, casilleroDestino);
+		assertTrue(jinete.getVida() == 115);		
+	}
+
+	// @Test
+	// public void test38UnJugadorSeQuedaSinEntidadesYPierde(){
+	// 	int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
+	// 	int columna = 1;
+	// 	Tablero tablero = new Tablero();
+	// 	Jugador jugador1 = new Jugador();
+	// 	Jugador jugador2 = new Jugador();
+	// 	Entidad jinete1 = new Aliado(new Jinete(jugador1));
+	// 	Entidad jinete2 = new Enemigo(new Jinete(jugador2));
+	// 	jugador1.agregar(jinete1);
+	// 	jugador2.agregar(jinete2);
+	// 	tablero.colocar(jinete1, fila, columna);
+	// 	tablero.colocar(jinete2, fila + 1, columna);
+	// 	Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
+	// 	Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
+	// 	for(int i = 0; i < 19; i++) {
+	// 		tablero.atacar(casilleroOrigen, casilleroDestino);
+	// 	}
+	// 	assertThrows(JugadorPierdeException.class, () -> {
+	// 		tablero.atacar(casilleroOrigen, casilleroDestino);
+	// 	});
+	// }
 	 @Test
 	 public void test38UnJugadorSeQuedaSinEntidadesYPierde(){
 	 	int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
