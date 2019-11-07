@@ -37,7 +37,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test10AgregoAliadoEnSectorAliadoPosionNoQuedaVacia() {
+	public void test03AgregoAliadoEnSectorAliadoPosionNoQuedaVacia() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 5;
@@ -47,7 +47,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test11AgregoEnemigoEnSectorEnemigoPosionNoQuedaVacia() {
+	public void test04AgregoEnemigoEnSectorEnemigoPosionNoQuedaVacia() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 15;
@@ -57,7 +57,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test12AgregoEnemigoEnSectorAliadoArrojaExcepcion() {
+	public void test05AgregoEnemigoEnSectorAliadoArrojaExcepcion() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 5;
@@ -68,7 +68,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test13AgregoAliadoEnSectorEnemigoArrojaExcepcion() {
+	public void test06AgregoAliadoEnSectorEnemigoArrojaExcepcion() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 15;
@@ -79,7 +79,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test20Agrego2AliadosEnMismoCasilleroAliadoArrojaExcepcion() {
+	public void test07Agrego2AliadosEnMismoCasilleroAliadoArrojaExcepcion() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int fila = 5;
@@ -92,7 +92,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test30MoverArribar() {
+	public void test08MoverArribar() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
@@ -104,7 +104,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test31MoverAbajo() {
+	public void test09MoverAbajo() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
@@ -116,7 +116,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test32MoverIzquierda() {
+	public void test10MoverIzquierda() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
@@ -128,7 +128,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test33MoverDerecha() {
+	public void test11MoverDerecha() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 5;
@@ -140,7 +140,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test34MoverEntidadACasilleroOcupadoArrojaExcepcion() {
+	public void test12MoverEntidadACasilleroOcupadoArrojaExcepcion() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 1;
@@ -153,7 +153,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test39MoverEntidadACasilleroOcupadoCasilleroOrigenQuedaOcupado() {
+	public void test13MoverEntidadACasilleroOcupadoCasilleroOrigenQuedaOcupado() {
 		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador();
 		int filaOrigen = 2;
@@ -167,7 +167,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test35SoldadoAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+	public void test14SoldadoAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
 		int fila = 9;
 		int columna = 1;	
 		Tablero tablero = new Tablero();
@@ -186,7 +186,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test36JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+	public void test15JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
 		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
 		int columna = 1;
 		Tablero tablero = new Tablero();
@@ -205,7 +205,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test37CatapultaAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+	public void test16CatapultaAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
 		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
 		int columna = 1;
 		Tablero tablero = new Tablero();
@@ -224,7 +224,7 @@ public class TableroTest {
 	}
 
 	@Test 
-	public void test38CuranderoAliadoCuraPiezaAliadaYSumaVidaADichaPieza() {
+	public void test17CuranderoAliadoCuraPiezaAliadaYSumaVidaADichaPieza() {
 		int fila = 7; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
 		int columna = 1;
 		Tablero tablero = new Tablero();
@@ -242,30 +242,8 @@ public class TableroTest {
 		assertTrue(jinete.getVida() == 115);		
 	}
 
-	// @Test
-	// public void test38UnJugadorSeQuedaSinEntidadesYPierde(){
-	// 	int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
-	// 	int columna = 1;
-	// 	Tablero tablero = new Tablero();
-	// 	Jugador jugador1 = new Jugador();
-	// 	Jugador jugador2 = new Jugador();
-	// 	Entidad jinete1 = new Aliado(new Jinete(jugador1));
-	// 	Entidad jinete2 = new Enemigo(new Jinete(jugador2));
-	// 	jugador1.agregar(jinete1);
-	// 	jugador2.agregar(jinete2);
-	// 	tablero.colocar(jinete1, fila, columna);
-	// 	tablero.colocar(jinete2, fila + 1, columna);
-	// 	Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
-	// 	Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 1, columna);
-	// 	for(int i = 0; i < 19; i++) {
-	// 		tablero.atacar(casilleroOrigen, casilleroDestino);
-	// 	}
-	// 	assertThrows(JugadorPierdeException.class, () -> {
-	// 		tablero.atacar(casilleroOrigen, casilleroDestino);
-	// 	});
-	// }
 	 @Test
-	 public void test38UnJugadorSeQuedaSinEntidadesYPierde(){
+	 public void test18UnJugadorSeQuedaSinEntidadesYPierde(){
 	 	int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
 	 	int columna = 1;
 	 	Tablero tablero = new Tablero();
