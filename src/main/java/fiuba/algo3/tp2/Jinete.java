@@ -19,9 +19,14 @@ public class Jinete extends Tipo {
         return this.vida;
     }
 
-    private void restarVida(int vida) {
+    private void restarVida(Entidad entidad, int vida) {
         // Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
         this.vida -= vida;
+
+        if(this.vida <= 0) {
+            // Sacar del casillero primero
+            getPropietario().removerEntidad(entidad);
+        }
     }
 
     private void sumarVida(int vida) {
@@ -49,10 +54,8 @@ public class Jinete extends Tipo {
     public void curar(Casillero destino, int distancia) {
         throw new TipoNoPuedeCurarException();
     }
-
-    @Override 
-    public void recibirAtaque(int danio, int distancia) {
-        restarVida(danio);
+    public void recibirAtaque(Entidad entidad, int danio, int distancia) {
+        restarVida(entidad, danio);
     }
 
     @Override

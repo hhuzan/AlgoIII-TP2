@@ -19,9 +19,14 @@ public class Catapulta extends Tipo {
         return this.vida;
     }
 
-    private void restarVida(int vida) {
+    private void restarVida(Entidad entidad, int vida) {
         // Todo: Ver si murio la entidad => hay que sacarlo de la coleccion de entidades del jugador
         this.vida -= vida;
+
+        if(this.vida <= 0) {
+            // Sacar del casillero primero
+            getPropietario().removerEntidad(entidad);
+        }
     }
 
     @Override
@@ -44,13 +49,11 @@ public class Catapulta extends Tipo {
     }
 
     @Override 
+    public void recibirAtaque(Entidad entidad, int danio, int distancia) {
+        restarVida(entidad, danio);
     public void curar(Casillero destino, int distancia) {
         throw new TipoNoPuedeCurarException();
     }
-
-    @Override 
-    public void recibirAtaque(int danio, int distancia) {
-        restarVida(danio);
     }
 
     @Override 

@@ -31,7 +31,7 @@ public abstract class Entidad {
 	}
 
 	public void recibirAtaque(int danio, int distancia) {
-		tipo.recibirAtaque(danio, distancia);
+		tipo.recibirAtaque(this, danio, distancia);
 	}
 
 	public void recibirCuracion(int curacion, int distancia) {
