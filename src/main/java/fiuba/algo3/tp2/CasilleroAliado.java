@@ -17,7 +17,7 @@ public class CasilleroAliado extends Casillero {
 
 	@Override
 	public void colocar(Enemigo enemigo) {
-		// TODO Agregar Excepcion?
+		throw new ColocarEntidadException();
 	}
 
 	@Override
