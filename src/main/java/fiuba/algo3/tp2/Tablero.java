@@ -66,10 +66,9 @@ public class Tablero {
 	}
 
 	public void atacar(Casillero origen, Casillero destino) {
-		Entidad entidadOrigen = obtenerEntidadDeCasillero(origen);
-		Entidad entidadDestino = obtenerEntidadDeCasillero(destino);
+//		Casillero origen = casilleros[filaOrigen][columnaOrigen];
+//		Casillero destino = casilleros[filaDestino][columnaDestino];
 		int distancia = calcularDistancia(origen, destino);
-		System.out.println(distancia);
-		entidadOrigen.atacar(entidadDestino, distancia);
+		origen.atacar(destino, distancia);
 	}	
 }

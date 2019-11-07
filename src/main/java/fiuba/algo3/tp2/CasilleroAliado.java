@@ -32,5 +32,4 @@ public class CasilleroAliado extends Casillero {
 
 
 
-
 }
