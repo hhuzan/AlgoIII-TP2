@@ -216,8 +216,8 @@ public class TableroTest {
 		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
 		tablero.colocar(catapulta, fila, columna);
-		tablero.colocar(jinete, fila + 2, columna);
-		tablero.atacar(fila, columna, fila + 2, columna);
+		tablero.colocar(jinete, fila + 7, columna);
+		tablero.atacar(fila, columna, fila + 7, columna);
 		assertTrue(jinete.getVida() == 80);
 	}
 

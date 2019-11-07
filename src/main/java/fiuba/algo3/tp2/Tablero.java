@@ -4,11 +4,20 @@ public class Tablero {
 	private final int tamanio = 20;
 	private Casillero casilleros[][];
 
-	private int calcularDistancia(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
+	private Distancia calcularDistancia(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
+		int distancia = 0;
 		if ((filaOrigen - filaDestino != 0) && (columnaOrigen - columnaDestino != 0))
-			return Math.min(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
+			distancia = Math.min(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
 		else
-			return Math.max(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
+			distancia = Math.max(Math.abs(filaOrigen - filaDestino), Math.abs(columnaOrigen - columnaDestino));
+		
+		if(distancia < 3)
+			return new DistanciaCercana(distancia);
+		else if(distancia  < 6)
+			return new DistanciaMedia(distancia);
+		else 
+			return new DistanciaLejana(distancia);
+
 	}
 
 	public Tablero() {
@@ -56,14 +65,14 @@ public class Tablero {
 	public void atacar(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
 		Entidad atacante = casilleros[filaOrigen][columnaOrigen].getEntidad();
 		Entidad atacado = casilleros[filaDestino][columnaDestino].getEntidad();
-		int distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
+		Distancia distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
 		atacante.atacar(atacado, distancia);
 	}
 
 	public void curar(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
 		Entidad curador = casilleros[filaOrigen][columnaOrigen].getEntidad();
 		Entidad curado = casilleros[filaDestino][columnaDestino].getEntidad();
-		int distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
+		Distancia distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
 		curador.curar(curado, distancia);
 	}
 

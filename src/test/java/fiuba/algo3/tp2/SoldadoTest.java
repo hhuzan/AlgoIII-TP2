@@ -32,13 +32,14 @@ public class SoldadoTest {
 	@Test 
 	public void test04AtacamosConUnSoldadoYLaPiezaEnemigaPierdeVida() {
 		int distancia = 1;
+		DistanciaCercana tipoDistancia = new DistanciaCercana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
 		Entidad soldado = new Aliado(new Soldado(jugador1));
 		Entidad jinete = new Enemigo(new Jinete(jugador2));
 		jugador1.agregar(soldado);
 		jugador2.agregar(jinete);
-		soldado.atacar(jinete, distancia);
+		soldado.atacar(jinete, tipoDistancia);
 		assertEquals(90, jinete.getVida());
 	}
 

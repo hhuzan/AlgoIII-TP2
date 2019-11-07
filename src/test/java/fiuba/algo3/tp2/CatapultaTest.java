@@ -38,27 +38,29 @@ public class CatapultaTest {
 
 	@Test
 	public void test04AtacamosConUnaCatapultaYElEnemigoRecibeDanio() {
-		int distancia = 2;
+		int distancia = 7;
+		DistanciaLejana tipoDistancia = new DistanciaLejana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad catapulta = new Aliado(new Catapulta(jugador1));
 		Entidad jinete = new Enemigo(new Jinete(jugador2));
 		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
-		catapulta.atacar(jinete, distancia);
+		catapulta.atacar(jinete, tipoDistancia);
 		assertEquals(80, jinete.getVida());
 	}
 
 	@Test
 	public void test05AtacamosConUnaCatapultaYElAliadoRecibeDanio() {
-		int distancia = 2;
+		int distancia = 7;
+		DistanciaLejana tipoDistancia = new DistanciaLejana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad catapulta = new Aliado(new Catapulta(jugador1));
 		Entidad jinete = new Aliado(new Jinete(jugador1));
 		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
-		catapulta.atacar(jinete, distancia);
+		catapulta.atacar(jinete, tipoDistancia);
 		assertEquals(80, jinete.getVida());
 	}
 

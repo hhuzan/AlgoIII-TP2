@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.excepciones.TipoNoPuedeAtacarException;
+import fiuba.algo3.tp2.excepciones.EntidadFueraDeAlcanceException;
 
 public class Curandero extends Tipo {
 
@@ -41,25 +42,55 @@ public class Curandero extends Tipo {
 	}
 
 	@Override
-    public void atacar(Entidad atacado, int distancia) {
+    public void atacar(Entidad atacado, Distancia distancia) {
         throw new TipoNoPuedeAtacarException();
     }
 
-    @Override 
-    public void curar(Entidad curado, int distancia) {
-        /*Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.*/
+    @Override
+    public void atacarEntidad(Entidad atacado, DistanciaCercana distancia) {
+        throw new TipoNoPuedeAtacarException();
+    }
+
+    @Override
+    public void atacarEntidad(Entidad atacado, DistanciaMedia distancia) {
+        throw new TipoNoPuedeAtacarException();
+    }
+
+    @Override
+    public void atacarEntidad(Entidad atacado, DistanciaLejana distancia) {
+        throw new TipoNoPuedeAtacarException();
+    }
+
+    @Override
+    public void curar(Entidad atacado, Distancia distancia) {
+        distancia.realizarCuracion(this, atacado);
+    }
+
+    @Override
+    public void curarEntidad(Entidad curado, DistanciaCercana distancia) {
+        /* Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.*/
         int curacion = this.curacion;
 
-        curado.recibirCuracion(curacion, distancia);
+        curado.recibirCuracion(curacion);
+    }
+
+    @Override
+    public void curarEntidad(Entidad curado, DistanciaMedia distancia) {
+        throw new EntidadFueraDeAlcanceException();
+    }  
+      
+    @Override
+    public void curarEntidad(Entidad curado, DistanciaLejana distancia) {
+        throw new EntidadFueraDeAlcanceException();
     }
 
 	@Override
-	public void recibirAtaque(Entidad entidad, int danio, int distancia) {
+	public void recibirAtaque(Entidad entidad, int danio) {
 		restarVida(entidad, danio);
 	}
 
     @Override
-    public void recibirCuracion(int curacion, int distancia) {
+    public void recibirCuracion(int curacion) {
         sumarVida(curacion);
     }
 }

@@ -9,22 +9,22 @@ public class CalculadorDanioUtils {
   private static int danioCuerpoCatapulta = 0;
   private static int danioLejanoCatapulta = 20;
   
-  public static int danio(Soldado soldado, int distancia) {
-    if (distancia == 1)
+  public static int danio(Soldado soldado, Distancia distancia) {
+    if (distancia.getDistanciaAsInt() == 1)
   		return danioCuerpoSoldado;
   	else
   		return danioLejanoSoldado;
     }
 
-  public static int danio(Jinete jinete, int distancia) {
-    if(distancia == 1)
+  public static int danio(Jinete jinete, Distancia distancia) {
+    if(distancia.getDistanciaAsInt() == 1)
       return danioCuerpoJinete;
     else
       return danioLejanoJinete;
   }
 
-  public static int danio(Catapulta catapulta, int distancia) {
-    if(distancia == 1)
+  public static int danio(Catapulta catapulta, Distancia distancia) {
+    if(distancia.getDistanciaAsInt() == 1)
       return danioCuerpoCatapulta;
     else
       return danioLejanoCatapulta;

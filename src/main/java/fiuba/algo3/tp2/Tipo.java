@@ -14,9 +14,16 @@ public abstract class Tipo {
 	public abstract void restarAJugador();
 	public abstract int getCosto();
 	public abstract int getVida();
-	public abstract void atacar(Entidad atacado, int distancia);
-	public abstract void recibirAtaque(Entidad entidad, int danio, int distancia);
-	public abstract void curar(Entidad curado, int distancia);
-	public abstract void recibirCuracion(int curacion, int distancia);
+	public abstract void atacar(Entidad atacado, Distancia distancia);
+	public abstract void atacarEntidad(Entidad atacado, DistanciaCercana distancia);
+	public abstract void atacarEntidad(Entidad atacado, DistanciaMedia distancia);
+	public abstract void atacarEntidad(Entidad atacado, DistanciaLejana distancia);
+	public abstract void recibirAtaque(Entidad entidad, int danio);
+	public abstract void curar(Entidad atacado, Distancia distancia);
+	public abstract void curarEntidad(Entidad curado, DistanciaCercana distancia);
+	public abstract void curarEntidad(Entidad curado, DistanciaMedia distancia);
+	public abstract void curarEntidad(Entidad curado, DistanciaLejana distancia);
+
+	public abstract void recibirCuracion(int curacion);
 
 }

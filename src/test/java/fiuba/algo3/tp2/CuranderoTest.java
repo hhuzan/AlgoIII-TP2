@@ -42,19 +42,21 @@ public class CuranderoTest {
 	@Test
 	public void test04CuramosConUnCuranderoYElAliadoSumaVida() {
 		int distancia = 1;
+		DistanciaCercana tipoDistancia = new DistanciaCercana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad curandero = new Aliado(new Curandero(jugador1));
 		Entidad jinete = new Aliado(new Jinete(jugador2));
 		jugador1.agregar(curandero);
 		jugador2.agregar(jinete);
-		curandero.curar(jinete, distancia);
+		curandero.curar(jinete, tipoDistancia);
 		assertEquals(115, jinete.getVida());
 	}
 
 	@Test
 	public void test05CuranderCuraACatapultaArrojaExcepcion() {
 		int distancia = 1;
+		DistanciaCercana tipoDistancia = new DistanciaCercana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad curandero = new Aliado(new Curandero(jugador1));
@@ -62,7 +64,7 @@ public class CuranderoTest {
 		jugador1.agregar(curandero);
 		jugador2.agregar(catapulta);
 		assertThrows(TipoNoPuedeSerCuradoException.class, () -> {
-			curandero.curar(catapulta, distancia);
+			curandero.curar(catapulta, tipoDistancia);
 		});
 	}
 
