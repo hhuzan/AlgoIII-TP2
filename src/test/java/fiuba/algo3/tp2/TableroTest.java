@@ -186,7 +186,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test356JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+	public void test36JineteAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
 		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
 		int columna = 1;
 		Tablero tablero = new Tablero();
@@ -204,6 +204,24 @@ public class TableroTest {
 		assertTrue(jinete2.getVida() == 95);
 	}
 
+	@Test
+	public void test37CatapultaAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
+		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero enemigo/aliado
+		int columna = 1;
+		Tablero tablero = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
+		Entidad catapulta = new Aliado(new Catapulta(jugador1));
+		Entidad jinete = new Enemigo(new Jinete(jugador2));
+		jugador1.agregar(catapulta);
+		jugador2.agregar(jinete);
+		tablero.colocar(catapulta, fila, columna);
+		tablero.colocar(jinete, fila + 1, columna);
+		Casillero casilleroOrigen = tablero.obtenerCasilleroPorPosicion(fila, columna);
+		Casillero casilleroDestino = tablero.obtenerCasilleroPorPosicion(fila + 2, columna);
+		tablero.atacar(casilleroOrigen, casilleroDestino);
+		assertTrue(jinete.getVida() == 95);
+	}
 
 	@Test
 	public void test37UnJugadorSeQuedaSinEntidadesYPierde(){
@@ -226,8 +244,5 @@ public class TableroTest {
 		assertThrows(JugadorPierdeException.class, () -> {
 			tablero.atacar(casilleroOrigen, casilleroDestino);
 		});
-
 	}
-
-
 }
