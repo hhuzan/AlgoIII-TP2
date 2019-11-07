@@ -3,11 +3,7 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.excepciones.TipoNoPuedeCurarException;
 
 public class Jinete extends Tipo {
-/*  -   Si hay al menos un Soldado de Infantería aliado cerca o no hay ningún enemigo cerca, 
-        su arma de ataque es un Arco y Flecha y únicamente puede atacar a enemigos en distancia media..
-    -   Si no hay ningún aliado cercano y hay enemigos cercanos , su arma de ataque es una Espada y 
-        únicamente puede atacar a enemigos en distancia corta.
-*/
+
 	private int vida = 100;
 	private int costo = 3;
 
@@ -50,10 +46,6 @@ public class Jinete extends Tipo {
     
     @Override
     public void atacarEntidad(Entidad atacado, DistanciaCercana distancia) {
-        // Arco y flecha:   Verificar que hay al menos un Soldado de Infantería aliado cerca o
-        //                  no hay ningun enemigo cerca 
-        // -> Debemos ver si se cumple arco y flecha tenemos que tirar excepción que no se puede
-        // -> usar este ataque de distancia corta 
 
         int danio = CalculadorDanioUtils.danio(this,distancia);
         atacado.recibirAtaque(danio);
@@ -61,9 +53,7 @@ public class Jinete extends Tipo {
 
     @Override
     public void atacarEntidad(Entidad atacado, DistanciaMedia distancia) {
-        // Espada: Verificar que no hay ningún aliado cercano y hay enemigos cercanos
-        // -> Debemos ver si se cumple la espada tenemos que tirar excepción que no se puede
-        // -> usar este ataque de distancia media
+
 
         int danio = CalculadorDanioUtils.danio(this,distancia);
         atacado.recibirAtaque(danio);
@@ -71,8 +61,7 @@ public class Jinete extends Tipo {
 
     @Override
     public void atacarEntidad(Entidad atacado, DistanciaLejana distancia) {
-        //  Debemos verificar que no tenga que usar Espada ni Arco y Flecha, en ese caso podemos atacar
-        //  de distancia lejana 
+
         int danio = CalculadorDanioUtils.danio(this,distancia);
         atacado.recibirAtaque(danio);   
 
