@@ -37,7 +37,10 @@ public class Catapulta extends Tipo {
 			y si a su vez la segunda unidad tiene otra unidad contigua, también causa el mismo daño 
 			(y así sucesivamente)
         */
-     
+        int danio = CalculadorDanio.danio(this,distancia);
+                //obtenerDanio(distancia);
+        // Podemos agregar this, si queremos que el atacado sepa quien es el atacante
+        destino.recibirAtaque(danio, distancia);
     }
 
     @Override 

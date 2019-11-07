@@ -37,8 +37,7 @@ public class Jinete extends Tipo {
 				únicamente puede atacar a enemigos en distancia corta.
         */
         int danio = CalculadorDanio.danio(this,distancia);
-        		//obtenerDanio(distancia);
-        // Podemos agregar this, si queremos que el atacado sepa quien es el atacante
+
         destino.recibirAtaque(danio, distancia);
      
     }
