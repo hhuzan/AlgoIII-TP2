@@ -59,5 +59,5 @@ public class JugadorTest {
 		jugador.agregar(entidad1);
 		assertFalse(jugador.esEntidadDeJugador(entidad2));
 	}
-
+//
 }
