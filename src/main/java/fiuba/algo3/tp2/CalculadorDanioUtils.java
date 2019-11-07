@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2;
 
-public class CalculadorDanio {
+public class CalculadorDanioUtils {
 
   private static int danioCuerpoSoldado = 10;
   private static int danioLejanoSoldado = 0;

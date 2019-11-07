@@ -46,7 +46,7 @@ public class Jinete extends Tipo {
 			- 	Si no hay ningún aliado cercano y hay enemigos cercanos , su arma de ataque es una Espada y 
 				únicamente puede atacar a enemigos en distancia corta.
         */
-        int danio = CalculadorDanio.danio(this,distancia);
+        int danio = CalculadorDanioUtils.danio(this,distancia);
         atacado.recibirAtaque(danio, distancia);
      
     }
