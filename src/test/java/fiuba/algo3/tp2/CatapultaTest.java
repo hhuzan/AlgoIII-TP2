@@ -1,10 +1,8 @@
 package fiuba.algo3.tp2;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
 
 public class CatapultaTest {
@@ -49,7 +47,7 @@ public class CatapultaTest {
 		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
 		catapulta.atacar(jinete, distancia);
-		assertTrue(jinete.getVida() == 80);
+		assertEquals(80, jinete.getVida());
 	}
 
 	@Test
@@ -62,7 +60,7 @@ public class CatapultaTest {
 		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
 		catapulta.atacar(jinete, distancia);
-		assertTrue(jinete.getVida() == 80);
+		assertEquals(80, jinete.getVida());
 	}
 
 	// Test 06: Catapulta no puede moverse

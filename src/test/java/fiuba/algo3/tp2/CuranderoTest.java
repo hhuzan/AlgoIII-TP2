@@ -2,10 +2,8 @@ package fiuba.algo3.tp2;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
-
 import fiuba.algo3.tp2.Excepciones.TipoNoPuedeSerCuradoException;
 
 public class CuranderoTest {
@@ -50,7 +48,7 @@ public class CuranderoTest {
 		jugador1.agregar(curandero);
 		jugador2.agregar(jinete);
 		curandero.curar(jinete, distancia);
-		assertTrue(jinete.getVida() == 115);
+		assertEquals(115, jinete.getVida());
 	}
 
 	@Test
