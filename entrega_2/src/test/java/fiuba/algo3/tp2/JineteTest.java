@@ -39,12 +39,12 @@ public class JineteTest {
 	@Test
 	public void test04AtacamosConUnJineteYElEnemigoRecibeDanio() {
 		int distancia = 7;
-		DistanciaLejana tipoDistancia = new DistanciaLejana(distancia);
+		Distancia tipoDistancia = new DistanciaLejana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad catapulta = new Aliado(new Jinete(jugador1));
 		Entidad jinete = new Enemigo(new Jinete(jugador2));
-		jugador1.agregar(jinete);
+		jugador1.agregar(catapulta);
 		jugador2.agregar(jinete);
 		catapulta.atacar(jinete, tipoDistancia);
 		assertEquals(85, jinete.getVida());

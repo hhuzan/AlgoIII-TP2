@@ -61,17 +61,17 @@ public class Tablero {
 	}
 
 	public void atacar(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
-		Entidad atacante = casilleros[filaOrigen][columnaOrigen].getEntidad();
-		Entidad atacado = casilleros[filaDestino][columnaDestino].getEntidad();
+		Casillero casilleroOrigen = casilleros[filaOrigen][columnaOrigen];
+		Casillero casilleroDestino = casilleros[filaDestino][columnaDestino];
 		Distancia distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
-		atacante.atacar(atacado, distancia);
+		casilleroOrigen.atacar(casilleroDestino, distancia);
 	}
 
 	public void curar(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
-		Entidad curador = casilleros[filaOrigen][columnaOrigen].getEntidad();
-		Entidad curado = casilleros[filaDestino][columnaDestino].getEntidad();
+		Casillero casilleroOrigen = casilleros[filaOrigen][columnaOrigen];
+		Casillero casilleroDestino = casilleros[filaDestino][columnaDestino];
 		Distancia distancia = calcularDistancia(filaOrigen, columnaOrigen, filaDestino, columnaDestino);
-		curador.curar(curado, distancia);
+		casilleroOrigen.curar(casilleroDestino, distancia);
 	}
 
 }

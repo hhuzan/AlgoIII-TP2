@@ -32,7 +32,7 @@ public class SoldadoTest {
 	@Test 
 	public void test04AtacamosConUnSoldadoYLaPiezaEnemigaPierdeVida() {
 		int distancia = 1;
-		DistanciaCercana tipoDistancia = new DistanciaCercana(distancia);
+		Distancia tipoDistancia = new DistanciaCercana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();	// TODO: Refactor esto..
 		Entidad soldado = new Aliado(new Soldado(jugador1));

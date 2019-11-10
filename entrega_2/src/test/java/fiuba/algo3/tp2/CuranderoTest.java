@@ -42,7 +42,7 @@ public class CuranderoTest {
 	@Test
 	public void test04CuramosConUnCuranderoYElAliadoSumaVida() {
 		int distancia = 1;
-		DistanciaCercana tipoDistancia = new DistanciaCercana(distancia);
+		Distancia tipoDistancia = new DistanciaCercana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad curandero = new Aliado(new Curandero(jugador1));
@@ -56,7 +56,7 @@ public class CuranderoTest {
 	@Test
 	public void test05CuranderCuraACatapultaArrojaExcepcion() {
 		int distancia = 1;
-		DistanciaCercana tipoDistancia = new DistanciaCercana(distancia);
+		Distancia tipoDistancia = new DistanciaCercana(distancia);
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
 		Entidad curandero = new Aliado(new Curandero(jugador1));

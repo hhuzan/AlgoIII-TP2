@@ -14,4 +14,5 @@ public class CasilleroAliado extends Casillero {
 		throw new ColocarEntidadException();
 	}
 
+
 }

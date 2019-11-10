@@ -41,46 +41,49 @@ public class Curandero extends Tipo {
 		getPropietario().restarPuntos(costo);
 	}
 
-	@Override
-    public void atacar(Entidad atacado, Distancia distancia) {
-        throw new TipoNoPuedeAtacarException();
+    /* ENTIDAD - ENTIDAD */
+    @Override
+    public void curar(Entidad atacante, Entidad atacado, Distancia distancia) {
+        distancia.realizarCuracion(this, atacante, atacado);
     }
 
     @Override
-    public void atacarEntidad(Entidad atacado, DistanciaCercana distancia) {
-        throw new TipoNoPuedeAtacarException();
-    }
-
-    @Override
-    public void atacarEntidad(Entidad atacado, DistanciaMedia distancia) {
-        throw new TipoNoPuedeAtacarException();
-    }
-
-    @Override
-    public void atacarEntidad(Entidad atacado, DistanciaLejana distancia) {
-        throw new TipoNoPuedeAtacarException();
-    }
-
-    @Override
-    public void curar(Entidad atacado, Distancia distancia) {
-        distancia.realizarCuracion(this, atacado);
-    }
-
-    @Override
-    public void curarEntidad(Entidad curado, DistanciaCercana distancia) {
+    public void curacion(Entidad atacante, Entidad curado, DistanciaCercana distancia) {
         /* Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.*/
         int curacion = this.curacion;
-
-        curado.recibirCuracion(curacion);
+        curado.recibirCuracion(atacante, curacion);
     }
 
     @Override
-    public void curarEntidad(Entidad curado, DistanciaMedia distancia) {
+    public void curacion(Entidad atacante, Entidad curado, DistanciaMedia distancia) {
         throw new EntidadFueraDeAlcanceException();
     }  
       
     @Override
-    public void curarEntidad(Entidad curado, DistanciaLejana distancia) {
+    public void curacion(Entidad atacante, Entidad curado, DistanciaLejana distancia) {
+        throw new EntidadFueraDeAlcanceException();
+    }
+    /* --------------------------------------------- */
+    /* CASILLERO - CASILLERO */
+    @Override
+    public void curar(Entidad atacante, Casillero destino, Distancia distancia) {
+        distancia.realizarCuracion(this, atacante, destino);
+    }
+
+    @Override
+    public void curacion(Entidad atacante, Casillero casilleroDestino, DistanciaCercana distancia) {
+        /* Puede curar a una unidad Aliada (menos a la Catapulta) en una distancia cercana.*/
+        int curacion = this.curacion;
+        casilleroDestino.recibirCuracion(atacante, curacion);
+    }
+
+    @Override
+    public void curacion(Entidad atacante, Casillero destino, DistanciaMedia distancia) {
+        throw new EntidadFueraDeAlcanceException();
+    }  
+      
+    @Override
+    public void curacion(Entidad atacante, Casillero destino, DistanciaLejana distancia) {
         throw new EntidadFueraDeAlcanceException();
     }
 

@@ -218,8 +218,7 @@ public class TableroTest {
 
 	@Test
 	public void test16CatapultaAliadoAtacaPiezaEnemigaYRestaAlJugadorDePiezaEnemiga() {
-		int fila = 9; // TODO: Ojo, falta implementar que colocar falle si agregamos a tablero
-						// enemigo/aliado
+		int fila = 9; 
 		int columna = 1;
 		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador();

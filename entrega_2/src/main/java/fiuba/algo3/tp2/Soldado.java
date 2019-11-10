@@ -45,52 +45,58 @@ public class Soldado extends Tipo {
         getPropietario().restarPuntos(this.costo);
     }
 
+    /* ENTIDAD - ENTIDAD */
+
+    /* ATAQUES */   
     @Override
-    public void atacar(Entidad atacado, Distancia distancia) {
-        distancia.realizarAtaque(this, atacado);
+    public void atacar(Entidad atacante, Entidad atacado, Distancia distancia) {
+        distancia.realizarAtaque(this, atacante, atacado);
     }
 
     @Override
-    public void atacarEntidad(Entidad atacado, DistanciaCercana distancia) {
+    public void ataque(Entidad atacante, Entidad atacado, DistanciaCercana distancia) {
         int danio = CalculadorDanioUtils.danio(this, distancia); 
-
-        // Podemos agregar this, si queremos que el atacado sepa quien es el atacante
-        atacado.recibirAtaque(danio);
+        atacado.recibirAtaque(atacante, danio);
     }
 
     @Override
-    public void atacarEntidad(Entidad atacado, DistanciaMedia distancia) {
+    public void ataque(Entidad atacante, Entidad atacado, DistanciaMedia distancia) {
         throw new EntidadFueraDeAlcanceException();
     }
 
     @Override
-    public void atacarEntidad(Entidad atacado, DistanciaLejana distancia) {
+    public void ataque(Entidad atacante, Entidad atacado, DistanciaLejana distancia) {
         throw new EntidadFueraDeAlcanceException();
     }
 
-    @Override 
-    public void curar(Entidad curador, Distancia distancia) {
-        throw new TipoNoPuedeCurarException();
+    /* --------------------------------------------------- */
+    /* CASILLERO - CASILLERO */
+    /* ATAQUES */
+    @Override
+    public void atacar(Entidad atacante, Casillero destino, Distancia distancia) {
+        distancia.realizarAtaque(this, atacante, destino);
     }
 
-    @Override 
-    public void curarEntidad(Entidad curador, DistanciaCercana distancia) {
-        throw new TipoNoPuedeCurarException();
+    @Override
+    public void ataque(Entidad atacante, Casillero casilleroDestino, DistanciaCercana distancia) {
+        int danio = CalculadorDanioUtils.danio(this, distancia); 
+        casilleroDestino.recibirAtaque(atacante, danio);
     }
 
-    @Override 
-    public void curarEntidad(Entidad curador, DistanciaMedia distancia) {
-        throw new TipoNoPuedeCurarException();
+    @Override
+    public void ataque(Entidad atacante, Casillero casilleroDestino, DistanciaMedia distancia) {
+        throw new EntidadFueraDeAlcanceException();
     }
 
-    @Override 
-    public void curarEntidad(Entidad curador, DistanciaLejana distancia) {
-        throw new TipoNoPuedeCurarException();
+    @Override
+    public void ataque(Entidad atacante, Casillero casilleroDestino, DistanciaLejana distancia) {
+        throw new EntidadFueraDeAlcanceException();
     }
-    
+
+     
     @Override
     public void recibirAtaque(Entidad entidad, int danio) {
-        restarVida(entidad,danio);
+        restarVida(entidad, danio);
     }
 
     @Override

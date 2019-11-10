@@ -36,4 +36,25 @@ public abstract class Casillero {
 	public void moverDesde(Casillero casillero) {
 		estado = estado.moverDesde(casillero);
 	}
+
+	public void atacar(Casillero casilleroDestino, Distancia distancia) {
+		estado.atacar(entidad, casilleroDestino, distancia);
+	}
+
+	public void curar(Casillero casilleroDestino, Distancia distancia) {
+		estado.curar(entidad, casilleroDestino, distancia);
+	}
+
+	public void recibirAtaque(Entidad atacante, int danio) {
+		estado.recibirAtaque(entidad, atacante, danio);
+	}
+
+	public void recibirAtaque(Entidad atacante, int danio, boolean daniaTodos) {
+		estado.recibirAtaque(entidad, atacante, danio, daniaTodos);
+	}
+
+	public void recibirCuracion(Entidad curador, int danio) {
+		estado.recibirCuracion(entidad, curador, danio);
+	}
+
 }
