@@ -26,12 +26,9 @@ public class Jugador {
     public Jugador(Faccion faccion_) {
         faccion = faccion_;
         dinero = new Dinero(DINERO_JUGADOR);
-        nombre = "Pedro"; // TODO: Randomizer de nombre o table look-up
+        nombre = ""; // TODO: Randomizer de nombre o table look-up
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 
     public Faccion getFaccion() {
         return faccion;

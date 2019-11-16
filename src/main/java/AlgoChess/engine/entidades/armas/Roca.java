@@ -7,6 +7,8 @@ import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Tablero;
 
+import java.util.HashSet;
+
 import static AlgoChess.engine.Constantes.ROCA_PODER;
 
 public class Roca extends Arma implements ArmaAtaca {
@@ -17,9 +19,18 @@ public class Roca extends Arma implements ArmaAtaca {
 
     @Override
     public void atacar(Posicion posicion, Recuadro casilleroAtacado, Faccion faccionEntidad, Tablero tablero) {
-        if (getRango().casilleroEstaEnRango(casilleroAtacado, posicion)) {
-            casilleroAtacado.infigirDanioEnEntidadIgnorandoFaccionAtacante(getPower(), tablero);
+        if (!getRango().casilleroEstaEnRango(casilleroAtacado, posicion)) { return;}
+
+        HashSet<Recuadro> casillerosAtacados = new HashSet<>();
+        casillerosAtacados.add(casilleroAtacado);
+
+        tablero.colectaUnidadesContiguas(casilleroAtacado.getPosicion(),casillerosAtacados);
+
+        for(Recuadro casillero:casillerosAtacados){
+            casillero.infigirDanioEnEntidadIgnorandoFaccionAtacante(getPower(), tablero);
         }
+
+
 
     }
 }

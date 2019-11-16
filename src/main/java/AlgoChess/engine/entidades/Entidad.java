@@ -26,6 +26,9 @@ public abstract class Entidad {
         return vida.fallecio();
     }
 
+
+    //TODO metodo "tenesEstaVida" es para tests
+    //TODO lo deberiamos borrar...
     public boolean tenesEstaVida(double number) {
         return vida.igualA(number);
     }

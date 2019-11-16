@@ -16,7 +16,6 @@ class Vida {
     }
 
     boolean igualA(double vida) {
-        System.out.println(puntosdevida);
         return vida == puntosdevida;
     }
 

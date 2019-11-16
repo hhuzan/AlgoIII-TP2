@@ -31,4 +31,8 @@ public interface Recuadro {
     void infligirDanioEnEntidad(int power, Faccion faccionEntidad, Tablero tablero);
 
     void infigirDanioEnEntidadIgnorandoFaccionAtacante(int power, Tablero tablero);
+
+    boolean esSoldadoAmigo(Faccion faccion);
+
+    boolean poseesUnidad();
 }

@@ -34,30 +34,7 @@ public class Comandante {
     }
 
     private HashSet<Posicion> generarAdyacentes(Posicion posicion) {
-        HashSet<Posicion> contiguos = new HashSet<>();
-
-        int fila = posicion.getFila();
-        int columna = posicion.getColumna();
-
-        //TODO mejorar esto con un loop
-        contiguos.add(new Posicion(fila - 1, columna)); //arriba
-        contiguos.add(new Posicion(fila + 1, columna)); //abajo
-        contiguos.add(new Posicion(fila, columna + 1)); //derecha
-        contiguos.add(new Posicion(fila, columna - 1));//izquierda
-        contiguos.add(new Posicion(fila - 1, columna + 1)); //arriba+derecha
-        contiguos.add(new Posicion(fila - 1, columna - 1));//arriba+izquierda
-        contiguos.add(new Posicion(fila + 1, columna + 1));//abajo+derecha
-        contiguos.add(new Posicion(fila + 1, columna - 1));//abajo+izquierda
-
-        for(Posicion unaPosicion : contiguos){
-            int fila_ = unaPosicion.getFila();
-            int columna_ = unaPosicion.getColumna();
-            if(fila_ < 0 || fila_ > 19) contiguos.remove(unaPosicion);
-            if(columna_ < 0 || columna_ > 19) contiguos.remove(unaPosicion);
-        }
-
-        return contiguos;
-
+        return posicion.generarPosicionesEnAlcance(1,1);
     }
 
     /*BFS*/
@@ -104,25 +81,22 @@ public class Comandante {
 
     }
 
+    private boolean estaEnPosicionesReclutas(Posicion posicionPotencial){
+        for (Posicion posicion : posicionesReclutas) { if (posicionPotencial.esIgual(posicion)) {return true; } }
+        return false;
+    }
+
     public boolean moverBatallon(Recuadro destino, Entidad entidad) {
         if (batallon.size() != TAMANIO_BATALLON) {return false;}
 
         moverSetup();
         generarInstrucciones(destino, entidad);
 
-
         while (batallon.size() != 0) {
             for (PuedeFormarBatallon recluta : batallonParaLoop) {
                 if(reclutasYaMovidos.contains(recluta)) continue;
                 Posicion posicionPotencial = generarPosicionPotencial(recluta, instrucciones);
-                boolean estaEnPosicionesReclutas = false;
-                for (Posicion posicion : posicionesReclutas) {
-                    if (posicionPotencial.esIgual(posicion)) {
-                        estaEnPosicionesReclutas = true;
-                    }
-                }
-
-                if (!estaEnPosicionesReclutas ) {
+                if (!estaEnPosicionesReclutas(posicionPotencial) ) {
                     Posicion antigua = recluta.getPosicion();
                     batallon.remove(recluta);
                     reclutasYaMovidos.add(recluta);

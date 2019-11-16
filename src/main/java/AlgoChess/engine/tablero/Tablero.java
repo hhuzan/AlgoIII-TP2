@@ -6,11 +6,13 @@ import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.interfaces.entidades.PuedeFormarBatallon;
 import AlgoChess.engine.matematica.Calculadora;
 import AlgoChess.engine.posicion.Posicion;
+import AlgoChess.engine.posicion.Posiciones;
 import AlgoChess.excepciones.CasilleroOcupadoException;
 import AlgoChess.excepciones.CasilleroVacioException;
 
 import java.util.HashSet;
 import java.util.Queue;
+import java.util.Stack;
 
 import static AlgoChess.engine.Constantes.MAXIMA_DISTANCIA_POR_MOVIMIENTO;
 import static AlgoChess.engine.Constantes.TAMANIO_TABLERO;
@@ -96,5 +98,39 @@ public class Tablero {
 	public void reclutarEntidades(Posicion posicion, HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidad) {
 		Recuadro casillero = obtenerCasillero(posicion);
 		casillero.reclutarEntidad(reclutados, cola, entidad);
+	}
+
+	public boolean esSoldadoAmigo(Faccion faccion, Posicion posicion){
+		Recuadro casillero = obtenerCasillero(posicion);
+		return casillero.esSoldadoAmigo(faccion);
+	}
+
+	private boolean enElCasilleroHayUnidad(Posicion unaPosicion){
+		return obtenerCasillero(unaPosicion).poseesUnidad();
+
+	}
+
+	/*DFS*/
+	public void colectaUnidadesContiguas(Posicion primero, HashSet<Recuadro> atacados){
+		Recuadro primeroAtacado = obtenerCasillero(primero);
+
+		Stack<Posicion> stack = new Stack<>();
+		Posiciones visitados = new Posiciones();
+		HashSet<Posicion> posicionesPotenciales;
+		stack.add(primero);
+
+		while(stack.size() != 0){
+			Posicion posicionActual = stack.pop();
+			posicionesPotenciales = posicionActual.generarPosicionesEnAlcance(1,1);
+			for(Posicion unaPosicion : posicionesPotenciales){
+				if(!visitados.contiene(unaPosicion)){
+					visitados.agregar(unaPosicion);
+					if(enElCasilleroHayUnidad(unaPosicion)){
+						stack.push(unaPosicion);
+						atacados.add(obtenerCasillero(unaPosicion));
+					}
+				}
+			}
+		}
 	}
 }

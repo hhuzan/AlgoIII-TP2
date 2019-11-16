@@ -2,6 +2,7 @@ package AlgoChess.engine.tablero;
 
 import AlgoChess.engine.entidades.Entidad;
 import AlgoChess.engine.entidades.NulaEntidad;
+import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.interfaces.entidades.*;
@@ -11,7 +12,7 @@ import AlgoChess.excepciones.CasilleroOcupadoException;
 import java.util.HashSet;
 import java.util.Queue;
 
-public class Ocupado extends Casillero implements Recuadro {
+public class Ocupado extends Casillero {
     private PuedeAtacar puedeAtacar;
     private PuedeCurar puedeCurar;
     private PuedeFormarBatallon puedeFormarBatallon;
@@ -56,13 +57,15 @@ public class Ocupado extends Casillero implements Recuadro {
         entidad.setPosicion(posicion);
     }
 
-    public boolean tienesLaEntidad(Entidad entidad) {
-        if (entidad == puedeAtacar) return true;
-        if (entidad == puedeCurar) return true;
-        if (entidad == puedeFormarBatallon) return true;
-        if (entidad == puedeMoverse) return true;
-        if (entidad == puedeSerCurada) return true;
-        return entidad == puedeSerHerida;
+    @Override
+    public boolean esSoldadoAmigo(Faccion faccion) {
+        //Los soldados siempre pueden ser heridos.
+        return Soldado.class == puedeSerHerida.getClass() && puedeSerHerida.sosAmigo(faccion);
+    }
+
+    @Override
+    public boolean poseesUnidad() {
+        return puedeSerHerida.getClass() != NulaEntidad.class;
     }
 
     public void infligirDanioEnEntidad(int power, Faccion entidadAtacante, Tablero tablero) {
@@ -105,10 +108,6 @@ public class Ocupado extends Casillero implements Recuadro {
         puedeFormarBatallon.reclutarParaBatallon(reclutados, cola, entidadOrigen);
     }
 
-
-    public Vacio removerEntidad() {
-        return new Vacio(this);
-    }
 
     public boolean recibirEntidad(Entidad entidad, Tablero tablero) {
         throw new CasilleroOcupadoException();

@@ -11,6 +11,7 @@ import java.util.Queue;
 
 public class Vacio extends Casillero {
 
+
     public Vacio(Posicion posicion, Faccion faccion) {
         super(posicion, faccion);
     }
@@ -53,6 +54,16 @@ public class Vacio extends Casillero {
     }
 
     public void infigirDanioEnEntidadIgnorandoFaccionAtacante(int power, Tablero tablero) {
+    }
+
+    @Override
+    public boolean esSoldadoAmigo(Faccion faccion) {
+        return false;
+    }
+
+    @Override
+    public boolean poseesUnidad() {
+        return false;
     }
 
 }

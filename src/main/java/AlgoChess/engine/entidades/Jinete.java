@@ -1,5 +1,6 @@
 package AlgoChess.engine.entidades;
 
+import AlgoChess.engine.entidades.armas.Arco;
 import AlgoChess.engine.entidades.armas.Daga;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.interfaces.armas.ArmaAtaca;
@@ -8,7 +9,10 @@ import AlgoChess.engine.interfaces.entidades.PuedeAtacar;
 import AlgoChess.engine.interfaces.entidades.PuedeMoverse;
 import AlgoChess.engine.interfaces.entidades.PuedeSerCurada;
 import AlgoChess.engine.interfaces.entidades.PuedeSerHerida;
+import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Tablero;
+
+import java.util.HashSet;
 
 import static AlgoChess.engine.Constantes.JINETE_COSTO;
 import static AlgoChess.engine.Constantes.JINETE_VIDA;
@@ -44,8 +48,8 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
 
     @Override
     public void atacar(Recuadro casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
-        // TODO: Dado algun comportamiento cambiar su arma
         if (sosAmigo(ordenDeFaccion)) {
+            definirArma(tablero);
             arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);
         }
     }
@@ -57,10 +61,17 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
     }
 
 
-     /*public void cambiarArma(Arma arma_){
-         arma = arma_;
-        //ver condiciones de cuando se cambia el arma
-    }*/
+    private void definirArma(Tablero tablero){
+        HashSet<Posicion> amigosPotenciales = getPosicion().generarPosicionesEnAlcance(1,1);
+        for(Posicion potencialAmigo : amigosPotenciales){
+            if(tablero.esSoldadoAmigo(getFaccion(), potencialAmigo)){
+                arma = new Arco();
+                return;
+            }
+        }
+        arma = new Daga();
+    }
+
 }
 
 
