@@ -28,6 +28,9 @@ public class Posicion {
     public HashSet<Posicion> generarPosicionesEnAlcance(int min, int max){
         Posiciones posicionesGeneradas = new Posiciones();
 
+
+        //TODO mejorar todos los 8 loops con menos loops.
+
         /*add NORTH squares*/
         for(int i = min; i<= max; i++){
             posicionesGeneradas.agregar(new Posicion(fila-i,columna));

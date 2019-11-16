@@ -36,7 +36,7 @@ public class Posiciones {
         }
         return false;
     }
-    void remover(Posicion posicion){
+    public void remover(Posicion posicion){
         conjunto.remove(posicion);
     }
     HashSet<Posicion> posiciones(){

@@ -14,8 +14,7 @@ import AlgoChess.engine.tablero.Tablero;
 
 import java.util.HashSet;
 
-import static AlgoChess.engine.Constantes.JINETE_COSTO;
-import static AlgoChess.engine.Constantes.JINETE_VIDA;
+import static AlgoChess.engine.Constantes.*;
 
 public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeSerHerida, PuedeSerCurada {
     private ArmaAtaca arma;
@@ -62,7 +61,7 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
 
 
     private void definirArma(Tablero tablero){
-        HashSet<Posicion> amigosPotenciales = getPosicion().generarPosicionesEnAlcance(1,1);
+        HashSet<Posicion> amigosPotenciales = getPosicion().generarPosicionesEnAlcance(RANGO_CERCANO_MINIMO,RANGO_CERCANO_MAXIMO);
         for(Posicion potencialAmigo : amigosPotenciales){
             if(tablero.esSoldadoAmigo(getFaccion(), potencialAmigo)){
                 arma = new Arco();

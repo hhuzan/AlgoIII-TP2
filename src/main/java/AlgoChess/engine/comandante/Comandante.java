@@ -4,6 +4,7 @@ import AlgoChess.engine.entidades.Entidad;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.interfaces.entidades.PuedeFormarBatallon;
 import AlgoChess.engine.posicion.Posicion;
+import AlgoChess.engine.posicion.Posiciones;
 import AlgoChess.engine.tablero.Tablero;
 
 import java.util.HashSet;
@@ -19,7 +20,7 @@ public class Comandante {
     private int tamanioBatallon;
     private Tablero tablero;
     private HashSet<PuedeFormarBatallon> batallonParaLoop;
-    private HashSet<Posicion> posicionesReclutas;
+    private Posiciones posicionesReclutas;
     private Posicion instrucciones;
     private HashSet<PuedeFormarBatallon> reclutasYaMovidos;
 
@@ -30,7 +31,7 @@ public class Comandante {
         tamanioBatallon = TAMANIO_BATALLON;
         tablero = tablero_;
         batallonParaLoop = new HashSet<>();
-        posicionesReclutas = new HashSet<>();
+        posicionesReclutas = new Posiciones();
     }
 
     private HashSet<Posicion> generarAdyacentes(Posicion posicion) {
@@ -40,7 +41,6 @@ public class Comandante {
     /*BFS*/
     public void recluteMisCercanos(PuedeFormarBatallon entidad) {
         batallon.add(entidad);
-
         cola.add(entidad.getPosicion());
 
         while (cola.size() != 0 && batallon.size() < tamanioBatallon) {
@@ -75,16 +75,12 @@ public class Comandante {
     private void moverSetup(){
         for (PuedeFormarBatallon unRecluta : batallon) {
             batallonParaLoop.add(unRecluta);
-            posicionesReclutas.add(unRecluta.getPosicion());
+            posicionesReclutas.agregar(unRecluta.getPosicion());
         }
         reclutasYaMovidos = new HashSet<>();
 
     }
 
-    private boolean estaEnPosicionesReclutas(Posicion posicionPotencial){
-        for (Posicion posicion : posicionesReclutas) { if (posicionPotencial.esIgual(posicion)) {return true; } }
-        return false;
-    }
 
     public boolean moverBatallon(Recuadro destino, Entidad entidad) {
         if (batallon.size() != TAMANIO_BATALLON) {return false;}
@@ -96,12 +92,12 @@ public class Comandante {
             for (PuedeFormarBatallon recluta : batallonParaLoop) {
                 if(reclutasYaMovidos.contains(recluta)) continue;
                 Posicion posicionPotencial = generarPosicionPotencial(recluta, instrucciones);
-                if (!estaEnPosicionesReclutas(posicionPotencial) ) {
+                if (!posicionesReclutas.contiene(posicionPotencial) ) {
                     Posicion antigua = recluta.getPosicion();
+                    posicionesReclutas.remover(antigua);
                     batallon.remove(recluta);
                     reclutasYaMovidos.add(recluta);
                     Recuadro casillero = tablero.obtenerCasillero(posicionPotencial);
-                    posicionesReclutas.remove(antigua);
                     boolean seMovio = recluta.moverComoRecluta(tablero, casillero);
                     if (seMovio) {tablero.colocarVacio(antigua);}
                 }

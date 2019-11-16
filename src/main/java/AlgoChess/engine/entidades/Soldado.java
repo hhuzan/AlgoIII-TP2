@@ -74,8 +74,8 @@ public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, Puede
     }
 
     private boolean somosIdenticos(PuedeFormarBatallon entidad) {
-        boolean mismaFaccion = entidad.sosAmigo(this.getFaccion());
-        boolean mismaClase = entidad.getClass() == this.getClass();
+        boolean mismaFaccion = entidad.sosAmigo(getFaccion());
+        boolean mismaClase = entidad.getClass() == getClass();
         return (mismaClase && mismaFaccion);
     }
 

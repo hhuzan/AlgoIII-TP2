@@ -111,13 +111,11 @@ public class Tablero {
 	}
 
 	/*DFS*/
-	public void colectaUnidadesContiguas(Posicion primero, HashSet<Recuadro> atacados){
-		Recuadro primeroAtacado = obtenerCasillero(primero);
-
+	public void colectaUnidadesContiguas(Posicion origen, HashSet<Recuadro> atacados){
 		Stack<Posicion> stack = new Stack<>();
 		Posiciones visitados = new Posiciones();
 		HashSet<Posicion> posicionesPotenciales;
-		stack.add(primero);
+		stack.add(origen);
 
 		while(stack.size() != 0){
 			Posicion posicionActual = stack.pop();
