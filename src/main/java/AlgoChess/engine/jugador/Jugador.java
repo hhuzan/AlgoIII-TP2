@@ -4,6 +4,7 @@ import AlgoChess.engine.Dinero;
 import AlgoChess.engine.entidades.Entidad;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
+import AlgoChess.excepciones.JugadorPerdioException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,13 +41,16 @@ public class Jugador {
 
     private void agregarEntidad(Entidad entidad) {
         if (entidad != null) {
-            entidad.setFaccion(faccion);
+            // TODO: Ver de sacar el constructor que no tiene faccion
+            // entidad.setFaccion(faccion);
             entidades.add(entidad);
         }
     }
 
     public void removerEntidad(Entidad entidad) {
         entidades.remove(entidad);
+        if(perdio())
+            throw new JugadorPerdioException();
     }
 
     public void comprarEntidad(VendedorDeEntidades vendedor, Entidad entidad) {

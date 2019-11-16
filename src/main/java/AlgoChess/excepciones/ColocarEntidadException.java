@@ -1,8 +1,8 @@
-package AlgoChess.excepciones.NoUsadas;
+package AlgoChess.excepciones;
 
 @SuppressWarnings("serial")
 public class ColocarEntidadException extends RuntimeException {
 		   public String toString(){
-		     return ("Intento colocar una entidad enemiga en un casillero aliado o viceversa") ;
+		     return ("No se puede colocar una entidad en un casillero de otra facción") ;
 		  }
 }

@@ -8,6 +8,8 @@ import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.interfaces.entidades.*;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Tablero;
+import AlgoChess.excepciones.EntidadDeMismaFaccionException;
+import AlgoChess.engine.jugador.Jugador;
 
 import java.util.HashSet;
 import java.util.Queue;
@@ -23,6 +25,18 @@ public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, Puede
         arma = new Espada();
     }
 
+    public Soldado(Jugador propietario, Faccion faccion) {
+        super(SOLDADO_VIDA, SOLDADO_COSTO, propietario, faccion);
+        arma = new Espada();
+    }
+
+    private void verificarMuerte(Tablero tablero, Jugador propietario) {
+        if(estoyMuerto()) {
+            tablero.colocarVacio(getPosicion());
+            propietario.removerEntidad(this);
+        }
+    }
+
     @Override
     public Soldado clonar() {
         return new Soldado();
@@ -35,17 +49,25 @@ public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, Puede
 
     @Override
     public void disminuirVida(double cantidad, Faccion faccionQueDania, Tablero tablero) {
-        if (sosEnemigo(faccionQueDania)) {getVida().disminuir(cantidad);}
+        if (sosEnemigo(faccionQueDania)) 
+            getVida().disminuir(cantidad);
+        else 
+            throw new EntidadDeMismaFaccionException();
+
+        verificarMuerte(tablero, getPropietario());
     }
 
     @Override
     public void disminuirVidaIgnorandoFaccionAtacante(double cantidad, Tablero tablero) {
         getVida().disminuir(cantidad);
+        verificarMuerte(tablero, getPropietario());
     }
 
     @Override
     public void atacar(Recuadro casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
-        if (sosAmigo(ordenDeFaccion)) {arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);}
+        if (sosAmigo(ordenDeFaccion)) 
+            arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);
+
     }
 
     @Override
