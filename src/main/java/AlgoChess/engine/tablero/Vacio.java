@@ -5,6 +5,8 @@ import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.interfaces.entidades.PuedeFormarBatallon;
 import AlgoChess.engine.posicion.Posicion;
+import AlgoChess.excepciones.ColocarEntidadException;
+import AlgoChess.excepciones.CasilleroVacioException;
 
 import java.util.HashSet;
 import java.util.Queue;
@@ -21,9 +23,11 @@ public class Vacio extends Casillero {
     }
 
     public boolean colocarEntidad(Entidad entidad, Tablero tablero) {
-        if (entidad.sosAmigo(getFaccion())) {
+        if (entidad.sosAmigo(getFaccion())) 
             recibirEntidad(entidad, tablero);
-        }
+        else
+            throw new ColocarEntidadException();
+
         return true;
     }
 
@@ -36,6 +40,7 @@ public class Vacio extends Casillero {
 
     /*Métodos muertos */
     public void atacar(Recuadro casilleroAtacado, Tablero tablero, Faccion faccionJugador) {
+        throw new CasilleroVacioException();
     }
 
     public void curar(Recuadro casilleroCurado, Tablero tablero, Faccion faccionJugador) {

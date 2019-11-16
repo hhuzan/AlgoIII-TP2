@@ -3,17 +3,26 @@ package AlgoChess.engine.entidades;
 import AlgoChess.engine.Dinero;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.posicion.Posicion;
+import AlgoChess.engine.jugador.Jugador;
 
 public abstract class Entidad {
     private Vida vida;
     private Faccion faccion;
     private Dinero costo;
     private Posicion posicion;
+    private Jugador propietario;
 
     // TODO: Agregar constructor con faccion para crear una entidad directamente con facción determinada
     public Entidad(int vida_, int costo_) {
         vida = new Vida(vida_);
         costo = new Dinero(costo_);
+    }
+
+    public Entidad(int vida_, int costo_, Jugador propietario_, Faccion faccion_) {
+        vida = new Vida(vida_);
+        costo = new Dinero(costo_);
+        propietario = propietario_;
+        faccion = faccion_;
     }
 
     public abstract Entidad clonar();
@@ -31,6 +40,10 @@ public abstract class Entidad {
     //TODO lo deberiamos borrar...
     public boolean tenesEstaVida(double number) {
         return vida.igualA(number);
+    }
+
+    public Jugador getPropietario() {
+        return propietario;
     }
 
     public Faccion getFaccion() {

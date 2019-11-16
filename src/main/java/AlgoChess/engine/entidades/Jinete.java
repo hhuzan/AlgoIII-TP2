@@ -11,6 +11,8 @@ import AlgoChess.engine.interfaces.entidades.PuedeSerCurada;
 import AlgoChess.engine.interfaces.entidades.PuedeSerHerida;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Tablero;
+import AlgoChess.excepciones.EntidadDeMismaFaccionException;
+import AlgoChess.engine.jugador.Jugador;
 
 import java.util.HashSet;
 
@@ -24,9 +26,21 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
         arma = new Daga();
     }
 
+    public Jinete(Jugador propietario, Faccion faccion) {
+        super(JINETE_VIDA, JINETE_COSTO, propietario, faccion);
+        arma = new Daga();
+    }
+
+    private void verificarMuerte(Tablero tablero, Jugador propietario) {
+        if(estoyMuerto()) {
+            tablero.colocarVacio(getPosicion());
+            propietario.removerEntidad(this);
+        }
+    }
+
     @Override
     public Jinete clonar() {
-        return new Jinete();
+        return new Jinete(getPropietario(), getFaccion());
     }
 
     @Override
@@ -36,13 +50,18 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
 
     @Override
     public void disminuirVida(double cantidad, Faccion faccionQueDania, Tablero tablero) {
-        if (sosEnemigo(faccionQueDania)) {getVida().disminuir(cantidad);}
-        if (estoyMuerto()) tablero.colocarVacio(getPosicion());
+        if (sosEnemigo(faccionQueDania))
+            getVida().disminuir(cantidad);
+        else 
+            throw new EntidadDeMismaFaccionException();
+
+        verificarMuerte(tablero, getPropietario());
     }
 
     @Override
     public void disminuirVidaIgnorandoFaccionAtacante(double cantidad, Tablero tablero) {
         getVida().disminuir(cantidad);
+        verificarMuerte(tablero, getPropietario());
     }
 
     @Override

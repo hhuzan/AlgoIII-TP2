@@ -34,20 +34,23 @@ public class CatapultaTest {
 		Catapulta catapulta = new Catapulta();
         jugador.comprarEntidad(vendedor, catapulta);
         // TODO: Ver como hacer assert para verificar esto
-	//assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
+	   // assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
 	}
 
 	@Test
-	public void test02AtacamosConUnaCatapultaYElEnemigoRecibeDanio() {
-		Faccion faccion_1 = new Faccion();
-		Faccion faccion_2 = new Faccion();
+	public void test02AtacamosConUnaCatapultaYElEnemigoRecibeDanio() { 
+        Faccion faccion_1 = new Faccion();
+        Faccion faccion_2 = new Faccion();
         Tablero tablero = new Tablero(faccion_1, faccion_2);
 
         Catapulta catapulta = new Catapulta();
         Jinete jinete = new Jinete();
 
-        Posicion posOrigen = new Posicion(1,1);
-        Posicion posDestino = new Posicion(1,2);
+        Posicion posOrigen = new Posicion(6,1);
+        Posicion posDestino = new Posicion(12,1);
+
+        catapulta.setFaccion(faccion_1);
+        jinete.setFaccion(faccion_2);
 
         tablero.colocarEntidad(catapulta, posOrigen);
         tablero.colocarEntidad(jinete, posDestino);
@@ -98,7 +101,7 @@ public class CatapultaTest {
 
         assertThrows(EntidadNoPuedeMoverseException.class, () -> {
         	casilleroOrigen.moverEntidad(tablero, casilleroDestino, faccion_1);
-	});
+	   });
 	}
 	// Test 05: Catapulta falla al atacar a distancia cercana o media
 	// Test 06: Catapulta ataca bloque de casilleros si hay otras entidades
