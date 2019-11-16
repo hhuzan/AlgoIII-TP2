@@ -456,6 +456,28 @@ public class CatapultaBatallonJineteTests {
     }
 
 
+    @Test
+    public void TestBasura0013() {
+        Faccion faccion = new Faccion();
+        Tablero tablero = new Tablero(faccion,faccion);
+
+        Soldado soldado1 = new Soldado();
+        Soldado soldado2 = new Soldado();
+        soldado1.setFaccion(faccion);
+        soldado2.setFaccion(faccion);
+
+        Posicion pos1 = new Posicion(1,1);
+        Posicion pos2 = new Posicion(2,2);
+
+        tablero.colocarEntidad(soldado1,pos1);
+        tablero.colocarEntidad(soldado2,pos2);
+
+        Recuadro casilleroDestino = tablero.obtenerCasillero(pos2);
+
+        soldado1.moverA(tablero,casilleroDestino,faccion);
+
+    }
+
 
     /*
     ---------------------------------------
