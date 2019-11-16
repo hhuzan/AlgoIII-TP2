@@ -15,7 +15,7 @@ import static AlgoChess.engine.Constantes.TAMANIO_BATALLON;
 
 public class Comandante {
     private Queue<Posicion> cola;
-    private HashSet<Posicion> visitados;
+    private Posiciones visitados;
     private HashSet<PuedeFormarBatallon> batallon;
     private int tamanioBatallon;
     private Tablero tablero;
@@ -26,7 +26,7 @@ public class Comandante {
 
     public Comandante(Tablero tablero_) {
         cola = new LinkedList<>();
-        visitados = new HashSet<>();
+        visitados = new Posiciones();
         batallon = new HashSet<>();
         tamanioBatallon = TAMANIO_BATALLON;
         tablero = tablero_;
@@ -44,11 +44,13 @@ public class Comandante {
         cola.add(entidad.getPosicion());
 
         while (cola.size() != 0 && batallon.size() < tamanioBatallon) {
+            //TODO borrar
+            System.out.println("RECLUTE MIS CERCANOS 1");
             Posicion actualPosicion = cola.remove();
             HashSet<Posicion> posiciones = generarAdyacentes(actualPosicion);
             for (Posicion posicion : posiciones) {
-                if (!visitados.contains(posicion)) {
-                    visitados.add(posicion);
+                if (!visitados.contiene(posicion)) {
+                    visitados.agregar(posicion);
                     tablero.reclutarEntidades(posicion, batallon, cola, entidad);
                 }
             }
