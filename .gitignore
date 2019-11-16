@@ -83,3 +83,5 @@ target/classes/AlgoChess/excepciones/NoUsadas/TipoNoPuedeSerCuradoException.clas
 target/classes/META-INF/tp2.kotlin_module
 target/test-classes/META-INF/tp2.kotlin_module
 .idea/uiDesigner.xml
+target/classes/AlgoChess/engine/posicion/Posiciones.class
+target/test-classes/AlgoChess/CatapultaBatallonJineteTests.class

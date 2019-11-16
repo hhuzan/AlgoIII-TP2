@@ -29,8 +29,6 @@ public class Posiciones {
     }
 
     public boolean contiene(Posicion posicion){
-        int fila_ = posicion.getFila();
-        int columna_ = posicion.getColumna();
         for (Posicion unaPosicion : conjunto){
             if(unaPosicion.esIgual(posicion)){
                 return true;
