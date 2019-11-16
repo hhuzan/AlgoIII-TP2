@@ -75,4 +75,13 @@ public abstract class Entidad {
     }
 
 
+    public Dinero restarDinero(Dinero dinero){
+       Dinero dineroNuevo =  dinero.restarDinero(this.costo);
+       return dineroNuevo;
+    }
+
+
+    public boolean costosIguales(Dinero pago){
+        return (this.costo.sonIguales(pago));
+    }
 }
