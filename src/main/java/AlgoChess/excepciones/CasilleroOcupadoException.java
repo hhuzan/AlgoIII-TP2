@@ -2,7 +2,7 @@ package AlgoChess.excepciones;
 
 @SuppressWarnings("serial")
 
-/*Es necesario hacer esto? En el juego se mostrará que habrá una entidad en X casillero, y si se quiere mostrar
+/*Es necesario hacer esto? En el juego se mostrará que habrá una entidad en X casillero, y si se quiere mover
 a otro casillero con una unidad, se puede hacer nullpattern ya que el usuario puede asumir que no se puede mover porque
 esta ocupado
 * */
