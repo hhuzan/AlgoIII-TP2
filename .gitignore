@@ -1,2 +1,19 @@
 
 src/test/java/AlgoChess/BasuraTest.java
+.idea/$PRODUCT_WORKSPACE_FILE$
+.idea/.name
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/libraries/Maven__junit_junit_4_12.xml
+.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml
+.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml
+.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_5_2.xml
+.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_5_2.xml
+.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_5_2.xml
+.idea/libraries/Maven__org_junit_vintage_junit_vintage_engine_5_5_2.xml
+.idea/libraries/Maven__org_mockito_mockito_all_1_10_19.xml
+.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
