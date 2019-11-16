@@ -98,8 +98,7 @@ public class Ocupado extends Casillero {
 
 
     public void moverEntidad(Tablero tablero, Recuadro casillero, Faccion faccionJugador) {
-        boolean seMovio = puedeMoverse.moverA(tablero, casillero, faccionJugador);
-        if (seMovio) {
+        if (puedeMoverse.moverA(tablero, casillero, faccionJugador)) {
             tablero.colocarVacio(getPosicion());
         }
     }

@@ -8,12 +8,12 @@ import AlgoChess.engine.tablero.Tablero;
 import java.util.HashSet;
 import java.util.Queue;
 
-public interface PuedeFormarBatallon extends PuedeMoverse {
+public interface PuedeFormarBatallon extends PuedeSerHerida {
     void reclutarParaBatallon(HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidad);
 
-    Posicion getPosicion();
+    //Posicion getPosicion();
 
-    boolean sosAmigo(Faccion unaFaccion);
+    //boolean sosAmigo(Faccion unaFaccion);
 
     boolean moverComoRecluta(Tablero tablero, Recuadro casillero);
 

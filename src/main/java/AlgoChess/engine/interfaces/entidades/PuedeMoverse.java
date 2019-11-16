@@ -4,6 +4,6 @@ import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.tablero.Tablero;
 
-public interface PuedeMoverse {
+public interface PuedeMoverse extends PuedeSerHerida{
     boolean moverA(Tablero tablero, Recuadro casillero, Faccion faccionJugador);
 }

@@ -1,6 +1,7 @@
 package AlgoChess.engine.interfaces.entidades;
 
 import AlgoChess.engine.facciones.Faccion;
+import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Tablero;
 
 public interface PuedeSerHerida {
@@ -11,4 +12,7 @@ public interface PuedeSerHerida {
     boolean sosAmigo(Faccion unaFaccion);
 
     boolean sosEnemigo(Faccion unaFaccion);
+
+    Posicion getPosicion();
+
 }
