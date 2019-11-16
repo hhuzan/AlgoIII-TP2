@@ -22,7 +22,7 @@ public abstract class Entidad {
         return vida;
     }
 
-    public boolean estoyMuerto() {
+    boolean estoyMuerto() {
         return vida.fallecio();
     }
 

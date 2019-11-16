@@ -28,9 +28,7 @@ public class Curandero extends Entidad implements PuedeCurar, PuedeMoverse, Pued
 
     @Override
     public void disminuirVida(double cantidad, Faccion faccionQueDania, Tablero tablero) {
-        if (sosEnemigo(faccionQueDania)) {
-            getVida().disminuir(cantidad);
-        }
+        if (sosEnemigo(faccionQueDania)) {getVida().disminuir(cantidad);}
         if (estoyMuerto()) tablero.colocarVacio(getPosicion());
     }
 
@@ -43,25 +41,18 @@ public class Curandero extends Entidad implements PuedeCurar, PuedeMoverse, Pued
 
     @Override
     public void curar(Recuadro casilleroCurado, Faccion faccionJugador) {
-        if (sosAmigo(faccionJugador)) {
-            arma.curar(getPosicion(), casilleroCurado, getFaccion());
-        }
+        if (sosAmigo(faccionJugador)) {arma.curar(getPosicion(), casilleroCurado, getFaccion());}
 
     }
 
     @Override
     public boolean moverA(Tablero tablero, Recuadro casillero, Faccion faccionJugador) {
-        if (sosAmigo(faccionJugador)) {
-            casillero.recibirEntidad(this, tablero);
-            return true;
-        }
+        if (sosAmigo(faccionJugador)) {return casillero.recibirEntidad(this, tablero);}
         return false;
     }
 
     @Override
     public void aumentarVida(int cantidad, Faccion faccionQueCura) {
-        if (sosAmigo(faccionQueCura)) {
-            getVida().aumentar(cantidad);
-        }
+        if (sosAmigo(faccionQueCura)) {getVida().aumentar(cantidad);}
     }
 }

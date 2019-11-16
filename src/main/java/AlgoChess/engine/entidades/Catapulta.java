@@ -26,9 +26,7 @@ public class Catapulta extends Entidad implements PuedeAtacar, PuedeSerHerida {
 
     @Override
     public void disminuirVida(double cantidad, Faccion faccionQueDania, Tablero tablero) {
-        if (sosEnemigo(faccionQueDania)) {
-            getVida().disminuir(cantidad);
-        }
+        if (sosEnemigo(faccionQueDania)) {getVida().disminuir(cantidad);}
         if (estoyMuerto()) tablero.colocarVacio(getPosicion());
     }
 
@@ -41,8 +39,6 @@ public class Catapulta extends Entidad implements PuedeAtacar, PuedeSerHerida {
 
     @Override
     public void atacar(Recuadro casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
-        if (sosAmigo(ordenDeFaccion)) {
-            arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);
-        }
+        if (sosAmigo(ordenDeFaccion)) {arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);}
     }
 }

@@ -72,3 +72,14 @@ target/test-classes/AlgoChess/BasuraTest.class
 target/test-classes/AlgoChess/BatallonTest.class
 target/test-classes/AlgoChess/CatapultaTest.class
 target/test-classes/AlgoChess/TableroTest.class
+target/classes/AlgoChess/excepciones/NoUsadas/ColocarEntidadException.class
+target/classes/AlgoChess/excepciones/NoUsadas/EntidadDelMismoEquipoException.class
+target/classes/AlgoChess/excepciones/NoUsadas/EntidadFueraDeAlcanceException.class
+target/classes/AlgoChess/excepciones/NoUsadas/JugadorPierdeException.class
+target/classes/AlgoChess/excepciones/NoUsadas/PuntosInsuficientesException.class
+target/classes/AlgoChess/excepciones/NoUsadas/TipoNoPuedeAtacarException.class
+target/classes/AlgoChess/excepciones/NoUsadas/TipoNoPuedeCurarException.class
+target/classes/AlgoChess/excepciones/NoUsadas/TipoNoPuedeSerCuradoException.class
+target/classes/META-INF/tp2.kotlin_module
+target/test-classes/META-INF/tp2.kotlin_module
+.idea/uiDesigner.xml

@@ -3,6 +3,8 @@ package AlgoChess;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+
 import AlgoChess.engine.tablero.Tablero;
 import AlgoChess.engine.tablero.Casillero;
 import AlgoChess.engine.entidades.Catapulta;

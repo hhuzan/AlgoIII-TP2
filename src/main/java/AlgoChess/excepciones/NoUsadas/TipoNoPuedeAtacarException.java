@@ -1,4 +1,4 @@
-package AlgoChess.excepciones;
+package AlgoChess.excepciones.NoUsadas;
 
 @SuppressWarnings("serial")
 public class TipoNoPuedeAtacarException extends RuntimeException {

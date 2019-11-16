@@ -28,17 +28,12 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
 
     @Override
     public void aumentarVida(int cantidad, Faccion faccionQueCura) {
-        if (sosAmigo(faccionQueCura)) {
-            getVida().aumentar(cantidad);
-        }
-
+        if (sosAmigo(faccionQueCura)) {getVida().aumentar(cantidad);}
     }
 
     @Override
     public void disminuirVida(double cantidad, Faccion faccionQueDania, Tablero tablero) {
-        if (sosEnemigo(faccionQueDania)) {
-            getVida().disminuir(cantidad);
-        }
+        if (sosEnemigo(faccionQueDania)) {getVida().disminuir(cantidad);}
         if (estoyMuerto()) tablero.colocarVacio(getPosicion());
     }
 
@@ -57,12 +52,10 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
 
     @Override
     public boolean moverA(Tablero tablero, Recuadro casillero, Faccion faccionJugador) {
-        if (sosAmigo(faccionJugador)) {
-            return casillero.recibirEntidad(this, tablero);
-
-        }
+        if (sosAmigo(faccionJugador)) {return casillero.recibirEntidad(this, tablero);}
         return false;
     }
+
 
      /*public void cambiarArma(Arma arma_){
          arma = arma_;

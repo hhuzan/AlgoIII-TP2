@@ -39,6 +39,7 @@ public class Comandante {
         int fila = posicion.getFila();
         int columna = posicion.getColumna();
 
+        //TODO mejorar esto con un loop
         contiguos.add(new Posicion(fila - 1, columna)); //arriba
         contiguos.add(new Posicion(fila + 1, columna)); //abajo
         contiguos.add(new Posicion(fila, columna + 1)); //derecha
@@ -59,30 +60,18 @@ public class Comandante {
 
     }
 
-
+    /*BFS*/
     public void recluteMisCercanos(PuedeFormarBatallon entidad) {
-        /*Añado la entidad que pide reclutar sus cercanos a Reclutados*/
         batallon.add(entidad);
 
-        /*Añado la posicion de la entidad que pide reclutar sus cercanos a la Cola*/
         cola.add(entidad.getPosicion());
 
-        // Mientras el tamaño de la cola sea distinto a cero y los reclutados sean menor al tamaño máximo del batallón
         while (cola.size() != 0 && batallon.size() < tamanioBatallon) {
-            // Remuevo la posicion de la cola
             Posicion actualPosicion = cola.remove();
-
-            //Genero las posiciones vecinas de la cola
             HashSet<Posicion> posiciones = generarAdyacentes(actualPosicion);
-            //TODO borrar System.out.println("Generando adyacentes para: " + actualPosicion.getFila() + ", " + actualPosicion.getColumna());
-            //Para cada posicion vecina de mi posicion actual
             for (Posicion posicion : posiciones) {
-                //TODO borrar System.out.println("Analizando: " + posicion.getFila() + ", " + posicion.getColumna());
-                //Si la posicion no fue visitada
                 if (!visitados.contains(posicion)) {
-                    //La agrego a visistados
                     visitados.add(posicion);
-                    //Tablero recluta la posicion
                     tablero.reclutarEntidades(posicion, batallon, cola, entidad);
                 }
             }
@@ -116,24 +105,17 @@ public class Comandante {
     }
 
     public boolean moverBatallon(Recuadro destino, Entidad entidad) {
-        if (batallon.size() != TAMANIO_BATALLON) {
-            return false;
-        }
+        if (batallon.size() != TAMANIO_BATALLON) {return false;}
 
         moverSetup();
         generarInstrucciones(destino, entidad);
 
 
         while (batallon.size() != 0) {
-
             for (PuedeFormarBatallon recluta : batallonParaLoop) {
                 if(reclutasYaMovidos.contains(recluta)) continue;
-
                 Posicion posicionPotencial = generarPosicionPotencial(recluta, instrucciones);
-
-
                 boolean estaEnPosicionesReclutas = false;
-
                 for (Posicion posicion : posicionesReclutas) {
                     if (posicionPotencial.esIgual(posicion)) {
                         estaEnPosicionesReclutas = true;
@@ -142,30 +124,14 @@ public class Comandante {
 
                 if (!estaEnPosicionesReclutas ) {
                     Posicion antigua = recluta.getPosicion();
-
                     batallon.remove(recluta);
                     reclutasYaMovidos.add(recluta);
-
                     Recuadro casillero = tablero.obtenerCasillero(posicionPotencial);
-
                     posicionesReclutas.remove(antigua);
                     boolean seMovio = recluta.moverComoRecluta(tablero, casillero);
-
-
-                    //TODO borrar
-                    System.out.print("Se movio el recluta: " + seMovio + ' ');
-                    System.out.print("Posicion: ");
-                    posicionPotencial.print();
-
-
-
-                    if (seMovio) {
-                        tablero.colocarVacio(antigua);
-                    }
+                    if (seMovio) {tablero.colocarVacio(antigua);}
                 }
-
             }
-
         }
         return true;
     }

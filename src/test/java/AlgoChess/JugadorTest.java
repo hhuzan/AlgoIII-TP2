@@ -5,7 +5,7 @@
 // import static org.junit.jupiter.api.Assertions.assertThrows;
 // import org.junit.Test;
 
-// import AlgoChess.excepciones.PuntosInsuficientesException;
+// import AlgoChess.excepciones.PuntosInsuficien
 
 // public class JugadorTest {
 
