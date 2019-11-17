@@ -39,7 +39,7 @@ public class Tablero {
 		}
 	}
 
-	private void cambiarCasillero(Recuadro casillero) {
+	public void cambiarCasillero(Recuadro casillero) {
 		Posicion posicion = casillero.getPosicion();
 		casilleros[posicion.getFila()][posicion.getColumna()] = casillero;
 	}
