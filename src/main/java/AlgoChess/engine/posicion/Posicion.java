@@ -11,8 +11,6 @@ public class Posicion {
         columna = columna_;
     }
 
-
-
     public int getColumna() {
         return columna;
     }
