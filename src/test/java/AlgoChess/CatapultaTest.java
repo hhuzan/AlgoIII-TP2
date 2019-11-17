@@ -110,7 +110,23 @@ public class CatapultaTest {
 	// Test 05: Catapulta falla al atacar a distancia cercana o media
 	@Test 
     public void test05CatapultaNoAtacaADistanciaQueNoEsLejana() {
+        Faccion faccion_1 = new Faccion();
+        Faccion faccion_2 = new Faccion();
+        Tablero tablero = new Tablero(faccion_1, faccion_2);
 
+        Catapulta catapulta = new Catapulta();
+        Jinete jinete = new Jinete();
+        catapulta.setFaccion(faccion_1);
+        jinete.setFaccion(faccion_2);
+
+        Posicion posOrigen = new Posicion(9, 1);
+        Posicion posDestino = new Posicion(10, 1);
+
+        tablero.colocarEntidad(catapulta, posOrigen);
+        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
+
+        catapulta.atacar(casilleroDestino, tablero, faccion_1);
     }
 
     @Test
@@ -126,7 +142,7 @@ public class CatapultaTest {
         Catapulta catapulta = new Catapulta();
         catapulta.setFaccion(faccion1);
         Posicion pcatapulta = new Posicion(0,10);
-        tablero.colocarEntidad(catapulta,pcatapulta);
+        tablero.colocarEntidad(catapulta, pcatapulta);
 
         /*Creo soldados*/
         Soldado soldado1 = new Soldado();
@@ -197,7 +213,7 @@ public class CatapultaTest {
         tablero.colocarEntidad(jinete6,pjinete6);
 
         /* Ataque un jinete enemigo */
-        tablero.atacarCasillero(pcatapulta,new Posicion(10,10),faccion1);
+        catapulta.atacar(tablero.obtenerCasillero(pcatapulta), tablero, faccion1);
 
         // TODO: Ver como hacer sin getters
         // assertTrue(jinete1.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
