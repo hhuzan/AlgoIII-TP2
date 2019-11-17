@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
+import AlgoChess.engine.entidades.Soldado;
+
+
 public class SoldadoTest {
 
 	@Test
@@ -45,4 +48,4 @@ public class SoldadoTest {
 
 // 	// Test 5: No puede atacar enemigo a distancia media o lejana 
 // 	// Test 6: Ver lo de los 3 soldados contiguos...
-// }
+}
