@@ -1,14 +1,20 @@
 package AlgoChess.engine.entidades;
 
-class Vida {
+public class Vida {
     private double puntosdevida;
+    double puntosdevidaAux;
 
-    Vida(double vida) {
+    public Vida(double vida) {
         puntosdevida = vida;
+        puntosdevidaAux = puntosdevida;
     }
+
 
     void aumentar(double cantidad) {
         puntosdevida = puntosdevida + cantidad;
+        if (puntosdevida >= puntosdevidaAux){
+            puntosdevida = puntosdevidaAux;
+        }
     }
 
     void disminuir(double cantidad) {
