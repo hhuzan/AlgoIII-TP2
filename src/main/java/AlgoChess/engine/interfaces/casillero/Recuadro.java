@@ -14,7 +14,7 @@ public interface Recuadro {
 
     Faccion getFaccion();
 
-    boolean recibirEntidad(Entidad soldado, Tablero tablero);
+    boolean recibirEntidad(Entidad entidad, Tablero tablero);
 
     boolean colocarEntidad(Entidad entidad, Tablero tablero);
 

@@ -27,7 +27,7 @@ public class Posicion {
         Posiciones posicionesGeneradas = new Posiciones();
 
 
-        //TODO mejorar todos los 8 loops con menos loops.
+        // TODO mejorar todos los 8 loops con menos loops.
 
         /*add NORTH squares*/
         for(int i = min; i<= max; i++){

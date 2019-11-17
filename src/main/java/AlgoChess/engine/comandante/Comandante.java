@@ -44,8 +44,6 @@ public class Comandante {
         cola.add(entidad.getPosicion());
 
         while (cola.size() != 0 && batallon.size() < tamanioBatallon) {
-            //TODO borrar
-            System.out.println("RECLUTE MIS CERCANOS 1");
             Posicion actualPosicion = cola.remove();
             HashSet<Posicion> posiciones = generarAdyacentes(actualPosicion);
             for (Posicion posicion : posiciones) {

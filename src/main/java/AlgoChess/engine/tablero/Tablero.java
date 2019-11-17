@@ -39,24 +39,9 @@ public class Tablero {
 		}
 	}
 
-	public Recuadro obtenerCasillero(Posicion posicion) {
-		return casilleros[posicion.getFila()][posicion.getColumna()];
-	}
-
-	void cambiarCasillero(Recuadro casillero) {
+	private void cambiarCasillero(Recuadro casillero) {
 		Posicion posicion = casillero.getPosicion();
 		casilleros[posicion.getFila()][posicion.getColumna()] = casillero;
-	}
-
-	public void colocarVacio(Posicion posicion) {
-		Recuadro casillero = obtenerCasillero(posicion);
-		Recuadro vacio = new Vacio(casillero);
-		cambiarCasillero(vacio);
-	}
-
-	public void colocarEntidad(Entidad entidad, Posicion posicion) {
-		Recuadro casillero = casilleros[posicion.getFila()][posicion.getColumna()];
-		casillero.colocarEntidad(entidad, this);
 	}
 
 	private boolean esMovimientoValido(Posicion origen, Posicion destino) {
@@ -71,6 +56,20 @@ public class Tablero {
 		return calculadora.distanciaValidaEntreDosPosiciones(x1, y1, x2, y2, distancia, distancia);
 	}
 
+	public Recuadro obtenerCasillero(Posicion posicion) {
+		return casilleros[posicion.getFila()][posicion.getColumna()];
+	}
+	
+	public void colocarVacio(Posicion posicion) {
+		Recuadro casillero = obtenerCasillero(posicion);
+		Recuadro vacio = new Vacio(casillero);
+		cambiarCasillero(vacio);
+	}
+
+	public void colocarEntidad(Entidad entidad, Posicion posicion) {
+		Recuadro casillero = casilleros[posicion.getFila()][posicion.getColumna()];
+		casillero.colocarEntidad(entidad, this);
+	}
 
 	public void atacarCasillero(Posicion atacante_, Posicion atacado_, Faccion faccionJugador) throws CasilleroVacioException {
 		Recuadro casilleroAtacante = casilleros[atacante_.getFila()][atacante_.getColumna()];
