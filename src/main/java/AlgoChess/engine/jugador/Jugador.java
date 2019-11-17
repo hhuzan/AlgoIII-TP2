@@ -54,7 +54,8 @@ public class Jugador {
     }
 
     public void comprarEntidad(VendedorDeEntidades vendedor, Entidad entidad) {
-        Dinero gasto = dinero.restarDinero(entidad.getCosto());
+       // Dinero gasto = dinero.restarDinero(entidad.getCosto());
+        Dinero gasto = entidad.restarDinero(dinero);
         Entidad miEntidad = vendedor.venderEntidad(entidad, gasto);
         agregarEntidad(miEntidad);
     }
