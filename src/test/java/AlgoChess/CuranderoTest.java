@@ -18,6 +18,7 @@ import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.excepciones.JugadorPerdioException;
 import AlgoChess.excepciones.EntidadDeMismaFaccionException;
 import AlgoChess.excepciones.EntidadNoPuedeSerCuradaException;
+import AlgoChess.excepciones.CasilleroOcupadoException;
 
 public class CuranderoTest {
 
@@ -113,7 +114,7 @@ public class CuranderoTest {
 	}
 
 	@Test
-	public void test07CuranderCuraACatapultaArrojaExcepcion() {
+	public void test07CuranderoCuraACatapultaArrojaExcepcion() {
 		Faccion faccionAliado = new Faccion();
 		Faccion faccionEnemigo = new Faccion();
 		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
@@ -126,7 +127,7 @@ public class CuranderoTest {
 		tablero.colocarEntidad(curandero, posicion);
 
 		Posicion posicionDestino = new Posicion(10,1);
-		tablero.colocarEntidad(test07CuranderCuraACatapultaArrojaExcepcion, posicionDestino);
+		tablero.colocarEntidad(catapulta, posicionDestino);
 
 		assertThrows(EntidadNoPuedeSerCuradaException.class, () -> {
 			curandero.curar(tablero.obtenerCasillero(posicionDestino), faccionAliado);
@@ -151,5 +152,24 @@ public class CuranderoTest {
 
 		// TODO: Ver como hacer assert para verificar esto
 		// assertEquals(Jinete.getVida, JINETE_VIDA); (i.e: no lo curo pq es la distancia no es cercana)
+	}
+
+	@Test
+	public void test09MovemosUnCuranderoAUnCasilleroDestinoYSeMueve() {
+		Faccion faccionAliado = new Faccion();
+		Faccion faccionEnemigo = new Faccion();
+		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
+		Jugador jugador1 = new Jugador(faccionAliado);
+		Curandero curandero = new Curandero(jugador1, faccionAliado);
+
+		Posicion posicion = new Posicion(1,1);
+		tablero.colocarEntidad(curandero, posicion);
+
+		Posicion posicionDestino = new Posicion(1, 2);
+		curandero.moverA(tablero, tablero.obtenerCasillero(posicionDestino), faccionAliado);
+
+		assertThrows(CasilleroOcupadoException.class, () -> {
+			tablero.colocarEntidad(curandero, posicionDestino);
+		});	
 	}
 }

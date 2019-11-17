@@ -34,7 +34,7 @@ public class CatapultaTest {
 		Catapulta catapulta = new Catapulta();
         jugador.comprarEntidad(vendedor, catapulta);
         // TODO: Ver como hacer assert para verificar esto
-	   // assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
+	// assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
 	}
 
 	@Test
