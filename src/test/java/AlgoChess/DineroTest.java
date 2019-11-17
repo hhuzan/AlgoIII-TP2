@@ -28,14 +28,22 @@ public class DineroTest {
         assertFalse(dinero1.sonIguales(dinero2));
     }
 
-}
 
-  /*  @Test
+@Test
     public void Test03NoSePuedeRestarMasDineroDelQueTenes(){
         Dinero dinero1 = new Dinero(0);
         Dinero dinero2 = new Dinero(1);
-        assertThrows(DineroInsuficienteException.class, () -> dinero1.restarDinero(dinero2));
+        Dinero expected = dinero1.restarDinero(dinero2);
+        Dinero test = new Dinero(0);
+        assertTrue(expected.sonIguales(test));
     }
 }
 
-   */
+
+
+
+
+
+
+
+
