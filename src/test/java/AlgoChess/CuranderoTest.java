@@ -1,72 +1,155 @@
-// package AlgoChess;
+package AlgoChess;
 
-// import static org.junit.Assert.assertEquals;
-// import static org.junit.Assert.assertNotNull;
-// import static org.junit.jupiter.api.Assertions.assertThrows;
-// import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.Test;
 
-// import xcepciones.TipoNoPuedeSerCuradoException;
+import AlgoChess.engine.entidades.Curandero;
+import AlgoChess.engine.entidades.Jinete;
+import AlgoChess.engine.entidades.Catapulta;
+import static AlgoChess.engine.Constantes.CURANDERO_VIDA;
+import AlgoChess.engine.facciones.Faccion;
+import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
+import AlgoChess.engine.jugador.Jugador;
+import AlgoChess.engine.tablero.Tablero;
+import AlgoChess.engine.posicion.Posicion;
 
-// public class CuranderoTest {
+import AlgoChess.excepciones.JugadorPerdioException;
+import AlgoChess.excepciones.EntidadDeMismaFaccionException;
+import AlgoChess.excepciones.EntidadNoPuedeSerCuradaException;
 
-// 	@Test
-// 	public void test00ConstructorCuranderoNoDevuelveNull() {
-// 		Curandero curandero = new Curandero();
-// 		assertNotNull(curandero);
-// 	}
+public class CuranderoTest {
 
-// 	@Test
-// 	public void test01CreamosUnCuranderoYSuCostoEsElEsperado() {
-// 		int costoCurandero = 2;
-// 		Curandero curandero = new Curandero();
-// 		assertEquals(costoCurandero, curandero.getCosto());
-// 	}
+	@Test
+	public void test00ConstructorCuranderoNoDevuelveNull() {
+		Curandero curandero = new Curandero();
+		assertNotNull(curandero);
+	}
 
-// 	@Test
-// 	public void test02CreamosUnCuranderoYSuVidaEsLaEsperada() {
-// 		int vidaCurandero = 75;
-// 		Curandero curandero = new Curandero();
-// 		assertEquals(vidaCurandero, curandero.getVida());
-// 	}
+	@Test
+	public void test01CreamosUnCuranderoYSuCostoEsElEsperado() {
+		Faccion faccion = new Faccion();
+        VendedorDeEntidades vendedor = new VendedorDeEntidades();
+        Jugador jugador = new Jugador(faccion, "Pedro");
+		Curandero curandero = new Curandero();
+        jugador.comprarEntidad(vendedor, curandero);
+        // TODO: Ver como hacer assert para verificar esto
+		// assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
+	}
 
-// 	@Test
-// 	public void test03CreamosUnCuranderoYRestamosPuntosDeCostoAlJugador() {
-// 		int costoCurandero = 2;
-// 		int puntosJugadorNuevo = 20;
-// 		Jugador jugador = new Jugador();
-// 		Curandero curandero = new Curandero();
-// 		curandero.restarAJugador();
-// 		assertEquals(puntosJugadorNuevo - costoCurandero, jugador.getPuntos());
-// 	}
+	@Test
+	public void test03DisminuimosTodaLaVidaDelCuranderoYMuere() {
+		Faccion faccionAliado = new Faccion();
+		Faccion faccionEnemigo = new Faccion();
+		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
+		Jugador jugador = new Jugador(faccionAliado);
+		Curandero curandero = new Curandero(jugador, faccionAliado);
 
-// 	@Test
-// 	public void test04CuramosConUnCuranderoYElAliadoSumaVida() {
-// 		int distancia = 1;
-// 		Distancia tipoDistancia = new DistanciaCercana(distancia);
-// 		Jugador jugador1 = new Jugador();
-// 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
-// 		Entidad curandero = new Curandero();
-// 		Entidad jinete = new Jinete();
-// 		jugador1.agregar(curandero);
-// 		jugador2.agregar(jinete);
-// 		curandero.curar(jinete, tipoDistancia);
-// 		assertEquals(115, jinete.getVida());
-// 	}
+		Posicion posicion = new Posicion(1,1);
+		tablero.colocarEntidad(curandero, posicion);
 
-// 	@Test
-// 	public void test05CuranderCuraACatapultaArrojaExcepcion() {
-// 		int distancia = 1;
-// 		Distancia tipoDistancia = new DistanciaCercana(distancia);
-// 		Jugador jugador1 = new Jugador();
-// 		Jugador jugador2 = new Jugador(); // TODO: Refactor esto..
-// 		Entidad curandero = new Aliado(new Curandero());
-// 		Entidad catapulta = new Aliado(new Catapulta());
-// 		jugador1.agregar(curandero);
-// 		jugador2.agregar(catapulta);
-// 		assertThrows(TipoNoPuedeSerCuradoException.class, () -> {
-// 			curandero.curar(catapulta, tipoDistancia);
-// 		});
-// 	}
+		assertThrows(JugadorPerdioException.class, () -> {
+			curandero.disminuirVida(CURANDERO_VIDA, faccionEnemigo, tablero);
+		});
 
-// 	// Test 06: Falla al curar de distancia media o lejana
-// }
+	}
+
+	@Test
+	public void test04DisminuimosVidaAlCuranderoPasandoMismaFaccionDeAtacanteYArrojaExcepcion() {
+		Faccion faccionAliado = new Faccion();
+		Faccion faccionEnemigo = new Faccion();
+		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
+		Jugador jugador = new Jugador(faccionAliado);
+		Curandero curandero = new Curandero(jugador, faccionAliado);
+
+		Posicion posicion = new Posicion(1,1);
+		tablero.colocarEntidad(curandero, posicion);
+
+		assertThrows(EntidadDeMismaFaccionException.class, () -> {
+			curandero.disminuirVida(CURANDERO_VIDA, faccionAliado, tablero);
+		});
+
+	}
+
+	@Test
+	public void test05CuramosConUnCuranderoYElAliadoSumaVida() {
+		Faccion faccionAliado = new Faccion();
+		Faccion faccionEnemigo = new Faccion();
+		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
+		Jugador jugador1 = new Jugador(faccionAliado);
+		Curandero curandero = new Curandero(jugador1, faccionAliado);
+		Jinete jinete = new Jinete(jugador1, faccionAliado);
+
+		Posicion posicion = new Posicion(1,1);
+		tablero.colocarEntidad(curandero, posicion);
+
+		Posicion posicionDestino = new Posicion(1,2);
+		tablero.colocarEntidad(jinete, posicionDestino);
+
+		curandero.curar(tablero.obtenerCasillero(posicionDestino), faccionAliado);
+		// TODO: Ver como hacer assert para verificar esto
+		// assertEquals(Jinete.getVida, JINETE_VIDA + VACULO_PODER);
+	}
+
+	@Test
+	public void test06CuramosAUnaEntidadDeOtraFaccionConUnCuranderoYNoLoCura() {
+		Faccion faccionAliado = new Faccion();
+		Faccion faccionEnemigo = new Faccion();
+		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
+		Jugador jugador1 = new Jugador(faccionAliado);
+		Jugador jugador2 = new Jugador(faccionEnemigo);
+		Curandero curandero = new Curandero(jugador1, faccionAliado);
+		Jinete jinete = new Jinete(jugador2, faccionEnemigo);
+
+		Posicion posicion = new Posicion(9,1);
+		tablero.colocarEntidad(curandero, posicion);
+
+		Posicion posicionDestino = new Posicion(10,2);
+		tablero.colocarEntidad(jinete, posicionDestino);
+		
+		// TODO: Ver como hacer assert para verificar esto
+		// assertEquals(Jinete.getVida, JINETE_VIDA); (i.e: no lo curo pq es enemigo)
+	}
+
+	@Test
+	public void test07CuranderCuraACatapultaArrojaExcepcion() {
+		Faccion faccionAliado = new Faccion();
+		Faccion faccionEnemigo = new Faccion();
+		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
+		Jugador jugador1 = new Jugador(faccionAliado);
+		Jugador jugador2 = new Jugador(faccionEnemigo);
+		Curandero curandero = new Curandero(jugador1, faccionAliado);
+		Catapulta catapulta = new Catapulta(jugador2, faccionEnemigo);
+
+		Posicion posicion = new Posicion(9,1);
+		tablero.colocarEntidad(curandero, posicion);
+
+		Posicion posicionDestino = new Posicion(10,1);
+		tablero.colocarEntidad(test07CuranderCuraACatapultaArrojaExcepcion, posicionDestino);
+
+		assertThrows(EntidadNoPuedeSerCuradaException.class, () -> {
+			curandero.curar(tablero.obtenerCasillero(posicionDestino), faccionAliado);
+		});
+	}
+
+	@Test
+	public void test08CuranderoCuraAEntidadAUnaDistanciaDistintaALaCercanaNoCura() {
+		Faccion faccionAliado = new Faccion();
+		Faccion faccionEnemigo = new Faccion();
+		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
+		Jugador jugador1 = new Jugador(faccionAliado);
+		Jugador jugador2 = new Jugador(faccionEnemigo);
+		Curandero curandero = new Curandero(jugador1, faccionAliado);
+		Jinete jinete = new Jinete(jugador2, faccionEnemigo);
+
+		Posicion posicion = new Posicion(9,1);
+		tablero.colocarEntidad(curandero, posicion);
+
+		Posicion posicionDestino = new Posicion(14,1);
+		tablero.colocarEntidad(jinete, posicionDestino);
+
+		// TODO: Ver como hacer assert para verificar esto
+		// assertEquals(Jinete.getVida, JINETE_VIDA); (i.e: no lo curo pq es la distancia no es cercana)
+	}
+}

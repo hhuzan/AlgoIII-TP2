@@ -6,6 +6,7 @@ import AlgoChess.engine.interfaces.entidades.*;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Tablero;
 import AlgoChess.excepciones.EntidadNoPuedeMoverseException;
+import AlgoChess.excepciones.EntidadNoPuedeSerCuradaException;
 import java.util.HashSet;
 import java.util.Queue;
 
@@ -22,7 +23,6 @@ public class NulaEntidad extends Entidad implements PuedeAtacar, PuedeFormarBata
 
     @Override
     public void curar(Recuadro casilleroCurado, Faccion faccionJugador) {
-
     }
 
 
@@ -33,7 +33,7 @@ public class NulaEntidad extends Entidad implements PuedeAtacar, PuedeFormarBata
 
     @Override
     public void aumentarVida(int cantidad, Faccion faccionQueCura) {
-
+        throw new EntidadNoPuedeSerCuradaException();
     }
 
     @Override
