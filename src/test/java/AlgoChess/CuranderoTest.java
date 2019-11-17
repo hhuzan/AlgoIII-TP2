@@ -126,7 +126,7 @@ public class CuranderoTest {
 		tablero.colocarEntidad(curandero, posicion);
 
 		Posicion posicionDestino = new Posicion(10,1);
-		tablero.colocarEntidad(test07CuranderCuraACatapultaArrojaExcepcion, posicionDestino);
+		tablero.colocarEntidad(catapulta, posicionDestino);
 
 		assertThrows(EntidadNoPuedeSerCuradaException.class, () -> {
 			curandero.curar(tablero.obtenerCasillero(posicionDestino), faccionAliado);
