@@ -29,7 +29,7 @@ public class DineroTest {
     }
 
 
-@Test
+    @Test
     public void Test03NoSePuedeRestarMasDineroDelQueTenes(){
         Dinero dinero1 = new Dinero(0);
         Dinero dinero2 = new Dinero(1);
@@ -38,12 +38,3 @@ public class DineroTest {
         assertTrue(expected.sonIguales(test));
     }
 }
-
-
-
-
-
-
-
-
-
