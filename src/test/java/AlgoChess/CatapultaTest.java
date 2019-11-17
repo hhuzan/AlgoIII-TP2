@@ -127,6 +127,7 @@ public class CatapultaTest {
         Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
         catapulta.atacar(casilleroDestino, tablero, faccion_1);
+        // TODO: Assert 
     }
 
     @Test

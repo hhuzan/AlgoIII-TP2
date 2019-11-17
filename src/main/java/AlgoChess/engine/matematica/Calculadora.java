@@ -6,7 +6,9 @@ public class Calculadora {
         int dy = Math.abs(y1 - y2);
         int low = Math.min(dx, dy);
         int high = Math.max(dx, dy);
-        if (high < min || high > max) return false;
+        if (high < min || high > max) 
+        	return false;
+        
         return low * high == 0 || low == high;
 
     }
