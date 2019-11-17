@@ -9,7 +9,7 @@ public class Dinero {
 
     public Dinero restarDinero(Dinero costo) {
         int nuevo_monto = monto - costo.monto;
-        if (nuevo_monto < 0) {
+        if (nuevo_monto <= 0) {
             return new Dinero(0);
         }
         monto = nuevo_monto;
