@@ -91,9 +91,9 @@ public class TableroTest {
 
 		tablero.colocarEntidad(soldado, posOrigen);
 		tablero.moverEntidad(posOrigen, posDestino, faccionAliada);
-		assertThrows(CasilleroOcupadoException.class, () -> {
-			tablero.colocarEntidad(soldado, posDestino);
-		});	
+			assertThrows(CasilleroOcupadoException.class, () -> {
+				tablero.colocarEntidad(soldado, posDestino);
+			});	
 	}
 
 	@Test 
