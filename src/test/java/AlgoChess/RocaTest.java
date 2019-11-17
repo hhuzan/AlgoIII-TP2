@@ -30,12 +30,10 @@ public class RocaTest {
 
     @Test 
     public void test01AtacamosConRocaConRangoLejanoYDañamosAUnaUnidad() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(15, 1);
@@ -48,22 +46,20 @@ public class RocaTest {
         Roca roca = new Roca();
 
         for(int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
-            roca.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+            roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         }
 
         assertThrows(JugadorPerdioException.class, () -> {
-            roca.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+            roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         });
     }
 
     @Test 
     public void test02AtacamosConRocaConRangoCercanoYNoSeProduceElAtaque() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(10, 1);
@@ -75,7 +71,7 @@ public class RocaTest {
 
         Roca roca = new Roca();
 
-        roca.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+        roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
@@ -83,12 +79,10 @@ public class RocaTest {
 
     @Test 
     public void test03AtacamosConRocaConRangoMedianoYNoSeProduceElAtaque() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(12, 1);
@@ -100,7 +94,7 @@ public class RocaTest {
 
         Roca roca = new Roca();
 
-        roca.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+        roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 

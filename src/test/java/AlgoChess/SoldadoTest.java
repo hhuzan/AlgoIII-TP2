@@ -28,9 +28,8 @@ public class SoldadoTest {
 
 	@Test 
 	public void test01CreamosUnSoldadoYSuVidaEsLaEsperada() {
-		Faccion faccion = new Faccion();
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
-        Jugador jugador = new Jugador(faccion, "Pedro");
+        Jugador jugador = new Jugador(Faccion.ALIADOS, "Pedro");
 		Catapulta catapulta = new Catapulta();
         jugador.comprarEntidad(vendedor, catapulta);
         // TODO: Ver como hacer assert para verificar esto
@@ -38,10 +37,8 @@ public class SoldadoTest {
 	}
 
 	@Test 
-	public void test04AtacamosConUnSoldadoYLaPiezaEnemigaPierdeVida() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
+	public void test02AtacamosConUnSoldadoYLaPiezaEnemigaPierdeVida() {
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Soldado soldado = new Soldado();
         Jinete jinete = new Jinete();
@@ -49,28 +46,26 @@ public class SoldadoTest {
         Posicion posOrigen = new Posicion(9,1);
         Posicion posDestino = new Posicion(10,1);
 
-        soldado.setFaccion(faccion_1);
-        jinete.setFaccion(faccion_2);
+        soldado.setFaccion(Faccion.ALIADOS);
+        jinete.setFaccion(Faccion.ENEMIGOS);
 
         tablero.colocarEntidad(soldado, posOrigen);
         tablero.colocarEntidad(jinete, posDestino);
 
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
-        soldado.atacar(casilleroDestino, tablero, faccion_1);
+        soldado.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         // TODO: Ver como hacer assert para verificar esto
 		//assertEquals(jinete.getVida(), JINETE_VIDA - ESPADA_PODER);
 	}
 
 	@Test 
-    public void test05SoldadoNoAtacaADistanciaQueNoSeaCercanaUnicamente() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
+    public void test03SoldadoNoAtacaADistanciaQueNoSeaCercanaUnicamente() {
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Soldado soldado = new Soldado();
         Jinete jinete = new Jinete();
-        soldado.setFaccion(faccion_1);
-        jinete.setFaccion(faccion_2);
+        soldado.setFaccion(Faccion.ALIADOS);
+        jinete.setFaccion(Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(12, 1);
@@ -79,24 +74,22 @@ public class SoldadoTest {
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
         Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
-        soldado.atacar(casilleroDestino, tablero, faccion_1);
+        soldado.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         // TODO: Ver como hacer assert para verificar esto
         // assertTrue(jinete.tenesEstaVida(JINETE_VIDA));
     }
 
     @Test 
-    public void test06SoldadoSeMueveACasilleroDestino() {
-    	Faccion faccionAliado = new Faccion();
-		Faccion faccionEnemigo = new Faccion();
-		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
-		Jugador jugador1 = new Jugador(faccionAliado);
-		Soldado soldado = new Soldado(jugador1, faccionAliado);
+    public void test04SoldadoSeMueveACasilleroDestino() {
+		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
+		Soldado soldado = new Soldado(jugador1, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
 		tablero.colocarEntidad(soldado, posicion);
 
 		Posicion posicionDestino = new Posicion(1, 2);
-		soldado.moverA(tablero, tablero.obtenerCasillero(posicionDestino), faccionAliado);
+		soldado.moverA(tablero, tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(CasilleroOcupadoException.class, () -> {
 			tablero.colocarEntidad(soldado, posicionDestino);

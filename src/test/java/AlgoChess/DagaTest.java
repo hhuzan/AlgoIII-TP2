@@ -30,12 +30,10 @@ public class DagaTest {
 
     @Test 
     public void test01AtacamosConDagaConRangoCercanoYDañamosAUnaUnidad() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(10, 1);
@@ -48,22 +46,20 @@ public class DagaTest {
         Daga daga = new Daga();
 
         for(int i = 0; i < (JINETE_VIDA / DAGA_PODER) - 1; i++) {
-            daga.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+            daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         }
 
         assertThrows(JugadorPerdioException.class, () -> {
-            daga.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+            daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         });
     }
 
     @Test 
     public void test02AtacamosConDagaConRangoMedianoYNoSeProduceElAtaque() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(13, 1);
@@ -75,7 +71,7 @@ public class DagaTest {
 
         Daga daga = new Daga();
 
-        daga.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+        daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
@@ -83,12 +79,10 @@ public class DagaTest {
 
     @Test 
     public void test03AtacamosConDagaConRangoLejanoYNoSeProduceElAtaque() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(15, 1);
@@ -100,9 +94,11 @@ public class DagaTest {
 
         Daga daga = new Daga();
 
-        daga.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+        daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
+
+    // TODO: Casos donde falle la faccion / casillero destino
 }

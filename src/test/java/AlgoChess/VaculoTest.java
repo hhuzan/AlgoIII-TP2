@@ -31,12 +31,10 @@ public class VaculoTest {
 
     @Test 
     public void test01AtacamosConVaculoConRangoCercanoYCuramosAUnaUnidad() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(15, 1);
@@ -50,20 +48,18 @@ public class VaculoTest {
         Arco arco = new Arco();
 
         // ARCO_PODER == VACULO_PODER
-        arco.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
-        vaculo.curar(posOrigen, casilleroDestino, faccion_1);
+        arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
 
         //TODOs: Assert que la vida volvio a ser la total del jinete
     }
 
     @Test 
     public void test02CuramosConVaculoConRangoMedianoYNoSeProduceLaCuracion() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(13, 1);
@@ -75,7 +71,7 @@ public class VaculoTest {
 
         Vaculo vaculo = new Vaculo();
 
-        vaculo.curar(posOrigen, casilleroDestino, faccion_1);
+        vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
@@ -83,12 +79,10 @@ public class VaculoTest {
 
     @Test 
     public void test03CuramosConVaculoConRangoLejanoYNoSeProduceLaCuracion() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(15, 1);
@@ -100,7 +94,7 @@ public class VaculoTest {
 
         Vaculo vaculo = new Vaculo();
 
-        vaculo.curar(posOrigen, casilleroDestino, faccion_1);
+        vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 

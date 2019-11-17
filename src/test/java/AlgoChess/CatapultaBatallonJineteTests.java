@@ -23,15 +23,14 @@ public class CatapultaBatallonJineteTests {
     * se debería corroborar que, dependiendo de como se mueva el batallon, los casilleros quedan vacios/ocupados */
     @Test
     public void TestBasura0001() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
         Posicion pos1 = new Posicion(1,2);
         Posicion pos2 = new Posicion(2,2);
@@ -44,20 +43,19 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(1,3);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado1.moverA(tablero,casilleroDestino,faccion);
+        soldado1.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
     }
 
     @Test
     public void TestBasura0002() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
         Posicion pos1 = new Posicion(1,2);
         Posicion pos2 = new Posicion(2,2);
@@ -70,20 +68,19 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(1,1);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado1.moverA(tablero,casilleroDestino,faccion);
+        soldado1.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
     }
 
     @Test
     public void TestBasura0003() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
         Posicion pos1 = new Posicion(1,1);
         Posicion pos2 = new Posicion(2,2);
@@ -96,21 +93,20 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(1,2);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado1.moverA(tablero,casilleroDestino,faccion);
+        soldado1.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
     }
 
 
     @Test
     public void TestBasura0004() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
         Posicion pos1 = new Posicion(1,1);
         Posicion pos2 = new Posicion(2,2);
@@ -123,20 +119,19 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(4,4);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado3.moverA(tablero,casilleroDestino,faccion);
+        soldado3.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
     }
 
     @Test
     public void TestBasura0005() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
         Posicion pos1 = new Posicion(1,2);
         Posicion pos2 = new Posicion(2,2);
@@ -149,21 +144,20 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(2,3);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado1.moverA(tablero,casilleroDestino,faccion);
+        soldado1.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
 
     }
 
     @Test
     public void TestBasura0006() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
         Posicion pos1 = new Posicion(1,1);
         Posicion pos2 = new Posicion(2,2);
@@ -176,7 +170,7 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(2,1);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado1.moverA(tablero,casilleroDestino,faccion);
+        soldado1.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
         /*
          * Te tira soldados en 21|43|32|
          * */
@@ -184,15 +178,14 @@ public class CatapultaBatallonJineteTests {
 
     @Test
     public void TestBasura0007() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
         Posicion pos1 = new Posicion(2,0);
         Posicion pos2 = new Posicion(2,1);
@@ -205,21 +198,20 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(2,3);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado3.moverA(tablero,casilleroDestino,faccion);
+        soldado3.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
 
     }
 
     @Test
     public void TestBasura0008() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
         Posicion pos1 = new Posicion(2,1);
         Posicion pos2 = new Posicion(3,1);
@@ -232,22 +224,21 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(4,2);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado2.moverA(tablero,casilleroDestino,faccion);
+        soldado2.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
 
     }
 
     @Test
     public void TestBasura0009() {
-        Faccion faccion = new Faccion();
-        Tablero tablero = new Tablero(faccion,faccion);
+        Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
 
-        soldado1.setFaccion(faccion);
-        soldado2.setFaccion(faccion);
-        soldado3.setFaccion(faccion);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
 
 
         Posicion pos1 = new Posicion(2,1);
@@ -261,7 +252,7 @@ public class CatapultaBatallonJineteTests {
         Posicion posDestino = new Posicion(4,2);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado2.moverA(tablero,casilleroDestino,faccion);
+        soldado2.moverA(tablero,casilleroDestino,Faccion.ALIADOS);
 
         Posicion posTest1 = new Posicion(2,1);
         Posicion posTest3 = new Posicion(2,2);

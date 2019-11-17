@@ -29,9 +29,8 @@ public class CuranderoTest {
 
 	@Test
 	public void test01CreamosUnCuranderoYSuCostoEsElEsperado() {
-		Faccion faccion = new Faccion();
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
-        Jugador jugador = new Jugador(faccion, "Pedro");
+        Jugador jugador = new Jugador(Faccion.ALIADOS, "Pedro");
 		Curandero curandero = new Curandero();
         jugador.comprarEntidad(vendedor, curandero);
         // TODO: Ver como hacer assert para verificar esto
@@ -40,46 +39,40 @@ public class CuranderoTest {
 
 	@Test
 	public void test03DisminuimosTodaLaVidaDelCuranderoYMuere() {
-		Faccion faccionAliado = new Faccion();
-		Faccion faccionEnemigo = new Faccion();
-		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
-		Jugador jugador = new Jugador(faccionAliado);
-		Curandero curandero = new Curandero(jugador, faccionAliado);
+		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Jugador jugador = new Jugador(Faccion.ALIADOS);
+		Curandero curandero = new Curandero(jugador, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
 		tablero.colocarEntidad(curandero, posicion);
 
 		assertThrows(JugadorPerdioException.class, () -> {
-			curandero.disminuirVida(CURANDERO_VIDA, faccionEnemigo, tablero);
+			curandero.disminuirVida(CURANDERO_VIDA, Faccion.ENEMIGOS, tablero);
 		});
 
 	}
 
 	@Test
 	public void test04DisminuimosVidaAlCuranderoPasandoMismaFaccionDeAtacanteYArrojaExcepcion() {
-		Faccion faccionAliado = new Faccion();
-		Faccion faccionEnemigo = new Faccion();
-		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
-		Jugador jugador = new Jugador(faccionAliado);
-		Curandero curandero = new Curandero(jugador, faccionAliado);
+		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Jugador jugador = new Jugador(Faccion.ALIADOS);
+		Curandero curandero = new Curandero(jugador, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
 		tablero.colocarEntidad(curandero, posicion);
 
 		assertThrows(EntidadDeMismaFaccionException.class, () -> {
-			curandero.disminuirVida(CURANDERO_VIDA, faccionAliado, tablero);
+			curandero.disminuirVida(CURANDERO_VIDA, Faccion.ALIADOS, tablero);
 		});
 
 	}
 
 	@Test
 	public void test05CuramosConUnCuranderoYElAliadoSumaVida() {
-		Faccion faccionAliado = new Faccion();
-		Faccion faccionEnemigo = new Faccion();
-		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
-		Jugador jugador1 = new Jugador(faccionAliado);
-		Curandero curandero = new Curandero(jugador1, faccionAliado);
-		Jinete jinete = new Jinete(jugador1, faccionAliado);
+		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
+		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
+		Jinete jinete = new Jinete(jugador1, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
 		tablero.colocarEntidad(curandero, posicion);
@@ -87,20 +80,18 @@ public class CuranderoTest {
 		Posicion posicionDestino = new Posicion(1,2);
 		tablero.colocarEntidad(jinete, posicionDestino);
 
-		curandero.curar(tablero.obtenerCasillero(posicionDestino), faccionAliado);
+		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 		// TODO: Ver como hacer assert para verificar esto
 		// assertEquals(Jinete.getVida, JINETE_VIDA + VACULO_PODER);
 	}
 
 	@Test
 	public void test06CuramosAUnaEntidadDeOtraFaccionConUnCuranderoYNoLoCura() {
-		Faccion faccionAliado = new Faccion();
-		Faccion faccionEnemigo = new Faccion();
-		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
-		Jugador jugador1 = new Jugador(faccionAliado);
-		Jugador jugador2 = new Jugador(faccionEnemigo);
-		Curandero curandero = new Curandero(jugador1, faccionAliado);
-		Jinete jinete = new Jinete(jugador2, faccionEnemigo);
+		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
+		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
+		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
+		Jinete jinete = new Jinete(jugador2, Faccion.ENEMIGOS);
 
 		Posicion posicion = new Posicion(9,1);
 		tablero.colocarEntidad(curandero, posicion);
@@ -114,13 +105,11 @@ public class CuranderoTest {
 
 	@Test
 	public void test07CuranderoCuraACatapultaYNoCuraVida() {
-		Faccion faccionAliado = new Faccion();
-		Faccion faccionEnemigo = new Faccion();
-		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
-		Jugador jugador1 = new Jugador(faccionAliado);
-		Jugador jugador2 = new Jugador(faccionEnemigo);
-		Curandero curandero = new Curandero(jugador1, faccionAliado);
-		Catapulta catapulta = new Catapulta(jugador2, faccionEnemigo);
+		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
+		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
+		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
+		Catapulta catapulta = new Catapulta(jugador2, Faccion.ENEMIGOS);
 
 		Posicion posicion = new Posicion(9,1);
 		tablero.colocarEntidad(curandero, posicion);
@@ -134,13 +123,11 @@ public class CuranderoTest {
 
 	@Test
 	public void test08CuranderoCuraAEntidadAUnaDistanciaDistintaALaCercanaNoCura() {
-		Faccion faccionAliado = new Faccion();
-		Faccion faccionEnemigo = new Faccion();
-		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
-		Jugador jugador1 = new Jugador(faccionAliado);
-		Jugador jugador2 = new Jugador(faccionEnemigo);
-		Curandero curandero = new Curandero(jugador1, faccionAliado);
-		Jinete jinete = new Jinete(jugador2, faccionEnemigo);
+		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
+		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
+		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
+		Jinete jinete = new Jinete(jugador2, Faccion.ENEMIGOS);
 
 		Posicion posicion = new Posicion(9,1);
 		tablero.colocarEntidad(curandero, posicion);
@@ -154,17 +141,15 @@ public class CuranderoTest {
 
 	@Test
 	public void test09MovemosUnCuranderoAUnCasilleroDestinoYSeMueve() {
-		Faccion faccionAliado = new Faccion();
-		Faccion faccionEnemigo = new Faccion();
-		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
-		Jugador jugador1 = new Jugador(faccionAliado);
-		Curandero curandero = new Curandero(jugador1, faccionAliado);
+		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
+		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
 		tablero.colocarEntidad(curandero, posicion);
 
 		Posicion posicionDestino = new Posicion(1, 2);
-		curandero.moverA(tablero, tablero.obtenerCasillero(posicionDestino), faccionAliado);
+		curandero.moverA(tablero, tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(CasilleroOcupadoException.class, () -> {
 			tablero.colocarEntidad(curandero, posicionDestino);

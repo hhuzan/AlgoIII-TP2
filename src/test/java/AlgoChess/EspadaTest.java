@@ -30,12 +30,10 @@ public class EspadaTest {
 
     @Test 
     public void test01AtacamosConEspadaConRangoCercanoYDañamosAUnaUnidad() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(10, 1);
@@ -48,22 +46,20 @@ public class EspadaTest {
         Espada espada = new Espada();
 
         for(int i = 0; i < (JINETE_VIDA / ESPADA_PODER) - 1; i++) {
-            espada.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+            espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         }
 
         assertThrows(JugadorPerdioException.class, () -> {
-            espada.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+            espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         });
     }
 
     @Test 
     public void test02AtacamosConEspadaConRangoMedianoYNoSeProduceElAtaque() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(13, 1);
@@ -75,7 +71,7 @@ public class EspadaTest {
 
         Espada espada = new Espada();
 
-        espada.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+        espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
@@ -83,12 +79,10 @@ public class EspadaTest {
 
     @Test 
     public void test03AtacamosConEspadaConRangoLejanoYNoSeProduceElAtaque() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
-        Jugador jugador = new Jugador(faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
-        Jinete jinete = new Jinete(jugador, faccion_2);
+        Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(15, 1);
@@ -100,9 +94,11 @@ public class EspadaTest {
 
         Espada espada = new Espada();
 
-        espada.atacar(posOrigen, casilleroDestino, faccion_1, tablero);
+        espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
+
+    // TODO: Agregar tests donde falle casillero / faccion
 }

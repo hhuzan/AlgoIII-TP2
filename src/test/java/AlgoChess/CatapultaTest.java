@@ -29,9 +29,8 @@ public class CatapultaTest {
 
 	@Test
 	public void test01CreamosUnaCatapultaYSuCostoEsElEsperado() {
-        Faccion faccion = new Faccion();
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
-        Jugador jugador = new Jugador(faccion, "Pedro");
+        Jugador jugador = new Jugador(Faccion.ALIADOS, "Pedro");
 		Catapulta catapulta = new Catapulta();
         jugador.comprarEntidad(vendedor, catapulta);
         // TODO: Ver como hacer assert para verificar esto
@@ -40,9 +39,7 @@ public class CatapultaTest {
 
 	@Test
 	public void test02AtacamosConUnaCatapultaYElEnemigoRecibeDanio() { 
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Catapulta catapulta = new Catapulta();
         Jinete jinete = new Jinete();
@@ -50,28 +47,27 @@ public class CatapultaTest {
         Posicion posOrigen = new Posicion(6,1);
         Posicion posDestino = new Posicion(12,1);
 
-        catapulta.setFaccion(faccion_1);
-        jinete.setFaccion(faccion_2);
+        catapulta.setFaccion(Faccion.ALIADOS);
+        jinete.setFaccion(Faccion.ENEMIGOS);
 
         tablero.colocarEntidad(catapulta, posOrigen);
         tablero.colocarEntidad(jinete, posDestino);
 
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
-        catapulta.atacar(casilleroDestino, tablero, faccion_1);
+        catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         // TODO: Ver como hacer assert para verificar esto
 		//assertEquals(jinete.getVida(), JINETE_VIDA - ROCA_PODER);
 	}
 
 	@Test
 	public void test03AtacamosConUnaCatapultaYElAliadoRecibeDanio() {
-        Faccion faccion_1 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_1);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ALIADOS);
 
         Catapulta catapulta = new Catapulta();
         Jinete jinete = new Jinete();
 
-        catapulta.setFaccion(faccion_1);
-        jinete.setFaccion(faccion_1);
+        catapulta.setFaccion(Faccion.ALIADOS);
+        jinete.setFaccion(Faccion.ALIADOS);
 
         Posicion posOrigen = new Posicion(1,1);
         Posicion posDestino = new Posicion(1,2);
@@ -80,18 +76,17 @@ public class CatapultaTest {
         tablero.colocarEntidad(jinete, posDestino);
 
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
-        catapulta.atacar(casilleroDestino, tablero, faccion_1);
+        catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         // TODO: Ver como hacer assert para verificar esto
 		//assertEquals(jinete.getVida(), JINETE_VIDA - ROCA_PODER);
 	}
 
 	@Test
 	public void test04IntentamosMoverUnaCatapultaPeroNoEsUnaEntidadMovible() {
-		Faccion faccion_1 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_1);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ALIADOS);
 
         Catapulta catapulta = new Catapulta();
-        catapulta.setFaccion(faccion_1);
+        catapulta.setFaccion(Faccion.ALIADOS);
 
         Posicion posOrigen = new Posicion(1,1);
         Posicion posDestino = new Posicion(1,2);
@@ -100,7 +95,7 @@ public class CatapultaTest {
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
         Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
-        casilleroOrigen.moverEntidad(tablero, casilleroDestino, faccion_1); 
+        casilleroOrigen.moverEntidad(tablero, casilleroDestino, Faccion.ALIADOS); 
 
         assertThrows(CasilleroOcupadoException.class, () -> {
             tablero.colocarEntidad(catapulta, posOrigen);
@@ -110,14 +105,12 @@ public class CatapultaTest {
 	// Test 05: Catapulta falla al atacar a distancia cercana o media
 	@Test 
     public void test05CatapultaNoAtacaADistanciaQueNoEsLejana() {
-        Faccion faccion_1 = new Faccion();
-        Faccion faccion_2 = new Faccion();
-        Tablero tablero = new Tablero(faccion_1, faccion_2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Catapulta catapulta = new Catapulta();
         Jinete jinete = new Jinete();
-        catapulta.setFaccion(faccion_1);
-        jinete.setFaccion(faccion_2);
+        catapulta.setFaccion(Faccion.ALIADOS);
+        jinete.setFaccion(Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(10, 1);
@@ -126,7 +119,7 @@ public class CatapultaTest {
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
         Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
-        catapulta.atacar(casilleroDestino, tablero, faccion_1);
+        catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         // TODO: Assert 
     }
 
@@ -135,13 +128,11 @@ public class CatapultaTest {
         // Pongo 5 unidades contiguas (enemigas y aliadas)
         // Una catapulta ataca a una de ellas, y debería poder bajarle vida a todas.
 
-        Faccion faccion1 = new Faccion();
-        Faccion faccion2 = new Faccion();
-        Tablero tablero = new Tablero(faccion1,faccion2);
+        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         /*Catapulta*/
         Catapulta catapulta = new Catapulta();
-        catapulta.setFaccion(faccion1);
+        catapulta.setFaccion(Faccion.ALIADOS);
         Posicion pcatapulta = new Posicion(0,10);
         tablero.colocarEntidad(catapulta, pcatapulta);
 
@@ -163,21 +154,21 @@ public class CatapultaTest {
         Jinete jinete6 = new Jinete();
 
         /*Soldados f1*/
-        soldado1.setFaccion(faccion1);
-        soldado2.setFaccion(faccion1);
-        soldado3.setFaccion(faccion1);
-        soldado4.setFaccion(faccion1);
-        soldado5.setFaccion(faccion1);
-        soldado6.setFaccion(faccion1);
-        soldado7.setFaccion(faccion1);
+        soldado1.setFaccion(Faccion.ALIADOS);
+        soldado2.setFaccion(Faccion.ALIADOS);
+        soldado3.setFaccion(Faccion.ALIADOS);
+        soldado4.setFaccion(Faccion.ALIADOS);
+        soldado5.setFaccion(Faccion.ALIADOS);
+        soldado6.setFaccion(Faccion.ALIADOS);
+        soldado7.setFaccion(Faccion.ALIADOS);
 
         /*Jinetes f2*/
-        jinete1.setFaccion(faccion2);
-        jinete2.setFaccion(faccion2);
-        jinete3.setFaccion(faccion2);
-        jinete4.setFaccion(faccion2);
-        jinete5.setFaccion(faccion2);
-        jinete6.setFaccion(faccion2);
+        jinete1.setFaccion(Faccion.ENEMIGOS);
+        jinete2.setFaccion(Faccion.ENEMIGOS);
+        jinete3.setFaccion(Faccion.ENEMIGOS);
+        jinete4.setFaccion(Faccion.ENEMIGOS);
+        jinete5.setFaccion(Faccion.ENEMIGOS);
+        jinete6.setFaccion(Faccion.ENEMIGOS);
 
         /*Posiciones soldados f1*/
         Posicion psoldado1 = new Posicion(6,9);
@@ -214,7 +205,7 @@ public class CatapultaTest {
         tablero.colocarEntidad(jinete6,pjinete6);
 
         /* Ataque un jinete enemigo */
-        catapulta.atacar(tablero.obtenerCasillero(pcatapulta), tablero, faccion1);
+        catapulta.atacar(tablero.obtenerCasillero(pcatapulta), tablero, Faccion.ALIADOS);
 
         // TODO: Ver como hacer sin getters
         // assertTrue(jinete1.tenesEstaVida(JINETE_VIDA-ROCA_PODER));

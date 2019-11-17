@@ -1,4 +1,19 @@
 package AlgoChess.engine.facciones;
-// TODO: Borrar a la mierda
-public class Faccion {
+
+// TODO: Hacer enumerativo
+
+public enum Faccion {
+	ALIADOS("Aliado"),
+	ENEMIGOS("Enemigo");
+
+
+	private String faccion;
+
+	private Faccion(String str) {
+		this.faccion = str;
+	}
+
+	public String getFaccion() {
+		return faccion;
+	}
 }
