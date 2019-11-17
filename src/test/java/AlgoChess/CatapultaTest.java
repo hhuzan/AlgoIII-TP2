@@ -15,8 +15,9 @@ import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
+
+import AlgoChess.excepciones.CasilleroOcupadoException;
 import org.junit.Test;
-import AlgoChess.excepciones.EntidadNoPuedeMoverseException;
 
 public class CatapultaTest {
 
@@ -85,7 +86,7 @@ public class CatapultaTest {
 	}
 
 	@Test
-	public void test04IntentamosMoverUnaCatapultaYLevantaUnaExcepcion() {
+	public void test04IntentamosMoverUnaCatapultaPeroNoEsUnaEntidadMovible() {
 		Faccion faccion_1 = new Faccion();
         Tablero tablero = new Tablero(faccion_1, faccion_1);
 
@@ -99,9 +100,11 @@ public class CatapultaTest {
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
         Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
-        assertThrows(EntidadNoPuedeMoverseException.class, () -> {
-        	casilleroOrigen.moverEntidad(tablero, casilleroDestino, faccion_1);
-	   });
+        casilleroOrigen.moverEntidad(tablero, casilleroDestino, faccion_1); 
+
+        assertThrows(CasilleroOcupadoException.class, () -> {
+            tablero.colocarEntidad(catapulta, posOrigen);
+        });
 	}
 	// Test 05: Catapulta falla al atacar a distancia cercana o media
 	// Test 06: Catapulta ataca bloque de casilleros si hay otras entidades

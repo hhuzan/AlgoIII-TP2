@@ -1,23 +1,36 @@
-// package AlgoChess;
+package AlgoChess;
 
-// import static org.junit.Assert.assertEquals;
-// import static org.junit.Assert.assertNotNull;
-// import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
 
-// public class JineteTest {
+import AlgoChess.engine.entidades.Jinete;
+import AlgoChess.engine.facciones.Faccion;
+import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
+import AlgoChess.engine.jugador.Jugador;
+import AlgoChess.engine.tablero.Tablero;
+import AlgoChess.engine.posicion.Posicion;
+import static AlgoChess.engine.Constantes.JINETE_VIDA;
+import static AlgoChess.engine.Constantes.JINETE_COSTO;
 
-// 	@Test
-// 	public void test00ConstructorJineteNoDevuelveNull() {
-// 		Jinete jinete = new Jinete();
-// 		assertNotNull(jinete);
-// 	}
+public class JineteTest {
 
-// 	@Test
-// 	public void test01CreamosUnJineteYSuCostoEsElEsperado() {
-// 		int costoJinete = 3;
-// 		Jinete jinete = new Jinete();
-// 		assertEquals(costoJinete, jinete.getCosto());
-// 	}
+	@Test
+	public void test00ConstructorJineteNoDevuelveNull() {
+		Jinete jinete = new Jinete();
+		assertNotNull(jinete);
+	}
+
+	@Test
+	public void test01CreamosUnJineteYSuCostoEsElEsperado() {
+		Faccion faccion = new Faccion();
+        VendedorDeEntidades vendedor = new VendedorDeEntidades();
+        Jugador jugador = new Jugador(faccion, "Pedro");
+		Jinete jinete = new Jinete();
+        jugador.comprarEntidad(vendedor, jinete);
+        // TODO: Ver como hacer assert para verificar esto
+		// assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
+	}
 
 // 	@Test
 // 	public void test02CreamosUnJineteYSuVidaEsLaEsperada() {
@@ -50,4 +63,4 @@
 // 		assertEquals(85, jinete.getVida());
 // 	}
 
-// }
+}

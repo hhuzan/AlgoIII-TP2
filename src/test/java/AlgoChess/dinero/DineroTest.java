@@ -34,6 +34,5 @@ public class DineroTest {
         Dinero dinero2 = new Dinero(1);
         assertThrows(DineroInsuficienteException.class, () -> dinero1.restarDinero(dinero2));
     }
+    */
 }
-
-   */
