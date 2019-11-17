@@ -1,4 +1,4 @@
-package AlgoChess.dinero;
+package AlgoChess;
 import AlgoChess.engine.Dinero;
 import AlgoChess.excepciones.DineroInsuficienteException;
 import org.junit.Test;
