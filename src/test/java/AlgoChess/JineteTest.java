@@ -15,8 +15,8 @@ import AlgoChess.engine.tablero.Tablero;
 import AlgoChess.engine.posicion.Posicion;
 import static AlgoChess.engine.Constantes.JINETE_VIDA;
 import static AlgoChess.engine.Constantes.JINETE_COSTO;
-
 import AlgoChess.excepciones.JugadorPerdioException;
+import AlgoChess.excepciones.CasilleroOcupadoException;
 
 public class JineteTest {
 
@@ -145,5 +145,24 @@ public class JineteTest {
         // TODO: Ver como hacer assert para verificar esto
         // assertTrue(catapulta2.tenesEstaVida(CATAPULTA_VIDA));
 
+    }
+
+    @Test 
+    public void test07MovemosAlJineteYSeMueveAlCasilleroDestino() {
+    	Faccion faccionAliado = new Faccion();
+		Faccion faccionEnemigo = new Faccion();
+		Tablero tablero = new Tablero(faccionAliado, faccionEnemigo);
+		Jugador jugador1 = new Jugador(faccionAliado);
+		Jinete jinete = new Jinete(jugador1, faccionAliado);
+
+		Posicion posicion = new Posicion(1,1);
+		tablero.colocarEntidad(jinete, posicion);
+
+		Posicion posicionDestino = new Posicion(1, 2);
+		jinete.moverA(tablero, tablero.obtenerCasillero(posicionDestino), faccionAliado);
+
+		assertThrows(CasilleroOcupadoException.class, () -> {
+			tablero.colocarEntidad(jinete, posicionDestino);
+		});	
     }
 }
