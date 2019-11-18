@@ -42,10 +42,12 @@ public class AlgoChess extends Application  {
 
     private GridPane crearVentaDeEntidades(){
         /*Se crea el panel de ventas y su configura el padding*/
+
         GridPane ventas = new GridPane();
         ventas.setPadding(new Insets(10,10,10,10));
         ventas.setVgap(20);
         ventas.setHgap(20);
+        System.out.println("Venta entidades: Creamos GridPane");
 
         /*Se crean containers para los items*/
 
@@ -53,27 +55,33 @@ public class AlgoChess extends Application  {
         Rectangle caballoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
         Rectangle curanderoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
         Rectangle catapultaContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
+        System.out.println("Venta entidades: Creamos containers p items");
 
         /* Se colocan las imagenes en los conteiners respectivos*/
-        Image soldadoNeutroImg = new Image("images/SoldadoNeutro.png");
-        Image caballoNeutroImg = new Image("images/CaballoNeutro.png");
-        Image curanderoNeutroImg = new Image("images/CuranderoNeutro.png");
-        Image catapultaNeutroImg = new Image("images/CatapultaNeutro.png");
+
+        // Image soldadoNeutroImg = new Image("file:dog.jpg");
+        // // Image caballoNeutroImg = new Image("src/main/java/gui/images/CaballoNeutro.png");
+        // // Image curanderoNeutroImg = new Image("src/main/java/gui/images/CuranderoNeutro.png");
+        // // Image catapultaNeutroImg = new Image("src/main/java/gui/images/CatapultaNeutro.png");
+        // System.out.println("Venta entidades: Creamos imagenes p items");
 
 
-        soldadoContainer.setFill(new ImagePattern(soldadoNeutroImg));
-        caballoContainer.setFill(new ImagePattern(caballoNeutroImg));
-        curanderoContainer.setFill(new ImagePattern(curanderoNeutroImg));
-        catapultaContainer.setFill(new ImagePattern(catapultaNeutroImg));
+        // soldadoContainer.setFill(new ImagePattern(soldadoNeutroImg));
+        // // caballoContainer.setFill(new ImagePattern(caballoNeutroImg));
+        // // curanderoContainer.setFill(new ImagePattern(curanderoNeutroImg));
+        // // catapultaContainer.setFill(new ImagePattern(catapultaNeutroImg));
+        // System.out.println("Venta entidades: fill imagepattern p items");
 
-        /*Se agregan los containers al panel de ventas*/
+        // /*Se agregan los containers al panel de ventas*/
 
-        GridPane.setConstraints(soldadoContainer,0,0);
-        GridPane.setConstraints(caballoContainer,0,1);
-        GridPane.setConstraints(curanderoContainer,0,2);
-        GridPane.setConstraints(catapultaContainer,0,3);
+        // GridPane.setConstraints(soldadoContainer,0,0);
+        // // GridPane.setConstraints(caballoContainer,0,1);
+        // // GridPane.setConstraints(curanderoContainer,0,2);
+        // // GridPane.setConstraints(catapultaContainer,0,3);
+        // System.out.println("Venta entidades: contraints");
 
-        ventas.getChildren().addAll(soldadoContainer,caballoContainer,curanderoContainer,catapultaContainer);
+        // ventas.getChildren().addAll(soldadoContainer);//,caballoContainer,curanderoContainer,catapultaContainer);
+        // System.out.println("Venta entidades: adAll");
 
         return ventas;
     }
@@ -107,28 +115,35 @@ public class AlgoChess extends Application  {
     }
 
     @Override
-    public void start(Stage ventana) throws Exception{
+    public void start(Stage ventana) {
 
         /*Layout JUEGO*/
         BorderPane panel = new BorderPane();
-
+        System.out.println("Creamos Panel");
         /*Layout TABLERO */
         GridPane tablero = crearTablero();
+        System.out.println("Creamos Tablero");
+
         /*Layout VENTAS DE ENTIDADES*/
         GridPane ventas = crearVentaDeEntidades();
+        System.out.println("Creamos Ventana");
 
         ventas.setAlignment(Pos.CENTER);
         panel.setLeft(ventas);
         panel.setCenter(tablero);
+        System.out.println("Seteamos cosas");
 
         /*Escena */
         Scene escena = new Scene(panel, 1600,1000);
+        System.out.println("Creamos escena");
 
 
         /* Ventana */
         ventana.setTitle("AlgoChess");
         ventana.setScene(escena);
         ventana.show();
+        System.out.println("Mostramos");
+
 
     }
 
