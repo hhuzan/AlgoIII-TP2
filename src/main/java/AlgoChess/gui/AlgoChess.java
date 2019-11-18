@@ -58,30 +58,29 @@ public class AlgoChess extends Application  {
         System.out.println("Venta entidades: Creamos containers p items");
 
         /* Se colocan las imagenes en los conteiners respectivos*/
+        /* TODO: Esto no me corre
+         Image soldadoNeutroImg = new Image("file:dog.jpg");
+         Image caballoNeutroImg = new Image("file:dog.jpg");
+         Image curanderoNeutroImg = new Image("file:dog.jpg");
+         Image catapultaNeutroImg = new Image("file:dog.jpg");
+         System.out.println("Venta entidades: Creamos imagenes p items");
 
-        // Image soldadoNeutroImg = new Image("file:dog.jpg");
-        // // Image caballoNeutroImg = new Image("src/main/java/gui/images/CaballoNeutro.png");
-        // // Image curanderoNeutroImg = new Image("src/main/java/gui/images/CuranderoNeutro.png");
-        // // Image catapultaNeutroImg = new Image("src/main/java/gui/images/CatapultaNeutro.png");
-        // System.out.println("Venta entidades: Creamos imagenes p items");
-
-
-        // soldadoContainer.setFill(new ImagePattern(soldadoNeutroImg));
-        // // caballoContainer.setFill(new ImagePattern(caballoNeutroImg));
-        // // curanderoContainer.setFill(new ImagePattern(curanderoNeutroImg));
-        // // catapultaContainer.setFill(new ImagePattern(catapultaNeutroImg));
-        // System.out.println("Venta entidades: fill imagepattern p items");
-
+         soldadoContainer.setFill(new ImagePattern(soldadoNeutroImg));
+         caballoContainer.setFill(new ImagePattern(caballoNeutroImg));
+         curanderoContainer.setFill(new ImagePattern(curanderoNeutroImg));
+         catapultaContainer.setFill(new ImagePattern(catapultaNeutroImg));
+         System.out.println("Venta entidades: fill imagepattern p items");
+        */
         // /*Se agregan los containers al panel de ventas*/
 
-        // GridPane.setConstraints(soldadoContainer,0,0);
-        // // GridPane.setConstraints(caballoContainer,0,1);
-        // // GridPane.setConstraints(curanderoContainer,0,2);
-        // // GridPane.setConstraints(catapultaContainer,0,3);
-        // System.out.println("Venta entidades: contraints");
+         GridPane.setConstraints(soldadoContainer,0,0);
+         GridPane.setConstraints(caballoContainer,0,1);
+         GridPane.setConstraints(curanderoContainer,0,2);
+         GridPane.setConstraints(catapultaContainer,0,3);
+         System.out.println("Venta entidades: contraints");
 
-        // ventas.getChildren().addAll(soldadoContainer);//,caballoContainer,curanderoContainer,catapultaContainer);
-        // System.out.println("Venta entidades: adAll");
+         ventas.getChildren().addAll(soldadoContainer,caballoContainer,curanderoContainer,catapultaContainer);
+         System.out.println("Venta entidades: adAll");
 
         return ventas;
     }

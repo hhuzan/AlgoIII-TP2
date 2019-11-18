@@ -20,4 +20,5 @@ src/test/java/AlgoChess/BasuraTest.java
 .idea/dictionaries/Anzu.xml
 .idea/inspectionProfiles/Project_Default.xml
 target
+.idea
 .idea/uiDesigner.xml

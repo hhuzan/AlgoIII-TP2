@@ -10,9 +10,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-
-
-
 public  class Casillero extends StackPane {
     private final int fila;
     private final int columna;
@@ -29,8 +26,8 @@ public  class Casillero extends StackPane {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Rectangle rectangulo = new Rectangle(tamanio,tamanio);
-                Image image = new Image("images/CaballoPink.png");
-                rectangulo.setFill(new ImagePattern(image));
+                //Image image = new Image("images/CaballoPink.png");
+                //rectangulo.setFill(new ImagePattern(image));
                 getChildren().add(rectangulo);
 
 
