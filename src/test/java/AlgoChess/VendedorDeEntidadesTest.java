@@ -4,6 +4,7 @@ import AlgoChess.engine.Dinero;
 import AlgoChess.engine.entidades.*;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
 // import AlgoChess.excepciones.NoMePagasteSuficienteException;
+import AlgoChess.excepciones.DineroInsuficienteException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -25,7 +26,7 @@ public class VendedorDeEntidadesTest {
         Soldado entidad = new Soldado();
         Dinero dinero = new Dinero(0);
 
-        assertEquals(null, vendedor.venderEntidad(entidad,dinero));
+        assertThrows(DineroInsuficienteException.class,()-> vendedor.venderEntidad(entidad,dinero));
 
     }
 
@@ -36,7 +37,7 @@ public class VendedorDeEntidadesTest {
         Jinete entidad = new Jinete();
         Dinero dinero = new Dinero(0);
 
-        assertEquals(null, vendedor.venderEntidad(entidad,dinero));
+        assertThrows(DineroInsuficienteException.class,()-> vendedor.venderEntidad(entidad,dinero));
     }
 
     @Test
@@ -46,7 +47,7 @@ public class VendedorDeEntidadesTest {
         Curandero entidad = new Curandero();
         Dinero dinero = new Dinero(0);
 
-        assertEquals(null, vendedor.venderEntidad(entidad,dinero));
+        assertThrows(DineroInsuficienteException.class,()-> vendedor.venderEntidad(entidad,dinero));
     }
 
     @Test
@@ -56,7 +57,7 @@ public class VendedorDeEntidadesTest {
         Catapulta catapulta = new Catapulta();
         Dinero dinero = new Dinero(0);
 
-        assertEquals(null, vendedor.venderEntidad(catapulta,dinero));
+        assertThrows(DineroInsuficienteException.class,()-> vendedor.venderEntidad(catapulta,dinero));
     }
 
 
