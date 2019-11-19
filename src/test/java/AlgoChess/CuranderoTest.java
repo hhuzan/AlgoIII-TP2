@@ -31,7 +31,7 @@ public class CuranderoTest {
 	public void test01CreamosUnCuranderoYSuCostoEsElEsperado() {
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
         Jugador jugador = new Jugador(Faccion.ALIADOS, "Pedro");
-		Curandero curandero = new Curandero();
+		Curandero curandero = new Curandero(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
         jugador.comprarEntidad(vendedor, curandero);
         // TODO: Ver como hacer assert para verificar esto
 		// assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());

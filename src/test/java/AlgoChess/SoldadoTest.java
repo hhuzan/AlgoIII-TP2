@@ -30,7 +30,7 @@ public class SoldadoTest {
 	public void test01CreamosUnSoldadoYSuVidaEsLaEsperada() {
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
         Jugador jugador = new Jugador(Faccion.ALIADOS, "Pedro");
-		Catapulta catapulta = new Catapulta();
+		Catapulta catapulta = new Catapulta(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
         jugador.comprarEntidad(vendedor, catapulta);
         // TODO: Ver como hacer assert para verificar esto
         // assertEquals(DINERO_JUGADOR - SOLDADO_COSTO, jugador.getDinero());

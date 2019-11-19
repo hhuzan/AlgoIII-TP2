@@ -33,7 +33,7 @@ public class JugadorTest {
     @Test
     public void Test01NoSePuedenComprarInfinitasEntidadesConDineroFinito() throws DineroInsuficienteException {
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
-        Catapulta catapulta = new Catapulta();
+        Catapulta catapulta = new Catapulta(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         for (int i = 0; i<(DINERO_JUGADOR/CATAPULTA_COSTO);i++){
