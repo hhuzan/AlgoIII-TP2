@@ -1,22 +1,37 @@
 package AlgoChess;
 
 import AlgoChess.engine.entidades.Catapulta;
+import AlgoChess.engine.entidades.Curandero;
+import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.jugador.Jugador;
+import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
 import AlgoChess.excepciones.DineroInsuficienteException;
 import AlgoChess.excepciones.DineroInsuficienteException;
+import AlgoChess.excepciones.EntidadDeMismaFaccionException;
+import AlgoChess.excepciones.JugadorPerdioException;
 import org.junit.Test;
 
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static AlgoChess.engine.Constantes.*;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class JugadorTest {
 
     @Test
-    public void Test00NoSePuedenComprarInfinitasEntidadesConDineroFinito() throws DineroInsuficienteException {
+    public void test00ConstructorCuranderoNoDevuelveNull() {
+        Jugador jugador = new Jugador(Faccion.ALIADOS);
+        assertNotNull(jugador);
+    }
+
+
+    @Test
+    public void Test01NoSePuedenComprarInfinitasEntidadesConDineroFinito() throws DineroInsuficienteException {
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
         Catapulta catapulta = new Catapulta();
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
@@ -29,15 +44,27 @@ public class JugadorTest {
     }
 
     @Test
-    public void Test01JugadorSinEntidadesPierde(){
+    public void Test02JugadorSinEntidadesPierde(){
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
 
         assertTrue(jugador.perdio());
 
     }
 
+
     @Test
-    public void Test03CreoUnJugadorConUnaFaccionYObtengoLaFaccionQueLeColoque(){
+    public void Test03JugadorNoPuedeComprarEntidadesDeOtraFaccion(){
+        Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
+        Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS, "Lucas"), Faccion.ENEMIGOS);
+        //  TODO: ver si se puede modificar el constructor de las entidades para no tener que poner un duenio en el constructor
+        // TODO: ver si se puede crear excepcion para cuando compras algo que no es de tu faccion
+
+        assertThrows(EntidadDeMismaFaccionException.class,()-> jugador.comprarEntidad(new VendedorDeEntidades(), jinete));
+
+    }
+
+    @Test
+    public void Test04CreoUnJugadorConUnaFaccionYObtengoLaFaccionQueLeColoque(){
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
        assertEquals(Faccion.ALIADOS, jugador.getFaccion());
 
