@@ -52,7 +52,7 @@ public class JugadorTest {
     }
 
 
-   /* @Test
+    @Test
     public void Test03JugadorNoPuedeComprarEntidadesDeOtraFaccion(){
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
         Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS, "Lucas"), Faccion.ENEMIGOS);
@@ -62,7 +62,7 @@ public class JugadorTest {
         assertThrows(EntidadDeMismaFaccionException.class,()-> jugador.comprarEntidad(new VendedorDeEntidades(), jinete));
 
     }
-    */
+    
 
     @Test
     public void Test04CreoUnJugadorConUnaFaccionYObtengoLaFaccionQueLeColoque(){
