@@ -4,6 +4,7 @@ import AlgoChess.engine.Dinero;
 import AlgoChess.engine.entidades.Entidad;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
+import AlgoChess.excepciones.EntidadDeMismaFaccionException;
 import AlgoChess.excepciones.JugadorPerdioException;
 
 import java.util.ArrayList;
@@ -40,10 +41,12 @@ public class Jugador {
     }
 
     private void agregarEntidad(Entidad entidad) {
-        if (entidad != null) {
+        if (entidad.sosAmigo(this.faccion)){
             // TODO: Ver de sacar el constructor que no tiene faccion
-            // entidad.setFaccion(faccion);
             entidades.add(entidad);
+        }
+        else{
+            throw new EntidadDeMismaFaccionException();
         }
     }
 
