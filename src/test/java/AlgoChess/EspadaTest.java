@@ -79,8 +79,6 @@ public class EspadaTest {
         assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
         });
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
 
@@ -109,10 +107,7 @@ public class EspadaTest {
         assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
         });
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
 
-    // TODO: Agregar tests donde falle casillero / faccion
 }

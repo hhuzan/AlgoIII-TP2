@@ -80,8 +80,6 @@ public class DagaTest {
         assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
         });
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
 
@@ -110,10 +108,7 @@ public class DagaTest {
         assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
         });
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
 
-    // TODO: Casos donde falle la faccion / casillero destino
 }

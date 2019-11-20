@@ -14,7 +14,10 @@ import AlgoChess.engine.jugador.Jugador;
 import AlgoChess.engine.tablero.Tablero;
 import AlgoChess.engine.posicion.Posicion;
 import static AlgoChess.engine.Constantes.JINETE_VIDA;
+import static AlgoChess.engine.Constantes.SOLDADO_VIDA;
+import static AlgoChess.engine.Constantes.CATAPULTA_VIDA;
 import static AlgoChess.engine.Constantes.JINETE_COSTO;
+import static AlgoChess.engine.Constantes.DAGA_PODER;
 import AlgoChess.excepciones.JugadorPerdioException;
 import AlgoChess.excepciones.CasilleroOcupadoException;
 
@@ -27,17 +30,7 @@ public class JineteTest {
 	}
 
 	@Test
-	public void test01CreamosUnJineteYSuCostoEsElEsperado() {
-        VendedorDeEntidades vendedor = new VendedorDeEntidades();
-        Jugador jugador = new Jugador(Faccion.ALIADOS, "Pedro");
-		Jinete jinete = new Jinete(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
-        jugador.comprarEntidad(vendedor, jinete);
-        // TODO: Ver como hacer assert para verificar esto
-		// assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
-	}
-
-	@Test
-	public void test02AumentamosLaVidaDeUnJineteYDichaVidaAumenta() {
+	public void test01AumentamosLaVidaDeUnJineteYDichaVidaAumenta() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 		Jinete jinete = new Jinete(jugador, Faccion.ALIADOS);
@@ -45,13 +38,16 @@ public class JineteTest {
 		Posicion posicion = new Posicion(1, 1);
 		tablero.colocarEntidad(jinete, posicion);
 
+		jinete.disminuirVida(20, Faccion.ENEMIGOS, tablero);
 		jinete.aumentarVida(20, Faccion.ALIADOS);
-        // TODO: Ver como hacer assert para verificar esto
-		// assertEquals(JINETE_VIDA + 20, jinete.getVida());
+        
+        assertThrows(JugadorPerdioException.class, () -> {
+			jinete.disminuirVida(JINETE_VIDA, Faccion.ENEMIGOS, tablero);
+		});
 	}
 
 	@Test
-	public void test03DisminuimosTodaLaVidaDelJineteYMuere() {
+	public void test02DisminuimosTodaLaVidaDelJineteYMuere() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 		Jinete jinete = new Jinete(jugador, Faccion.ALIADOS);
@@ -65,7 +61,7 @@ public class JineteTest {
 	}
 
 	@Test
-	public void test04JineteAtacaAEntidadEnemigaYDisminuyeLaVidaDeLaEntidadEnemiga() {
+	public void test03JineteAtacaAEntidadEnemigaYLeQuitaElEquivalenteAUnAtaqueCuerpoACuerpoDeUnJinete() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador_1 = new Jugador(Faccion.ALIADOS);
 		Jugador jugador_2 = new Jugador(Faccion.ENEMIGOS);
@@ -79,12 +75,14 @@ public class JineteTest {
 		tablero.colocarEntidad(soldado, posicionAtaque);
 
 		jinete.atacar(tablero.obtenerCasillero(posicionAtaque), tablero, Faccion.ALIADOS);
-        // TODO: Ver como hacer assert para verificar esto
-		// assertEquals(SOLDADO_VIDA - ESPADA_PODER, jinete.getVida());
+
+		assertThrows(JugadorPerdioException.class, () -> {
+			soldado.disminuirVida(SOLDADO_VIDA - DAGA_PODER, Faccion.ALIADOS, tablero);
+		});
 	}
 
 	@Test
-	public void test05JineteAtacaAEntidadEnemigaConDagaDebidoACondicionesEstablecidas() {
+	public void test04JineteAtacaAEntidadEnemigaConDagaDebidoACondicionesEstablecidas() {
         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete();
@@ -92,7 +90,7 @@ public class JineteTest {
         Posicion posJinete = new Posicion(9,10);
 
 
-        Catapulta catapulta = new Catapulta();
+        Catapulta catapulta = new Catapulta(new Jugador(Faccion.ENEMIGOS), Faccion.ENEMIGOS);
         catapulta.setFaccion(Faccion.ENEMIGOS);
         Posicion posCatapulta = new Posicion(10,10);
 
@@ -100,26 +98,26 @@ public class JineteTest {
         tablero.colocarEntidad(catapulta, posCatapulta);
 
         tablero.atacarCasillero(posJinete, posCatapulta, Faccion.ALIADOS);
-
-        // TODO: Ver como hacer assert para verificar esto
-        // assertTrue(catapulta.tenesEstaVida(CATAPULTA_VIDA - DAGA_PODER));
+		
+		assertThrows(JugadorPerdioException.class, () -> {
+			catapulta.disminuirVida( (SOLDADO_VIDA - DAGA_PODER), Faccion.ALIADOS, tablero);
+		});
 	}
 
     @Test
-    public void Test06JineteAtacaAEntidadEnemigaADistanciaMediaYFallaPuesEstaObligadoAUsarDaga(){
-        // Aqui pongo un jinete
+    public void Test05JineteAtacaAEntidadEnemigaADistanciaMediaYFallaPuesEstaObligadoAUsarDaga(){
         // una catapulta1 enemiga distancia cercana (del jinete)
         // una catapulta2 enemiga distancia mediana (del jinete)
         // El jinete no debería poder atacar la catapulta2.
         Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
-
+        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
         Jinete jinete = new Jinete();
         jinete.setFaccion(Faccion.ALIADOS);
         Posicion posJinete = new Posicion(9,10);
 
 
         Catapulta catapulta1 = new Catapulta();
-        Catapulta catapulta2 = new Catapulta();
+        Catapulta catapulta2 = new Catapulta(jugador, Faccion.ENEMIGOS);
         catapulta1.setFaccion(Faccion.ENEMIGOS);
         catapulta2.setFaccion(Faccion.ENEMIGOS);
         Posicion posCatapulta1 = new Posicion(10,10);
@@ -130,13 +128,15 @@ public class JineteTest {
         tablero.colocarEntidad(catapulta2,posCatapulta2);
 
         tablero.atacarCasillero(posJinete,posCatapulta2,Faccion.ALIADOS);
-        // TODO: Ver como hacer assert para verificar esto
-        // assertTrue(catapulta2.tenesEstaVida(CATAPULTA_VIDA));
+        
+        assertThrows(JugadorPerdioException.class, () -> {
+			catapulta2.disminuirVida(CATAPULTA_VIDA, Faccion.ALIADOS, tablero);
+		});
 
     }
 
     @Test 
-    public void test07MovemosAlJineteYSeMueveAlCasilleroDestino() {
+    public void test06MovemosAlJineteYSeMueveAlCasilleroDestino() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Jinete jinete = new Jinete(jugador1, Faccion.ALIADOS);

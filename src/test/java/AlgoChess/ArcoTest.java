@@ -72,9 +72,10 @@ public class ArcoTest {
         Arco arco = new Arco();
 
         arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
-
+        
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, tablero);
+        });        
     }
 
     @Test 
@@ -95,8 +96,9 @@ public class ArcoTest {
         Arco arco = new Arco();
 
         arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, tablero);
+        });
 
     }
 }

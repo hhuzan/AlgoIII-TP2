@@ -9,6 +9,7 @@ import AlgoChess.engine.entidades.Curandero;
 import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.entidades.Catapulta;
 import static AlgoChess.engine.Constantes.CURANDERO_VIDA;
+import static AlgoChess.engine.Constantes.VACULO_PODER;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
 import AlgoChess.engine.jugador.Jugador;
@@ -70,9 +71,10 @@ public class CuranderoTest {
 		Posicion posicionDestino = new Posicion(1,2);
 		tablero.colocarEntidad(jinete, posicionDestino);
 		
-		//TODO: jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, tablero)
-
+		jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, tablero);
 		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
+
+
 		// TODO: Ver como hacer assert para verificar esto
 		// assertEquals(Jinete.getVida, JINETE_VIDA);
 	}

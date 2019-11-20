@@ -79,8 +79,6 @@ public class RocaTest {
         assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
         });
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
 
@@ -109,8 +107,6 @@ public class RocaTest {
         assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
         });
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
 }

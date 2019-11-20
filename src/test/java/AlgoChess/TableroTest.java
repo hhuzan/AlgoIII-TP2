@@ -5,6 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
+import static AlgoChess.engine.Constantes.JINETE_VIDA;
+import static AlgoChess.engine.Constantes.ESPADA_PODER;
 import AlgoChess.excepciones.CasilleroOcupadoException;
 import AlgoChess.excepciones.ColocarEntidadException;
 import AlgoChess.excepciones.CasilleroVacioException;
@@ -30,21 +32,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test01AgregoUnaJineteAlTableroYLeRestoTresPuntosAlJugador() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
-		Jugador jugador = new Jugador(Faccion.ALIADOS);
-		Entidad jinete = new Jinete();
-
-		jinete.setFaccion(Faccion.ALIADOS);
-		Posicion posicion = new Posicion(1, 1);
-		tablero.colocarEntidad(jinete, posicion);
-		// TODO: Ver como hacer assert para verificar esto
-		//assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
-
-	}
-
-	@Test
-	public void test02AgregoEntidadDeUnaFaccionEnSeccionDeEsaFaccionYSeColocaEnEsaPosicion() {
+	public void test01AgregoEntidadDeUnaFaccionEnSeccionDeEsaFaccionYSeColocaEnEsaPosicion() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Entidad soldado1 = new Soldado();
@@ -61,7 +49,7 @@ public class TableroTest {
 
 
 	@Test
-	public void test03AgregarEntidadDeUnaFaccionEnCasilleroDeOtraTiraExcepcion() {
+	public void test02AgregarEntidadDeUnaFaccionEnCasilleroDeOtraTiraExcepcion() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Entidad soldado = new Soldado();
 		soldado.setFaccion(Faccion.ENEMIGOS);
@@ -72,7 +60,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test04MovemosHaciaUnCasilleroYElCasilleroSeOcupaConDichaEntidad() {
+	public void test03MovemosHaciaUnCasilleroYElCasilleroSeOcupaConDichaEntidad() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Soldado soldado = new Soldado();
 		soldado.setFaccion(Faccion.ALIADOS);
@@ -88,7 +76,7 @@ public class TableroTest {
 	}
 
 	@Test 
-	public void test05MovemosHaciaArribaYElCasilleroOrigenQuedaLibre() {
+	public void test04MovemosHaciaArribaYElCasilleroOrigenQuedaLibre() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Soldado soldado = new Soldado();
 		soldado.setFaccion(Faccion.ALIADOS);
@@ -105,7 +93,7 @@ public class TableroTest {
 
 
 	@Test
-	public void test06MoverEntidadACasilleroOcupadoArrojaExcepcion() {
+	public void test05MoverEntidadACasilleroOcupadoArrojaExcepcion() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jinete jineteOrigen = new Jinete();
 		Soldado soldadoDestino = new Soldado();
@@ -123,10 +111,10 @@ public class TableroTest {
 	}
 
 	@Test
-	public void test07EntidadAliadaAtacaEntidadEnemigaYRestaVidaALaEntidadEnemiga() {
+	public void test06EntidadAliadaAtacaEntidadEnemigaYRestaVidaALaEntidadEnemiga() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Soldado soldado = new Soldado();
-		Jinete jinete = new Jinete();
+		Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS), Faccion.ENEMIGOS);
 		soldado.setFaccion(Faccion.ALIADOS);
 		jinete.setFaccion(Faccion.ENEMIGOS);
 
@@ -136,12 +124,14 @@ public class TableroTest {
 		tablero.colocarEntidad(soldado, posSoldado);
 		tablero.colocarEntidad(jinete, posJinete);
 		tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS);
-		// TODO: Ver como hacer assert para verificar esto
-		// assertEquals(jinete2.getVida(), 95);
+
+		assertThrows(JugadorPerdioException.class, () -> {
+			jinete.disminuirVida(JINETE_VIDA - ESPADA_PODER, Faccion.ALIADOS, tablero);
+		});
 	}
 	
 	@Test 
-	public void test08AtacarEntidadDeMismaFaccionArrojaExcepcion() {
+	public void test07AtacarEntidadDeMismaFaccionArrojaExcepcion() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Soldado soldado = new Soldado();
 		Jinete jinete = new Jinete();
@@ -159,7 +149,6 @@ public class TableroTest {
 	}
 
 
-	// TODO: Ver si realmente pertenece a tablerotest...
 	@Test
 	public void test09UnJugadorSeQuedaSinEntidadesYPierde() { 
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);

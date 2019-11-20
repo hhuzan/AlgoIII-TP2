@@ -56,8 +56,6 @@ public class JugadorTest {
     public void Test03JugadorNoPuedeComprarEntidadesDeOtraFaccion(){
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
         Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS, "Lucas"), Faccion.ENEMIGOS);
-        //  TODO: ver si se puede modificar el constructor de las entidades para no tener que poner un duenio en el constructor
-        // TODO: ver si se puede crear excepcion para cuando compras algo que no es de tu faccion
 
         assertThrows(EntidadDeMismaFaccionException.class,()-> jugador.comprarEntidad(new VendedorDeEntidades(), jinete));
 
