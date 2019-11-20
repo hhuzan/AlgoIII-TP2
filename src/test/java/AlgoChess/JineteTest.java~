@@ -30,7 +30,7 @@ public class JineteTest {
 	public void test01CreamosUnJineteYSuCostoEsElEsperado() {
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
         Jugador jugador = new Jugador(Faccion.ALIADOS, "Pedro");
-		Jinete jinete = new Jinete(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
+		Jinete jinete = new Jinete();
         jugador.comprarEntidad(vendedor, jinete);
         // TODO: Ver como hacer assert para verificar esto
 		// assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());

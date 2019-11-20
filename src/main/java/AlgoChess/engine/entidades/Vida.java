@@ -10,22 +10,22 @@ public class Vida {
     }
 
 
-    void aumentar(double cantidad) {
+   public void aumentar(double cantidad) {
         puntosdevida = puntosdevida + cantidad;
         if (puntosdevida >= puntosdevidaAux){
             puntosdevida = puntosdevidaAux;
         }
     }
 
-    void disminuir(double cantidad) {
+   public void disminuir(double cantidad) {
         puntosdevida = puntosdevida - cantidad;
     }
 
-    boolean igualA(double vida) {
+   public boolean igualA(double vida) {
         return vida == puntosdevida;
     }
 
-    boolean fallecio() {
+   public boolean fallecio() {
         return (puntosdevida <= 0);
     }
 
