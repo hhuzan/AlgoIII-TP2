@@ -10,6 +10,8 @@ import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.entidades.Catapulta;
 import static AlgoChess.engine.Constantes.CURANDERO_VIDA;
 import static AlgoChess.engine.Constantes.VACULO_PODER;
+import static AlgoChess.engine.Constantes.JINETE_VIDA;
+import static AlgoChess.engine.Constantes.CATAPULTA_VIDA;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
 import AlgoChess.engine.jugador.Jugador;
@@ -73,10 +75,14 @@ public class CuranderoTest {
 		
 		jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, tablero);
 		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
+           
 
+        jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ENEMIGOS, tablero);
 
-		// TODO: Ver como hacer assert para verificar esto
-		// assertEquals(Jinete.getVida, JINETE_VIDA);
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, tablero);
+        });
+
 	}
 
 	@Test
@@ -92,8 +98,13 @@ public class CuranderoTest {
 
 		Posicion posicionDestino = new Posicion(10,2);
 		tablero.colocarEntidad(jinete, posicionDestino);
-		// TODO: Ver como hacer assert para verificar esto
-		// assertEquals(Jinete.getVida, JINETE_VIDA); (i.e: no lo curo pq es enemigo)
+
+		jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
+		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
+
+		assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
+        });
 	}
 
 	@Test
@@ -109,9 +120,13 @@ public class CuranderoTest {
 
 		Posicion posicionDestino = new Posicion(10,1);
 		tablero.colocarEntidad(catapulta, posicionDestino);
+		
+		catapulta.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
+		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
-		// TODO: Ver como hacer assert para verificar esto
-		// assertEquals(Catapulta.getVida, CATAPULTA_VIDA); (i.e: no lo curo pq es enemigo)
+		assertThrows(JugadorPerdioException.class, () -> {
+            catapulta.disminuirVida(CATAPULTA_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
+        });
 	}
 
 	@Test
@@ -128,8 +143,12 @@ public class CuranderoTest {
 		Posicion posicionDestino = new Posicion(14,1);
 		tablero.colocarEntidad(jinete, posicionDestino);
 
-		// TODO: Ver como hacer assert para verificar esto
-		// assertEquals(Jinete.getVida, JINETE_VIDA); (i.e: no lo curo pq es la distancia no es cercana)
+		jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
+		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
+
+		assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
+        });
 	}
 
 	@Test

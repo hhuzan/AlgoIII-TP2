@@ -48,11 +48,12 @@ public class VaculoTest {
         Vaculo vaculo = new Vaculo();
         Arco arco = new Arco();
 
-        // ARCO_PODER == VACULO_PODER
-        arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
 
-        //TODOs: Assert que la vida volvio a ser la total del jinete
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, tablero);
+        });
     }
 
     @Test 
@@ -71,17 +72,13 @@ public class VaculoTest {
 
 
         Vaculo vaculo = new Vaculo();
-
+        
+        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
-        for(int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
-            jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
-        }
 
         assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
         });
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
 
@@ -101,17 +98,13 @@ public class VaculoTest {
 
 
         Vaculo vaculo = new Vaculo();
-
+        
+        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
-        for(int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
-            jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
-        }
 
         assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
         });
-        // TODO: Ver como hacer assert de :
-        // assertEquals(JINETE_VIDA, jinete.getVida());
 
     }
 }
