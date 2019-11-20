@@ -28,17 +28,7 @@ public class CuranderoTest {
 	}
 
 	@Test
-	public void test01CreamosUnCuranderoYSuCostoEsElEsperado() {
-        VendedorDeEntidades vendedor = new VendedorDeEntidades();
-        Jugador jugador = new Jugador(Faccion.ALIADOS, "Pedro");
-		Curandero curandero = new Curandero();
-        jugador.comprarEntidad(vendedor, curandero);
-        // TODO: Ver como hacer assert para verificar esto
-		// assertEquals(DINERO_JUGADOR - CATAPULTA_COSTO, jugador.getDinero());
-	}
-
-	@Test
-	public void test03DisminuimosTodaLaVidaDelCuranderoYMuere() {
+	public void test01DisminuimosTodaLaVidaDelCuranderoYMuere() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 		Curandero curandero = new Curandero(jugador, Faccion.ALIADOS);
@@ -53,7 +43,7 @@ public class CuranderoTest {
 	}
 
 	@Test
-	public void test04DisminuimosVidaAlCuranderoPasandoMismaFaccionDeAtacanteYArrojaExcepcion() {
+	public void test02DisminuimosVidaAlCuranderoPasandoMismaFaccionDeAtacanteYArrojaExcepcion() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 		Curandero curandero = new Curandero(jugador, Faccion.ALIADOS);
@@ -68,7 +58,7 @@ public class CuranderoTest {
 	}
 
 	@Test
-	public void test05CuramosConUnCuranderoYElAliadoSumaVida() {
+	public void test03CuramosConUnCuranderoYElAliadoSumaVida() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
@@ -79,14 +69,16 @@ public class CuranderoTest {
 
 		Posicion posicionDestino = new Posicion(1,2);
 		tablero.colocarEntidad(jinete, posicionDestino);
+		
+		//TODO: jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, tablero)
 
 		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 		// TODO: Ver como hacer assert para verificar esto
-		// assertEquals(Jinete.getVida, JINETE_VIDA + VACULO_PODER);
+		// assertEquals(Jinete.getVida, JINETE_VIDA);
 	}
 
 	@Test
-	public void test06CuramosAUnaEntidadDeOtraFaccionConUnCuranderoYNoLoCura() {
+	public void test04CuramosAUnaEntidadDeOtraFaccionConUnCuranderoYNoLoCura() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
@@ -98,13 +90,12 @@ public class CuranderoTest {
 
 		Posicion posicionDestino = new Posicion(10,2);
 		tablero.colocarEntidad(jinete, posicionDestino);
-		
 		// TODO: Ver como hacer assert para verificar esto
 		// assertEquals(Jinete.getVida, JINETE_VIDA); (i.e: no lo curo pq es enemigo)
 	}
 
 	@Test
-	public void test07CuranderoCuraACatapultaYNoCuraVida() {
+	public void test05CuranderoCuraACatapultaYNoCuraVida() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
@@ -122,7 +113,7 @@ public class CuranderoTest {
 	}
 
 	@Test
-	public void test08CuranderoCuraAEntidadAUnaDistanciaDistintaALaCercanaNoCura() {
+	public void test06CuranderoCuraAEntidadAUnaDistanciaDistintaALaCercanaNoCura() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
@@ -140,7 +131,7 @@ public class CuranderoTest {
 	}
 
 	@Test
-	public void test09MovemosUnCuranderoAUnCasilleroDestinoYSeMueve() {
+	public void test07MovemosUnCuranderoAUnCasilleroDestinoYSeMueve() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);

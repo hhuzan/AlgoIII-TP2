@@ -72,6 +72,13 @@ public class EspadaTest {
         Espada espada = new Espada();
 
         espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        for(int i = 0; i < (JINETE_VIDA / ESPADA_PODER) - 1; i++) {
+            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
+        }
+
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
+        });
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
@@ -95,6 +102,13 @@ public class EspadaTest {
         Espada espada = new Espada();
 
         espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        for(int i = 0; i < (JINETE_VIDA / ESPADA_PODER) - 1; i++) {
+            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
+        }
+
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
+        });
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 

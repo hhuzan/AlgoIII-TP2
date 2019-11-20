@@ -90,6 +90,7 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
         arma = new Daga();
     }
 
+
 }
 
 

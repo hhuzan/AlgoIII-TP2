@@ -72,6 +72,14 @@ public class DagaTest {
         Daga daga = new Daga();
 
         daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+
+        for(int i = 0; i < (JINETE_VIDA / DAGA_PODER) - 1; i++) {
+            jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
+        }
+
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
+        });
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
@@ -95,6 +103,13 @@ public class DagaTest {
         Daga daga = new Daga();
 
         daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        for(int i = 0; i < (JINETE_VIDA / DAGA_PODER) - 1; i++) {
+            jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
+        }
+
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
+        });
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 

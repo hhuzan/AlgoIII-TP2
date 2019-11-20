@@ -15,6 +15,7 @@ import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
+import static AlgoChess.engine.Constantes.ROCA_PODER;
 import static AlgoChess.engine.Constantes.VACULO_PODER;
 import static AlgoChess.engine.Constantes.JINETE_VIDA;
 
@@ -72,6 +73,13 @@ public class VaculoTest {
         Vaculo vaculo = new Vaculo();
 
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
+        for(int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
+            jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+        }
+
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+        });
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 
@@ -95,6 +103,13 @@ public class VaculoTest {
         Vaculo vaculo = new Vaculo();
 
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
+        for(int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
+            jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+        }
+
+        assertThrows(JugadorPerdioException.class, () -> {
+            jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+        });
         // TODO: Ver como hacer assert de :
         // assertEquals(JINETE_VIDA, jinete.getVida());
 

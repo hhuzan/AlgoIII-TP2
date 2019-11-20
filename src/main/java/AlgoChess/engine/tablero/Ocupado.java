@@ -80,7 +80,7 @@ public class Ocupado extends Casillero {
         if (puedeSerHerida.sosAmigo(getFaccion())) {
             puedeSerHerida.disminuirVidaIgnorandoFaccionAtacante(power, tablero);
         } else {
-            puedeSerHerida.disminuirVidaIgnorandoFaccionAtacante(power + 0.05 * power, tablero);
+            puedeSerHerida.disminuirVidaIgnorandoFaccionAtacante(power*(1.05), tablero);
         }
     }
 
