@@ -1,4 +1,4 @@
-package algochess.engine.vendedorDeEntidades;
+package algochess.engine.vendedordeentidades;
 
 import algochess.engine.Dinero;
 import algochess.engine.entidades.Entidad;

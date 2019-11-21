@@ -6,7 +6,7 @@ import algochess.engine.entidades.Curandero;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
-import algochess.engine.vendedorDeEntidades.VendedorDeEntidades;
+import algochess.engine.vendedordeentidades.VendedorDeEntidades;
 import algochess.excepciones.DineroInsuficienteException;
 import org.junit.Test;
 import static org.junit.Assert.assertNotNull;

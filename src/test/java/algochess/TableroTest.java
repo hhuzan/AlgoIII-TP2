@@ -11,13 +11,13 @@ import algochess.excepciones.CasilleroVacioException;
 import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.excepciones.JugadorPerdioException;
 import algochess.engine.tablero.Tablero;
+import algochess.engine.vendedordeentidades.VendedorDeEntidades;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.posicion.Posicion;
-import algochess.engine.vendedorDeEntidades.VendedorDeEntidades;
 
 public class TableroTest {
 

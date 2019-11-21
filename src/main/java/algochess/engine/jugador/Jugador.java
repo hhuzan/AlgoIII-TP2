@@ -3,7 +3,7 @@ package algochess.engine.jugador;
 import algochess.engine.Dinero;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.vendedorDeEntidades.VendedorDeEntidades;
+import algochess.engine.vendedordeentidades.VendedorDeEntidades;
 import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.excepciones.JugadorPerdioException;
 import java.util.ArrayList;
