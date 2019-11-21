@@ -1,26 +1,17 @@
 package AlgoChess;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-
 import AlgoChess.engine.tablero.Tablero;
-import AlgoChess.engine.tablero.Casillero;
 import AlgoChess.engine.entidades.Catapulta;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.jugador.Jugador;
 import AlgoChess.engine.entidades.Jinete;
-import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.excepciones.JugadorPerdioException;
-import static AlgoChess.engine.Constantes.SOLDADO_VIDA;
 import static AlgoChess.engine.Constantes.JINETE_VIDA;
 import static AlgoChess.engine.Constantes.ROCA_PODER;
-import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
-
 import AlgoChess.excepciones.CasilleroOcupadoException;
 import org.junit.Test;
 
@@ -119,7 +110,6 @@ public class CatapultaTest {
 
         tablero.colocarEntidad(catapulta, posOrigen);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
-        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
         catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
     }

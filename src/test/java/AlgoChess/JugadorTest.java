@@ -1,25 +1,18 @@
 package AlgoChess;
 
 import AlgoChess.engine.entidades.Catapulta;
-import AlgoChess.engine.entidades.Curandero;
 import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.jugador.Jugador;
-import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
 import AlgoChess.excepciones.DineroInsuficienteException;
-import AlgoChess.excepciones.DineroInsuficienteException;
 import AlgoChess.excepciones.EntidadDeMismaFaccionException;
-import AlgoChess.excepciones.JugadorPerdioException;
 import org.junit.Test;
-
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static AlgoChess.engine.Constantes.*;
 import static org.junit.Assert.assertTrue;
-
 
 public class JugadorTest {
 

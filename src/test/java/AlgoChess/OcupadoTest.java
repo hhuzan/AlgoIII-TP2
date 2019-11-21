@@ -1,25 +1,14 @@
 package AlgoChess;
-import AlgoChess.engine.entidades.Curandero;
 import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.facciones.Faccion;
-import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.jugador.Jugador;
 import AlgoChess.engine.posicion.Posicion;
-import AlgoChess.engine.tablero.Casillero;
 import AlgoChess.engine.tablero.Ocupado;
-
 import AlgoChess.engine.tablero.Tablero;
-import AlgoChess.engine.tablero.Vacio;
 import AlgoChess.excepciones.CasilleroOcupadoException;
-import AlgoChess.excepciones.ColocarEntidadException;
-import AlgoChess.excepciones.JugadorPerdioException;
-import javafx.scene.control.Tab;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.awt.*;
-
 import static org.junit.Assert.*;
 
 public class OcupadoTest {
@@ -54,7 +43,6 @@ public class OcupadoTest {
         jinete2.setFaccion(Faccion.ALIADOS);
         Posicion posicion = new Posicion(1,1);
         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
-        Vacio vacio = new Vacio(new Posicion(1,1),Faccion.ALIADOS);
 
         tablero.colocarEntidad(jinete, posicion);
         assertThrows(CasilleroOcupadoException.class, () -> {

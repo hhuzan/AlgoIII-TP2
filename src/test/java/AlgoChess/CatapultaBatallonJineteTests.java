@@ -1,17 +1,11 @@
 package AlgoChess;
 
-import AlgoChess.engine.entidades.Catapulta;
-import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Tablero;
-
-import static AlgoChess.engine.Constantes.*;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
 import AlgoChess.engine.tablero.Vacio;
 import org.junit.Test;
 

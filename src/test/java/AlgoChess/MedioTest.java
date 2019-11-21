@@ -1,7 +1,6 @@
 package AlgoChess;
 
 import AlgoChess.engine.entidades.Jinete;
-import AlgoChess.engine.entidades.armas.rangos.Cercano;
 import AlgoChess.engine.entidades.armas.rangos.Medio;
 import AlgoChess.engine.entidades.armas.rangos.Rango;
 import AlgoChess.engine.facciones.Faccion;
@@ -11,7 +10,6 @@ import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Casillero;
 import AlgoChess.engine.tablero.Ocupado;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class MedioTest {

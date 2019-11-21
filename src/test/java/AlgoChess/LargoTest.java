@@ -1,17 +1,14 @@
 package AlgoChess;
 
 import AlgoChess.engine.entidades.Jinete;
-import AlgoChess.engine.entidades.armas.rangos.Cercano;
 import AlgoChess.engine.entidades.armas.rangos.Largo;
 import AlgoChess.engine.entidades.armas.rangos.Rango;
 import AlgoChess.engine.facciones.Faccion;
-import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.jugador.Jugador;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Casillero;
 import AlgoChess.engine.tablero.Ocupado;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class LargoTest {

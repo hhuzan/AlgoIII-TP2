@@ -1,7 +1,5 @@
 package AlgoChess;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
@@ -13,16 +11,14 @@ import AlgoChess.excepciones.CasilleroVacioException;
 import AlgoChess.excepciones.EntidadDeMismaFaccionException;
 import AlgoChess.excepciones.JugadorPerdioException;
 import AlgoChess.engine.tablero.Tablero;
-import AlgoChess.engine.tablero.Casillero;
 import AlgoChess.engine.entidades.Entidad;
 import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.jugador.Jugador;
 import AlgoChess.engine.entidades.Jinete;
-import AlgoChess.engine.entidades.Jinete;
-import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
+
 public class TableroTest {
 
 	@Test
@@ -34,7 +30,6 @@ public class TableroTest {
 	@Test
 	public void test01AgregoEntidadDeUnaFaccionEnSeccionDeEsaFaccionYSeColocaEnEsaPosicion() {
 		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
-		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Entidad soldado1 = new Soldado();
 		Entidad soldado2 = new Soldado();
 

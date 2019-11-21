@@ -1,16 +1,11 @@
 package AlgoChess;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-
 import AlgoChess.engine.tablero.Tablero;
-import AlgoChess.engine.tablero.Casillero;
 import AlgoChess.engine.entidades.armas.Roca;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.jugador.Jugador;
-import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
@@ -39,7 +34,6 @@ public class RocaTest {
         Posicion posDestino = new Posicion(15, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
@@ -65,7 +59,6 @@ public class RocaTest {
         Posicion posDestino = new Posicion(10, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
@@ -93,7 +86,6 @@ public class RocaTest {
         Posicion posDestino = new Posicion(12, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 

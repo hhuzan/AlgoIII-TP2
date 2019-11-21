@@ -1,21 +1,14 @@
 package AlgoChess;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-
 import AlgoChess.engine.tablero.Tablero;
-import AlgoChess.engine.tablero.Casillero;
 import AlgoChess.engine.entidades.armas.Vaculo;
-import AlgoChess.engine.entidades.armas.Arco;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.jugador.Jugador;
-import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
-import static AlgoChess.engine.Constantes.ROCA_PODER;
 import static AlgoChess.engine.Constantes.VACULO_PODER;
 import static AlgoChess.engine.Constantes.JINETE_VIDA;
 
@@ -41,12 +34,10 @@ public class VaculoTest {
         Posicion posDestino = new Posicion(15, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Vaculo vaculo = new Vaculo();
-        Arco arco = new Arco();
 
         jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
@@ -67,7 +58,6 @@ public class VaculoTest {
         Posicion posDestino = new Posicion(13, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
@@ -93,7 +83,6 @@ public class VaculoTest {
         Posicion posDestino = new Posicion(15, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 

@@ -1,10 +1,7 @@
 package AlgoChess;
 import AlgoChess.engine.Dinero;
-import AlgoChess.excepciones.DineroInsuficienteException;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DineroTest {
 

@@ -2,10 +2,7 @@ package AlgoChess;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
-
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import AlgoChess.engine.matematica.Calculadora;
 import org.junit.Test;
 import static AlgoChess.engine.Constantes.RANGO_CERCANO_MINIMO;

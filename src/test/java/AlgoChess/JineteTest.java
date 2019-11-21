@@ -1,22 +1,18 @@
 package AlgoChess;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
-
 import AlgoChess.engine.entidades.Jinete;
 import AlgoChess.engine.entidades.Soldado;
 import AlgoChess.engine.entidades.Catapulta;
 import AlgoChess.engine.facciones.Faccion;
-import AlgoChess.engine.vendedorDeEntidades.VendedorDeEntidades;
 import AlgoChess.engine.jugador.Jugador;
 import AlgoChess.engine.tablero.Tablero;
 import AlgoChess.engine.posicion.Posicion;
 import static AlgoChess.engine.Constantes.JINETE_VIDA;
 import static AlgoChess.engine.Constantes.SOLDADO_VIDA;
 import static AlgoChess.engine.Constantes.CATAPULTA_VIDA;
-import static AlgoChess.engine.Constantes.JINETE_COSTO;
 import static AlgoChess.engine.Constantes.DAGA_PODER;
 import AlgoChess.excepciones.JugadorPerdioException;
 import AlgoChess.excepciones.CasilleroOcupadoException;
