@@ -22,3 +22,5 @@ src/test/java/AlgoChess/BasuraTest.java
 target
 .idea
 .idea/uiDesigner.xml
+/.classpath
+/.project
