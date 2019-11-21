@@ -35,6 +35,8 @@ public class Posiciones {
         }
         return false;
     }
+
+    //TODO remover debe comprarr "esIgualA"
     public void remover(Posicion posicion){
         conjunto.remove(posicion);
     }
