@@ -114,87 +114,87 @@ public class CatapultaTest {
         catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
     }
 
-    // @Test
-    // public void Test05CatapultaAtacaAUnidadesContiguasDelCasilleroDeAtaque(){
-    //     // Pongo 5 unidades contiguas (enemigas y aliadas)
-    //     // Una catapulta ataca a una de ellas, y debería poder bajarle vida a todas.
+    @Test
+    public void Test05CatapultaAtacaAUnidadesContiguasDelCasilleroDeAtaque(){
+    // Pongo 5 unidades contiguas (enemigas y aliadas)
+    // Una catapulta ataca a una de ellas, y debería poder bajarle vida a todas.
 
-    //     Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
-    //     Jugador jugador1 = new Jugador(Faccion.ALIADOS);
-    //     Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
+       Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+       Jugador jugador1 = new Jugador(Faccion.ALIADOS);
+       Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
 
-    //     /*Catapulta*/
-    //     Catapulta catapulta = new Catapulta(jugador1, Faccion.ALIADOS);
-    //     Posicion pcatapulta = new Posicion(0,10);
-    //     tablero.colocarEntidad(catapulta, pcatapulta);
+       /*Catapulta*/
+       Catapulta catapulta = new Catapulta(jugador1, Faccion.ALIADOS);
+       Posicion pcatapulta = new Posicion(0,10);
+       tablero.colocarEntidad(catapulta, pcatapulta);
 
-    //     /*Creo soldados*/
-    //     Soldado soldado1 = new Soldado(jugador1, Faccion.ALIADOS);
-    //     Soldado soldado2 = new Soldado(jugador1, Faccion.ALIADOS);
-    //     Soldado soldado3 = new Soldado(jugador1, Faccion.ALIADOS);
-    //     Soldado soldado4 = new Soldado(jugador1, Faccion.ALIADOS);
-    //     Soldado soldado5 = new Soldado(jugador1, Faccion.ALIADOS);
-    //     Soldado soldado6 = new Soldado(jugador1, Faccion.ALIADOS);
-    //     Soldado soldado7 = new Soldado(jugador1, Faccion.ALIADOS);
+       /*Creo soldados*/
+       Soldado soldado1 = new Soldado(jugador1, Faccion.ALIADOS);
+       Soldado soldado2 = new Soldado(jugador1, Faccion.ALIADOS);
+       Soldado soldado3 = new Soldado(jugador1, Faccion.ALIADOS);
+       Soldado soldado4 = new Soldado(jugador1, Faccion.ALIADOS);
+       Soldado soldado5 = new Soldado(jugador1, Faccion.ALIADOS);
+       Soldado soldado6 = new Soldado(jugador1, Faccion.ALIADOS);
+       Soldado soldado7 = new Soldado(jugador1, Faccion.ALIADOS);
 
-    //     /*Creo jinetes*/
-    //     Jinete jinete1 = new Jinete(jugador2, Faccion.ENEMIGOS);
-    //     Jinete jinete2 = new Jinete(jugador2, Faccion.ENEMIGOS);
-    //     Jinete jinete3 = new Jinete(jugador2, Faccion.ENEMIGOS);
-    //     Jinete jinete4 = new Jinete(jugador2, Faccion.ENEMIGOS);
-    //     Jinete jinete5 = new Jinete(jugador2, Faccion.ENEMIGOS);
-    //     Jinete jinete6 = new Jinete(jugador2, Faccion.ENEMIGOS);
+       /*Creo jinetes*/
+       Jinete jinete1 = new Jinete(jugador2, Faccion.ENEMIGOS);
+       Jinete jinete2 = new Jinete(jugador2, Faccion.ENEMIGOS);
+       Jinete jinete3 = new Jinete(jugador2, Faccion.ENEMIGOS);
+       Jinete jinete4 = new Jinete(jugador2, Faccion.ENEMIGOS);
+       Jinete jinete5 = new Jinete(jugador2, Faccion.ENEMIGOS);
+       Jinete jinete6 = new Jinete(jugador2, Faccion.ENEMIGOS);
 
-    //     /*Posiciones soldados f1*/
-    //     Posicion psoldado1 = new Posicion(6,9);
-    //     Posicion psoldado2 = new Posicion(7,9);
-    //     Posicion psoldado3 = new Posicion(8,9);
-    //     Posicion psoldado4 = new Posicion(9,9);
-    //     Posicion psoldado5 = new Posicion(9,10);
-    //     Posicion psoldado6 = new Posicion(8,11);
-    //     Posicion psoldado7 = new Posicion(7,12);
+       /*Posiciones soldados f1*/
+       Posicion psoldado1 = new Posicion(6,9);
+       Posicion psoldado2 = new Posicion(7,9);
+       Posicion psoldado3 = new Posicion(8,9);
+       Posicion psoldado4 = new Posicion(9,9);
+       Posicion psoldado5 = new Posicion(9,10);
+       Posicion psoldado6 = new Posicion(8,11);
+       Posicion psoldado7 = new Posicion(7,12);
 
-    //     /*Posiciones jinetes f2*/
-    //     Posicion pjinete1 = new Posicion(10,10);
-    //     Posicion pjinete2 = new Posicion(11,10);
-    //     Posicion pjinete3 = new Posicion(11,9);
-    //     Posicion pjinete4 = new Posicion(12,8);
-    //     Posicion pjinete5 = new Posicion(11,11);
-    //     Posicion pjinete6 = new Posicion(12,12);
+       /*Posiciones jinetes f2*/
+       Posicion pjinete1 = new Posicion(10,10);
+       Posicion pjinete2 = new Posicion(11,10);
+       Posicion pjinete3 = new Posicion(11,9);
+       Posicion pjinete4 = new Posicion(12,8);
+       Posicion pjinete5 = new Posicion(11,11);
+       Posicion pjinete6 = new Posicion(12,12);
 
-    //     /*Coloco soldados f1 en tablero*/
-    //     tablero.colocarEntidad(soldado1, psoldado1);
-    //     tablero.colocarEntidad(soldado2, psoldado2);
-    //     tablero.colocarEntidad(soldado3, psoldado3);
-    //     tablero.colocarEntidad(soldado4, psoldado4);
-    //     tablero.colocarEntidad(soldado5, psoldado5);
-    //     tablero.colocarEntidad(soldado6, psoldado6);
-    //     tablero.colocarEntidad(soldado7, psoldado7);
+      /*Coloco soldados f1 en tablero*/
+       tablero.colocarEntidad(soldado1, psoldado1);
+       tablero.colocarEntidad(soldado2, psoldado2);
+       tablero.colocarEntidad(soldado3, psoldado3);
+       tablero.colocarEntidad(soldado4, psoldado4);
+       tablero.colocarEntidad(soldado5, psoldado5);
+       tablero.colocarEntidad(soldado6, psoldado6);
+       tablero.colocarEntidad(soldado7, psoldado7);
 
-    //     /*Coloco jinetes f2 en tablero*/
-    //     tablero.colocarEntidad(jinete1, pjinete1);
-    //     tablero.colocarEntidad(jinete2, pjinete2);
-    //     tablero.colocarEntidad(jinete3, pjinete3);
-    //     tablero.colocarEntidad(jinete4, pjinete4);
-    //     tablero.colocarEntidad(jinete5, pjinete5);
-    //     tablero.colocarEntidad(jinete6, pjinete6);
+       /*Coloco jinetes f2 en tablero*/
+       tablero.colocarEntidad(jinete1, pjinete1);
+       tablero.colocarEntidad(jinete2, pjinete2);
+       tablero.colocarEntidad(jinete3, pjinete3);
+       tablero.colocarEntidad(jinete4, pjinete4);
+       tablero.colocarEntidad(jinete5, pjinete5);
+       tablero.colocarEntidad(jinete6, pjinete6);
 
-    //     /* Ataque un jinete enemigo */
-    //     catapulta.atacar(tablero.obtenerCasillero(pcatapulta), tablero, Faccion.ALIADOS);
+      /* Ataque un jinete enemigo */
+       catapulta.atacar(tablero.obtenerCasillero(pjinete1), tablero, Faccion.ALIADOS);
 
-    //     assertTrue(jinete1.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
-    //     assertTrue(jinete2.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
-    //     assertTrue(jinete3.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
-    //     assertTrue(jinete4.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
-    //     assertTrue(jinete5.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
-    //     assertTrue(jinete6.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
-    //     assertTrue(soldado1.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
-    //     assertTrue(soldado2.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
-    //     assertTrue(soldado3.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
-    //     assertTrue(soldado4.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
-    //     assertTrue(soldado5.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
-    //     assertTrue(soldado6.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
-    //     assertTrue(soldado7.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
+       assertTrue(jinete1.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
+       assertTrue(jinete2.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
+       assertTrue(jinete3.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
+       assertTrue(jinete4.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
+       assertTrue(jinete5.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
+       assertTrue(jinete6.tenesEstaVida(JINETE_VIDA-ROCA_PODER));
+       assertTrue(soldado1.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
+       assertTrue(soldado2.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
+       assertTrue(soldado3.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
+       assertTrue(soldado4.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
+       assertTrue(soldado5.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
+       assertTrue(soldado6.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
+       assertTrue(soldado7.tenesEstaVida(SOLDADO_VIDA-ROCA_PODER));
 
-    // }
+    }
 }
