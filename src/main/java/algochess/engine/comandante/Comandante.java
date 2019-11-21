@@ -6,6 +6,8 @@ import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.posicion.Posiciones;
 import algochess.engine.tablero.Tablero;
+import algochess.excepciones.CasilleroOcupadoException;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -96,7 +98,10 @@ public class Comandante {
                     batallon.remove(recluta);
                     reclutasYaMovidos.add(recluta);
                     Recuadro casillero = tablero.obtenerCasillero(posicionPotencial);
-                    boolean seMovio = recluta.moverComoRecluta(tablero, casillero);
+                    boolean seMovio = false;
+                    try {seMovio = recluta.moverComoRecluta(tablero, casillero);
+                    }catch (CasilleroOcupadoException ignored){};
+
                     if (seMovio) {tablero.colocarVacio(antigua);}
                 }
             }
