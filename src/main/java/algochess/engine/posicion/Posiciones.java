@@ -38,7 +38,8 @@ public class Posiciones {
     public void remover(Posicion posicion){
         conjunto.remove(posicion);
     }
-    HashSet<Posicion> posiciones(){
+    
+    public HashSet<Posicion> posiciones(){
         return conjunto;
     }
 }
