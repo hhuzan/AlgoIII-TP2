@@ -1,7 +1,6 @@
 package algochess;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.entidades.armas.Daga;
 import algochess.engine.facciones.Faccion;
@@ -13,6 +12,7 @@ import static algochess.engine.ConstantesUtils.DAGA_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import algochess.excepciones.JugadorPerdioException;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class DagaTest {
 
@@ -42,7 +42,7 @@ public class DagaTest {
             daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         }
 
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         });
     }
@@ -69,7 +69,7 @@ public class DagaTest {
             jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
         }
 
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
         });
 
@@ -96,7 +96,7 @@ public class DagaTest {
             jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
         }
 
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, tablero);
         });
 
