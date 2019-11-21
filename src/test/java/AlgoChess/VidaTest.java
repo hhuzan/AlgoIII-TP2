@@ -54,12 +54,4 @@ public class VidaTest {
         assertTrue(vida.fallecio());
     }
 
-
-
-
-
-
-
-
-
 }

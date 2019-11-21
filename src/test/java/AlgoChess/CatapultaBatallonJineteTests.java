@@ -16,7 +16,7 @@ public class CatapultaBatallonJineteTests {
     * pantalla lo que se estaba haciendoy lo corroboraba a papel. En los tests de batallon, para automatizarlos
     * se debería corroborar que, dependiendo de como se mueva el batallon, los casilleros quedan vacios/ocupados */
     @Test
-    public void TestBasura0001() {
+    public void testBasura0001() {
         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
@@ -41,7 +41,7 @@ public class CatapultaBatallonJineteTests {
     }
 
     @Test
-    public void TestBasura0002() {
+    public void testBasura0002() {
         Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
@@ -66,7 +66,7 @@ public class CatapultaBatallonJineteTests {
     }
 
     @Test
-    public void TestBasura0003() {
+    public void testBasura0003() {
         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
@@ -92,7 +92,7 @@ public class CatapultaBatallonJineteTests {
 
 
     @Test
-    public void TestBasura0004() {
+    public void testBasura0004() {
         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
@@ -117,7 +117,7 @@ public class CatapultaBatallonJineteTests {
     }
 
     @Test
-    public void TestBasura0005() {
+    public void testBasura0005() {
         Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
@@ -143,7 +143,7 @@ public class CatapultaBatallonJineteTests {
     }
 
     @Test
-    public void TestBasura0006() {
+    public void testBasura0006() {
         Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
@@ -171,7 +171,7 @@ public class CatapultaBatallonJineteTests {
     }
 
     @Test
-    public void TestBasura0007() {
+    public void testBasura0007() {
         Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
@@ -197,7 +197,7 @@ public class CatapultaBatallonJineteTests {
     }
 
     @Test
-    public void TestBasura0008() {
+    public void testBasura0008() {
         Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();
@@ -223,7 +223,7 @@ public class CatapultaBatallonJineteTests {
     }
 
     @Test
-    public void TestBasura0009() {
+    public void testBasura0009() {
         Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
 
         Soldado soldado1 = new Soldado();

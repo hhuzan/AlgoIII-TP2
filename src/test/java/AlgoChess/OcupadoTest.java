@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class OcupadoTest {
     @Test
-    public void Test00SeCreaCasilleroOcupado(){
+    public void test00SeCreaCasilleroOcupado(){
         Jinete jinete = new Jinete();
         Posicion posicion = new Posicion(1,1);
         Ocupado ocupado = new Ocupado(jinete,posicion,Faccion.ALIADOS);
@@ -23,7 +23,7 @@ public class OcupadoTest {
 
 
     @Test
-    public void Test01ConstructorAsignaAtributosCorrectamente(){
+    public void test01ConstructorAsignaAtributosCorrectamente(){
         Jinete jinete = new Jinete();
         Posicion posicion = new Posicion(1,1);
 
@@ -36,7 +36,7 @@ public class OcupadoTest {
 
 
     @Test
-    public void Test02IntentoColocarUnaEntidadEnUnCasilleroOcupadoYTiraError(){
+    public void test02IntentoColocarUnaEntidadEnUnCasilleroOcupadoYTiraError(){
         Jinete jinete = new Jinete();
         jinete.setFaccion(Faccion.ALIADOS);
         Jinete jinete2 = new Jinete();
@@ -52,7 +52,7 @@ public class OcupadoTest {
     }
 
     @Test
-    public void Test03CasilleroVacioDevueltoPoseeMismaFaccion(){
+    public void test03CasilleroVacioDevueltoPoseeMismaFaccion(){
         Jinete jinete = new Jinete();
         jinete.setFaccion(Faccion.ALIADOS);
         Posicion posicion = new Posicion(1,1);
@@ -66,7 +66,7 @@ public class OcupadoTest {
 
 
     @Test
-    public void Test04CasilleroVacioDevueltoPoseeMismaPosicion(){
+    public void test04CasilleroVacioDevueltoPoseeMismaPosicion(){
         Jinete jinete = new Jinete();
         jinete.setFaccion(Faccion.ALIADOS);
         Posicion posicion = new Posicion(1,1);
@@ -80,7 +80,7 @@ public class OcupadoTest {
     }
 
     @Test
-    public void Test05SacoUnaEntidadDelCasilleroYPuedoVolverAPonerOtra(){
+    public void test05SacoUnaEntidadDelCasilleroYPuedoVolverAPonerOtra(){
         // este test tambien prueba que al mover una entidad de un casillero ocupado este pasa a ser vacio
 
         Jinete jinete = new Jinete();
@@ -105,7 +105,7 @@ public class OcupadoTest {
 
 
     @Test
-    public void Test06PuedoMoverUnaEntidadAOtroCasillero(){
+    public void test06PuedoMoverUnaEntidadAOtroCasillero(){
 
         Jinete jinete = new Jinete(new Jugador(Faccion.ALIADOS), Faccion.ALIADOS);
 
@@ -125,7 +125,7 @@ public class OcupadoTest {
     }
 
     @Test
-    public void Test07AgregoUnSoldadoYEsAmigoDeLaMismaFaccion(){
+    public void test07AgregoUnSoldadoYEsAmigoDeLaMismaFaccion(){
 
         Soldado soldado = new Soldado(new Jugador(Faccion.ALIADOS), Faccion.ALIADOS);
 

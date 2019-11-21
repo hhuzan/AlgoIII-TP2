@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class VacioTest {
 
     @Test
-    public void Test00CreoUnVacioYNoEsNull(){
+    public void test00CreoUnVacioYNoEsNull(){
 
         Posicion posicion = new Posicion(1,1);
         Vacio vacio = new Vacio(posicion, Faccion.ALIADOS);
@@ -26,7 +26,7 @@ public class VacioTest {
     }
 
     @Test
-    public void Test01ColocoEntidadDeDistintaFaccionYTiraError(){
+    public void test01ColocoEntidadDeDistintaFaccionYTiraError(){
 
         Posicion posicion = new Posicion(1,1);
         Vacio vacio = new Vacio(posicion, Faccion.ALIADOS);
@@ -36,7 +36,7 @@ public class VacioTest {
     }
 
     @Test
-    public void Test02SoldadoAmigoSiempreDevuelveFalse(){
+    public void test02SoldadoAmigoSiempreDevuelveFalse(){
 
         Posicion posicion = new Posicion(1,1);
         Vacio vacio = new Vacio(posicion, Faccion.ALIADOS);
@@ -45,7 +45,7 @@ public class VacioTest {
     }
 
     @Test
-    public void Test03SPoseesUnidadSiempreDevuelveFalse(){
+    public void test03SPoseesUnidadSiempreDevuelveFalse(){
 
         Posicion posicion = new Posicion(1,1);
         Vacio vacio = new Vacio(posicion, Faccion.ALIADOS);
@@ -55,7 +55,7 @@ public class VacioTest {
 
 
     @Test
-    public void Test04ColocarEntidadEnVacioConvierteElCasilleroEnOcupado(){
+    public void test04ColocarEntidadEnVacioConvierteElCasilleroEnOcupado(){
         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
         Posicion posicion = new Posicion(1,1);
         Jugador jugador = new Jugador(Faccion.ALIADOS, "Lucas");

@@ -101,7 +101,7 @@ public class JineteTest {
 	}
 
     @Test
-    public void Test05JineteAtacaAEntidadEnemigaADistanciaMediaYFallaPuesEstaObligadoAUsarDaga(){
+    public void test05JineteAtacaAEntidadEnemigaADistanciaMediaYFallaPuesEstaObligadoAUsarDaga(){
         // una catapulta1 enemiga distancia cercana (del jinete)
         // una catapulta2 enemiga distancia mediana (del jinete)
         // El jinete no debería poder atacar la catapulta2.

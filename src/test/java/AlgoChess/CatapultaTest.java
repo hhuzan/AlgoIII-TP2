@@ -118,7 +118,7 @@ public class CatapultaTest {
     }
 
     @Test
-    public void Test05CatapultaAtacaAUnidadesContiguasDelCasilleroDeAtaque(){
+    public void test05CatapultaAtacaAUnidadesContiguasDelCasilleroDeAtaque(){
     // Pongo 5 unidades contiguas (enemigas y aliadas)
     // Una catapulta ataca a una de ellas, y debería poder bajarle vida a todas.
 

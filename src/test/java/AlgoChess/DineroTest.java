@@ -6,20 +6,20 @@ import static org.junit.Assert.*;
 public class DineroTest {
 
     @Test
-    public void Test00ConstructorNoDevuelveNull() {
+    public void test00ConstructorNoDevuelveNull() {
         Dinero dinero = new Dinero(0);
         assertNotNull(dinero);
     }
 
     @Test
-    public void Test01DosDinerosSonIgualesSiTienenElmismoMonto() {
+    public void test01DosDinerosSonIgualesSiTienenElmismoMonto() {
         Dinero dinero1 = new Dinero(3);
         Dinero dinero2 = new Dinero(3);
         assertTrue(dinero1.sonIguales(dinero2));
     }
 
     @Test
-    public void Test02DosDinerosSonDistintosSiTienenDistintosMontos() {
+    public void test02DosDinerosSonDistintosSiTienenDistintosMontos() {
         Dinero dinero1 = new Dinero(1);
         Dinero dinero2 = new Dinero(2);
         assertFalse(dinero1.sonIguales(dinero2));
@@ -27,7 +27,7 @@ public class DineroTest {
 
 
     @Test
-    public void Test03NoSePuedeRestarMasDineroDelQueTenes(){
+    public void test03NoSePuedeRestarMasDineroDelQueTenes(){
         Dinero dinero1 = new Dinero(0);
         Dinero dinero2 = new Dinero(1);
         Dinero expected = dinero1.restarDinero(dinero2);

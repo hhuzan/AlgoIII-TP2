@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class MedioTest {
 
     @Test
-    public void Test00CreoUnRangoCercanoYNoEsNull(){
+    public void test00CreoUnRangoCercanoYNoEsNull(){
 
         Rango rangoMedio = new Medio();
 
@@ -24,7 +24,7 @@ public class MedioTest {
     }
 
     @Test
-    public void Test01CasilleroQueEstaEnRangoNoTiraError(){
+    public void test01CasilleroQueEstaEnRangoNoTiraError(){
 
         Jinete jinete = new Jinete(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
         Posicion posicion =  new Posicion(6,6);
@@ -37,7 +37,7 @@ public class MedioTest {
     }
 
     @Test
-    public void Test02CasilleroNoQueEstaEnRangoTiraError(){
+    public void test02CasilleroNoQueEstaEnRangoTiraError(){
 
         Jinete jinete = new Jinete(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
         Posicion posicion =  new Posicion(1,1);
@@ -48,7 +48,5 @@ public class MedioTest {
         assertFalse(rangoMedio.casilleroEstaEnRango(casillero, origen));
 
     }
-
-
 
 }

@@ -14,13 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class VendedorDeEntidadesTest {
 
     @Test
-    public void Test00SeCreaVendedorDeEntidades(){
+    public void test00SeCreaVendedorDeEntidades(){
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
         assertNotNull(vendedor);
     }
 
     @Test
-    public void Test01NoSeLePagaLoSuficienteSoldado(){
+    public void test01NoSeLePagaLoSuficienteSoldado(){
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         Soldado entidad = new Soldado();
@@ -31,7 +31,7 @@ public class VendedorDeEntidadesTest {
     }
 
     @Test
-    public void Test02NoSeLePagaLoSuficienteJinete(){
+    public void test02NoSeLePagaLoSuficienteJinete(){
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         Jinete entidad = new Jinete();
@@ -41,7 +41,7 @@ public class VendedorDeEntidadesTest {
     }
 
     @Test
-    public void Test03NoSeLePagaLoSuficienteCurandero(){
+    public void test03NoSeLePagaLoSuficienteCurandero(){
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         Curandero entidad = new Curandero();
@@ -51,7 +51,7 @@ public class VendedorDeEntidadesTest {
     }
 
     @Test
-    public void Test04NoSeLePagaLoSuficienteCatapulta(){
+    public void test04NoSeLePagaLoSuficienteCatapulta(){
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         Catapulta catapulta = new Catapulta();
@@ -63,7 +63,7 @@ public class VendedorDeEntidadesTest {
 
 
     @Test
-    public void Test05SeCompraSoldado() {
+    public void test05SeCompraSoldado() {
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         Soldado entidad = new Soldado();
@@ -77,7 +77,7 @@ public class VendedorDeEntidadesTest {
 
 
     @Test
-    public void Test06SeCompraJinete() {
+    public void test06SeCompraJinete() {
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         Jinete entidad = new Jinete();
@@ -88,7 +88,7 @@ public class VendedorDeEntidadesTest {
     }
 
     @Test
-    public void Test07SeCompraCurandero() {
+    public void test07SeCompraCurandero() {
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         Curandero entidad = new Curandero();
@@ -99,7 +99,7 @@ public class VendedorDeEntidadesTest {
     }
 
     @Test
-    public void Test08SeCompraCatapulta() {
+    public void test08SeCompraCatapulta() {
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
 
         Catapulta entidad = new Catapulta();

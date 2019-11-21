@@ -24,7 +24,7 @@ public class JugadorTest {
 
 
     @Test
-    public void Test01NoSePuedenComprarInfinitasEntidadesConDineroFinito() throws DineroInsuficienteException {
+    public void test01NoSePuedenComprarInfinitasEntidadesConDineroFinito() throws DineroInsuficienteException {
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
         Catapulta catapulta = new Catapulta(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
         VendedorDeEntidades vendedor = new VendedorDeEntidades();
@@ -37,7 +37,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void Test02JugadorSinEntidadesPierde(){
+    public void test02JugadorSinEntidadesPierde(){
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
 
         assertTrue(jugador.perdio());
@@ -46,7 +46,7 @@ public class JugadorTest {
 
 
     @Test
-    public void Test03JugadorNoPuedeComprarEntidadesDeOtraFaccion(){
+    public void test03JugadorNoPuedeComprarEntidadesDeOtraFaccion(){
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
         Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS, "Lucas"), Faccion.ENEMIGOS);
 
@@ -56,7 +56,7 @@ public class JugadorTest {
     
 
     @Test
-    public void Test04CreoUnJugadorConUnaFaccionYObtengoLaFaccionQueLeColoque(){
+    public void test04CreoUnJugadorConUnaFaccionYObtengoLaFaccionQueLeColoque(){
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
        assertEquals(Faccion.ALIADOS, jugador.getFaccion());
 

@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class LargoTest {
 
     @Test
-    public void Test00CreoUnRangoCercanoYNoEsNull(){
+    public void test00CreoUnRangoCercanoYNoEsNull(){
 
         Rango rangoLargo = new Largo();
 
@@ -23,7 +23,7 @@ public class LargoTest {
     }
 
     @Test
-    public void Test01CasilleroQueNoEstaEnRangoTiraError(){
+    public void test01CasilleroQueNoEstaEnRangoTiraError(){
 
         Jinete jinete = new Jinete(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
         Posicion posicion =  new Posicion(1,1);
@@ -36,7 +36,7 @@ public class LargoTest {
     }
 
     @Test
-    public void Test02CasilleroQueEstaEnRangoNoTiraError(){
+    public void test02CasilleroQueEstaEnRangoNoTiraError(){
 
         Jinete jinete = new Jinete(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ALIADOS);
         Posicion posicion =  new Posicion(20,20);
