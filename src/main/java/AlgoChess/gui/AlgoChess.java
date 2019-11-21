@@ -1,27 +1,15 @@
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.scene.paint.Color;
-import org.w3c.dom.css.Rect;
-import java.awt.*;
-import java.util.Stack;
 
 
 public class AlgoChess extends Application  {
-    private static final int TAMANIO_CASILLERO = 45;
+    private static final int TAMANIO_CASILLERO = 25;
     private static final int COLUMNAS = 20;
     private static final int FILAS = 20;
 
