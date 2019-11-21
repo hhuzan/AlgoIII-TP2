@@ -11,8 +11,8 @@ import algochess.engine.interfaces.entidades.PuedeSerHerida;
 import algochess.engine.tablero.Tablero;
 import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.engine.jugador.Jugador;
-import static algochess.engine.Constantes.CURANDERO_COSTO;
-import static algochess.engine.Constantes.CURANDERO_VIDA;
+import static algochess.engine.ConstantesUtils.CURANDERO_COSTO;
+import static algochess.engine.ConstantesUtils.CURANDERO_VIDA;
 
 public class Curandero extends Entidad implements PuedeCurar, PuedeMoverse, PuedeSerCurada, PuedeSerHerida {
     private ArmaCura arma;

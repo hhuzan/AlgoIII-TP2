@@ -10,10 +10,10 @@ import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.posicion.Posicion;
-import static algochess.engine.Constantes.JINETE_VIDA;
-import static algochess.engine.Constantes.SOLDADO_VIDA;
-import static algochess.engine.Constantes.CATAPULTA_VIDA;
-import static algochess.engine.Constantes.DAGA_PODER;
+import static algochess.engine.ConstantesUtils.JINETE_VIDA;
+import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
+import static algochess.engine.ConstantesUtils.CATAPULTA_VIDA;
+import static algochess.engine.ConstantesUtils.DAGA_PODER;
 import algochess.excepciones.JugadorPerdioException;
 import algochess.excepciones.CasilleroOcupadoException;
 

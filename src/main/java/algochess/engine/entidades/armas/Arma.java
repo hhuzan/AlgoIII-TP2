@@ -12,11 +12,11 @@ abstract class Arma {
         rango = rango_;
     }
 
-    Rango getRango() {
+    public Rango getRango() {
         return rango;
     }
 
-    int getPower() {
+    public int getPower() {
         return power;
     }
 }

@@ -1,6 +1,6 @@
 package algochess.engine;
 
-public final class Constantes {
+public final class ConstantesUtils {
     public static final int TAMANIO_TABLERO = 20;
     public static final int TAMANIO_BATALLON = 3;
 

@@ -8,7 +8,7 @@ import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.excepciones.JugadorPerdioException;
 import java.util.ArrayList;
 import java.util.List;
-import static algochess.engine.Constantes.DINERO_JUGADOR;
+import static algochess.engine.ConstantesUtils.DINERO_JUGADOR;
 
 public class Jugador {
 

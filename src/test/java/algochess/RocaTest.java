@@ -9,8 +9,8 @@ import algochess.engine.jugador.Jugador;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.interfaces.casillero.Recuadro;
 import algochess.engine.posicion.Posicion;
-import static algochess.engine.Constantes.ROCA_PODER;
-import static algochess.engine.Constantes.JINETE_VIDA;
+import static algochess.engine.ConstantesUtils.ROCA_PODER;
+import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import algochess.excepciones.JugadorPerdioException;
 import org.junit.Test;
 

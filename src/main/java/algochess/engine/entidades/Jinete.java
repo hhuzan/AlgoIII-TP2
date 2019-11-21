@@ -14,7 +14,7 @@ import algochess.engine.tablero.Tablero;
 import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.engine.jugador.Jugador;
 import java.util.HashSet;
-import static algochess.engine.Constantes.*;
+import static algochess.engine.ConstantesUtils.*;
 
 public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeSerHerida, PuedeSerCurada {
     private ArmaAtaca arma;

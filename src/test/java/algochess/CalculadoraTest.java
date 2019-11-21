@@ -5,12 +5,12 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import algochess.engine.matematica.Calculadora;
 import org.junit.Test;
-import static algochess.engine.Constantes.RANGO_CERCANO_MINIMO;
-import static algochess.engine.Constantes.RANGO_CERCANO_MAXIMO;
-import static algochess.engine.Constantes.RANGO_MEDIO_MINIMO;
-import static algochess.engine.Constantes.RANGO_MEDIO_MAXIMO;
-import static algochess.engine.Constantes.RANGO_LEJANO_MINIMO;
-import static algochess.engine.Constantes.RANGO_LEJANO_MAXIMO;
+import static algochess.engine.ConstantesUtils.RANGO_CERCANO_MINIMO;
+import static algochess.engine.ConstantesUtils.RANGO_CERCANO_MAXIMO;
+import static algochess.engine.ConstantesUtils.RANGO_MEDIO_MINIMO;
+import static algochess.engine.ConstantesUtils.RANGO_MEDIO_MAXIMO;
+import static algochess.engine.ConstantesUtils.RANGO_LEJANO_MINIMO;
+import static algochess.engine.ConstantesUtils.RANGO_LEJANO_MAXIMO;
 
 public class CalculadoraTest {
 

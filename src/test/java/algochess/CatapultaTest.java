@@ -12,9 +12,9 @@ import algochess.engine.entidades.Soldado;
 import algochess.engine.interfaces.casillero.Recuadro;
 import algochess.engine.posicion.Posicion;
 import algochess.excepciones.JugadorPerdioException;
-import static algochess.engine.Constantes.SOLDADO_VIDA;
-import static algochess.engine.Constantes.JINETE_VIDA;
-import static algochess.engine.Constantes.ROCA_PODER;
+import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
+import static algochess.engine.ConstantesUtils.JINETE_VIDA;
+import static algochess.engine.ConstantesUtils.ROCA_PODER;
 import algochess.excepciones.CasilleroOcupadoException;
 import org.junit.Test;
 

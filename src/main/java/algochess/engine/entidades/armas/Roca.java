@@ -7,7 +7,7 @@ import algochess.engine.interfaces.casillero.Recuadro;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
 import java.util.HashSet;
-import static algochess.engine.Constantes.ROCA_PODER;
+import static algochess.engine.ConstantesUtils.ROCA_PODER;
 
 public class Roca extends Arma implements ArmaAtaca {
 

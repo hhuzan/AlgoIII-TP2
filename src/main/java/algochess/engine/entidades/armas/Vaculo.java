@@ -5,7 +5,7 @@ import algochess.engine.facciones.Faccion;
 import algochess.engine.interfaces.armas.ArmaCura;
 import algochess.engine.interfaces.casillero.Recuadro;
 import algochess.engine.posicion.Posicion;
-import static algochess.engine.Constantes.VACULO_PODER;
+import static algochess.engine.ConstantesUtils.VACULO_PODER;
 
 public class Vaculo extends Arma implements ArmaCura {
 

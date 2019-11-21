@@ -11,7 +11,7 @@ import algochess.excepciones.CasilleroVacioException;
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Stack;
-import static algochess.engine.Constantes.TAMANIO_TABLERO;
+import static algochess.engine.ConstantesUtils.TAMANIO_TABLERO;
 
 public class Tablero {
 	private Recuadro[][] casilleros;

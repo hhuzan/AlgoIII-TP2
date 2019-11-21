@@ -9,7 +9,7 @@ import algochess.engine.tablero.Tablero;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
-import static algochess.engine.Constantes.TAMANIO_BATALLON;
+import static algochess.engine.ConstantesUtils.TAMANIO_BATALLON;
 
 public class Comandante {
     private Queue<Posicion> cola;

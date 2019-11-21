@@ -12,8 +12,8 @@ import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.engine.jugador.Jugador;
 import java.util.HashSet;
 import java.util.Queue;
-import static algochess.engine.Constantes.SOLDADO_COSTO;
-import static algochess.engine.Constantes.SOLDADO_VIDA;
+import static algochess.engine.ConstantesUtils.SOLDADO_COSTO;
+import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
 
 public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeSerCurada, PuedeSerHerida, PuedeFormarBatallon {
     private ArmaAtaca arma;

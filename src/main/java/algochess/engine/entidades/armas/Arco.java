@@ -6,7 +6,7 @@ import algochess.engine.interfaces.armas.ArmaAtaca;
 import algochess.engine.interfaces.casillero.Recuadro;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
-import static algochess.engine.Constantes.ARCO_PODER;
+import static algochess.engine.ConstantesUtils.ARCO_PODER;
 
 public class Arco extends Arma implements ArmaAtaca {
 
