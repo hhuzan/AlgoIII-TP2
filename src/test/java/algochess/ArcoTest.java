@@ -1,7 +1,6 @@
 package algochess;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.entidades.armas.Arco;
 import algochess.engine.facciones.Faccion;
@@ -13,6 +12,7 @@ import static algochess.engine.ConstantesUtils.ARCO_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import algochess.excepciones.JugadorPerdioException;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class ArcoTest {
 
@@ -42,7 +42,7 @@ public class ArcoTest {
             arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         }
 
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         });
     }
@@ -65,7 +65,7 @@ public class ArcoTest {
 
         arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, tablero);
         });        
     }
@@ -87,7 +87,7 @@ public class ArcoTest {
         Arco arco = new Arco();
 
         arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, tablero);
         });
 

@@ -2,7 +2,7 @@ package algochess.engine.entidades;
 
 public class Vida {
     private double puntosdevida;
-    double puntosdevidaAux;
+    private double puntosdevidaAux;
 
     public Vida(double vida) {
         puntosdevida = vida;

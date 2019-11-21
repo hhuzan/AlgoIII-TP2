@@ -2,7 +2,6 @@ package algochess;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.facciones.Faccion;
@@ -17,6 +16,7 @@ import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import static algochess.engine.ConstantesUtils.ROCA_PODER;
 import algochess.excepciones.CasilleroOcupadoException;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class CatapultaTest {
 
@@ -44,8 +44,8 @@ public class CatapultaTest {
         for(int i = 0; i < (JINETE_VIDA  / ROCA_PODER) - 1; i++) {
             catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         }
-
-        assertThrows(JugadorPerdioException.class, () -> {
+        
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         });
 	}
@@ -73,7 +73,7 @@ public class CatapultaTest {
             catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         }
 
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
         });
 	}
@@ -94,7 +94,7 @@ public class CatapultaTest {
 
         casilleroOrigen.moverEntidad(tablero, casilleroDestino, Faccion.ALIADOS); 
 
-        assertThrows(CasilleroOcupadoException.class, () -> {
+        Assertions.assertThrows(CasilleroOcupadoException.class, () -> {
             tablero.colocarEntidad(catapulta, posOrigen);
         });
 	}
