@@ -31,7 +31,7 @@ public abstract class Entidad {
         return vida;
     }
 
-    boolean estoyMuerto() {
+    public boolean estoyMuerto() {
         return vida.fallecio();
     }
 

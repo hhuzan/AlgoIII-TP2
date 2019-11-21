@@ -7,7 +7,7 @@ abstract class Arma {
     private Rango rango;
 
 
-    Arma(int power_, Rango rango_) {
+    public Arma(int power_, Rango rango_) {
         power = power_;
         rango = rango_;
     }
