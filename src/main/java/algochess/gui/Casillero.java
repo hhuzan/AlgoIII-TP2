@@ -1,3 +1,5 @@
+package algochess.gui;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
