@@ -1,11 +1,15 @@
 package algochess;
 
 import algochess.engine.Dinero;
-import algochess.engine.entidades.*;
+import algochess.engine.entidades.Catapulta;
+import algochess.engine.entidades.Curandero;
+import algochess.engine.entidades.Entidad;
+import algochess.engine.entidades.Jinete;
+import algochess.engine.entidades.Soldado;
 import algochess.engine.vendedorDeEntidades.VendedorDeEntidades;
 import algochess.excepciones.DineroInsuficienteException;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
