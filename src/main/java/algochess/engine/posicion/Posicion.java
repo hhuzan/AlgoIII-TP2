@@ -19,7 +19,7 @@ public class Posicion {
         return fila;
     }
 
-    boolean esIgual(Posicion posicion) {
+    public boolean esIgual(Posicion posicion) {
         return posicion.columna == columna && posicion.fila == fila;
     }
 
