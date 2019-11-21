@@ -17,12 +17,10 @@ public abstract class Rango {
     public boolean casilleroEstaEnRango(Recuadro casilleroTarget, Posicion origen) {
         Calculadora calculadora = new Calculadora();
 
-        int x1, y1, x2, y2;
-
-        x1 = origen.getColumna();
-        y1 = origen.getFila();
-        x2 = casilleroTarget.getPosicion().getColumna();
-        y2 = casilleroTarget.getPosicion().getFila();
+        int x1 = origen.getColumna();
+        int y1 = origen.getFila();
+        int x2 = casilleroTarget.getPosicion().getColumna();
+        int y2 = casilleroTarget.getPosicion().getFila();
 
         return calculadora.distanciaValidaEntreDosPosiciones(x1, y1, x2, y2, distanciaMin, distanciaMax);
 
