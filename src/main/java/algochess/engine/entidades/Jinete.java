@@ -14,7 +14,10 @@ import algochess.engine.tablero.Tablero;
 import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.engine.jugador.Jugador;
 import java.util.HashSet;
-import static algochess.engine.ConstantesUtils.*;
+import static algochess.engine.ConstantesUtils.JINETE_COSTO;
+import static algochess.engine.ConstantesUtils.JINETE_VIDA;
+import static algochess.engine.ConstantesUtils.RANGO_CERCANO_MINIMO;
+import static algochess.engine.ConstantesUtils.RANGO_CERCANO_MAXIMO;
 
 public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeSerHerida, PuedeSerCurada {
     private ArmaAtaca arma;

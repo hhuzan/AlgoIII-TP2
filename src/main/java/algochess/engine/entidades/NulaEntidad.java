@@ -2,7 +2,12 @@ package algochess.engine.entidades;
 
 import algochess.engine.facciones.Faccion;
 import algochess.engine.interfaces.casillero.Recuadro;
-import algochess.engine.interfaces.entidades.*;
+import algochess.engine.interfaces.entidades.PuedeAtacar;
+import algochess.engine.interfaces.entidades.PuedeCurar;
+import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
+import algochess.engine.interfaces.entidades.PuedeMoverse;
+import algochess.engine.interfaces.entidades.PuedeSerCurada;
+import algochess.engine.interfaces.entidades.PuedeSerHerida;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
 import java.util.HashSet;
