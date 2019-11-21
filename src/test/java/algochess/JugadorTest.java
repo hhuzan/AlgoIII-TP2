@@ -11,7 +11,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static algochess.engine.ConstantesUtils.*;
+import static algochess.engine.ConstantesUtils.DINERO_JUGADOR;
+import static algochess.engine.ConstantesUtils.CATAPULTA_COSTO;
 import static org.junit.Assert.assertTrue;
 
 public class JugadorTest {
