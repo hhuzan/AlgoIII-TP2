@@ -27,7 +27,7 @@ public abstract class Entidad {
 
     public abstract Entidad clonar();
 
-    Vida getVida() {
+    public Vida getVida() {
         return vida;
     }
 
