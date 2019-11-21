@@ -1,7 +1,6 @@
 package algochess;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.entidades.armas.Espada;
 import algochess.engine.facciones.Faccion;
@@ -13,6 +12,7 @@ import static algochess.engine.ConstantesUtils.ESPADA_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import algochess.excepciones.JugadorPerdioException;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class EspadaTest {
 
@@ -42,7 +42,7 @@ public class EspadaTest {
             espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         }
 
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         });
     }
@@ -68,7 +68,7 @@ public class EspadaTest {
             jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
         }
 
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
         });
 
@@ -95,7 +95,7 @@ public class EspadaTest {
             jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
         }
 
-        assertThrows(JugadorPerdioException.class, () -> {
+        Assertions.assertThrows(JugadorPerdioException.class, () -> {
             jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
         });
 
