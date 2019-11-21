@@ -1,10 +1,8 @@
 package AlgoChess.engine.interfaces.entidades;
 
-import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.tablero.Tablero;
-
 import java.util.HashSet;
 import java.util.Queue;
 

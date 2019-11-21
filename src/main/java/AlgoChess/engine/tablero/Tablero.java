@@ -4,17 +4,13 @@ import AlgoChess.engine.entidades.Entidad;
 import AlgoChess.engine.facciones.Faccion;
 import AlgoChess.engine.interfaces.casillero.Recuadro;
 import AlgoChess.engine.interfaces.entidades.PuedeFormarBatallon;
-import AlgoChess.engine.matematica.Calculadora;
 import AlgoChess.engine.posicion.Posicion;
 import AlgoChess.engine.posicion.Posiciones;
 import AlgoChess.excepciones.CasilleroOcupadoException;
 import AlgoChess.excepciones.CasilleroVacioException;
-
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Stack;
-
-import static AlgoChess.engine.Constantes.MAXIMA_DISTANCIA_POR_MOVIMIENTO;
 import static AlgoChess.engine.Constantes.TAMANIO_TABLERO;
 
 public class Tablero {
@@ -44,17 +40,17 @@ public class Tablero {
 		casilleros[posicion.getFila()][posicion.getColumna()] = casillero;
 	}
 
-	private boolean esMovimientoValido(Posicion origen, Posicion destino) {
-		Calculadora calculadora = new Calculadora();
-		int x1, y1, x2, y2, distancia;
-		x1 = origen.getColumna();
-		y1 = origen.getFila();
-		x2 = destino.getColumna();
-		y2 = destino.getFila();
-		distancia = MAXIMA_DISTANCIA_POR_MOVIMIENTO;
-
-		return calculadora.distanciaValidaEntreDosPosiciones(x1, y1, x2, y2, distancia, distancia);
-	}
+//	private boolean esMovimientoValido(Posicion origen, Posicion destino) {
+//		Calculadora calculadora = new Calculadora();
+//		int x1, y1, x2, y2, distancia;
+//		x1 = origen.getColumna();
+//		y1 = origen.getFila();
+//		x2 = destino.getColumna();
+//		y2 = destino.getFila();
+//		distancia = MAXIMA_DISTANCIA_POR_MOVIMIENTO;
+//
+//		return calculadora.distanciaValidaEntreDosPosiciones(x1, y1, x2, y2, distancia, distancia);
+//	}
 
 	public Recuadro obtenerCasillero(Posicion posicion) {
 		return casilleros[posicion.getFila()][posicion.getColumna()];
