@@ -124,7 +124,7 @@ public class AlgoChess extends Application  {
         System.out.println("Seteamos cosas");
 
         /*Escena */
-        Scene escena = new Scene(panel, 1600,1000);
+        Scene escena = new Scene(panel, 1200,600);
         System.out.println("Creamos escena");
 
 
