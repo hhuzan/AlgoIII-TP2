@@ -1,6 +1,6 @@
 package algochess.engine.interfaces.entidades;
 
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
 import java.util.HashSet;
@@ -13,6 +13,6 @@ public interface PuedeFormarBatallon extends PuedeSerHerida {
 
     //boolean sosAmigo(Faccion unaFaccion);
 
-    boolean moverComoRecluta(Tablero tablero, Recuadro casillero);
+    boolean moverComoRecluta(Tablero tablero, Casillero casillero);
 
 }

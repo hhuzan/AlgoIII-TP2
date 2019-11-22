@@ -1,6 +1,6 @@
 package algochess.engine.entidades.armas.rangos;
 
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.matematica.Calculadora;
 import algochess.engine.posicion.Posicion;
 
@@ -14,7 +14,7 @@ public abstract class Rango {
     }
 
 
-    public boolean casilleroEstaEnRango(Recuadro casilleroTarget, Posicion origen) {
+    public boolean casilleroEstaEnRango(Casillero casilleroTarget, Posicion origen) {
         Calculadora calculadora = new Calculadora();
 
         int x1 = origen.getColumna();

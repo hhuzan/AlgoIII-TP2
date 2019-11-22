@@ -6,7 +6,7 @@ import algochess.engine.entidades.Soldado;
 import algochess.engine.entidades.armas.rangos.Cercano;
 import algochess.engine.entidades.armas.rangos.Rango;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.posicion.Posiciones;

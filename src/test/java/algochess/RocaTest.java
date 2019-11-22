@@ -7,7 +7,7 @@ import algochess.engine.entidades.armas.Roca;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.entidades.Jinete;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import static algochess.engine.ConstantesUtils.ROCA_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
@@ -33,7 +33,7 @@ public class RocaTest {
 		Posicion posDestino = new Posicion(15, 1);
 
 		tablero.colocarEntidad(jinete, posDestino);
-		Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 		Roca roca = new Roca();
 
@@ -57,17 +57,17 @@ public class RocaTest {
 		Posicion posDestino = new Posicion(10, 1);
 
 		tablero.colocarEntidad(jinete, posDestino);
-		Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 		Roca roca = new Roca();
 
 		roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
 		for (int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
-			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, casilleroDestino);
 		}
 
 		assertThrows(JugadorPerdioException.class, () -> {
-			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, casilleroDestino);
 		});
 
 	}
@@ -83,17 +83,17 @@ public class RocaTest {
 		Posicion posDestino = new Posicion(12, 1);
 
 		tablero.colocarEntidad(jinete, posDestino);
-		Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 		Roca roca = new Roca();
 
 		roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
 		for (int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
-			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, casilleroDestino);
 		}
 
 		assertThrows(JugadorPerdioException.class, () -> {
-			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, tablero);
+			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, casilleroDestino);
 		});
 
 	}

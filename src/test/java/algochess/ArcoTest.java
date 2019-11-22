@@ -6,7 +6,7 @@ import algochess.engine.entidades.armas.Arco;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.entidades.Jinete;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import static algochess.engine.ConstantesUtils.ARCO_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
@@ -33,7 +33,7 @@ public class ArcoTest {
         Posicion posDestino = new Posicion(10, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Arco arco = new Arco();
@@ -58,7 +58,7 @@ public class ArcoTest {
         Posicion posDestino = new Posicion(10, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Arco arco = new Arco();
@@ -66,7 +66,7 @@ public class ArcoTest {
         arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         
         Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, casilleroDestino);
         });        
     }
 
@@ -81,14 +81,14 @@ public class ArcoTest {
         Posicion posDestino = new Posicion(15, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Arco arco = new Arco();
 
         arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, casilleroDestino);
         });
 
     }

@@ -4,7 +4,7 @@ import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.armas.rangos.Medio;
 import algochess.engine.entidades.armas.rangos.Rango;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Casillero;
@@ -33,7 +33,7 @@ public class MedioTest {
         Posicion origen = new Posicion(2,2);
 
         Rango rangoMedio = new Medio();
-        Casillero casillero = new Ocupado(jinete,posicion,Faccion.ALIADOS);
+        Casillero casillero = new Casillero(posicion, Faccion.ALIADOS, jinete);
         assertTrue(rangoMedio.casilleroEstaEnRango(casillero, origen));
 
     }
@@ -46,7 +46,7 @@ public class MedioTest {
         Posicion origen = new Posicion(2,2);
 
         Rango rangoMedio = new Medio();
-        Recuadro casillero = new Ocupado(jinete,posicion,Faccion.ALIADOS);
+        Casillero casillero = new Casillero(posicion, Faccion.ALIADOS, jinete);
         assertFalse(rangoMedio.casilleroEstaEnRango(casillero, origen));
 
     }

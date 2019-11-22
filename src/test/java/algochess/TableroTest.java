@@ -11,6 +11,7 @@ import algochess.excepciones.CasilleroVacioException;
 import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.excepciones.JugadorPerdioException;
 import algochess.engine.tablero.Tablero;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.vendedordeentidades.VendedorDeEntidades;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.Soldado;
@@ -120,8 +121,10 @@ public class TableroTest {
 		tablero.colocarEntidad(jinete, posJinete);
 		tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS);
 
+		Casillero casilleroDestino = tablero.obtenerCasillero(posJinete);
+
 		assertThrows(JugadorPerdioException.class, () -> {
-			jinete.disminuirVida(JINETE_VIDA - ESPADA_PODER, Faccion.ALIADOS, tablero);
+			jinete.disminuirVida(JINETE_VIDA - ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
 		});
 	}
 	

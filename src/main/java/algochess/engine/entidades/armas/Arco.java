@@ -3,7 +3,7 @@ package algochess.engine.entidades.armas;
 import algochess.engine.entidades.armas.rangos.Medio;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.interfaces.armas.ArmaAtaca;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
 import static algochess.engine.ConstantesUtils.ARCO_PODER;
@@ -15,9 +15,9 @@ public class Arco extends Arma implements ArmaAtaca {
     }
 
     @Override
-    public void atacar(Posicion posicion, Recuadro casilleroAtacado, Faccion faccionEntidad, Tablero tablero) {
+    public void atacar(Posicion posicion, Casillero casilleroAtacado, Faccion faccionEntidad, Tablero tablero) {
         if (getRango().casilleroEstaEnRango(casilleroAtacado, posicion)) {
-            casilleroAtacado.infligirDanioEnEntidad(getPower(), faccionEntidad, tablero);
+            casilleroAtacado.infligirDanioEnEntidad(getPower(), faccionEntidad);
         }
     }
 }

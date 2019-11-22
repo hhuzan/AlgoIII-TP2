@@ -1,11 +1,13 @@
 package algochess.engine.comandante;
 
 import algochess.engine.entidades.Entidad;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.posicion.Posiciones;
 import algochess.engine.tablero.Tablero;
+import algochess.engine.tablero.Vacio;
+
 import algochess.excepciones.CasilleroOcupadoException;
 
 import java.util.HashSet;
@@ -55,7 +57,7 @@ public class Comandante {
         }
     }
 
-    private void generarInstrucciones(Recuadro destino, Entidad entidad) {
+    private void generarInstrucciones(Casillero destino, Entidad entidad) {
         int movimientoFila = destino.getPosicion().getFila() - entidad.getPosicion().getFila();
         int movimientoColumna = destino.getPosicion().getColumna() - entidad.getPosicion().getColumna();
 
@@ -82,7 +84,7 @@ public class Comandante {
     }
 
 
-    public boolean moverBatallon(Recuadro destino, Entidad entidad) {
+    public boolean moverBatallon(Tablero tablero, Casillero destino, Entidad entidad) {
         if (batallon.size() != TAMANIO_BATALLON) {return false;}
 
         moverSetup();
@@ -94,15 +96,19 @@ public class Comandante {
                 Posicion posicionPotencial = generarPosicionPotencial(recluta, instrucciones);
                 if (!posicionesReclutas.contiene(posicionPotencial) ) {
                     Posicion antigua = recluta.getPosicion();
+                    Casillero origen = tablero.obtenerCasillero(antigua);
                     posicionesReclutas.remover(antigua);
                     batallon.remove(recluta);
                     reclutasYaMovidos.add(recluta);
-                    Recuadro casillero = tablero.obtenerCasillero(posicionPotencial);
+                    Casillero casillero = tablero.obtenerCasillero(posicionPotencial);
                     boolean seMovio = false;
-                    try {seMovio = recluta.moverComoRecluta(tablero, casillero);
-                    }catch (CasilleroOcupadoException ignored){};
+                    try {
+                        seMovio = recluta.moverComoRecluta(tablero, casillero);
+                    } 
+                    catch (CasilleroOcupadoException ignored){};
 
-                    if (seMovio) {tablero.colocarVacio(antigua);}
+                    if (seMovio)
+                        origen.cambiarEstado(new Vacio());
                 }
             }
         }

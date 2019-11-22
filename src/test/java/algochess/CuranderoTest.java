@@ -13,6 +13,7 @@ import static algochess.engine.ConstantesUtils.CATAPULTA_VIDA;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.tablero.Tablero;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import algochess.excepciones.JugadorPerdioException;
 import algochess.excepciones.EntidadDeMismaFaccionException;
@@ -35,8 +36,9 @@ public class CuranderoTest {
 		Posicion posicion = new Posicion(1,1);
 		tablero.colocarEntidad(curandero, posicion);
 
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicion);
 		assertThrows(JugadorPerdioException.class, () -> {
-			curandero.disminuirVida(CURANDERO_VIDA, Faccion.ENEMIGOS, tablero);
+			curandero.disminuirVida(CURANDERO_VIDA, Faccion.ENEMIGOS, casilleroDestino);
 		});
 
 	}
@@ -49,9 +51,10 @@ public class CuranderoTest {
 
 		Posicion posicion = new Posicion(1,1);
 		tablero.colocarEntidad(curandero, posicion);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicion);
 
 		assertThrows(EntidadDeMismaFaccionException.class, () -> {
-			curandero.disminuirVida(CURANDERO_VIDA, Faccion.ALIADOS, tablero);
+			curandero.disminuirVida(CURANDERO_VIDA, Faccion.ALIADOS, casilleroDestino);
 		});
 
 	}
@@ -68,15 +71,16 @@ public class CuranderoTest {
 
 		Posicion posicionDestino = new Posicion(1,2);
 		tablero.colocarEntidad(jinete, posicionDestino);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 		
-		jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, tablero);
+		jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, casilleroDestino);
 		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
            
 
-        jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ENEMIGOS, tablero);
+        jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ENEMIGOS, casilleroDestino);
 
         assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, tablero);
+            jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, casilleroDestino);
         });
 
 	}
@@ -94,12 +98,13 @@ public class CuranderoTest {
 
 		Posicion posicionDestino = new Posicion(10,2);
 		tablero.colocarEntidad(jinete, posicionDestino);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 
-		jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
 		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
+		jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
 
 		assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
         });
 	}
 
@@ -116,12 +121,13 @@ public class CuranderoTest {
 
 		Posicion posicionDestino = new Posicion(10,1);
 		tablero.colocarEntidad(catapulta, posicionDestino);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 		
-		catapulta.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
+		catapulta.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
 		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(JugadorPerdioException.class, () -> {
-            catapulta.disminuirVida(CATAPULTA_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
+            catapulta.disminuirVida(CATAPULTA_VIDA - VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
         });
 	}
 
@@ -138,12 +144,13 @@ public class CuranderoTest {
 
 		Posicion posicionDestino = new Posicion(14,1);
 		tablero.colocarEntidad(jinete, posicionDestino);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 
-		jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
+		jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
 		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
         });
 	}
 

@@ -8,7 +8,7 @@ import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import algochess.excepciones.JugadorPerdioException;
 import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
@@ -39,7 +39,7 @@ public class CatapultaTest {
         tablero.colocarEntidad(catapulta, posOrigen);
         tablero.colocarEntidad(jinete, posDestino);
 
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
         for(int i = 0; i < (JINETE_VIDA  / ROCA_PODER) - 1; i++) {
             catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
@@ -66,7 +66,7 @@ public class CatapultaTest {
         tablero.colocarEntidad(catapulta, posOrigen);
         tablero.colocarEntidad(jinete, posDestino);
 
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
         catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
 
         for(int i = 0; i < (JINETE_VIDA  / ROCA_PODER) - 2; i++) {
@@ -89,10 +89,10 @@ public class CatapultaTest {
         Posicion posDestino = new Posicion(1,2);
 
         tablero.colocarEntidad(catapulta, posOrigen);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
-        Recuadro casilleroOrigen = tablero.obtenerCasillero(posOrigen);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
-        casilleroOrigen.moverEntidad(tablero, casilleroDestino, Faccion.ALIADOS); 
+        casilleroOrigen.moverEntidad(tablero, casilleroOrigen, casilleroDestino, Faccion.ALIADOS); 
 
         Assertions.assertThrows(CasilleroOcupadoException.class, () -> {
             tablero.colocarEntidad(catapulta, posOrigen);
@@ -112,7 +112,7 @@ public class CatapultaTest {
         Posicion posDestino = new Posicion(10, 1);
 
         tablero.colocarEntidad(catapulta, posOrigen);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
         catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
     }

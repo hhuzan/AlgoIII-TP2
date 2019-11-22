@@ -6,7 +6,7 @@ import algochess.engine.entidades.armas.Espada;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.entidades.Jinete;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import static algochess.engine.ConstantesUtils.ESPADA_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
@@ -33,7 +33,7 @@ public class EspadaTest {
         Posicion posDestino = new Posicion(10, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Espada espada = new Espada();
@@ -58,18 +58,18 @@ public class EspadaTest {
         Posicion posDestino = new Posicion(13, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-         Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Espada espada = new Espada();
 
         espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         for(int i = 0; i < (JINETE_VIDA / ESPADA_PODER) - 1; i++) {
-            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
         }
 
         Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
         });
 
     }
@@ -85,18 +85,18 @@ public class EspadaTest {
         Posicion posDestino = new Posicion(15, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Espada espada = new Espada();
 
         espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         for(int i = 0; i < (JINETE_VIDA / ESPADA_PODER) - 1; i++) {
-            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
         }
 
         Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
         });
 
     }

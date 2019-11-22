@@ -48,7 +48,7 @@ public  class Casillero extends StackPane {
         /*setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println(fila_+", "+columna_);
+                (fila_+", "+columna_);
                 Image image = new Image("sample/dog.jpg");
                 setFill(new ImagePattern(image));
             }

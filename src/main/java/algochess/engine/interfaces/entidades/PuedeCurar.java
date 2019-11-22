@@ -1,8 +1,8 @@
 package algochess.engine.interfaces.entidades;
 
 import algochess.engine.facciones.Faccion;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 
 public interface PuedeCurar extends PuedeSerHerida{
-    void curar(Recuadro casilleroCurado, Faccion faccionJugador);
+    void curar(Casillero casilleroCurado, Faccion faccionJugador);
 }

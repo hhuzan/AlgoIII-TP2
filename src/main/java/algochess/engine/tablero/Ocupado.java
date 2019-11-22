@@ -4,7 +4,7 @@ import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.NulaEntidad;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.interfaces.casillero.ColocarHandler;
 import algochess.engine.interfaces.entidades.PuedeAtacar;
 import algochess.engine.interfaces.entidades.PuedeCurar;
@@ -12,6 +12,7 @@ import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.interfaces.entidades.PuedeMoverse;
 import algochess.engine.interfaces.entidades.PuedeSerCurada;
 import algochess.engine.interfaces.entidades.PuedeSerHerida;
+import algochess.engine.interfaces.casillero.Estado;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Catapulta;
@@ -23,7 +24,7 @@ import algochess.excepciones.CasilleroOcupadoException;
 import java.util.HashSet;
 import java.util.Queue;
 
-public class Ocupado extends Casillero {
+public class Ocupado implements Estado {
     private PuedeAtacar puedeAtacar;
     private PuedeCurar puedeCurar;
     private PuedeFormarBatallon puedeFormarBatallon;
@@ -43,8 +44,7 @@ public class Ocupado extends Casillero {
 
     }
 
-    public Ocupado(Entidad entidad, Posicion posicion, Faccion faccion) {
-        super(posicion, faccion);
+    public Ocupado(Entidad entidad, Posicion posicion) {
         this.initEntidadMap();
         ColocarHandler handler = this.entidadMap.get(entidad.getClass());
         handler.colocar(entidad);
@@ -98,19 +98,19 @@ public class Ocupado extends Casillero {
         return puedeSerHerida.getClass() != NulaEntidad.class;
     }
 
-    public void infligirDanioEnEntidad(int power, Faccion entidadAtacante, Tablero tablero) {
-        if (puedeSerHerida.sosAmigo(getFaccion())) {
-            puedeSerHerida.disminuirVida(power, entidadAtacante, tablero);
+    public void infligirDanioEnEntidad(int power, Faccion entidadCasillero, Faccion entidadAtacante, Casillero casillero) {
+        if (puedeSerHerida.sosAmigo(entidadCasillero)) {
+            puedeSerHerida.disminuirVida(power, entidadAtacante, casillero);
         } else {
-            puedeSerHerida.disminuirVida(power + 0.05 * power, entidadAtacante, tablero);
+            puedeSerHerida.disminuirVida(power*1.05, entidadAtacante, casillero);
         }
     }
 
-    public void infigirDanioEnEntidadIgnorandoFaccionAtacante(int power, Tablero tablero) {
-        if (puedeSerHerida.sosAmigo(getFaccion())) {
-            puedeSerHerida.disminuirVidaIgnorandoFaccionAtacante(power, tablero);
+    public void infigirDanioEnEntidadIgnorandoFaccionAtacante(int power, Faccion entidadCasillero, Casillero casillero) {
+        if (puedeSerHerida.sosAmigo(entidadCasillero)) {
+            puedeSerHerida.disminuirVidaIgnorandoFaccionAtacante(power, casillero);
         } else {
-            puedeSerHerida.disminuirVidaIgnorandoFaccionAtacante(power*(1.05), tablero);
+            puedeSerHerida.disminuirVidaIgnorandoFaccionAtacante(power*1.05, casillero);
         }
     }
 
@@ -118,19 +118,18 @@ public class Ocupado extends Casillero {
         puedeSerCurada.aumentarVida(power, faccionCuradora);
     }
 
-    public void atacar(Recuadro casilleroAtacado, Tablero tablero, Faccion faccionJugador) {
+    public void atacar(Casillero casilleroAtacado, Tablero tablero, Faccion faccionJugador) {
         puedeAtacar.atacar(casilleroAtacado, tablero, faccionJugador);
     }
 
-    public void curar(Recuadro casilleroCurado, Tablero tablero, Faccion faccionJugador) {
+    public void curar(Casillero casilleroCurado, Tablero tablero, Faccion faccionJugador) {
         puedeCurar.curar(casilleroCurado, faccionJugador);
     }
 
 
-    public void moverEntidad(Tablero tablero, Recuadro casillero, Faccion faccionJugador) {
-        if (puedeMoverse.moverA(tablero, casillero, faccionJugador)) {
-            tablero.colocarVacio(getPosicion());
-        }
+    public void moverEntidad(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
+        if (puedeMoverse.moverA(tablero, destino, faccionJugador)) 
+            origen.cambiarEstado(new Vacio());            
     }
 
     public void reclutarEntidad(HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidadOrigen) {
@@ -138,11 +137,11 @@ public class Ocupado extends Casillero {
     }
 
 
-    public boolean recibirEntidad(Entidad entidad, Tablero tablero) {
+    public boolean recibirEntidad(Entidad entidad, Casillero casillero, Posicion posicion) {
         throw new CasilleroOcupadoException();
     }
 
-    public boolean colocarEntidad(Entidad entidad, Tablero tablero) {
+    public boolean colocarEntidad(Entidad entidad, Casillero casillero, Faccion faccion, Posicion posicion) {
         throw new CasilleroOcupadoException();
     }
 

@@ -2,50 +2,45 @@ package algochess.engine.tablero;
 
 import algochess.engine.entidades.Entidad;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.posicion.Posicion;
+import algochess.engine.interfaces.casillero.Estado;
 import algochess.excepciones.ColocarEntidadException;
 import algochess.excepciones.CasilleroVacioException;
 import java.util.HashSet;
 import java.util.Queue;
 
-public class Vacio extends Casillero {
+public class Vacio implements Estado {
 
+    public Vacio() {
 
-    public Vacio(Posicion posicion, Faccion faccion) {
-        super(posicion, faccion);
     }
 
-    public Vacio(Recuadro casillero) {
-        super(casillero.getPosicion(), casillero.getFaccion());
-    }
-
-    public boolean colocarEntidad(Entidad entidad, Tablero tablero) {
-        if (entidad.sosAmigo(getFaccion())) 
-            recibirEntidad(entidad, tablero);
+    public boolean colocarEntidad(Entidad entidad, Casillero casillero, Faccion faccionCasillero, Posicion posicionCasillero) {
+        if (entidad.sosAmigo(faccionCasillero)) 
+            recibirEntidad(entidad, casillero, posicionCasillero);
         else
             throw new ColocarEntidadException();
 
         return true;
     }
 
-    public boolean recibirEntidad(Entidad entidad, Tablero tablero) {
-        Recuadro casillero = new Ocupado(entidad, getPosicion(), getFaccion());
-        tablero.cambiarCasillero(casillero);
+    public boolean recibirEntidad(Entidad entidad, Casillero casillero, Posicion posicion) {
+        casillero.cambiarEstado(new Ocupado(entidad, posicion));
         return true;
     }
 
 
     /*Métodos muertos */
-    public void atacar(Recuadro casilleroAtacado, Tablero tablero, Faccion faccionJugador) {
+    public void atacar(Casillero casilleroAtacado, Tablero tablero, Faccion faccionJugador) {
         throw new CasilleroVacioException();
     }
 
-    public void curar(Recuadro casilleroCurado, Tablero tablero, Faccion faccionJugador) {
+    public void curar(Casillero casilleroCurado, Tablero tablero, Faccion faccionJugador) {
     }
 
-    public void moverEntidad(Tablero tablero, Recuadro destino, Faccion faccionJugador) {
+    public void moverEntidad(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
     }
 
     public void reclutarEntidad(HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidad) {
@@ -54,10 +49,10 @@ public class Vacio extends Casillero {
     public void infligirCuracionEnEntidad(int power, Faccion faccion) {
     }
 
-    public void infligirDanioEnEntidad(int power, Faccion faccionEntidad, Tablero tablero) {
+    public void infligirDanioEnEntidad(int power, Faccion faccionCasillero, Faccion faccionEntidad, Casillero casillero) {
     }
 
-    public void infigirDanioEnEntidadIgnorandoFaccionAtacante(int power, Tablero tablero) {
+    public void infigirDanioEnEntidadIgnorandoFaccionAtacante(int power, Faccion faccionCasillero, Casillero casillero) {
     }
 
     @Override

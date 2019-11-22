@@ -33,7 +33,7 @@ public class LargoTest {
         Posicion origen = new Posicion(2,2);
 
         Rango rangoLargo = new Largo();
-        Casillero casillero = new Ocupado(jinete,posicion,Faccion.ALIADOS);
+        Casillero casillero = new Casillero(posicion, Faccion.ALIADOS, jinete);
         assertFalse(rangoLargo.casilleroEstaEnRango(casillero, origen));
 
     }
@@ -46,7 +46,7 @@ public class LargoTest {
         Posicion origen = new Posicion(2,2);
 
         Rango rangoLargo = new Largo();
-        Casillero casillero = new Ocupado(jinete,posicion,Faccion.ALIADOS);
+        Casillero casillero = new Casillero(posicion, Faccion.ALIADOS, jinete);
         assertTrue(rangoLargo.casilleroEstaEnRango(casillero, origen));
 
     }

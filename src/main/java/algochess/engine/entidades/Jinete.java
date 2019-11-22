@@ -4,13 +4,14 @@ import algochess.engine.entidades.armas.Arco;
 import algochess.engine.entidades.armas.Daga;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.interfaces.armas.ArmaAtaca;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.interfaces.entidades.PuedeAtacar;
 import algochess.engine.interfaces.entidades.PuedeMoverse;
 import algochess.engine.interfaces.entidades.PuedeSerCurada;
 import algochess.engine.interfaces.entidades.PuedeSerHerida;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
+import algochess.engine.tablero.Vacio;
 import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.engine.jugador.Jugador;
 import java.util.HashSet;
@@ -32,9 +33,9 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
         arma = new Daga();
     }
 
-    private void verificarMuerte(Tablero tablero, Jugador propietario) {
+    private void verificarMuerte(Casillero casillero, Jugador propietario) {
         if(estoyMuerto()) {
-            tablero.colocarVacio(getPosicion());
+            casillero.cambiarEstado(new Vacio());
             propietario.removerEntidad(this);
         }
     }
@@ -50,23 +51,23 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
     }
 
     @Override
-    public void disminuirVida(double cantidad, Faccion faccionQueDania, Tablero tablero) {
+    public void disminuirVida(double cantidad, Faccion faccionQueDania, Casillero casillero) {
         if (sosEnemigo(faccionQueDania))
             getVida().disminuir(cantidad);
         else 
             throw new EntidadDeMismaFaccionException();
 
-        verificarMuerte(tablero, getPropietario());
+        verificarMuerte(casillero, getPropietario());
     }
 
     @Override
-    public void disminuirVidaIgnorandoFaccionAtacante(double cantidad, Tablero tablero) {
+    public void disminuirVidaIgnorandoFaccionAtacante(double cantidad, Casillero casillero) {
         getVida().disminuir(cantidad);
-        verificarMuerte(tablero, getPropietario());
+        verificarMuerte(casillero, getPropietario());
     }
 
     @Override
-    public void atacar(Recuadro casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
+    public void atacar(Casillero casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
         if (sosAmigo(ordenDeFaccion)) {
             definirArma(tablero);
             arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);
@@ -74,14 +75,15 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
     }
 
     @Override
-    public boolean moverA(Tablero tablero, Recuadro casillero, Faccion faccionJugador) {
-        if (sosAmigo(faccionJugador)) {return casillero.recibirEntidad(this, tablero);}
+    public boolean moverA(Tablero tablero, Casillero casillero, Faccion faccionJugador) {
+        if (sosAmigo(faccionJugador)) {return casillero.recibirEntidad(this);}
         return false;
     }
 
 
     private void definirArma(Tablero tablero){
         HashSet<Posicion> amigosPotenciales = getPosicion().generarPosicionesEnAlcance(RANGO_CERCANO_MINIMO,RANGO_CERCANO_MAXIMO);
+        
         for(Posicion potencialAmigo : amigosPotenciales){
             if(tablero.esSoldadoAmigo(getFaccion(), potencialAmigo)){
                 arma = new Arco();

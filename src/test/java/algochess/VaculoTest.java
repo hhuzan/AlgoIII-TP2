@@ -7,7 +7,7 @@ import algochess.engine.entidades.armas.Vaculo;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.entidades.Jinete;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import static algochess.engine.ConstantesUtils.VACULO_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
@@ -34,16 +34,16 @@ public class VaculoTest {
         Posicion posDestino = new Posicion(15, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Vaculo vaculo = new Vaculo();
 
-        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
+        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
 
         assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, casilleroDestino);
         });
     }
 
@@ -58,16 +58,16 @@ public class VaculoTest {
         Posicion posDestino = new Posicion(13, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Vaculo vaculo = new Vaculo();
         
-        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
+        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
 
         assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
         });
 
     }
@@ -83,16 +83,16 @@ public class VaculoTest {
         Posicion posDestino = new Posicion(15, 1);
 
         tablero.colocarEntidad(jinete, posDestino);
-        Recuadro casilleroDestino = tablero.obtenerCasillero(posDestino);
+        Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
         Vaculo vaculo = new Vaculo();
         
-        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, tablero);
+        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
         vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
 
         assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, tablero);
+            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
         });
 
     }

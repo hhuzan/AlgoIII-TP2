@@ -1,7 +1,7 @@
 package algochess.engine.entidades;
 
 import algochess.engine.facciones.Faccion;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.interfaces.entidades.PuedeAtacar;
 import algochess.engine.interfaces.entidades.PuedeCurar;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
@@ -20,17 +20,22 @@ public class NulaEntidad extends Entidad implements PuedeAtacar, PuedeFormarBata
     }
 
     @Override
-    public void atacar(Recuadro casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
+    public Posicion getPosicion() {
+        return new Posicion(0,0);
+    }
+    
+    @Override
+    public void atacar(Casillero casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
 
     }
 
     @Override
-    public void curar(Recuadro casilleroCurado, Faccion faccionJugador) {
+    public void curar(Casillero casilleroCurado, Faccion faccionJugador) {
     }
 
 
     @Override
-    public boolean moverA(Tablero tablero, Recuadro casillero, Faccion faccionJugador) {
+    public boolean moverA(Tablero tablero, Casillero casillero, Faccion faccionJugador) {
         return false;
     }
 
@@ -39,12 +44,12 @@ public class NulaEntidad extends Entidad implements PuedeAtacar, PuedeFormarBata
     }
 
     @Override
-    public void disminuirVida(double cantidad, Faccion faccionQueDania, Tablero tablero) {
+    public void disminuirVida(double cantidad, Faccion faccionQueDania, Casillero casillero) {
 
     }
 
     @Override
-    public void disminuirVidaIgnorandoFaccionAtacante(double cantidad, Tablero tablero) {
+    public void disminuirVidaIgnorandoFaccionAtacante(double cantidad, Casillero casilleroCurado) {
 
     }
 
@@ -64,7 +69,7 @@ public class NulaEntidad extends Entidad implements PuedeAtacar, PuedeFormarBata
     }
 
     @Override
-    public boolean moverComoRecluta(Tablero tablero, Recuadro casillero) {
+    public boolean moverComoRecluta(Tablero tablero, Casillero casillero) {
         return false;
     }
 

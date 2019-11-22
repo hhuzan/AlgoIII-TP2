@@ -2,8 +2,9 @@ package algochess.engine.entidades;
 
 import algochess.engine.entidades.armas.Vaculo;
 import algochess.engine.facciones.Faccion;
+import algochess.engine.tablero.Vacio;
 import algochess.engine.interfaces.armas.ArmaCura;
-import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.interfaces.entidades.PuedeCurar;
 import algochess.engine.interfaces.entidades.PuedeMoverse;
 import algochess.engine.interfaces.entidades.PuedeSerCurada;
@@ -27,9 +28,9 @@ public class Curandero extends Entidad implements PuedeCurar, PuedeMoverse, Pued
         arma = new Vaculo();
     }
 
-    private void verificarMuerte(Tablero tablero, Jugador propietario) {
+    private void verificarMuerte(Casillero casillero, Jugador propietario) {
         if(estoyMuerto()) {
-            tablero.colocarVacio(getPosicion());
+            casillero.cambiarEstado(new Vacio());
             propietario.removerEntidad(this);
         }
     }
@@ -40,33 +41,33 @@ public class Curandero extends Entidad implements PuedeCurar, PuedeMoverse, Pued
     }
 
     @Override
-    public void disminuirVida(double cantidad, Faccion faccionQueDania, Tablero tablero) {
+    public void disminuirVida(double cantidad, Faccion faccionQueDania, Casillero casillero) {
         if (sosEnemigo(faccionQueDania)) 
             getVida().disminuir(cantidad);
         else 
             throw new EntidadDeMismaFaccionException();
         
-        verificarMuerte(tablero, getPropietario());
+        verificarMuerte(casillero, getPropietario());
     }
 
     @Override
-    public void disminuirVidaIgnorandoFaccionAtacante(double cantidad, Tablero tablero) {
+    public void disminuirVidaIgnorandoFaccionAtacante(double cantidad, Casillero casillero) {
         getVida().disminuir(cantidad);
-        verificarMuerte(tablero, getPropietario());
+        verificarMuerte(casillero, getPropietario());
     }
 
 
     @Override
-    public void curar(Recuadro casilleroCurado, Faccion faccionJugador) {
+    public void curar(Casillero casilleroCurado, Faccion faccionJugador) {
         if (sosAmigo(faccionJugador)) 
             arma.curar(getPosicion(), casilleroCurado, getFaccion());
 
     }
 
     @Override
-    public boolean moverA(Tablero tablero, Recuadro casillero, Faccion faccionJugador) {
+    public boolean moverA(Tablero tablero, Casillero casillero, Faccion faccionJugador) {
         if (sosAmigo(faccionJugador)) 
-            return casillero.recibirEntidad(this, tablero);
+            return casillero.recibirEntidad(this);
 
         return false;
     }

@@ -9,6 +9,7 @@ import algochess.engine.entidades.Catapulta;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.tablero.Tablero;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
@@ -33,12 +34,13 @@ public class JineteTest {
 
 		Posicion posicion = new Posicion(1, 1);
 		tablero.colocarEntidad(jinete, posicion);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicion);
 
-		jinete.disminuirVida(20, Faccion.ENEMIGOS, tablero);
+		jinete.disminuirVida(20, Faccion.ENEMIGOS, casilleroDestino);
 		jinete.aumentarVida(20, Faccion.ALIADOS);
         
         assertThrows(JugadorPerdioException.class, () -> {
-			jinete.disminuirVida(JINETE_VIDA, Faccion.ENEMIGOS, tablero);
+			jinete.disminuirVida(JINETE_VIDA, Faccion.ENEMIGOS, casilleroDestino);
 		});
 	}
 
@@ -50,9 +52,10 @@ public class JineteTest {
 
 		Posicion posicion = new Posicion(1, 1);
 		tablero.colocarEntidad(jinete, posicion);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicion);
 
 		assertThrows(JugadorPerdioException.class, () -> {
-			jinete.disminuirVida(JINETE_VIDA, Faccion.ENEMIGOS, tablero);
+			jinete.disminuirVida(JINETE_VIDA, Faccion.ENEMIGOS, casilleroDestino);
 		});
 	}
 
@@ -69,11 +72,12 @@ public class JineteTest {
 
 		Posicion posicionAtaque = new Posicion(10, 1);
 		tablero.colocarEntidad(soldado, posicionAtaque);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posicionAtaque);
 
 		jinete.atacar(tablero.obtenerCasillero(posicionAtaque), tablero, Faccion.ALIADOS);
 
 		assertThrows(JugadorPerdioException.class, () -> {
-			soldado.disminuirVida(SOLDADO_VIDA - DAGA_PODER, Faccion.ALIADOS, tablero);
+			soldado.disminuirVida(SOLDADO_VIDA - DAGA_PODER, Faccion.ALIADOS, casilleroDestino);
 		});
 	}
 
@@ -92,11 +96,12 @@ public class JineteTest {
 
         tablero.colocarEntidad(jinete,posJinete);
         tablero.colocarEntidad(catapulta, posCatapulta);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posCatapulta);
 
         tablero.atacarCasillero(posJinete, posCatapulta, Faccion.ALIADOS);
 		
 		assertThrows(JugadorPerdioException.class, () -> {
-			catapulta.disminuirVida( (SOLDADO_VIDA - DAGA_PODER), Faccion.ALIADOS, tablero);
+			catapulta.disminuirVida( (SOLDADO_VIDA - DAGA_PODER), Faccion.ALIADOS, casilleroDestino);
 		});
 	}
 
@@ -122,11 +127,12 @@ public class JineteTest {
         tablero.colocarEntidad(jinete,posJinete);
         tablero.colocarEntidad(catapulta1,posCatapulta1);
         tablero.colocarEntidad(catapulta2,posCatapulta2);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posCatapulta2);
 
         tablero.atacarCasillero(posJinete,posCatapulta2,Faccion.ALIADOS);
         
         assertThrows(JugadorPerdioException.class, () -> {
-			catapulta2.disminuirVida(CATAPULTA_VIDA, Faccion.ALIADOS, tablero);
+			catapulta2.disminuirVida(CATAPULTA_VIDA, Faccion.ALIADOS, casilleroDestino);
 		});
 
     }
