@@ -1,10 +1,11 @@
 package algochess.engine.tablero;
-
+import java.util.HashMap;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.NulaEntidad;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.interfaces.casillero.Recuadro;
+import algochess.engine.interfaces.casillero.ColocarHandler;
 import algochess.engine.interfaces.entidades.PuedeAtacar;
 import algochess.engine.interfaces.entidades.PuedeCurar;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
@@ -12,6 +13,12 @@ import algochess.engine.interfaces.entidades.PuedeMoverse;
 import algochess.engine.interfaces.entidades.PuedeSerCurada;
 import algochess.engine.interfaces.entidades.PuedeSerHerida;
 import algochess.engine.posicion.Posicion;
+import algochess.engine.entidades.Jinete;
+import algochess.engine.entidades.Catapulta;
+import algochess.engine.entidades.Soldado;
+import algochess.engine.entidades.Curandero;
+import algochess.engine.entidades.NulaEntidad;
+
 import algochess.excepciones.CasilleroOcupadoException;
 import java.util.HashSet;
 import java.util.Queue;
@@ -24,41 +31,60 @@ public class Ocupado extends Casillero {
     private PuedeSerCurada puedeSerCurada;
     private PuedeSerHerida puedeSerHerida;
 
+    /* Table-Driven methods */
+    private HashMap<Class, ColocarHandler> entidadMap;
+
+    private void initEntidadMap() {
+        entidadMap = new HashMap<>();
+        entidadMap.put(Jinete.class,    (jinete) -> colocarJinete(jinete));
+        entidadMap.put(Catapulta.class, (catapulta) -> colocarCatapulta(catapulta));
+        entidadMap.put(Curandero.class, (curandero) -> colocarCurandero(curandero));
+        entidadMap.put(Soldado.class,   (soldado) -> colocarSoldado(soldado));
+
+    }
 
     public Ocupado(Entidad entidad, Posicion posicion, Faccion faccion) {
         super(posicion, faccion);
-
-        if (entidad instanceof PuedeAtacar) puedeAtacar = (PuedeAtacar) entidad;
-        else {
-            puedeAtacar = new NulaEntidad();
-        }
-
-        if (entidad instanceof PuedeCurar) puedeCurar = (PuedeCurar) entidad;
-        else {
-            puedeCurar = new NulaEntidad();
-        }
-
-        if (entidad instanceof PuedeFormarBatallon) puedeFormarBatallon = (PuedeFormarBatallon) entidad;
-        else {
-            puedeFormarBatallon = new NulaEntidad();
-        }
-
-        if (entidad instanceof PuedeMoverse) puedeMoverse = (PuedeMoverse) entidad;
-        else {
-            puedeMoverse = new NulaEntidad();
-        }
-
-        if (entidad instanceof PuedeSerCurada) puedeSerCurada = (PuedeSerCurada) entidad;
-        else {
-            puedeSerCurada = new NulaEntidad();
-        }
-
-        if (entidad instanceof PuedeSerHerida) puedeSerHerida = (PuedeSerHerida) entidad;
-        else {
-            puedeSerHerida = new NulaEntidad();
-        }
-
+        this.initEntidadMap();
+        ColocarHandler handler = this.entidadMap.get(entidad.getClass());
+        handler.colocar(entidad);
         entidad.setPosicion(posicion);
+    }
+
+    public void colocarJinete(Entidad jinete) {
+        puedeAtacar = (PuedeAtacar) jinete;
+        puedeCurar = new NulaEntidad();
+        puedeFormarBatallon = new NulaEntidad();
+        puedeMoverse = (PuedeMoverse) jinete;
+        puedeSerCurada = (PuedeSerCurada) jinete;
+        puedeSerHerida = (PuedeSerHerida) jinete;
+    }
+
+    public void colocarSoldado(Entidad soldado) {
+        puedeAtacar = (PuedeAtacar) soldado;
+        puedeCurar = new NulaEntidad();
+        puedeFormarBatallon = (PuedeFormarBatallon) soldado;
+        puedeMoverse = (PuedeMoverse) soldado;
+        puedeSerCurada = (PuedeSerCurada) soldado;
+        puedeSerHerida = (PuedeSerHerida) soldado;
+    }
+
+    public void colocarCatapulta(Entidad catapulta) {
+        puedeAtacar = (PuedeAtacar) catapulta;
+        puedeCurar = new NulaEntidad();
+        puedeFormarBatallon = new NulaEntidad();
+        puedeMoverse = new NulaEntidad();
+        puedeSerCurada = new NulaEntidad();
+        puedeSerHerida = (PuedeSerHerida) catapulta;
+    }
+
+    public void colocarCurandero(Entidad curandero) {
+        puedeAtacar = new NulaEntidad();
+        puedeCurar = (PuedeCurar) curandero;
+        puedeFormarBatallon = new NulaEntidad();
+        puedeMoverse = (PuedeMoverse) curandero;
+        puedeSerCurada = (PuedeSerCurada) curandero;
+        puedeSerHerida = (PuedeSerHerida) curandero;
     }
 
     @Override
