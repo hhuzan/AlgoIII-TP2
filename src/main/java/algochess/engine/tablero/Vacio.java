@@ -13,10 +13,6 @@ import java.util.Queue;
 
 public class Vacio implements Estado {
 
-    public Vacio() {
-
-    }
-
     public boolean colocarEntidad(Entidad entidad, Casillero casillero, Faccion faccionCasillero, Posicion posicionCasillero) {
         if (entidad.sosAmigo(faccionCasillero)) 
             recibirEntidad(entidad, casillero, posicionCasillero);
