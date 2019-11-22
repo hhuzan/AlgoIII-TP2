@@ -16,10 +16,7 @@ import algochess.engine.interfaces.casillero.Estado;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Catapulta;
-import algochess.engine.entidades.Soldado;
 import algochess.engine.entidades.Curandero;
-import algochess.engine.entidades.NulaEntidad;
-
 import algochess.excepciones.CasilleroOcupadoException;
 import java.util.HashSet;
 import java.util.Queue;
@@ -33,7 +30,8 @@ public class Ocupado implements Estado {
     private PuedeSerHerida puedeSerHerida;
 
     /* Table-Driven methods */
-    private HashMap<Class, ColocarHandler> entidadMap;
+    @SuppressWarnings("rawtypes")
+	private HashMap<Class, ColocarHandler> entidadMap;
 
     private void initEntidadMap() {
         entidadMap = new HashMap<>();
