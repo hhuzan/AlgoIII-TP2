@@ -1,5 +1,8 @@
 package algochess.gui.vista;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -29,24 +32,45 @@ public class ContenedorPrincipal extends HBox {
     int aceptados = 0;
 
     public ContenedorPrincipal(Stage stage) {
+        super();
 
-    	super();
+        String[] imagePaths = new String[] {
+            "images/SHOP_ICON.png",
+            "images/CaballoNeutro.png",
+            "images/SoldadoNeutro.png",
+            "images/CuranderoNeutro.png",
+            "images/CatapultaNeutro.png"
+        };
 
     	this.stage = stage;
         this.setAlignment(Pos.CENTER);
     	this.setSpacing(50);
 
-        VBox compraJugadorUno = new VBox(20);
-        VBox compraJugadorDos = new VBox(20);
+        VBox compraJugadorColumnaUno = new VBox(20);
+        VBox compraJugadorColumnaDos = new VBox(20);
         TableroVista tablero = new TableroVista();
 
-        compraJugadorUno.setAlignment(Pos.CENTER_LEFT);
-        compraJugadorDos.setAlignment(Pos.CENTER_RIGHT);
+        compraJugadorColumnaUno.setAlignment(Pos.CENTER_LEFT);
 
+        for(String path : imagePaths) {
+            Image image = new Image(path);
+            ImageView imageView = new ImageView();
+            imageView.setImage(image);
+            imageView.setFitWidth(100);
+            imageView.setPreserveRatio(true);
+            imageView.setSmooth(true);
+            imageView.setCache(true);
+            Button button = new Button();
+            button.setGraphic(imageView);
+            button.setPadding(new Insets(-1,-1,-1,-1));
+            compraJugadorColumnaUno.getChildren().add(button);
+        }
 
-        compraJugadorUno.getChildren().addAll(new Button("Hola"), new Button("Chau"));
-        compraJugadorDos.getChildren().addAll(new Button("Hola"), new Button("Chau"));
+        
+        compraJugadorColumnaDos.setAlignment(Pos.CENTER_RIGHT);
 
-        this.getChildren().addAll(compraJugadorUno, tablero.getTablero(), compraJugadorDos);
+        compraJugadorColumnaDos.getChildren().addAll(new Button("Hola"), new Button("Chau"));
+
+        this.getChildren().addAll(compraJugadorColumnaUno, tablero.getTablero(), compraJugadorColumnaDos);
     }
 }
