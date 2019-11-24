@@ -111,7 +111,7 @@
             <artifactId>javafx-maven-plugin</artifactId>
             <version>0.0.3</version>
             <configuration>
-                <mainClass>algochess.gui.AlgoChess</mainClass>
+                <mainClass>algochess.gui.vista.AlgoChess</mainClass>
             </configuration>
         </plugin>
       </plugins>

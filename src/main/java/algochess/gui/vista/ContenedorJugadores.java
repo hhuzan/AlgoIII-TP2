@@ -1,4 +1,4 @@
-package algochess.gui;
+package algochess.gui.vista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -57,21 +57,26 @@ public class ContenedorJugadores extends HBox {
         jugadorDosBackgroundView.setCache(true);
 
         TextField nombreJugador_1 = new TextField("Nombre jugador");
-
-        Button botonAceptarUno = new Button();
-        botonAceptarUno.setText("Aceptar");
-
         TextField nombreJugador_2 = new TextField("Nombre jugador");
 
-        Button botonAceptar_2 = new Button();
-        botonAceptar_2.setText("Aceptar");
+        Button botonAceptar = new Button();
+        botonAceptar.setText("Aceptar");
 
-        BotonAceptarEventHandler botonAceptarUnoHandler = new BotonAceptarEventHandler(stage);
-        botonAceptarUno.setOnAction(botonAceptarUnoHandler);
+        Scene proximaEscena = crearEscenaPrincipal(stage);
 
-        jugadorUnoContainer.getChildren().addAll(jugadorUnoBackgroundView, nombreJugador_1, botonAceptarUno);
-        jugadorDosContainer.getChildren().addAll(jugadorDosBackgroundView, nombreJugador_2, botonAceptar_2);
+        BotonAceptarEventHandler botonAceptarHandler = new BotonAceptarEventHandler(stage, proximaEscena);
+        botonAceptar.setOnAction(botonAceptarHandler);
 
-        this.getChildren().addAll(jugadorUnoContainer, jugadorDosContainer);
+        jugadorUnoContainer.getChildren().addAll(jugadorUnoBackgroundView, nombreJugador_1);
+        jugadorDosContainer.getChildren().addAll(jugadorDosBackgroundView, nombreJugador_2);
+
+        this.getChildren().addAll(jugadorUnoContainer, jugadorDosContainer, botonAceptar);
+    }
+
+    private Scene crearEscenaPrincipal(Stage stage) {
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
+        Scene escenaPrincipal = new Scene(contenedorPrincipal, 640, 480);
+
+        return escenaPrincipal;
     }
 }

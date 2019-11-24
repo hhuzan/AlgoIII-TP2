@@ -1,4 +1,4 @@
-package algochess.gui;
+package algochess.gui.vista;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -65,33 +65,6 @@ public class AlgoChess extends Application  {
         ventas.getChildren().addAll(soldadoContainer,caballoContainer,curanderoContainer,catapultaContainer);
 
         return ventas;
-    }
-
-    private GridPane crearTablero(){
-        GridPane tablero = new GridPane();
-        tablero.setPadding(new Insets(10,10,10,10));
-        tablero.setVgap(2);
-        tablero.setHgap(2);
-
-        /*faccion1*/
-        for(int y=0;y<FILAS/2;y++){
-            for(int x = 0; x<COLUMNAS;x++){
-                Casillero casillero = new Casillero(y+1,x+1,TAMANIO_CASILLERO, Color.LIGHTPINK);
-                GridPane.setConstraints(casillero,x,y);
-                tablero.getChildren().add(casillero);
-            }
-        }
-
-        /*faccion2*/
-        for(int y=FILAS/2;y<FILAS;y++){
-            for(int x = 0; x<COLUMNAS;x++){
-                Casillero casillero = new Casillero(y+1,x+1,TAMANIO_CASILLERO, Color.AQUAMARINE);
-                GridPane.setConstraints(casillero,x,y);
-                tablero.getChildren().add(casillero);
-            }
-        }
-
-        return tablero;
     }
 
     @Override

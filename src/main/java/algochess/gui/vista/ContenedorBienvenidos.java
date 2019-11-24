@@ -1,4 +1,4 @@
-package algochess.gui;
+package algochess.gui.vista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
