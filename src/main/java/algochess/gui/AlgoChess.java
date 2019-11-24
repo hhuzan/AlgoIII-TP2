@@ -9,6 +9,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.paint.Color;
+
 import algochess.gui.Casillero;
 
 
@@ -23,7 +27,7 @@ public class AlgoChess extends Application  {
 
     /*private BorderPane crearVentanaPrincipal(){
         BorderPane panel = new BorderPane();
-        /*panel.setTop(new Label("Top"));
+        panel.setTop(new Label("Top"));
         panel.setBottom(new Label("Bottom"));
         panel.setLeft(new Label("Left"));
         panel.setRight(new Label("Right"));
@@ -32,46 +36,33 @@ public class AlgoChess extends Application  {
     }*/
 
     private GridPane crearVentaDeEntidades(){
-        /*Se crea el panel de ventas y su configura el padding*/
 
         GridPane ventas = new GridPane();
         ventas.setPadding(new Insets(10,10,10,10));
         ventas.setVgap(20);
         ventas.setHgap(20);
-        System.out.println("Venta entidades: Creamos GridPane");
-
-        /*Se crean containers para los items*/
 
         Rectangle soldadoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
         Rectangle caballoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
         Rectangle curanderoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
         Rectangle catapultaContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
-        System.out.println("Venta entidades: Creamos containers p items");
 
-        /* Se colocan las imagenes en los conteiners respectivos*/
-        /* TODO: Esto no me corre
-         Image soldadoNeutroImg = new Image("file:dog.jpg");
-         Image caballoNeutroImg = new Image("file:dog.jpg");
-         Image curanderoNeutroImg = new Image("file:dog.jpg");
-         Image catapultaNeutroImg = new Image("file:dog.jpg");
-         System.out.println("Venta entidades: Creamos imagenes p items");
+        Image soldadoNeutroImg = new Image("images/SoldadoNeutro.png");
+        Image caballoNeutroImg = new Image("images/CaballoNeutro.png");
+        Image curanderoNeutroImg = new Image("images/CuranderoNeutro.png");
+        Image catapultaNeutroImg = new Image("images/CatapultaNeutro.png");
 
-         soldadoContainer.setFill(new ImagePattern(soldadoNeutroImg));
-         caballoContainer.setFill(new ImagePattern(caballoNeutroImg));
-         curanderoContainer.setFill(new ImagePattern(curanderoNeutroImg));
-         catapultaContainer.setFill(new ImagePattern(catapultaNeutroImg));
-         System.out.println("Venta entidades: fill imagepattern p items");
-        */
-        // /*Se agregan los containers al panel de ventas*/
+        soldadoContainer.setFill(new ImagePattern(soldadoNeutroImg));
+        caballoContainer.setFill(new ImagePattern(caballoNeutroImg));
+        curanderoContainer.setFill(new ImagePattern(curanderoNeutroImg));
+        catapultaContainer.setFill(new ImagePattern(catapultaNeutroImg));
 
-         GridPane.setConstraints(soldadoContainer,0,0);
-         GridPane.setConstraints(caballoContainer,0,1);
-         GridPane.setConstraints(curanderoContainer,0,2);
-         GridPane.setConstraints(catapultaContainer,0,3);
-         System.out.println("Venta entidades: contraints");
+        GridPane.setConstraints(soldadoContainer,0,0);
+        GridPane.setConstraints(caballoContainer,0,1);
+        GridPane.setConstraints(curanderoContainer,0,2);
+        GridPane.setConstraints(catapultaContainer,0,3);
 
-         ventas.getChildren().addAll(soldadoContainer,caballoContainer,curanderoContainer,catapultaContainer);
-         System.out.println("Venta entidades: adAll");
+        ventas.getChildren().addAll(soldadoContainer,caballoContainer,curanderoContainer,catapultaContainer);
 
         return ventas;
     }
@@ -100,41 +91,22 @@ public class AlgoChess extends Application  {
             }
         }
 
-
         return tablero;
     }
 
     @Override
-    public void start(Stage ventana) {
+    public void start(Stage stage) {
 
-        /*Layout JUEGO*/
-        BorderPane panel = new BorderPane();
-        System.out.println("Creamos Panel");
-        /*Layout TABLERO */
-        GridPane tablero = crearTablero();
-        System.out.println("Creamos Tablero");
+        stage.setTitle("AlgoChess - V 1.0");
 
-        /*Layout VENTAS DE ENTIDADES*/
-        GridPane ventas = crearVentaDeEntidades();
-        System.out.println("Creamos Ventana");
+        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage);
+        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
 
-        ventas.setAlignment(Pos.CENTER);
-        panel.setLeft(ventas);
-        panel.setCenter(tablero);
-        System.out.println("Seteamos cosas");
+        escenaBienvenidos.setFill(Color.BLACK);
 
-        /*Escena */
-        Scene escena = new Scene(panel, 1200,600);
-        System.out.println("Creamos escena");
+        stage.setScene(escenaBienvenidos);
 
-
-        /* Ventana */
-        ventana.setTitle("AlgoChess");
-        ventana.setScene(escena);
-        ventana.show();
-        System.out.println("Mostramos");
-
-
+        stage.show();
     }
 
 }

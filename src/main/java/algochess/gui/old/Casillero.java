@@ -9,6 +9,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 
 public  class Casillero extends StackPane {
     private final int fila;
@@ -26,8 +28,8 @@ public  class Casillero extends StackPane {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Rectangle rectangulo = new Rectangle(tamanio,tamanio);
-                //Image image = new Image("images/CaballoPink.png");
-                //rectangulo.setFill(new ImagePattern(image));
+                Image image = new Image("images/CaballoPink.png");
+                rectangulo.setFill(new ImagePattern(image));
                 getChildren().add(rectangulo);
 
 
