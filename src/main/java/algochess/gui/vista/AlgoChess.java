@@ -73,7 +73,7 @@ public class AlgoChess extends Application  {
         stage.setTitle("AlgoChess - V 1.0");
 
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage);
-        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 640, 480);
+        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1280, 720 );
 
         escenaBienvenidos.setFill(Color.BLACK);
 

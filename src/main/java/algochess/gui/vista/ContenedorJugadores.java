@@ -75,7 +75,7 @@ public class ContenedorJugadores extends HBox {
 
     private Scene crearEscenaPrincipal(Stage stage) {
         ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
-        Scene escenaPrincipal = new Scene(contenedorPrincipal, 640, 480);
+        Scene escenaPrincipal = new Scene(contenedorPrincipal, 1280, 720);
 
         return escenaPrincipal;
     }

@@ -58,7 +58,7 @@ public class ContenedorBienvenidos extends VBox {
 
     private Scene crearEscenaEleccionJugadores(Stage stage) {
         ContenedorJugadores contenedorJugadores = new ContenedorJugadores(stage);
-        Scene escenaJugadores = new Scene(contenedorJugadores, 640, 480);
+        Scene escenaJugadores = new Scene(contenedorJugadores, 1280, 720);
 
         return escenaJugadores;
     }
