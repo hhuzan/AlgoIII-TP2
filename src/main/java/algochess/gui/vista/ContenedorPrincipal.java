@@ -23,15 +23,15 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import algochess.gui.vista.TableroVista;
-
-import algochess.gui.controller.BotonAceptarEventHandler;
+import algochess.gui.controller.ComprarEntidadEventHandler;
+import algochess.engine.juego.Juego;
 
 public class ContenedorPrincipal extends HBox {
 
     Stage stage;
     int aceptados = 0;
 
-    public ContenedorPrincipal(Stage stage) {
+    public ContenedorPrincipal(Stage stage, Juego juego) {
         super();
 
         String[] imagePaths = new String[] {
@@ -63,6 +63,7 @@ public class ContenedorPrincipal extends HBox {
             Button button = new Button();
             button.setGraphic(imageView);
             button.setPadding(new Insets(-1,-1,-1,-1));
+            crearHandler(path, imagePaths, button, juego);
             compraJugadorColumnaUno.getChildren().add(button);
         }
 
@@ -72,5 +73,22 @@ public class ContenedorPrincipal extends HBox {
         compraJugadorColumnaDos.getChildren().addAll(new Button("Hola"), new Button("Chau"));
 
         this.getChildren().addAll(compraJugadorColumnaUno, tablero.getTablero(), compraJugadorColumnaDos);
+    }
+
+    public void crearHandler(String path, String[] imagePaths, Button button, Juego juego) {
+        if(path == imagePaths[1]) { // jinete
+            ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("jinete", juego);
+            button.setOnAction(botonEntidadHandler);
+        } else if (path == imagePaths[2]) { // soldado
+            ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("soldado", juego);
+            button.setOnAction(botonEntidadHandler);
+        } else if (path == imagePaths[3]) { // curandero
+            ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("curandero", juego);
+            button.setOnAction(botonEntidadHandler);
+        } else if (path == imagePaths[4]) { // catapulta
+            ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("catapulta", juego);
+            button.setOnAction(botonEntidadHandler);
+        }
+
     }
 }

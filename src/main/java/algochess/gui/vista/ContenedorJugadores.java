@@ -20,20 +20,24 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import algochess.gui.controller.BotonAceptarEventHandler;
+import algochess.gui.controller.BotonComenzarJuegoHandler;
+import algochess.engine.juego.Juego;
 
-public class ContenedorJugadores extends HBox {
+public class ContenedorJugadores extends VBox {
 
     Stage stage;
     int aceptados = 0;
 
-    public ContenedorJugadores(Stage stage) {
+    public ContenedorJugadores(Stage stage, Juego juego) {
 
     	super();
 
     	this.stage = stage;
         this.setAlignment(Pos.CENTER);
     	this.setSpacing(50);
+
+        HBox jugadorContainer = new HBox(20);
+        jugadorContainer.setAlignment(Pos.CENTER);
 
         VBox jugadorUnoContainer = new VBox(20);
         VBox jugadorDosContainer = new VBox(20);
@@ -62,19 +66,22 @@ public class ContenedorJugadores extends HBox {
         Button botonAceptar = new Button();
         botonAceptar.setText("Aceptar");
 
-        Scene proximaEscena = crearEscenaPrincipal(stage);
+        Scene proximaEscena = crearEscenaPrincipal(stage, juego);
 
-        BotonAceptarEventHandler botonAceptarHandler = new BotonAceptarEventHandler(stage, proximaEscena);
+        BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage, proximaEscena, juego,
+                                                        nombreJugador_1, nombreJugador_2);
         botonAceptar.setOnAction(botonAceptarHandler);
 
         jugadorUnoContainer.getChildren().addAll(jugadorUnoBackgroundView, nombreJugador_1);
         jugadorDosContainer.getChildren().addAll(jugadorDosBackgroundView, nombreJugador_2);
 
-        this.getChildren().addAll(jugadorUnoContainer, jugadorDosContainer, botonAceptar);
+        jugadorContainer.getChildren().addAll(jugadorUnoContainer, jugadorDosContainer);
+
+        this.getChildren().addAll(jugadorContainer, botonAceptar);
     }
 
-    private Scene crearEscenaPrincipal(Stage stage) {
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage);
+    private Scene crearEscenaPrincipal(Stage stage, Juego juego) {
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
         Scene escenaPrincipal = new Scene(contenedorPrincipal, 1280, 720);
 
         return escenaPrincipal;

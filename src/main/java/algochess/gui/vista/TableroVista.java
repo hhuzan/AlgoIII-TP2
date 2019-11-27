@@ -21,7 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import algochess.gui.controller.BotonAceptarEventHandler;
+import algochess.gui.controller.BotonProximaEscenaHandler;
 import algochess.gui.vista.CasilleroVista;
 
 public class TableroVista {

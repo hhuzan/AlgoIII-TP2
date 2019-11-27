@@ -12,8 +12,26 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Color;
-
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+import algochess.gui.controller.BotonProximaEscenaHandler;
 import algochess.gui.Casillero;
+import algochess.engine.juego.Juego;
 
 
 public class AlgoChess extends Application  {
@@ -28,7 +46,7 @@ public class AlgoChess extends Application  {
     /*private BorderPane crearVentanaPrincipal(){
         BorderPane panel = new BorderPane();
         panel.setTop(new Label("Top"));
-        panel.setBottom(new Label("Bottom"));
+        panel.setBottom(new Label(  "Bottom"));
         panel.setLeft(new Label("Left"));
         panel.setRight(new Label("Right"));
         panel.setCenter(new Label("Center"));
@@ -70,16 +88,48 @@ public class AlgoChess extends Application  {
     @Override
     public void start(Stage stage) {
 
+        Juego juego = new Juego();
+
         stage.setTitle("AlgoChess - V 1.0");
 
-        ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage);
-        Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1280, 720 );
+        VBox welcomeContainer = new VBox(20);
+        welcomeContainer.setAlignment(Pos.CENTER);
 
-        escenaBienvenidos.setFill(Color.BLACK);
+        Image logo = new Image("images/GAME_LOGO.png");
+        ImageView logoView = new ImageView();
+        logoView.setImage(logo);
+        logoView.setFitWidth(300);
+        logoView.setPreserveRatio(true);
+        logoView.setSmooth(true);
+        logoView.setCache(true);
 
+        Button botonEntrar = new Button();
+        botonEntrar.setText("Jugar");
+        
+        Button botonInstrucciones = new Button();
+        botonInstrucciones.setText("Instrucciones");
+
+        Button botonSalir = new Button();
+        botonSalir.setText("Salir");
+
+        Scene proximaEscena = crearEscenaEleccionJugadores(stage, juego);
+
+        BotonProximaEscenaHandler botonEntrarHandler = new BotonProximaEscenaHandler(stage, proximaEscena);
+        botonEntrar.setOnAction(botonEntrarHandler);
+
+        welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir);
+
+        Scene escenaBienvenidos = new Scene(welcomeContainer, 1280, 720);
         stage.setScene(escenaBienvenidos);
 
         stage.show();
+    }
+
+    private Scene crearEscenaEleccionJugadores(Stage stage, Juego juego) {
+        ContenedorJugadores contenedorJugadores = new ContenedorJugadores(stage, juego);
+        Scene escenaJugadores = new Scene(contenedorJugadores, 1280, 720);
+
+        return escenaJugadores;
     }
 
 }
