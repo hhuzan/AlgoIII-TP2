@@ -12,7 +12,8 @@ import static algochess.engine.ConstantesUtils.DINERO_JUGADOR;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Jugador extends Observable {
+//public class Jugador extends Observable {
+public class Jugador {
 
     private List<Entidad> entidades = new ArrayList<>();
     private Dinero dinero;
@@ -53,9 +54,10 @@ public class Jugador extends Observable {
 
     public void comprarEntidad(VendedorDeEntidades vendedor, Entidad entidad) {
         Dinero gasto = entidad.restarDinero(dinero);
-        System.out.println("Voy a notificar a mis observers");
-        setChanged();
-        notifyObservers(gasto.getMonto());
+ //       System.out.println("Voy a notificar a mis observers");
+ //       setChanged();
+ //       notifyObservers(gasto.getMonto());
+        gasto.getMonto();
         Entidad miEntidad = vendedor.venderEntidad(entidad, gasto);
         agregarEntidad(miEntidad);
     }

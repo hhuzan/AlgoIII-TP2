@@ -1,7 +1,7 @@
 package algochess.gui.vista;
 
-import java.util.Observer;
-import java.util.Observable;
+//import java.util.Observer;
+//import java.util.Observable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -24,89 +24,79 @@ import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.NulaEntidad;
 import java.lang.reflect.Field;
 
-public class ContenedorPrincipal extends HBox implements Observer {
+//public class ContenedorPrincipal extends HBox implements Observer {
+public class ContenedorPrincipal extends HBox {
 
-    Stage stage;
-    int aceptados = 0;
+	Stage stage;
+	int aceptados = 0;
+	Juego juego;
+	VBox columnaUno;
+	VBox columnaDos;
+	
+	public ContenedorPrincipal(Stage stage, Juego juego) {
+		super();
 
-    public ContenedorPrincipal(Stage stage, Juego juego, Jugador aliado, Jugador enemigo, Tablero tablero) {
-        super();
+		// Class jugadorCls = Class.forName("com.csa.mdm.Jugador");
+		// Field field = jugadorCls.getDeclaredField("dinero");
+		// field.setAccessible(true);
+		// String value = (String) field.get(aliado);
+		// System.out.println("Reflection -- Value: " + value);
 
-        // Class jugadorCls = Class.forName("com.csa.mdm.Jugador");
-        // Field field = jugadorCls.getDeclaredField("dinero");
-        // field.setAccessible(true);
-        // String value = (String) field.get(aliado);
-        // System.out.println("Reflection -- Value: " + value);
+		String[] imagePaths = new String[] { "images/SHOP_ICON.png", "images/CaballoNeutro.png",
+				"images/SoldadoNeutro.png", "images/CuranderoNeutro.png", "images/CatapultaNeutro.png" };
 
-        String[] imagePaths = new String[] {
-            "images/SHOP_ICON.png",
-            "images/CaballoNeutro.png",
-            "images/SoldadoNeutro.png",
-            "images/CuranderoNeutro.png",
-            "images/CatapultaNeutro.png"
-        };
+		this.stage = stage;
+		this.juego = juego;
+		setAlignment(Pos.CENTER);
+		setSpacing(50);
 
-        this.stage = stage;
-        this.setAlignment(Pos.CENTER);
-        this.setSpacing(50);
+		columnaUno = new VBox(20);
+		columnaDos = new VBox(20);
+		VistaTablero tableroVista = new VistaTablero(juego, this);
 
-        VBox compraJugadorColumnaUno = new VBox(20);
-        VBox compraJugadorColumnaDos = new VBox(20);
-        VistaTablero tableroVista = new VistaTablero(juego.getTablero());
+		columnaUno.setAlignment(Pos.CENTER_LEFT);
 
-        compraJugadorColumnaUno.setAlignment(Pos.CENTER_LEFT);
+		for (String path : imagePaths) {
+			Image image = new Image(path);
+			ImageView imageView = new ImageView();
+			imageView.setImage(image);
+			imageView.setFitWidth(100);
+			imageView.setPreserveRatio(true);
+			imageView.setSmooth(true);
+			imageView.setCache(true);
+			ToggleButton toggleButton = new ToggleButton();
+			toggleButton.setGraphic(imageView);
+			toggleButton.setPadding(new Insets(-1, -1, -1, -1));
+			toggleButton.setOnAction((ActionEvent e) -> {
+				// TODO sacar if
+				if (path == imagePaths[1]) { // jinete
+					juego.seleccionarJinete();
+				} else if (path == imagePaths[2]) { // soldado
+					juego.seleccionarSodado();
+				} else if (path == imagePaths[3]) { // curandero
+					juego.seleccionarCurandero();
+				} else if (path == imagePaths[4]) { // catapulta
+					juego.seleccionarCatapulta();
+				}
 
-        for(String path : imagePaths) {
-            Image image = new Image(path);
-            ImageView imageView = new ImageView();
-            imageView.setImage(image);
-            imageView.setFitWidth(100);
-            imageView.setPreserveRatio(true);
-            imageView.setSmooth(true);
-            imageView.setCache(true);
-            ToggleButton toggleButton = new ToggleButton();
-            toggleButton.setGraphic(imageView);
-            toggleButton.setPadding(new Insets(-1,-1,-1,-1));
-            toggleButton.setOnAction((ActionEvent e) -> {
-                Entidad entidad = crearEntidad(path, imagePaths);
-            });
-            compraJugadorColumnaUno.getChildren().add(toggleButton);
-        }
+			});
+			columnaUno.getChildren().add(toggleButton);
+		}
 
-        // TODO: Handlers para los casilleros con toggle selected + entidad
-        crearObservadores(aliado, enemigo, tablero, this);
+		// TODO: Handlers para los casilleros con toggle selected + entidad
 
-        compraJugadorColumnaDos.setAlignment(Pos.CENTER_RIGHT);
+		columnaDos.setAlignment(Pos.CENTER_RIGHT);
 
-        compraJugadorColumnaDos.getChildren().addAll(new Button("Hola"), new Button("Chau"));
+		columnaDos.getChildren().addAll(new Button("Hola"), new Button("Chau"));
 
-        this.getChildren().addAll(compraJugadorColumnaUno, tableroVista.getTablero(), compraJugadorColumnaDos);
-    }
+		this.getChildren().addAll(columnaUno, tableroVista.getPaneTablero(), columnaDos);
+	}
 
-    public Entidad crearEntidad(String path, String[] imagePaths) {
-        if(path == imagePaths[1]) { // jinete
-            return new Jinete();
-        } else if (path == imagePaths[2]) { // soldado
-            return new Soldado();
-        } else if (path == imagePaths[3]) { // curandero
-            return new Curandero();
-        } else if (path == imagePaths[4]) { // catapulta
-            return new Catapulta();
-        }
+	public void refrescar() {
+		this.getChildren().clear();
+		VistaTablero tableroVista = new VistaTablero(juego, this);
+		this.getChildren().addAll(columnaUno, tableroVista.getPaneTablero(), columnaDos);
+		System.out.println("refresca");
+	}
 
-        return new NulaEntidad();
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        System.out.println("Observing: caught something");
-        System.out.println(" got " + ((Integer) arg).intValue() + "$$$$");
-    }
-
-    public void crearObservadores(Jugador aliado, Jugador enemigo, Tablero tablero, Observer observer) {
-        aliado.addObserver(observer);
-        enemigo.addObserver(observer);
-        tablero.addObserver(observer);
-
-    }
 }

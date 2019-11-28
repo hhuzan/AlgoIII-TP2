@@ -1,6 +1,7 @@
 package algochess.engine.juego;
 
 import algochess.engine.jugador.Jugador;
+import algochess.engine.tablero.Casillero;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.vendedordeentidades.VendedorDeEntidades;
@@ -30,21 +31,29 @@ public class Juego {
 	}
 
 	public void seleccionarSodado() {
-		entidadSeleccionada = new Soldado();
+		entidadSeleccionada = new Soldado(jugadorAliado,Faccion.ALIADOS);
 	}
 	
 	public void seleccionarJinete() {
-		entidadSeleccionada = new Jinete();
+		entidadSeleccionada = new Jinete(jugadorAliado,Faccion.ALIADOS);
 	}
 	
 	public void seleccionarCatapulta() {
-		entidadSeleccionada = new Catapulta();
+		entidadSeleccionada = new Catapulta(jugadorAliado,Faccion.ALIADOS);
 	}
 	
 	public void seleccionarCurandero() {
-		entidadSeleccionada = new Curandero();
+		entidadSeleccionada = new Curandero(jugadorAliado,Faccion.ALIADOS);
 	}
 	
+	public void comprarEntidad(int fila, int columna) {
+		Casillero casillero = tablero.getCasilleros()[fila][columna];
+			//TODO pedir jugador a turno
+			jugadorAliado.comprarEntidad(vendedor, entidadSeleccionada);
+			turno.colocarEntidad(casillero, jugadorAliado, entidadSeleccionada);
+	}
+
+//TODO ver si se saca
 	public void comprarEntidad(Jugador jugador, Posicion posicion, Entidad entidad) {
 		// TODO: Ver como obtener casillero dada la posición
 		// Casillero casillero = new Casillero(posicion);

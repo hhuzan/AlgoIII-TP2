@@ -2,28 +2,31 @@ package algochess.gui.vista;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
+import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Casillero;
-import algochess.engine.tablero.Tablero;
 import algochess.gui.vista.VistaCasillero;
 
 public class VistaTablero {
-	private Tablero tablero;
+//	private Juego juego;
 	private GridPane paneTablero;
 
-	public VistaTablero(Tablero tablero) {
-		this.tablero = tablero;
+	
+	public VistaTablero(Juego juego, ContenedorPrincipal contenedorPrincipal) {
+//		this.juego = juego;
+		
 		GridPane paneTablero = new GridPane();
 		int tam_casillero = 25;
 		paneTablero.setPadding(new Insets(10, 10, 10, 10));
 		paneTablero.setVgap(3);
 		paneTablero.setHgap(3);
 
-		Casillero[][] casilleros = tablero.getCasilleros();
+		Casillero[][] casilleros = juego.getTablero().getCasilleros();
 
 		for (int fila = 0; fila < casilleros.length; fila++)
 			for (int columna = 0; columna < casilleros[fila].length; columna++) {
 				{
-					VistaCasillero casillero = new VistaCasillero(fila, columna, tam_casillero, casilleros[fila][columna]);
+					VistaCasillero casillero = new VistaCasillero(fila, columna, tam_casillero,
+							casilleros[fila][columna], juego, contenedorPrincipal);
 					GridPane.setConstraints(casillero, columna, fila);
 					paneTablero.getChildren().add(casillero);
 				}
@@ -32,7 +35,7 @@ public class VistaTablero {
 		this.paneTablero = paneTablero; // TODO ver
 	}
 
-	public GridPane getTablero() {
+	public GridPane getPaneTablero() {
 		return paneTablero;
 	}
 }

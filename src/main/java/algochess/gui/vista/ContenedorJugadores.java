@@ -94,7 +94,7 @@ public class ContenedorJugadores extends VBox {
     }
 
     private Scene crearEscenaPrincipal(Stage stage, Juego juego, Jugador aliado, Jugador enemigo, Tablero tablero) {
-        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego, aliado, enemigo, tablero);
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
         Scene escenaPrincipal = new Scene(contenedorPrincipal, 1280, 720);
 
         return escenaPrincipal;

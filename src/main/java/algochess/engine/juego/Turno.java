@@ -18,9 +18,9 @@ public class Turno {
 
 	public void cambiarTurno() {
 		if (faccionActual == Faccion.ALIADOS)
-			faccionActual = Faccion.ALIADOS;
-		else
 			faccionActual = Faccion.ENEMIGOS;
+		else
+			faccionActual = Faccion.ALIADOS;
 	}
 
 	public void colocarEntidad(Casillero casillero, Jugador jugador, Entidad entidad) {
