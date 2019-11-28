@@ -67,7 +67,7 @@ public abstract class Entidad {
     }
 
     public boolean sosAmigo(Faccion unaFaccion) {
-        return faccion == unaFaccion;
+        return faccion.equals(unaFaccion);
     }
 
     public boolean sosEnemigo(Faccion unaFaccion) {
