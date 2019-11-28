@@ -26,7 +26,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ToggleButton;
 import javafx.event.ActionEvent;
-import algochess.gui.vista.TableroVista;
+import algochess.gui.vista.VistaTablero;
 import algochess.gui.controller.ComprarEntidadEventHandler;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Tablero;
@@ -61,7 +61,7 @@ public class ContenedorPrincipal extends HBox implements Observer {
 
         VBox compraJugadorColumnaUno = new VBox(20);
         VBox compraJugadorColumnaDos = new VBox(20);
-        TableroVista tableroVista = new TableroVista();
+        VistaTablero tableroVista = new VistaTablero();
 
         compraJugadorColumnaUno.setAlignment(Pos.CENTER_LEFT);
 

@@ -12,11 +12,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
-public  class CasilleroVista extends StackPane {
+public  class VistaCasillero extends StackPane {
     private final int fila;
     private final int columna;
 
-    CasilleroVista(int fila_, int columna_, int tamanio, Paint color){
+    VistaCasillero(int fila_, int columna_, int tamanio, Paint color){
         super();
         setBackground(new Background(new BackgroundFill(color,CornerRadii.EMPTY,Insets.EMPTY)));
         setPrefSize(tamanio,tamanio);
