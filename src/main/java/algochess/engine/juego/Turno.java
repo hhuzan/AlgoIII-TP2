@@ -73,7 +73,7 @@ public class Turno {
     public void moverEntidad(Casillero origen, Casillero destino, Tablero tablero, Faccion faccionJugador) {
 
 
-        if (faccion == this.faccion){
+        if (faccionJugador == this.faccion){
 
             // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
             // encapsular un poquito mas
