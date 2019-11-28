@@ -10,6 +10,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.event.ActionEvent;
@@ -58,7 +59,7 @@ public class ContenedorCompras extends HBox {
 		Label lblMonto = new Label("$" + juego.getTurno().getJugadorActual().getDinero().toString());
 		lblMonto.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
 		boxDerecho.getChildren().add(lblMonto);
-		
+
 		String color;
 		if (juego.getTurno().getFaccionActual() == Faccion.ALIADOS)
 			color = "LIGHTPINK";
@@ -72,7 +73,7 @@ public class ContenedorCompras extends HBox {
 
 	private void armarColumnaIzquierda() {
 		boxIzquierdo = new VBox(20);
-		boxIzquierdo.setAlignment(Pos.CENTER_LEFT);
+		boxIzquierdo.setAlignment(Pos.CENTER);
 		String color;
 		if (juego.getTurno().getFaccionActual() == Faccion.ALIADOS)
 			color = "LIGHTPINK";
@@ -107,15 +108,16 @@ public class ContenedorCompras extends HBox {
 				} else if (path == imagePaths[4]) { // catapulta
 					juego.seleccionarCatapulta();
 				}
-
 			});
 			boxIzquierdo.getChildren().add(toggleButton);
 		}
+		Button btnPasar = new Button();
+		btnPasar.setText("PasarTurno");
+		btnPasar.setOnAction((ActionEvent e) -> {
+			juego.getTurno().cambiarTurno();
+			refrescar();
+		});
+		boxIzquierdo.getChildren().add(btnPasar);
 
-	}
-
-	private void setBorder(Pane pane) {
-		pane.setStyle("-fx-padding: 2;-fx-border-style: solid inside;-fx-border-width: 5;"
-				+ "-fx-border-insets: 2;-fx-border-radius: 1;-fx-border-color:DARKBLUE;");
 	}
 }

@@ -55,12 +55,6 @@ public class ContenedorJugadores extends VBox {
 		Button botonAceptar = new Button();
 		botonAceptar.setText("Aceptar");
 
-		/*
-		 * Init juego: Crear jugadores y tablero y enviar al juego -> Luego podemos
-		 * observar las instancias desde las vistas
-		 */
-
-//		Scene proximaEscena = crearEscenaPrincipal(stage, juego);
 
 		BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage,
 				nombreJugador_1, nombreJugador_2);
@@ -72,12 +66,5 @@ public class ContenedorJugadores extends VBox {
 		jugadorContainer.getChildren().addAll(jugadorUnoContainer, jugadorDosContainer);
 
 		this.getChildren().addAll(jugadorContainer, botonAceptar);
-	}
-
-	private Scene crearEscenaPrincipal(Stage stage, Juego juego) {
-		ContenedorCompras contenedorCompras = new ContenedorCompras(stage, juego);
-		Scene escenaPrincipal = new Scene(contenedorCompras, 1280, 720);
-
-		return escenaPrincipal;
 	}
 }
