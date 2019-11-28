@@ -7,23 +7,23 @@ import algochess.engine.tablero.Tablero;
 import algochess.gui.vista.VistaCasillero;
 
 public class VistaTablero {
-    private GridPane tablero;
+    private GridPane paneTablero;
 
     public VistaTablero() {
-        GridPane tablero = new GridPane();
+        GridPane paneTablero = new GridPane();
         int tam_casillero = 25;
         int columnas = 20;
         int filas = 20;
-        tablero.setPadding(new Insets(10,10,10,10));
-        tablero.setVgap(3);
-        tablero.setHgap(3);
+        paneTablero.setPadding(new Insets(10,10,10,10));
+        paneTablero.setVgap(3);
+        paneTablero.setHgap(3);
 
         /*faccion1*/
         for(int y=0; y < filas/2 ;y++){
             for(int x = 0; x < columnas; x++){
                 VistaCasillero casillero = new VistaCasillero(y+1, x+1, tam_casillero, Color.LIGHTPINK);
                 GridPane.setConstraints(casillero, x, y);
-                tablero.getChildren().add(casillero);
+                paneTablero.getChildren().add(casillero);
             }
         }
 
@@ -32,14 +32,14 @@ public class VistaTablero {
             for(int x = 0; x < columnas;x++){
                 VistaCasillero casillero = new VistaCasillero(y+1, x+1, tam_casillero, Color.AQUAMARINE);
                 GridPane.setConstraints(casillero, x, y);
-                tablero.getChildren().add(casillero);
+                paneTablero.getChildren().add(casillero);
             }
         }
 
-        this.tablero = tablero;
+        this.paneTablero = paneTablero;
     }
 
     public GridPane getTablero() {
-        return tablero;
+        return paneTablero;
     }
 }
