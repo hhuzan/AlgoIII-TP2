@@ -1,37 +1,21 @@
 package algochess.gui.vista;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Observer;
 import java.util.Observable;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.ToggleButton;
 import javafx.event.ActionEvent;
 import algochess.gui.vista.VistaTablero;
-import algochess.gui.controller.ComprarEntidadEventHandler;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.jugador.Jugador;
-import algochess.engine.facciones.Faccion;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.Curandero;
 import algochess.engine.entidades.Catapulta;

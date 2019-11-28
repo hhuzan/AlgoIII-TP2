@@ -1,5 +1,6 @@
 package algochess.gui.vista;
 
+import algochess.engine.tablero.Casillero;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
@@ -10,15 +11,16 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
 public  class VistaCasillero extends StackPane {
     private final int fila;
     private final int columna;
 
-    VistaCasillero(int fila_, int columna_, int tamanio, Paint color){
+    VistaCasillero(int fila_, int columna_, int tamanio, Casillero casillero){
         super();
-        setBackground(new Background(new BackgroundFill(color,CornerRadii.EMPTY,Insets.EMPTY)));
+        setBackground(new Background(new BackgroundFill(Color.LIGHTPINK,CornerRadii.EMPTY,Insets.EMPTY)));
         setPrefSize(tamanio,tamanio);
         fila = fila_;
         columna = columna_;

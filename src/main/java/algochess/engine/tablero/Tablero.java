@@ -38,6 +38,10 @@ public class Tablero extends Observable {
 		}
 	}
 
+	public Casillero[][] getCasilleros() {
+		return casilleros;
+	}
+	
 	public Casillero obtenerCasillero(Posicion posicion) {
 		return casilleros[posicion.getFila()][posicion.getColumna()];
 	}
