@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import algochess.gui.ExceptionHandler;
 import algochess.excepciones.ColocarEntidadException;
+import algochess.excepciones.DineroInsuficienteException;
 
 public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 	private Juego juego;
@@ -28,6 +29,8 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 			juego.comprarEntidad(fila, columna);
     		contenedorCompras.refrescar();
     	} catch(ColocarEntidadException ex) {
+    		exHandler.manageException(ex);
+    	} catch(DineroInsuficienteException ex) {
     		exHandler.manageException(ex);
     	}
     }

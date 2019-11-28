@@ -23,6 +23,10 @@ public class ExceptionHandler  {
     }
 
     public void manageException(DineroInsuficienteException ex) {
+        System.out.println(ex);
+        Alert alert = new Alert(AlertType.ERROR, ex.toString(), ButtonType.OK);
+        alert.setHeaderText(null);
+        alert.showAndWait();
         
     }
 

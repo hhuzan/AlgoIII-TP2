@@ -4,7 +4,7 @@ package algochess.excepciones;
 public class DineroInsuficienteException extends RuntimeException {
 
 	public String toString(){
-        return ("Te quedaste sin dinero para realizar tal accion") ;
+        return ("No tenes dinero suficiente para comprar esta entidad") ;
     }
 
 }
