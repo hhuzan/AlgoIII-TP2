@@ -30,7 +30,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import algochess.gui.controller.BotonProximaEscenaHandler;
-import algochess.gui.Casillero;
+import algochess.gui.vista.CasilleroVista;
 import algochess.engine.juego.Juego;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.tablero.Tablero;
