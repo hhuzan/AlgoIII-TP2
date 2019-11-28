@@ -43,7 +43,7 @@ public class TurnoTest {
     public void test02AtacoEnTurnoIncorrectoYTiraError(){
 
         Posicion posicion = new Posicion(1,1);
-        Posicion posicion2= new Posicion(2,2)
+        Posicion posicion2= new Posicion(2,2);
         Turno turno = new Turno(Faccion.ENEMIGOS);
         Casillero casillero = new Casillero(posicion, Faccion.ALIADOS);
         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
@@ -58,7 +58,7 @@ public class TurnoTest {
     public void test03CuroEnTurnoIncorrectoYTiraError(){
 
         Posicion posicion = new Posicion(1,1);
-        Posicion posicion2= new Posicion(2,2)
+        Posicion posicion2= new Posicion(2,2);
         Turno turno = new Turno(Faccion.ENEMIGOS);
         Casillero casillero = new Casillero(posicion, Faccion.ALIADOS);
         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
@@ -74,7 +74,7 @@ public class TurnoTest {
     public void test04MuevoEntidadEnTurnoIncorrectoYTiraError(){
 
         Posicion posicion = new Posicion(1,1);
-        Posicion posicion2= new Posicion(2,2)
+        Posicion posicion2= new Posicion(2,2);
         Turno turno = new Turno(Faccion.ENEMIGOS);
         Casillero casillero = new Casillero(posicion, Faccion.ALIADOS);
         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
