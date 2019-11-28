@@ -30,19 +30,19 @@ public class Juego {
 	}
 
 	public void seleccionarSodado() {
-		entidadSeleccionada = new Soldado(jugadorAliado, Faccion.ALIADOS);
+		entidadSeleccionada = new Soldado(turno.getJugadorActual(), turno.getFaccionActual());
 	}
 
 	public void seleccionarJinete() {
-		entidadSeleccionada = new Jinete(jugadorAliado, Faccion.ALIADOS);
+		entidadSeleccionada = new Jinete(turno.getJugadorActual(), turno.getFaccionActual());
 	}
 
 	public void seleccionarCatapulta() {
-		entidadSeleccionada = new Catapulta(jugadorAliado, Faccion.ALIADOS);
+		entidadSeleccionada = new Catapulta(turno.getJugadorActual(), turno.getFaccionActual());
 	}
 
 	public void seleccionarCurandero() {
-		entidadSeleccionada = new Curandero(jugadorAliado, Faccion.ALIADOS);
+		entidadSeleccionada = new Curandero(turno.getJugadorActual(), turno.getFaccionActual());
 	}
 
 	public void comprarEntidad(int fila, int columna) {
