@@ -1,9 +1,8 @@
 package algochess.gui.vista;
 
-import algochess.engine.entidades.Catapulta;
-import algochess.engine.entidades.Curandero;
-import algochess.engine.entidades.Jinete;
-import algochess.engine.entidades.Soldado;
+import java.lang.reflect.Constructor;
+
+import algochess.engine.entidades.NulaEntidad;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Casillero;
@@ -13,20 +12,20 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 
 public class VistaCasillero extends StackPane {
 	private final int fila;
 	private final int columna;
 	private Juego juego;
 	private ContenedorCompras contenedorCompras;
+	private VistaEntidad vistaEntidad;
+	private int tamanio;
 
 	VistaCasillero(int fila, int columna, int tamanio, Casillero casillero, Juego juego,
 			ContenedorCompras contenedorCompras) {
 		super();
+
 		if (casillero.getFaccion() == Faccion.ALIADOS)
 			setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
 		else
@@ -37,42 +36,20 @@ public class VistaCasillero extends StackPane {
 		this.fila = fila;
 		this.columna = columna;
 		this.contenedorCompras = contenedorCompras;
-
+		this.tamanio = tamanio;
 		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorCompras, fila, columna));
 
-		// TODO refactorizar con reflexion
-		Image image = null;
+		String nombreClase = "algochess.gui.vista.Vista" + casillero.getEstado().getEntidad().getClass().getSimpleName()
+				+ casillero.getEstado().getEntidad().getPropietario().getFaccion();
 
-		Rectangle rectangulo = new Rectangle(tamanio, tamanio);
-		if (casillero.getEstado().getEntidad() instanceof Jinete) {
-			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
-				image = new Image("images/CaballoPink.png");
-			else
-				image = new Image("images/CaballoBlue.png");
-		}
-		if (casillero.getEstado().getEntidad() instanceof Soldado) {
-			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
-				image = new Image("images/SoldadoPink.png");
-			else
-				image = new Image("images/SoldadoBlue.png");
-		}
-		if (casillero.getEstado().getEntidad() instanceof Curandero) {
-			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
-				image = new Image("images/CuranderoPink.png");
-			else
-				image = new Image("images/CuranderoBlue.png");
-		}
-		if (casillero.getEstado().getEntidad() instanceof Catapulta) {
-			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
-				image = new Image("images/CatapultaPink.png");
-			else
-				image = new Image("images/CatapultaBlue.png");
-		}
-		if (image != null) {
-			rectangulo.setFill(new ImagePattern(image));
-			getChildren().add(rectangulo);
-		}
+		try {
+			Class<?> clase = Class.forName(nombreClase);
+			Constructor<?> constructor = clase.getConstructor(VistaCasillero.class);
+			vistaEntidad = (VistaEntidad) constructor.newInstance(this);
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public int getFila() {
@@ -83,4 +60,7 @@ public class VistaCasillero extends StackPane {
 		return columna;
 	}
 
+	public int getTamanio() {
+		return tamanio;
+	}
 }

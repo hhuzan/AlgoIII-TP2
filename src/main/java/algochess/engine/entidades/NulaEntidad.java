@@ -8,6 +8,7 @@ import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.interfaces.entidades.PuedeMoverse;
 import algochess.engine.interfaces.entidades.PuedeSerCurada;
 import algochess.engine.interfaces.entidades.PuedeSerHerida;
+import algochess.engine.jugador.Jugador;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
 import java.util.HashSet;
@@ -77,4 +78,10 @@ public class NulaEntidad extends Entidad implements PuedeAtacar, PuedeFormarBata
     public boolean sosEnemigo(Faccion unaFaccion) {
         return false;
     }
+
+    @Override
+    public Jugador getPropietario() {
+        return new Jugador(Faccion.ALIADOS);
+    }
+
 }

@@ -1,6 +1,7 @@
 package algochess.engine.tablero;
 
 import algochess.engine.entidades.Entidad;
+import algochess.engine.entidades.NulaEntidad;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
@@ -63,7 +64,7 @@ public class Vacio implements Estado {
 
 	@Override
 	public Entidad getEntidad() {
-		return null;
+		return new NulaEntidad();
 	}
 
 }
