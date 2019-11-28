@@ -19,11 +19,10 @@ import algochess.engine.juego.Juego;
 
 public class ContenedorCompras extends HBox {
 
-	Stage stage;
-	int aceptados = 0;
-	Juego juego;
-	VBox boxIzquierdo;
-	VBox boxDerecho;
+	private Stage stage;
+	private Juego juego;
+	private VBox boxIzquierdo;
+	private VBox boxDerecho;
 
 	public ContenedorCompras(Stage stage, Juego juego) {
 		super();

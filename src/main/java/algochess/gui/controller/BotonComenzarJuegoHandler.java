@@ -10,10 +10,9 @@ import javafx.stage.Stage;
 
 public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
 
-	Stage stage;
-	Scene proximaEscena;
-	TextField nombre1;
-	TextField nombre2;
+	private Stage stage;
+	private TextField nombre1;
+	private TextField nombre2;
 
 	public BotonComenzarJuegoHandler(Stage stage, TextField nombreJugador_1, TextField nombreJugador_2) {
 		this.stage = stage;
