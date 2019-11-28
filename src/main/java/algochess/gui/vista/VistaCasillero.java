@@ -2,7 +2,6 @@ package algochess.gui.vista;
 
 import java.lang.reflect.Constructor;
 
-import algochess.engine.entidades.NulaEntidad;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Casillero;
