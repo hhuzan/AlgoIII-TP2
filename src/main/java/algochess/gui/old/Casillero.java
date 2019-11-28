@@ -1,4 +1,4 @@
-package algochess.gui;
+package algochess.gui.old;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

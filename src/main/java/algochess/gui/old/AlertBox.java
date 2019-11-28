@@ -1,4 +1,4 @@
-package algochess.gui;
+package algochess.gui.old;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
