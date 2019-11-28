@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.ToggleButton;
 import javafx.event.ActionEvent;
@@ -19,7 +20,6 @@ public class ContenedorPrincipal extends HBox {
 	int aceptados = 0;
 	Juego juego;
 	VBox columnaUno;
-	VBox columnaDos;
 	
 	public ContenedorPrincipal(Stage stage, Juego juego) {
 		super();
@@ -28,24 +28,14 @@ public class ContenedorPrincipal extends HBox {
 		this.juego = juego;
 		setAlignment(Pos.CENTER);
 		setSpacing(50);
-
-		armarColumnaUno();
-		columnaDos = new VBox(20);
-		VistaTablero tableroVista = new VistaTablero(juego, this);
-
-
-
-		columnaDos.setAlignment(Pos.CENTER_RIGHT);
-
-		columnaDos.getChildren().addAll(new Button("Hola"), new Button("Chau"));
-
-		this.getChildren().addAll(columnaUno, tableroVista.getPaneTablero(), columnaDos);
+		refrescar();
 	}
 
 	public void refrescar() {
 		this.getChildren().clear();
+		armarColumnaUno();
 		VistaTablero tableroVista = new VistaTablero(juego, this);
-		this.getChildren().addAll(columnaUno, tableroVista.getPaneTablero(), columnaDos);
+		this.getChildren().addAll(columnaUno, tableroVista.getPaneTablero());
 	}
 	
 	private void armarColumnaUno() {
@@ -84,4 +74,8 @@ public class ContenedorPrincipal extends HBox {
 		
 	}
 
+	private void setBorder(Pane pane) {
+		pane.setStyle("-fx-padding: 2;-fx-border-style: solid inside;-fx-border-width: 5;"
+				+ "-fx-border-insets: 2;-fx-border-radius: 1;-fx-border-color:DARKBLUE;");
+	}
 }
