@@ -44,58 +44,39 @@ public class VistaCasillero extends StackPane {
 		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorPrincipal, fila, columna));
 
 		// TODO refactorizar con reflexion
-		Image image;
+		Image image = null;
+
+		Rectangle rectangulo = new Rectangle(tamanio, tamanio);
 		if (casillero.getEstado().getEntidad() instanceof Jinete) {
-			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
 			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
 				image = new Image("images/CaballoPink.png");
 			else
 				image = new Image("images/CaballoBlue.png");
-			rectangulo.setFill(new ImagePattern(image));
-			getChildren().add(rectangulo);
 		}
 		if (casillero.getEstado().getEntidad() instanceof Soldado) {
-			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
 			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
 				image = new Image("images/SoldadoPink.png");
 			else
 				image = new Image("images/SoldadoBlue.png");
-			rectangulo.setFill(new ImagePattern(image));
-			getChildren().add(rectangulo);
 		}
 		if (casillero.getEstado().getEntidad() instanceof Curandero) {
-			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
 			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
 				image = new Image("images/CuranderoPink.png");
 			else
 				image = new Image("images/CuranderoBlue.png");
-			rectangulo.setFill(new ImagePattern(image));
-			getChildren().add(rectangulo);
 		}
 		if (casillero.getEstado().getEntidad() instanceof Catapulta) {
-			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
 			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
 				image = new Image("images/CatapultaPink.png");
 			else
 				image = new Image("images/CatapultaBlue.png");
+		}
+		if (image != null) {
 			rectangulo.setFill(new ImagePattern(image));
 			getChildren().add(rectangulo);
 		}
 
 	}
-
-	// --
-	/*
-	 * Casillero(int fila_, int columna_, int tamanio, javafx.scene.paint.Color
-	 * color){ super(); fila = fila_; columna = columna_; setWidth(tamanio);
-	 * setHeight(tamanio); setFill(color);
-	 * 
-	 * /*setOnMouseClicked(new EventHandler<MouseEvent>() {
-	 * 
-	 * @Override public void handle(MouseEvent mouseEvent) { (fila_+", "+columna_);
-	 * Image image = new Image("sample/dog.jpg"); setFill(new ImagePattern(image));
-	 * } });
-	 */
 
 	public int getFila() {
 		return fila;
