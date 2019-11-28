@@ -1,7 +1,6 @@
 package algochess.gui.vista;
 
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -10,7 +9,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import algochess.gui.controller.BotonComenzarJuegoHandler;
-import algochess.engine.juego.Juego;
 
 public class ContenedorJugadores extends VBox {
 //	Juego juego;
