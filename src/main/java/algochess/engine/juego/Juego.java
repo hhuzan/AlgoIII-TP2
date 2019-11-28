@@ -8,7 +8,7 @@ import algochess.engine.entidades.Entidad;
 
 
 public class Juego {
-	private Tablero tablero = null;
+	private Tablero tablero;
 	private Jugador jugadorAliado = null;
 	private Jugador jugadorEnemigo = null;
 	private VendedorDeEntidades vendedor;
@@ -32,4 +32,9 @@ public class Juego {
 			jugadorEnemigo.comprarEntidad(vendedor, entidad);
 		}
 	}
+	
+	public Tablero getTablero() {
+		return tablero;
+	}
+
 }

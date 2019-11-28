@@ -1,33 +1,15 @@
 package algochess.gui.vista;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
-
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
-import algochess.gui.controller.BotonProximaEscenaHandler;
+import algochess.engine.tablero.Tablero;
 import algochess.gui.vista.CasilleroVista;
 
 public class TableroVista {
     private GridPane tablero;
 
-    public TableroVista() {
+    public TableroVista(Tablero XXXTablero) {
         GridPane tablero = new GridPane();
         int tam_casillero = 25;
         int columnas = 20;
