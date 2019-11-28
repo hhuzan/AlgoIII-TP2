@@ -49,7 +49,7 @@ public class TurnoTest {
         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
 
         assertThrows(NoEsTuTurnoException.class, () -> {
-            turno.atacarCasillero(casillero,casillero2,new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS),Faccion.ALIADOS);
+            turno.atacarCasillero(casillero,casillero2,new Tablero(),Faccion.ALIADOS);
         });
 
     }
@@ -64,7 +64,7 @@ public class TurnoTest {
         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
 
         assertThrows(NoEsTuTurnoException.class, () -> {
-            turno.curarCasillero(casillero,casillero2,new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS),Faccion.ALIADOS);
+            turno.curarCasillero(casillero,casillero2,new Tablero(),Faccion.ALIADOS);
         });
 
     }
@@ -80,7 +80,7 @@ public class TurnoTest {
         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
 
         assertThrows(NoEsTuTurnoException.class, () -> {
-            turno.moverEntidad(casillero,casillero2,new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS),Faccion.ALIADOS);
+            turno.moverEntidad(casillero,casillero2,new Tablero(),Faccion.ALIADOS);
         });
 
     }

@@ -45,7 +45,7 @@
 //         Jinete jinete2 = new Jinete();
 //         jinete2.setFaccion(Faccion.ALIADOS);
 //         Posicion posicion = new Posicion(1,1);
-//         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+//         Tablero tablero = new Tablero();
 
 //         tablero.colocarEntidad(jinete, posicion);
 //         assertThrows(CasilleroOcupadoException.class, () -> {
@@ -60,7 +60,7 @@
 //         jinete.setFaccion(Faccion.ALIADOS);
 //         Posicion posicion = new Posicion(1,1);
 //         Posicion posicion2 = new Posicion(2,2);
-//         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+//         Tablero tablero = new Tablero();
 
 //         tablero.colocarEntidad(jinete, posicion);
 //         tablero.moverEntidad(posicion, posicion2, Faccion.ALIADOS);
@@ -74,7 +74,7 @@
 //         jinete.setFaccion(Faccion.ALIADOS);
 //         Posicion posicion = new Posicion(1,1);
 //         Posicion posicion2 = new Posicion(2,2);
-//         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+//         Tablero tablero = new Tablero();
 
 //         tablero.colocarEntidad(jinete, posicion);
 //         tablero.moverEntidad(posicion, posicion2, Faccion.ALIADOS);
@@ -94,7 +94,7 @@
 //         jinete3.setFaccion(Faccion.ALIADOS);
 //         Posicion posicion = new Posicion(1,1);
 //         Posicion posicion2 = new Posicion(2,2);
-//         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+//         Tablero tablero = new Tablero();
 
 
 //         tablero.colocarEntidad(jinete, posicion);
@@ -117,7 +117,7 @@
 //         jinete2.setFaccion(Faccion.ALIADOS);
 //         Posicion posicion = new Posicion(1,1);
 //         Posicion posicion2 = new Posicion(2,2);
-//         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+//         Tablero tablero = new Tablero();
 
 //         tablero.colocarEntidad(jinete, posicion);
 //         tablero.moverEntidad(posicion, posicion2, Faccion.ALIADOS);

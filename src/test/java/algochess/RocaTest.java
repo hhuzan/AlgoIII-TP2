@@ -26,7 +26,7 @@ public class RocaTest {
 
 	@Test
 	public void test01AtacamosConRocaConRangoLejanoYDañamosAUnaUnidad() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
 		Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -50,7 +50,7 @@ public class RocaTest {
 
 	@Test
 	public void test02AtacamosConRocaConRangoCercanoYNoSeProduceElAtaque() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
 		Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -76,7 +76,7 @@ public class RocaTest {
 
 	@Test
 	public void test03AtacamosConRocaConRangoMedianoYNoSeProduceElAtaque() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
 		Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);

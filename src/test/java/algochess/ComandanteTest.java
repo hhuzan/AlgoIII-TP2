@@ -20,14 +20,14 @@ public class ComandanteTest {
 
 	@Test
 	public void test00constructorComandanteNoDevuelveNull() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Comandante comandante = new Comandante(tablero);
 		assertNotNull(comandante);
 	}
 
 	@Test
 	public void test01ComandanteNoMueveDosSoldados() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 
 		Soldado soldado1 = new Soldado(jugador, Faccion.ALIADOS);
@@ -49,7 +49,7 @@ public class ComandanteTest {
 
 	@Test
 	public void test02ComandanteMueveBatallon() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 
 		Soldado soldado1 = new Soldado(jugador, Faccion.ALIADOS);
@@ -74,7 +74,7 @@ public class ComandanteTest {
 
 	@Test
 	public void test03ComandanteMueveBatallonComprobacionCasillerosVacios() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 
 		Soldado soldado1 = new Soldado(jugador, Faccion.ALIADOS);
@@ -104,7 +104,7 @@ public class ComandanteTest {
 
 	@Test
 	public void test04ComandanteMueveBatallonComprobacionCasillerosOcupados() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 
 		Soldado soldado1 = new Soldado(jugador, Faccion.ALIADOS);
@@ -134,7 +134,7 @@ public class ComandanteTest {
 
 	@Test
 	public void test05ComandanteMueveBatallonConObstaculo() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 
 		Soldado soldado1 = new Soldado(jugador, Faccion.ALIADOS);
@@ -168,7 +168,7 @@ public class ComandanteTest {
 
 	@Test
 	public void test06ComandanteMueveBatallonConObstaculoYSeDisuelve() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 
 		Soldado soldado1 = new Soldado(jugador, Faccion.ALIADOS);

@@ -30,7 +30,7 @@ public class CatapultaTest {
 
 	@Test
 	public void test01AtacamosConUnaCatapultaYElEnemigoRecibeDanio() { 
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(new Jugador(Faccion.ALIADOS), Faccion.ALIADOS);
         Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS), Faccion.ENEMIGOS);
@@ -54,7 +54,7 @@ public class CatapultaTest {
 
 	@Test
 	public void test02AtacamosConUnaCatapultaYElAliadoRecibeDanio() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ALIADOS);
+        Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(new Jugador(Faccion.ALIADOS), Faccion.ALIADOS);
         Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS), Faccion.ENEMIGOS);
@@ -82,7 +82,7 @@ public class CatapultaTest {
 
 	@Test
 	public void test03IntentamosMoverUnaCatapultaPeroNoEsUnaEntidadMovible() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ALIADOS);
+        Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta();
         catapulta.setFaccion(Faccion.ALIADOS);
@@ -103,7 +103,7 @@ public class CatapultaTest {
 
 	@Test 
     public void test04CatapultaNoAtacaADistanciaQueNoEsLejana() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 
          Catapulta catapulta = new Catapulta(new Jugador(Faccion.ALIADOS), Faccion.ALIADOS);
         Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS), Faccion.ENEMIGOS);
@@ -124,7 +124,7 @@ public class CatapultaTest {
     // Pongo 5 unidades contiguas (enemigas y aliadas)
     // Una catapulta ataca a una de ellas, y debería poder bajarle vida a todas.
 
-       Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+       Tablero tablero = new Tablero();
        Jugador jugador1 = new Jugador(Faccion.ALIADOS);
        Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
 

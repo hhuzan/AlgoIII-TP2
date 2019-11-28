@@ -26,7 +26,7 @@ public class DagaTest {
 
     @Test 
     public void test01AtacamosConDagaConRangoCercanoYDañamosAUnaUnidad() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -51,7 +51,7 @@ public class DagaTest {
 
     @Test 
     public void test02AtacamosConDagaConRangoMedianoYNoSeProduceElAtaque() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -79,7 +79,7 @@ public class DagaTest {
 
     @Test 
     public void test03AtacamosConDagaConRangoLejanoYNoSeProduceElAtaque() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);

@@ -31,7 +31,7 @@ public class CuranderoTest {
 
 	@Test
 	public void test01DisminuimosTodaLaVidaDelCuranderoYMuere() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 		Curandero curandero = new Curandero(jugador, Faccion.ALIADOS);
 
@@ -47,7 +47,7 @@ public class CuranderoTest {
 
 	@Test
 	public void test02DisminuimosVidaAlCuranderoPasandoMismaFaccionDeAtacanteYArrojaExcepcion() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 		Curandero curandero = new Curandero(jugador, Faccion.ALIADOS);
 
@@ -63,7 +63,7 @@ public class CuranderoTest {
 
 	@Test
 	public void test03CuramosConUnCuranderoYElAliadoSumaVida() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
 		Jinete jinete = new Jinete(jugador1, Faccion.ALIADOS);
@@ -89,7 +89,7 @@ public class CuranderoTest {
 
 	@Test
 	public void test04CuramosAUnaEntidadDeOtraFaccionConUnCuranderoYNoLoCura() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
 		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
@@ -112,7 +112,7 @@ public class CuranderoTest {
 
 	@Test
 	public void test05CuranderoCuraACatapultaYNoCuraVida() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
 		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
@@ -135,7 +135,7 @@ public class CuranderoTest {
 
 	@Test
 	public void test06CuranderoCuraAEntidadAUnaDistanciaDistintaALaCercanaNoCura() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Jugador jugador2 = new Jugador(Faccion.ENEMIGOS);
 		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
@@ -158,7 +158,7 @@ public class CuranderoTest {
 
 	@Test
 	public void test07MovemosUnCuranderoAUnCasilleroDestinoYSeMueve() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
 
