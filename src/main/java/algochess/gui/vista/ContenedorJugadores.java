@@ -46,8 +46,8 @@ public class ContenedorJugadores extends VBox {
 		jugadorDosBackgroundView.setSmooth(true);
 		jugadorDosBackgroundView.setCache(true);
 
-		TextField nombreJugador_1 = new TextField("Nombre jugador");
-		TextField nombreJugador_2 = new TextField("Nombre jugador");
+		TextField nombreJugador_1 = new TextField("Jugador 1");
+		TextField nombreJugador_2 = new TextField("Jugador 2");
 
 		Button botonAceptar = new Button();
 		botonAceptar.setText("Aceptar");
