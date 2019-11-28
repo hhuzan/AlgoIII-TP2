@@ -38,7 +38,6 @@ public class ContenedorCompras extends HBox {
 		setSpacing(50);
 		refrescar();
 		
-		
 		Image fondo = new Image("images/Mono2.jpg");
 		BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
 				BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));
@@ -107,7 +106,6 @@ public class ContenedorCompras extends HBox {
 			toggleButton.setGraphic(imageView);
 			toggleButton.setPadding(new Insets(-1, -1, -1, -1));
 			toggleButton.setOnAction((ActionEvent e) -> {
-				// TODO sacar if
 				if (path == imagePaths[1]) { // jinete
 					juego.seleccionarJinete();
 				} else if (path == imagePaths[2]) { // soldado
