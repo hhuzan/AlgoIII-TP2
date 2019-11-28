@@ -5,9 +5,12 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.event.ActionEvent;
 import algochess.gui.vista.VistaTablero;
@@ -20,6 +23,7 @@ public class ContenedorCompras extends HBox {
 	int aceptados = 0;
 	Juego juego;
 	VBox boxIzquierdo;
+	VBox boxDerecho;
 
 	public ContenedorCompras(Stage stage, Juego juego) {
 		super();
@@ -33,12 +37,40 @@ public class ContenedorCompras extends HBox {
 
 	public void refrescar() {
 		this.getChildren().clear();
-		armarColumna();
+		armarColumnaIzquierda();
+		armarColumnaDerecha();
 		VistaTablero tableroVista = new VistaTablero(juego, this);
-		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero());
+		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);
 	}
 
-	private void armarColumna() {
+	private void armarColumnaDerecha() {
+		boxDerecho = new VBox(30);
+		boxDerecho.setAlignment(Pos.CENTER);
+		Label lblNombre = new Label(juego.getTurno().getJugadorActual().getNombre());
+		lblNombre.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		boxDerecho.getChildren().add(lblNombre);
+		Label lblLinea = new Label("===========");
+		lblLinea.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		boxDerecho.getChildren().add(lblLinea);
+		Label lbl1 = new Label("Disponible:");
+		lbl1.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		boxDerecho.getChildren().add(lbl1);
+		Label lblMonto = new Label("$" + juego.getTurno().getJugadorActual().getDinero().toString());
+		lblMonto.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		boxDerecho.getChildren().add(lblMonto);
+		
+		String color;
+		if (juego.getTurno().getFaccionActual() == Faccion.ALIADOS)
+			color = "LIGHTPINK";
+		else
+			color = "AQUAMARINE";
+
+		boxDerecho.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + color + ";");
+
+	}
+
+	private void armarColumnaIzquierda() {
 		boxIzquierdo = new VBox(20);
 		boxIzquierdo.setAlignment(Pos.CENTER_LEFT);
 		String color;
