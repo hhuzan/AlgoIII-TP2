@@ -28,6 +28,6 @@ public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         stage.setScene(proximaEscena);
-        juego.iniciarPartida();
+        juego.iniciarPartida("AA","BB");
     }
 }

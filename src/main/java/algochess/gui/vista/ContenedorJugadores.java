@@ -78,7 +78,8 @@ public class ContenedorJugadores extends VBox {
         jugadorAliado = new Jugador(Faccion.ALIADOS, nombreJugador_1.getText());
         jugadorEnemigo = new Jugador(Faccion.ENEMIGOS, nombreJugador_2.getText());
         tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
-        juego = new Juego(jugadorAliado, jugadorEnemigo, tablero);
+//        juego = new Juego(jugadorAliado, jugadorEnemigo, tablero);
+        juego = new Juego();
 
         Scene proximaEscena = crearEscenaPrincipal(stage, juego, jugadorAliado, jugadorEnemigo, tablero);
 
