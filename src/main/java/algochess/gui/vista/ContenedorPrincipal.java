@@ -2,7 +2,6 @@ package algochess.gui.vista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -23,7 +22,6 @@ public class ContenedorPrincipal extends HBox {
 	
 	public ContenedorPrincipal(Stage stage, Juego juego) {
 		super();
-
 		this.stage = stage;
 		this.juego = juego;
 		setAlignment(Pos.CENTER);
