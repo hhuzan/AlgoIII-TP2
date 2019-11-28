@@ -8,6 +8,9 @@ import algochess.engine.entidades.Entidad;
 
 
 public class Juego {
+
+
+	private Turno turno;
 	private Tablero tablero;
 	private Jugador jugadorAliado = null;
 	private Jugador jugadorEnemigo = null;
@@ -15,7 +18,7 @@ public class Juego {
 
 	public Juego() {
 		this.tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
-		this.vendedor = new VendedorDeEntidades();
+		this.turno = new Turno(Faccion.ALIADOS);
 	}
 
 	public void iniciarPartida(String jugadorAliado, String jugadorEnemigo) {

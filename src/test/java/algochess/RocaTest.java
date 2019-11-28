@@ -2,6 +2,8 @@ package algochess;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import algochess.engine.juego.Turno;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.entidades.armas.Roca;
 import algochess.engine.facciones.Faccion;
@@ -32,7 +34,7 @@ public class RocaTest {
 		Posicion posOrigen = new Posicion(9, 1);
 		Posicion posDestino = new Posicion(15, 1);
 
-		tablero.colocarEntidad(jinete, posDestino);
+		tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 		Roca roca = new Roca();
@@ -56,7 +58,7 @@ public class RocaTest {
 		Posicion posOrigen = new Posicion(9, 1);
 		Posicion posDestino = new Posicion(10, 1);
 
-		tablero.colocarEntidad(jinete, posDestino);
+		tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 		Roca roca = new Roca();
@@ -82,7 +84,7 @@ public class RocaTest {
 		Posicion posOrigen = new Posicion(9, 1);
 		Posicion posDestino = new Posicion(12, 1);
 
-		tablero.colocarEntidad(jinete, posDestino);
+		tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 		Roca roca = new Roca();
