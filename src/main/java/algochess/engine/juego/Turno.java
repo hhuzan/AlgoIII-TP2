@@ -9,22 +9,29 @@ import algochess.excepciones.NoEsTuTurnoException;
 
 public class Turno {
 
-    private Faccion faccion;
+    private Faccion faccionActual;
 
     public Turno(Faccion faccion){
-        this.faccion = faccion;
+        faccionActual = faccion;
 
     }
 
+    public void cambiarTurno() {
+    	if (faccionActual==Faccion.ALIADOS)
+    		faccionActual = Faccion.ALIADOS;
+    	else
+    		faccionActual = Faccion.ENEMIGOS;
+    }
+    
     public void colocarEntidad(Casillero casillero, Jugador jugador, Entidad entidad) {
 
-        if (jugador.getFaccion() == this.faccion){
+        if (jugador.getFaccion() == this.faccionActual){
 
             // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
             // encapsular un poquito mas
 
             casillero.colocarEntidad(entidad);
-            this.faccion = Faccion.ENEMIGOS;
+            faccionActual = Faccion.ENEMIGOS;
         }
         else{
 
@@ -34,13 +41,13 @@ public class Turno {
     }
 
     public void atacarCasillero(Casillero casilleroAtacante, Casillero casilleroAtacado, Tablero tablero, Faccion faccionJugador) {
-        if (faccionJugador == this.faccion){
+        if (faccionJugador == this.faccionActual){
 
             // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
             // encapsular un poquito mas
 
             casilleroAtacante.atacar(casilleroAtacado, tablero, faccionJugador);
-            this.faccion = Faccion.ENEMIGOS;
+            this.faccionActual = Faccion.ENEMIGOS;
         }
         else{
 
@@ -52,13 +59,13 @@ public class Turno {
 
     public void curarCasillero(Casillero casilleroCurador, Casillero casilleroCurado, Tablero tablero, Faccion faccionJugador) {
 
-        if (faccionJugador == this.faccion){
+        if (faccionJugador == this.faccionActual){
 
             // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
             // encapsular un poquito mas
 
             casilleroCurador.curar(casilleroCurado, tablero, faccionJugador);
-            this.faccion = Faccion.ENEMIGOS;
+            this.faccionActual = Faccion.ENEMIGOS;
         }
         else{
 
@@ -71,13 +78,13 @@ public class Turno {
     public void moverEntidad(Casillero origen, Casillero destino, Tablero tablero, Faccion faccionJugador) {
 
 
-        if (faccionJugador == this.faccion){
+        if (faccionJugador == this.faccionActual){
 
             // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
             // encapsular un poquito mas
 
             origen.moverEntidad(tablero,origen, destino, faccionJugador);
-            this.faccion = Faccion.ENEMIGOS;
+            this.faccionActual = Faccion.ENEMIGOS;
         }
         else{
 
@@ -85,5 +92,9 @@ public class Turno {
 
         }
 
+    }
+    
+    public Faccion getFaccionActual() {
+    	return faccionActual;
     }
 }
