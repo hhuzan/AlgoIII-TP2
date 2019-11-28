@@ -18,7 +18,7 @@ public class AlgoChess extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            stage.setTitle("AlgoChess - V 1.0");
+            stage.setTitle("AlgoChess - V 0.3");
 
             VBox welcomeContainer = new VBox(20);
             welcomeContainer.setAlignment(Pos.CENTER);
