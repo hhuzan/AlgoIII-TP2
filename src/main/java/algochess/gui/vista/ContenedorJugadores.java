@@ -13,7 +13,7 @@ import algochess.gui.controller.BotonComenzarJuegoHandler;
 import algochess.engine.juego.Juego;
 
 public class ContenedorJugadores extends VBox {
-	Juego juego;
+//	Juego juego;
 	Stage stage;
 	int aceptados = 0;
 
@@ -57,14 +57,13 @@ public class ContenedorJugadores extends VBox {
 
 		/*
 		 * Init juego: Crear jugadores y tablero y enviar al juego -> Luego podemos
-		 * observar las instancias desde las 
-		 * vistas
+		 * observar las instancias desde las vistas
 		 */
-		juego = new Juego(nombreJugador_1.getText(), nombreJugador_2.getText());
 
-		Scene proximaEscena = crearEscenaPrincipal(stage, juego);
+//		Scene proximaEscena = crearEscenaPrincipal(stage, juego);
 
-		BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage, proximaEscena);
+		BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage,
+				nombreJugador_1, nombreJugador_2);
 		botonAceptar.setOnAction(botonAceptarHandler);
 
 		jugadorUnoContainer.getChildren().addAll(jugadorUnoBackgroundView, nombreJugador_1);
