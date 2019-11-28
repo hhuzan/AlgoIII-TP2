@@ -1,8 +1,9 @@
 package algochess.engine.tablero;
 
+import algochess.engine.juego.Turno;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.tablero.Casillero;
+import algochess.engine.jugador.Jugador;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.posicion.Posiciones;
@@ -41,30 +42,35 @@ public class Tablero extends Observable {
 		return casilleros[posicion.getFila()][posicion.getColumna()];
 	}
 
-	public void colocarEntidad(Entidad entidad, Posicion posicion) {
+	public void colocarEntidad(Entidad entidad, Posicion posicion, Turno turno, Jugador jugador) {
 		Casillero casillero = casilleros[posicion.getFila()][posicion.getColumna()];
-		casillero.colocarEntidad(entidad);
+		// casillero.colocarEntidad(entidad);
+		turno.colocarEntidad(casillero, jugador, entidad);
 	}
 
-	public void atacarCasillero(Posicion atacante_, Posicion atacado_, Faccion faccionJugador) throws CasilleroVacioException {
+	public void atacarCasillero(Posicion atacante_, Posicion atacado_, Faccion faccionJugador, Turno turno) throws CasilleroVacioException {
 		Casillero casilleroAtacante = casilleros[atacante_.getFila()][atacante_.getColumna()];
 		Casillero casilleroAtacado = casilleros[atacado_.getFila()][atacado_.getColumna()];
 
-		casilleroAtacante.atacar(casilleroAtacado, this, faccionJugador);
+		// casilleroAtacante.atacar(casilleroAtacado, this, faccionJugador);
+		turno.atacarCasillero(casilleroAtacante, casilleroAtacado, this, faccionJugador);
+
 	}
 
-	public void curarCasillero(Posicion curador_, Posicion curado_, Faccion faccionJugador) throws CasilleroVacioException {
+	public void curarCasillero(Posicion curador_, Posicion curado_, Faccion faccionJugador, Turno turno) throws CasilleroVacioException {
 		Casillero casilleroCurador = casilleros[curador_.getFila()][curador_.getColumna()];
 		Casillero casilleroCurado = casilleros[curado_.getFila()][curado_.getColumna()];
 
-		casilleroCurador.curar(casilleroCurado, this, faccionJugador);
+		// casilleroCurador.curar(casilleroCurado, this, faccionJugador);
+		turno.curarCasillero(casilleroCurador, casilleroCurado, this, faccionJugador);
 	}
 
-	public void moverEntidad(Posicion origenP, Posicion destinoP, Faccion faccionJugador) throws CasilleroVacioException, CasilleroOcupadoException {
+	public void moverEntidad(Posicion origenP, Posicion destinoP, Faccion faccionJugador, Turno turno) throws CasilleroVacioException, CasilleroOcupadoException {
 		Casillero origen = obtenerCasillero(origenP);
 		Casillero destino = obtenerCasillero(destinoP);
 
-		origen.moverEntidad(this, origen, destino, faccionJugador);
+		//origen.moverEntidad(this, origen, destino, faccionJugador);
+		turno.moverEntidad(origen, destino, this, faccionJugador);
 	}
 
 	public void reclutarEntidades(Posicion posicion, HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidad) {

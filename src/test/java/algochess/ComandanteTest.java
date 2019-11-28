@@ -4,6 +4,7 @@ import algochess.engine.comandante.Comandante;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
+import algochess.engine.juego.Turno;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.posicion.Posicion;
@@ -36,8 +37,8 @@ public class ComandanteTest {
 
 		Comandante comandante = new Comandante(tablero);
 
-		tablero.colocarEntidad(soldado1, posicion1);
-		tablero.colocarEntidad(soldado2, posicion2);
+		tablero.colocarEntidad(soldado1, posicion1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado2, posicion2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		comandante.recluteMisCercanos(soldado1);
 
@@ -60,9 +61,9 @@ public class ComandanteTest {
 
 		Comandante comandante = new Comandante(tablero);
 
-		tablero.colocarEntidad(soldado1, posicion1);
-		tablero.colocarEntidad(soldado2, posicion2);
-		tablero.colocarEntidad(soldado3, posicion3);
+		tablero.colocarEntidad(soldado1, posicion1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado2, posicion2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado3, posicion3, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		comandante.recluteMisCercanos(soldado1);
 
@@ -85,9 +86,9 @@ public class ComandanteTest {
 
 		Comandante comandante = new Comandante(tablero);
 
-		tablero.colocarEntidad(soldado1, posicion1);
-		tablero.colocarEntidad(soldado2, posicion2);
-		tablero.colocarEntidad(soldado3, posicion3);
+		tablero.colocarEntidad(soldado1, posicion1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado2, posicion2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado3, posicion3, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		comandante.recluteMisCercanos(soldado1);
 
@@ -115,9 +116,9 @@ public class ComandanteTest {
 
 		Comandante comandante = new Comandante(tablero);
 
-		tablero.colocarEntidad(soldado1, posicion1);
-		tablero.colocarEntidad(soldado2, posicion2);
-		tablero.colocarEntidad(soldado3, posicion3);
+		tablero.colocarEntidad(soldado1, posicion1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado2, posicion2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado3, posicion3, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		comandante.recluteMisCercanos(soldado1);
 
@@ -148,10 +149,10 @@ public class ComandanteTest {
 
 		Comandante comandante = new Comandante(tablero);
 
-		tablero.colocarEntidad(soldado1, posicion1);
-		tablero.colocarEntidad(soldado2, posicion2);
-		tablero.colocarEntidad(soldado3, posicion3);
-		tablero.colocarEntidad(obstaculo, pobstaculo);
+		tablero.colocarEntidad(soldado1, posicion1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado2, posicion2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado3, posicion3, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(obstaculo, pobstaculo, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		comandante.recluteMisCercanos(soldado1);
 
@@ -182,10 +183,10 @@ public class ComandanteTest {
 
 		Comandante comandante = new Comandante(tablero);
 
-		tablero.colocarEntidad(soldado1, posicion1);
-		tablero.colocarEntidad(soldado2, posicion2);
-		tablero.colocarEntidad(soldado3, posicion3);
-		tablero.colocarEntidad(obstaculo, pobstaculo);
+		tablero.colocarEntidad(soldado1, posicion1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado2, posicion2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado3, posicion3, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(obstaculo, pobstaculo, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Casillero destino1 = tablero.obtenerCasillero(new Posicion(2, 5));
 		comandante.recluteMisCercanos(soldado1);

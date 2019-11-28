@@ -2,6 +2,8 @@ package algochess;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
+import algochess.engine.juego.Turno;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.facciones.Faccion;
@@ -36,8 +38,8 @@ public class CatapultaTest {
         Posicion posOrigen = new Posicion(6,1);
         Posicion posDestino = new Posicion(12,1);
 
-        tablero.colocarEntidad(catapulta, posOrigen);
-        tablero.colocarEntidad(jinete, posDestino);
+        tablero.colocarEntidad(catapulta, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
@@ -63,8 +65,8 @@ public class CatapultaTest {
         Posicion posOrigen = new Posicion(2,1);
         Posicion posDestino = new Posicion(8,1);
 
-        tablero.colocarEntidad(catapulta, posOrigen);
-        tablero.colocarEntidad(jinete, posDestino);
+        tablero.colocarEntidad(catapulta, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
         catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
@@ -88,14 +90,14 @@ public class CatapultaTest {
         Posicion posOrigen = new Posicion(1,1);
         Posicion posDestino = new Posicion(1,2);
 
-        tablero.colocarEntidad(catapulta, posOrigen);
+        tablero.colocarEntidad(catapulta, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
         Casillero casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
         casilleroOrigen.moverEntidad(tablero, casilleroOrigen, casilleroDestino, Faccion.ALIADOS); 
 
         Assertions.assertThrows(CasilleroOcupadoException.class, () -> {
-            tablero.colocarEntidad(catapulta, posOrigen);
+            tablero.colocarEntidad(catapulta, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
         });
 	}
 
@@ -111,7 +113,7 @@ public class CatapultaTest {
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(10, 1);
 
-        tablero.colocarEntidad(catapulta, posOrigen);
+        tablero.colocarEntidad(catapulta, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
         catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
@@ -129,7 +131,7 @@ public class CatapultaTest {
        /*Catapulta*/
        Catapulta catapulta = new Catapulta(jugador1, Faccion.ALIADOS);
        Posicion pcatapulta = new Posicion(0,10);
-       tablero.colocarEntidad(catapulta, pcatapulta);
+       tablero.colocarEntidad(catapulta, pcatapulta, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
        /*Creo soldados*/
        Soldado soldado1 = new Soldado(jugador1, Faccion.ALIADOS);
@@ -166,21 +168,21 @@ public class CatapultaTest {
        Posicion pjinete6 = new Posicion(12,12);
 
       /*Coloco soldados f1 en tablero*/
-       tablero.colocarEntidad(soldado1, psoldado1);
-       tablero.colocarEntidad(soldado2, psoldado2);
-       tablero.colocarEntidad(soldado3, psoldado3);
-       tablero.colocarEntidad(soldado4, psoldado4);
-       tablero.colocarEntidad(soldado5, psoldado5);
-       tablero.colocarEntidad(soldado6, psoldado6);
-       tablero.colocarEntidad(soldado7, psoldado7);
+       tablero.colocarEntidad(soldado1, psoldado1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(soldado2, psoldado2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(soldado3, psoldado3, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(soldado4, psoldado4, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(soldado5, psoldado5, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(soldado6, psoldado6, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(soldado7, psoldado7, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
        /*Coloco jinetes f2 en tablero*/
-       tablero.colocarEntidad(jinete1, pjinete1);
-       tablero.colocarEntidad(jinete2, pjinete2);
-       tablero.colocarEntidad(jinete3, pjinete3);
-       tablero.colocarEntidad(jinete4, pjinete4);
-       tablero.colocarEntidad(jinete5, pjinete5);
-       tablero.colocarEntidad(jinete6, pjinete6);
+       tablero.colocarEntidad(jinete1, pjinete1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(jinete2, pjinete2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(jinete3, pjinete3, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(jinete4, pjinete4, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(jinete5, pjinete5, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+       tablero.colocarEntidad(jinete6, pjinete6, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
 
       /* Ataque un jinete enemigo */
        catapulta.atacar(tablero.obtenerCasillero(pjinete1), tablero, Faccion.ALIADOS);

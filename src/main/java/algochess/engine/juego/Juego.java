@@ -8,33 +8,28 @@ import algochess.engine.entidades.Entidad;
 
 
 public class Juego {
+
+
+	private Turno turno;
 	private Tablero tablero;
 	private Jugador jugadorAliado = null;
 	private Jugador jugadorEnemigo = null;
 	private VendedorDeEntidades vendedor;
-	private Faccion turno;
 
-	public Juego(Jugador jugadorAliado, Jugador jugadorEnemigo, Tablero tablero) {
-		this.vendedor = new VendedorDeEntidades();
-		this.jugadorAliado = jugadorAliado;
-		this.jugadorEnemigo = jugadorEnemigo;
-		this.tablero = tablero;
+	public Juego() {
+		this.tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		this.turno = new Turno(Faccion.ALIADOS);
 	}
 
-	public void iniciarPartida() {
-		this.turno = Faccion.ALIADOS;
+	public void iniciarPartida(String jugadorAliado, String jugadorEnemigo) {
+		this.jugadorAliado = new Jugador(Faccion.ALIADOS, jugadorAliado);
+		this.jugadorEnemigo = new Jugador(Faccion.ENEMIGOS, jugadorEnemigo);
 	}
 
 	public void comprarEntidad(Entidad entidad) {
-		if(turno == Faccion.ALIADOS) {
-			jugadorAliado.comprarEntidad(vendedor, entidad);
-		} else if(turno == Faccion.ENEMIGOS) {
-			jugadorEnemigo.comprarEntidad(vendedor, entidad);
-		}
 	}
 	
 	public Tablero getTablero() {
 		return tablero;
 	}
-
 }
