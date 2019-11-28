@@ -7,6 +7,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -32,6 +37,12 @@ public class ContenedorCompras extends HBox {
 		setAlignment(Pos.CENTER);
 		setSpacing(50);
 		refrescar();
+		
+		
+		Image fondo = new Image("images/Mono2.jpg");
+		BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
+				BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));
+		setBackground(new Background(imagenDeFondo));
 	}
 
 	public void refrescar() {

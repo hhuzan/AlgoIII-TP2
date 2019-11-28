@@ -47,7 +47,7 @@ public class AlgoChess extends Application {
 
             welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir);
 
-            Scene escenaBienvenidos = new Scene(welcomeContainer, 1200, 600);
+            Scene escenaBienvenidos = new Scene(welcomeContainer, 1024, 600);
             stage.setScene(escenaBienvenidos);
 
             stage.show();
@@ -60,7 +60,7 @@ public class AlgoChess extends Application {
 
     private Scene crearEscenaEleccionJugadores(Stage stage) {
         ContenedorJugadores contenedorJugadores = new ContenedorJugadores(stage);
-        Scene escenaJugadores = new Scene(contenedorJugadores, 1200, 600);
+        Scene escenaJugadores = new Scene(contenedorJugadores, 1024, 600);
 
         return escenaJugadores;
     }
