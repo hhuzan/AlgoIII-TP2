@@ -7,8 +7,8 @@ import javafx.stage.Stage;
 
 public class BotonProximaEscenaHandler implements EventHandler<ActionEvent> {
 
-    Stage stage;
-    Scene proximaEscena;
+    private Stage stage;
+    private Scene proximaEscena;
 
     public BotonProximaEscenaHandler(Stage stage, Scene proximaEscena) {
         this.stage = stage;
