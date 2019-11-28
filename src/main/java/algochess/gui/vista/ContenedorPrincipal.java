@@ -24,13 +24,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.scene.control.ToggleButton;
+import javafx.event.ActionEvent;
 import algochess.gui.vista.TableroVista;
 import algochess.gui.controller.ComprarEntidadEventHandler;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.facciones.Faccion;
-
+import algochess.engine.entidades.Entidad;
+import algochess.engine.entidades.Curandero;
+import algochess.engine.entidades.Catapulta;
+import algochess.engine.entidades.Soldado;
+import algochess.engine.entidades.Jinete;
+import algochess.engine.entidades.NulaEntidad;
 
 public class ContenedorPrincipal extends HBox implements Observer {
 
@@ -48,14 +55,13 @@ public class ContenedorPrincipal extends HBox implements Observer {
             "images/CatapultaNeutro.png"
         };
 
-    	this.stage = stage;
+        this.stage = stage;
         this.setAlignment(Pos.CENTER);
-    	this.setSpacing(50);
+        this.setSpacing(50);
 
         VBox compraJugadorColumnaUno = new VBox(20);
         VBox compraJugadorColumnaDos = new VBox(20);
-        
-        TableroVista tableroVista = new TableroVista(juego.getTablero());
+        TableroVista tableroVista = new TableroVista();
 
         compraJugadorColumnaUno.setAlignment(Pos.CENTER_LEFT);
 
@@ -67,13 +73,16 @@ public class ContenedorPrincipal extends HBox implements Observer {
             imageView.setPreserveRatio(true);
             imageView.setSmooth(true);
             imageView.setCache(true);
-            Button button = new Button();
-            button.setGraphic(imageView);
-            button.setPadding(new Insets(-1,-1,-1,-1));
-            crearHandler(path, imagePaths, button, juego);
-            compraJugadorColumnaUno.getChildren().add(button);
+            ToggleButton toggleButton = new ToggleButton();
+            toggleButton.setGraphic(imageView);
+            toggleButton.setPadding(new Insets(-1,-1,-1,-1));
+            toggleButton.setOnAction((ActionEvent e) -> {
+                Entidad entidad = crearEntidad(path, imagePaths);
+            });
+            compraJugadorColumnaUno.getChildren().add(toggleButton);
         }
 
+        // TODO: Handlers para los casilleros con toggle selected + entidad
         crearObservadores(aliado, enemigo, tablero, this);
 
         compraJugadorColumnaDos.setAlignment(Pos.CENTER_RIGHT);
@@ -83,21 +92,18 @@ public class ContenedorPrincipal extends HBox implements Observer {
         this.getChildren().addAll(compraJugadorColumnaUno, tableroVista.getTablero(), compraJugadorColumnaDos);
     }
 
-    public void crearHandler(String path, String[] imagePaths, Button button, Juego juego) {
+    public Entidad crearEntidad(String path, String[] imagePaths) {
         if(path == imagePaths[1]) { // jinete
-            ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("jinete", juego);
-            button.setOnAction(botonEntidadHandler);
+            return new Jinete();
         } else if (path == imagePaths[2]) { // soldado
-            ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("soldado", juego);
-            button.setOnAction(botonEntidadHandler);
+            return new Soldado();
         } else if (path == imagePaths[3]) { // curandero
-            ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("curandero", juego);
-            button.setOnAction(botonEntidadHandler);
+            return new Curandero();
         } else if (path == imagePaths[4]) { // catapulta
-            ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("catapulta", juego);
-            button.setOnAction(botonEntidadHandler);
+            return new Catapulta();
         }
 
+        return new NulaEntidad();
     }
 
     @Override

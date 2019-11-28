@@ -9,7 +9,7 @@ import algochess.gui.vista.CasilleroVista;
 public class TableroVista {
     private GridPane tablero;
 
-    public TableroVista(Tablero XXXTablero) {
+    public TableroVista() {
         GridPane tablero = new GridPane();
         int tam_casillero = 25;
         int columnas = 20;
