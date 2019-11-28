@@ -18,7 +18,7 @@ public class ContenedorPrincipal extends HBox {
 	Stage stage;
 	int aceptados = 0;
 	Juego juego;
-	VBox columnaUno;
+	VBox panelDerecho;
 	
 	public ContenedorPrincipal(Stage stage, Juego juego) {
 		super();
@@ -33,12 +33,12 @@ public class ContenedorPrincipal extends HBox {
 		this.getChildren().clear();
 		armarColumnaUno();
 		VistaTablero tableroVista = new VistaTablero(juego, this);
-		this.getChildren().addAll(columnaUno, tableroVista.getPaneTablero());
+		this.getChildren().addAll(tableroVista.getPaneTablero(),panelDerecho);
 	}
 	
 	private void armarColumnaUno() {
-		columnaUno = new VBox(20);
-		columnaUno.setAlignment(Pos.CENTER_LEFT);
+		panelDerecho = new VBox(20);
+		panelDerecho.setAlignment(Pos.CENTER_LEFT);
 
 		String[] imagePaths = new String[] { "images/SHOP_ICON.png", "images/CaballoNeutro.png",
 				"images/SoldadoNeutro.png", "images/CuranderoNeutro.png", "images/CatapultaNeutro.png" };
@@ -67,7 +67,7 @@ public class ContenedorPrincipal extends HBox {
 				}
 
 			});
-			columnaUno.getChildren().add(toggleButton);
+			panelDerecho.getChildren().add(toggleButton);
 		}
 		
 	}
