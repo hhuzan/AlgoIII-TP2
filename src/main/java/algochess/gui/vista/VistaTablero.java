@@ -7,9 +7,10 @@ import algochess.engine.tablero.Tablero;
 import algochess.gui.vista.VistaCasillero;
 
 public class VistaTablero {
+	private Tablero tablero;
     private GridPane paneTablero;
 
-    public VistaTablero() {
+    public VistaTablero(Tablero tablero) {
         GridPane paneTablero = new GridPane();
         int tam_casillero = 25;
         int columnas = 20;
@@ -36,7 +37,7 @@ public class VistaTablero {
             }
         }
 
-        this.paneTablero = paneTablero;
+        this.paneTablero = paneTablero;  //TODO ver
     }
 
     public GridPane getTablero() {
