@@ -40,6 +40,7 @@ public class VistaCasillero extends StackPane {
 
 	}
 
+	// --
 	/*
 	 * Casillero(int fila_, int columna_, int tamanio, javafx.scene.paint.Color
 	 * color){ super(); fila = fila_; columna = columna_; setWidth(tamanio);
