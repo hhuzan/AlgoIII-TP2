@@ -6,6 +6,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import algochess.gui.controller.BotonComenzarJuegoHandler;
@@ -63,5 +68,10 @@ public class ContenedorJugadores extends VBox {
 		jugadorContainer.getChildren().addAll(jugadorUnoContainer, jugadorDosContainer);
 
 		this.getChildren().addAll(jugadorContainer, botonAceptar);
+		Image fondo = new Image("images/chess.png");
+		BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
+				BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));
+		setBackground(new Background(imagenDeFondo));
+
 	}
 }

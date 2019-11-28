@@ -24,7 +24,7 @@ public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent actionEvent) {
 		Juego juego = new Juego(nombre1.getText(), nombre2.getText());
 		ContenedorCompras contenedorCompras = new ContenedorCompras(stage, juego);
-		Scene escenaPrincipal = new Scene(contenedorCompras, 1024, 600);
+		Scene escenaPrincipal = new Scene(contenedorCompras, 1120, 660);
 
 		stage.setScene(escenaPrincipal);
 	}

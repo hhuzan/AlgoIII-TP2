@@ -59,7 +59,7 @@ public class ContenedorCompras extends HBox {
 		Label lblNombre = new Label(juego.getTurno().getJugadorActual().getNombre());
 		lblNombre.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
 		boxDerecho.getChildren().add(lblNombre);
-		Label lblLinea = new Label("===========");
+		Label lblLinea = new Label("========");
 		lblLinea.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
 		boxDerecho.getChildren().add(lblLinea);
 		Label lbl1 = new Label("Disponible:");
@@ -121,7 +121,7 @@ public class ContenedorCompras extends HBox {
 			boxIzquierdo.getChildren().add(toggleButton);
 		}
 		Button btnPasar = new Button();
-		btnPasar.setText("PasarTurno");
+		btnPasar.setText("Pasar Turno");
 		btnPasar.setOnAction((ActionEvent e) -> {
 			juego.getTurno().cambiarTurno();
 			refrescar();

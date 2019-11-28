@@ -7,6 +7,11 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import algochess.gui.controller.BotonProximaEscenaHandler;
 
@@ -47,7 +52,13 @@ public class AlgoChess extends Application {
 
             welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir);
 
-            Scene escenaBienvenidos = new Scene(welcomeContainer, 1024, 600);
+    		Image fondo = new Image("images/chess.png");
+    		BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
+    				BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));
+    		welcomeContainer.setBackground(new Background(imagenDeFondo));
+
+            
+            Scene escenaBienvenidos = new Scene(welcomeContainer, 1120, 660);
             stage.setScene(escenaBienvenidos);
 
             stage.show();
@@ -60,7 +71,7 @@ public class AlgoChess extends Application {
 
     private Scene crearEscenaEleccionJugadores(Stage stage) {
         ContenedorJugadores contenedorJugadores = new ContenedorJugadores(stage);
-        Scene escenaJugadores = new Scene(contenedorJugadores, 1024, 600);
+        Scene escenaJugadores = new Scene(contenedorJugadores, 1120, 660);
 
         return escenaJugadores;
     }
