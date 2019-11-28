@@ -7,11 +7,8 @@ import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Casillero;
-import algochess.engine.tablero.Ocupado;
 import algochess.gui.controller.SeleccionarCasilleroHandler;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -28,7 +25,7 @@ public class VistaCasillero extends StackPane {
 	private ContenedorCompras contenedorCompras;
 
 	VistaCasillero(int fila, int columna, int tamanio, Casillero casillero, Juego juego,
-			ContenedorCompras contenedorPrincipal) {
+			ContenedorCompras contenedorCompras) {
 		super();
 		if (casillero.getFaccion().toString() == "ALIADOS")
 			setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -39,9 +36,9 @@ public class VistaCasillero extends StackPane {
 		this.juego = juego;
 		this.fila = fila;
 		this.columna = columna;
-		this.contenedorCompras = contenedorPrincipal;
+		this.contenedorCompras = contenedorCompras;
 
-		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorPrincipal, fila, columna));
+		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorCompras, fila, columna));
 
 		// TODO refactorizar con reflexion
 		Image image = null;

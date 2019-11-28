@@ -72,7 +72,7 @@ public class ContenedorCompras extends HBox {
 	}
 
 	private void armarColumnaIzquierda() {
-		boxIzquierdo = new VBox(20);
+		boxIzquierdo = new VBox(12);
 		boxIzquierdo.setAlignment(Pos.CENTER);
 		String color;
 		if (juego.getTurno().getFaccionActual() == Faccion.ALIADOS)
