@@ -25,4 +25,8 @@ public class Dinero {
     public int getMonto() {
         return monto;
     }
+    
+    public String toString() {
+    	return Integer.toString(monto);
+    }
 }

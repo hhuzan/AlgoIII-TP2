@@ -62,4 +62,13 @@ public class Jugador {
         agregarEntidad(miEntidad);
     }
 
+	public Dinero getDinero() {
+		return dinero;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	
 }
