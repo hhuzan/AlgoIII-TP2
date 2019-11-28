@@ -57,7 +57,8 @@ public class ContenedorJugadores extends VBox {
 
 		/*
 		 * Init juego: Crear jugadores y tablero y enviar al juego -> Luego podemos
-		 * observar las instancias desde las vistas
+		 * observar las instancias desde las 
+		 * vistas
 		 */
 		juego = new Juego(nombreJugador_1.getText(), nombreJugador_2.getText());
 
