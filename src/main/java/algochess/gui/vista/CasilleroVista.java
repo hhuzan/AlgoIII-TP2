@@ -23,16 +23,15 @@ public  class CasilleroVista extends StackPane {
         fila = fila_;
         columna = columna_;
 
-        // setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-        //     @Override
-        //     public void handle(MouseEvent mouseEvent) {
-        //         Rectangle rectangulo = new Rectangle(tamanio,tamanio);
-        //         Image image = new Image("images/CaballoPink.png");
-        //         rectangulo.setFill(new ImagePattern(image));
-        //         getChildren().add(rectangulo);
-        //     }
-        // });
+        setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Rectangle rectangulo = new Rectangle(tamanio,   tamanio);
+                Image image = new Image("images/CaballoPink.png");
+                rectangulo.setFill(new ImagePattern(image));
+                getChildren().add(rectangulo);
+            }
+        });
 
     }
 
