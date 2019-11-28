@@ -6,8 +6,8 @@ import algochess.engine.juego.Juego;
 
 public abstract class ComprarEntidadEventHandler implements EventHandler<ActionEvent> {
 
-    String entidadStr;
-    Juego juego;
+    private String entidadStr;
+    private Juego juego;
 
     public ComprarEntidadEventHandler(String entidad, Juego juego) {
         this.entidadStr = entidad;
