@@ -48,8 +48,6 @@ public class Turno {
 
         }
 
-
-
     }
 
     public void curarCasillero(Casillero casilleroCurador, Casillero casilleroCurado, Tablero tablero, Faccion faccionJugador) {

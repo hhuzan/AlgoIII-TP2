@@ -11,7 +11,7 @@ import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.juego.Juego;
 
-public class ComprarEntidadEventHandler implements EventHandler<ActionEvent> {
+public abstract class ComprarEntidadEventHandler implements EventHandler<ActionEvent> {
 
     String entidadStr;
     Juego juego;
@@ -21,24 +21,24 @@ public class ComprarEntidadEventHandler implements EventHandler<ActionEvent> {
         this.juego = juego;
     }
 
-    @Override
-    public void handle(ActionEvent actionEvent) {
-        if(entidadStr == "jinete") {
-            Jinete jinete = new Jinete();
-            juego.comprarEntidad(jinete);
+    // @Override
+    // public void handle(ActionEvent actionEvent) {
+    //     if(entidadStr == "jinete") {
+    //         Jinete jinete = new Jinete();
+    //         juego.comprarEntidad(jinete);
 
-        } else if(entidadStr == "soldado") {
-            Soldado soldado = new Soldado();
-            juego.comprarEntidad(soldado);
+    //     } else if(entidadStr == "soldado") {
+    //         Soldado soldado = new Soldado();
+    //         juego.comprarEntidad(soldado);
 
-        } else if(entidadStr == "catapulta") {
-            Catapulta catapulta = new Catapulta();
-            juego.comprarEntidad(catapulta);
+    //     } else if(entidadStr == "catapulta") {
+    //         Catapulta catapulta = new Catapulta();
+    //         juego.comprarEntidad(catapulta);
 
-        } else if(entidadStr == "curandero") {
-            Curandero curandero = new Curandero();
-            juego.comprarEntidad(curandero);
+    //     } else if(entidadStr == "curandero") {
+    //         Curandero curandero = new Curandero();
+    //         juego.comprarEntidad(curandero);
 
-        }
-    }
+    //     }
+    // }
 }

@@ -78,12 +78,11 @@ public class ContenedorJugadores extends VBox {
         jugadorAliado = new Jugador(Faccion.ALIADOS, nombreJugador_1.getText());
         jugadorEnemigo = new Jugador(Faccion.ENEMIGOS, nombreJugador_2.getText());
         tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
-//        juego = new Juego(jugadorAliado, jugadorEnemigo, tablero);
-        juego = new Juego();
+        juego = new Juego(jugadorAliado, jugadorEnemigo, tablero);
 
         Scene proximaEscena = crearEscenaPrincipal(stage, juego, jugadorAliado, jugadorEnemigo, tablero);
 
-        BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage, proximaEscena, juego);
+        BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage, proximaEscena);
         botonAceptar.setOnAction(botonAceptarHandler);
 
         jugadorUnoContainer.getChildren().addAll(jugadorUnoBackgroundView, nombreJugador_1);
