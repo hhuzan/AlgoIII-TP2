@@ -88,5 +88,7 @@ public class Casillero  {
         estado = estadoCasillero;
     }
 
-
+    public Estado getEstado() {
+    	return estado;
+    }
 }

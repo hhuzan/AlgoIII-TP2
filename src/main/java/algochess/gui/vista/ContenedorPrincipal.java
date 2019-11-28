@@ -36,12 +36,6 @@ public class ContenedorPrincipal extends HBox {
 	public ContenedorPrincipal(Stage stage, Juego juego) {
 		super();
 
-		// Class jugadorCls = Class.forName("com.csa.mdm.Jugador");
-		// Field field = jugadorCls.getDeclaredField("dinero");
-		// field.setAccessible(true);
-		// String value = (String) field.get(aliado);
-		// System.out.println("Reflection -- Value: " + value);
-
 		String[] imagePaths = new String[] { "images/SHOP_ICON.png", "images/CaballoNeutro.png",
 				"images/SoldadoNeutro.png", "images/CuranderoNeutro.png", "images/CatapultaNeutro.png" };
 
@@ -96,7 +90,6 @@ public class ContenedorPrincipal extends HBox {
 		this.getChildren().clear();
 		VistaTablero tableroVista = new VistaTablero(juego, this);
 		this.getChildren().addAll(columnaUno, tableroVista.getPaneTablero(), columnaDos);
-		System.out.println("refresca");
 	}
 
 }

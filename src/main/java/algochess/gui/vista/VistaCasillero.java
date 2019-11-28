@@ -1,7 +1,12 @@
 package algochess.gui.vista;
 
+import algochess.engine.entidades.Catapulta;
+import algochess.engine.entidades.Curandero;
+import algochess.engine.entidades.Jinete;
+import algochess.engine.entidades.Soldado;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Casillero;
+import algochess.engine.tablero.Ocupado;
 import algochess.gui.controller.SeleccionarCasilleroHandler;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -37,19 +42,31 @@ public class VistaCasillero extends StackPane {
 
 		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorPrincipal, fila, columna));
 
-//		setOnMouseClicked(new EventHandler<MouseEvent>() {
-//			@Override
-//			public void handle(MouseEvent mouseEvent) {
-//				juego.comprarEntidad(fila, columna);
-//				
-//				
-		if (casillero.poseesUnidad()) {
+		//TODO refactorizar con reflexion
+		if (casillero.getEstado().getEntidad() instanceof Jinete ) {
 			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
 			Image image = new Image("images/CaballoPink.png");
 			rectangulo.setFill(new ImagePattern(image));
 			getChildren().add(rectangulo);
 		}
-//		});
+		if (casillero.getEstado().getEntidad() instanceof Soldado ) {
+			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
+			Image image = new Image("images/SoldadoPink.png");
+			rectangulo.setFill(new ImagePattern(image));
+			getChildren().add(rectangulo);
+		}
+		if (casillero.getEstado().getEntidad() instanceof Curandero ) {
+			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
+			Image image = new Image("images/CuranderoPink.png");
+			rectangulo.setFill(new ImagePattern(image));
+			getChildren().add(rectangulo);
+		}
+		if (casillero.getEstado().getEntidad() instanceof Catapulta ) {
+			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
+			Image image = new Image("images/CatapultaPink.png");
+			rectangulo.setFill(new ImagePattern(image));
+			getChildren().add(rectangulo);
+		}
 
 	}
 

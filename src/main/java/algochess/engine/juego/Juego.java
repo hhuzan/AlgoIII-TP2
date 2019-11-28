@@ -14,7 +14,6 @@ import algochess.engine.posicion.Posicion;
 
 public class Juego {
 
-
 	private Turno turno;
 	private Tablero tablero;
 	private Jugador jugadorAliado = null;
@@ -24,33 +23,32 @@ public class Juego {
 
 	public Juego(Jugador aliado, Jugador enemigo, Tablero tablero) {
 		this.tablero = tablero;
-		this.turno = new Turno(Faccion.ALIADOS);
-		this.jugadorAliado = aliado;
-		this.jugadorEnemigo = enemigo;
-		this.vendedor = new VendedorDeEntidades();
+		turno = new Turno(aliado, enemigo);
+		jugadorAliado = aliado;
+		jugadorEnemigo = enemigo;
+		vendedor = new VendedorDeEntidades();
 	}
 
 	public void seleccionarSodado() {
-		entidadSeleccionada = new Soldado(jugadorAliado,Faccion.ALIADOS);
+		entidadSeleccionada = new Soldado(jugadorAliado, Faccion.ALIADOS);
 	}
-	
+
 	public void seleccionarJinete() {
-		entidadSeleccionada = new Jinete(jugadorAliado,Faccion.ALIADOS);
+		entidadSeleccionada = new Jinete(jugadorAliado, Faccion.ALIADOS);
 	}
-	
+
 	public void seleccionarCatapulta() {
-		entidadSeleccionada = new Catapulta(jugadorAliado,Faccion.ALIADOS);
+		entidadSeleccionada = new Catapulta(jugadorAliado, Faccion.ALIADOS);
 	}
-	
+
 	public void seleccionarCurandero() {
-		entidadSeleccionada = new Curandero(jugadorAliado,Faccion.ALIADOS);
+		entidadSeleccionada = new Curandero(jugadorAliado, Faccion.ALIADOS);
 	}
-	
+
 	public void comprarEntidad(int fila, int columna) {
 		Casillero casillero = tablero.getCasilleros()[fila][columna];
-			//TODO pedir jugador a turno
-			jugadorAliado.comprarEntidad(vendedor, entidadSeleccionada);
-			turno.colocarEntidad(casillero, jugadorAliado, entidadSeleccionada);
+		turno.getJugadorActual().comprarEntidad(vendedor, entidadSeleccionada);
+		turno.colocarEntidad(casillero, entidadSeleccionada);
 	}
 
 //TODO ver si se saca
@@ -60,14 +58,13 @@ public class Juego {
 		try {
 			jugador.comprarEntidad(vendedor, entidad);
 			// turno.colocarEntidad(casillero, jugador, entidad);
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			// Se la enviamos a la GUI para que haga lo que sea
 			throw ex;
 		}
 
 	}
-	
+
 	public Tablero getTablero() {
 		return tablero;
 	}

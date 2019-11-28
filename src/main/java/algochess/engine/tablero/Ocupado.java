@@ -22,6 +22,7 @@ import java.util.HashSet;
 import java.util.Queue;
 
 public class Ocupado implements Estado {
+	private Entidad entidad;
     private PuedeAtacar puedeAtacar;
     private PuedeCurar puedeCurar;
     private PuedeFormarBatallon puedeFormarBatallon;
@@ -50,6 +51,7 @@ public class Ocupado implements Estado {
     }
 
     public void colocarJinete(Entidad jinete) {
+    	entidad = jinete;
         puedeAtacar = (PuedeAtacar) jinete;
         puedeCurar = new NulaEntidad();
         puedeFormarBatallon = new NulaEntidad();
@@ -59,6 +61,7 @@ public class Ocupado implements Estado {
     }
 
     public void colocarSoldado(Entidad soldado) {
+    	entidad = soldado;
         puedeAtacar = (PuedeAtacar) soldado;
         puedeCurar = new NulaEntidad();
         puedeFormarBatallon = (PuedeFormarBatallon) soldado;
@@ -68,6 +71,7 @@ public class Ocupado implements Estado {
     }
 
     public void colocarCatapulta(Entidad catapulta) {
+    	entidad = catapulta;
         puedeAtacar = (PuedeAtacar) catapulta;
         puedeCurar = new NulaEntidad();
         puedeFormarBatallon = new NulaEntidad();
@@ -77,6 +81,7 @@ public class Ocupado implements Estado {
     }
 
     public void colocarCurandero(Entidad curandero) {
+    	entidad = curandero;
         puedeAtacar = new NulaEntidad();
         puedeCurar = (PuedeCurar) curandero;
         puedeFormarBatallon = new NulaEntidad();
@@ -143,4 +148,7 @@ public class Ocupado implements Estado {
         throw new CasilleroOcupadoException();
     }
 
+    public Entidad getEntidad() {
+    	return entidad;
+    }
 }

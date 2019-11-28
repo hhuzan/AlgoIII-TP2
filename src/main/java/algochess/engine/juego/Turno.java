@@ -10,34 +10,39 @@ import algochess.excepciones.NoEsTuTurnoException;
 public class Turno {
 
 	private Faccion faccionActual;
+	private Jugador jugadorAliado;
+	private Jugador jugadorEnemigo;
+	private Jugador jugadorActual;
 
 	public Turno(Faccion faccion) {
 		faccionActual = faccion;
+	}
 
+	public Turno(Jugador aliado, Jugador enemigo) {
+		jugadorAliado = aliado;
+		jugadorEnemigo = enemigo;
+		faccionActual = Faccion.ALIADOS;
+		jugadorActual = aliado;
 	}
 
 	public void cambiarTurno() {
-		if (faccionActual == Faccion.ALIADOS)
+		if (faccionActual == Faccion.ALIADOS) {
 			faccionActual = Faccion.ENEMIGOS;
-		else
+			jugadorActual = jugadorEnemigo;
+		} else {
 			faccionActual = Faccion.ALIADOS;
+			jugadorActual = jugadorAliado;
+		}
+	}
+
+	public void colocarEntidad(Casillero casillero, Entidad entidad) {
+		casillero.colocarEntidad(entidad);
+		cambiarTurno();
 	}
 
 	public void colocarEntidad(Casillero casillero, Jugador jugador, Entidad entidad) {
-
-		if (jugador.getFaccion() == this.faccionActual) {
-
-			// se puede crear un metodo en jugador que se llame sonMismoBando o algo asi
-			// para
-			// encapsular un poquito mas
-
-			casillero.colocarEntidad(entidad);
-			cambiarTurno();
-		} else {
-
-			throw new NoEsTuTurnoException();
-
-		}
+		casillero.colocarEntidad(entidad);
+		cambiarTurno();
 	}
 
 	public void atacarCasillero(Casillero casilleroAtacante, Casillero casilleroAtacado, Tablero tablero,
@@ -97,5 +102,9 @@ public class Turno {
 
 	public Faccion getFaccionActual() {
 		return faccionActual;
+	}
+
+	public Jugador getJugadorActual() {
+		return jugadorActual;
 	}
 }

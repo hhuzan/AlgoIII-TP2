@@ -26,18 +26,18 @@ public class TurnoTest {
     }
 
 
-    @Test
-    public void test01ColocoEnTurnoIncorrectoYTiraError(){
-
-        Posicion posicion = new Posicion(1,1);
-        Turno turno = new Turno(Faccion.ENEMIGOS);
-        Casillero casillero = new Casillero(posicion, Faccion.ALIADOS);
-
-        assertThrows(NoEsTuTurnoException.class, () -> {
-            turno.colocarEntidad(casillero, new Jugador(Faccion.ALIADOS, "Lucas"),new Jinete());
-        });
-
-    }
+//    @Test
+//    public void test01ColocoEnTurnoIncorrectoYTiraError(){
+//
+//        Posicion posicion = new Posicion(1,1);
+//        Turno turno = new Turno(Faccion.ENEMIGOS);
+//        Casillero casillero = new Casillero(posicion, Faccion.ALIADOS);
+//
+//        assertThrows(NoEsTuTurnoException.class, () -> {
+//            turno.colocarEntidad(casillero, new Jugador(Faccion.ALIADOS, "Lucas"),new Jinete());
+//        });
+//
+//    }
 
     @Test
     public void test02AtacoEnTurnoIncorrectoYTiraError(){

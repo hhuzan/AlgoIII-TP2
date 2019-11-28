@@ -16,7 +16,7 @@ import static algochess.engine.ConstantesUtils.TAMANIO_TABLERO;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Tablero extends Observable {
+public class Tablero {
 	private Casillero[][] casilleros;
 
 	public Tablero(Faccion aliados, Faccion enemigos) {
@@ -41,7 +41,7 @@ public class Tablero extends Observable {
 	public Casillero[][] getCasilleros() {
 		return casilleros;
 	}
-	
+
 	public Casillero obtenerCasillero(Posicion posicion) {
 		return casilleros[posicion.getFila()][posicion.getColumna()];
 	}
@@ -49,10 +49,11 @@ public class Tablero extends Observable {
 	public void colocarEntidad(Entidad entidad, Posicion posicion, Turno turno, Jugador jugador) {
 		Casillero casillero = casilleros[posicion.getFila()][posicion.getColumna()];
 		// casillero.colocarEntidad(entidad);
-		turno.colocarEntidad(casillero, jugador, entidad);
+		turno.colocarEntidad(casillero, entidad);
 	}
 
-	public void atacarCasillero(Posicion atacante_, Posicion atacado_, Faccion faccionJugador, Turno turno) throws CasilleroVacioException {
+	public void atacarCasillero(Posicion atacante_, Posicion atacado_, Faccion faccionJugador, Turno turno)
+			throws CasilleroVacioException {
 		Casillero casilleroAtacante = casilleros[atacante_.getFila()][atacante_.getColumna()];
 		Casillero casilleroAtacado = casilleros[atacado_.getFila()][atacado_.getColumna()];
 
@@ -61,7 +62,8 @@ public class Tablero extends Observable {
 
 	}
 
-	public void curarCasillero(Posicion curador_, Posicion curado_, Faccion faccionJugador, Turno turno) throws CasilleroVacioException {
+	public void curarCasillero(Posicion curador_, Posicion curado_, Faccion faccionJugador, Turno turno)
+			throws CasilleroVacioException {
 		Casillero casilleroCurador = casilleros[curador_.getFila()][curador_.getColumna()];
 		Casillero casilleroCurado = casilleros[curado_.getFila()][curado_.getColumna()];
 
@@ -69,43 +71,45 @@ public class Tablero extends Observable {
 		turno.curarCasillero(casilleroCurador, casilleroCurado, this, faccionJugador);
 	}
 
-	public void moverEntidad(Posicion origenP, Posicion destinoP, Faccion faccionJugador, Turno turno) throws CasilleroVacioException, CasilleroOcupadoException {
+	public void moverEntidad(Posicion origenP, Posicion destinoP, Faccion faccionJugador, Turno turno)
+			throws CasilleroVacioException, CasilleroOcupadoException {
 		Casillero origen = obtenerCasillero(origenP);
 		Casillero destino = obtenerCasillero(destinoP);
 
-		//origen.moverEntidad(this, origen, destino, faccionJugador);
+		// origen.moverEntidad(this, origen, destino, faccionJugador);
 		turno.moverEntidad(origen, destino, this, faccionJugador);
 	}
 
-	public void reclutarEntidades(Posicion posicion, HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidad) {
+	public void reclutarEntidades(Posicion posicion, HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola,
+			PuedeFormarBatallon entidad) {
 		Casillero casillero = obtenerCasillero(posicion);
 		casillero.reclutarEntidad(reclutados, cola, entidad);
 	}
 
-	public boolean esSoldadoAmigo(Faccion faccion, Posicion posicion){
+	public boolean esSoldadoAmigo(Faccion faccion, Posicion posicion) {
 		Casillero casillero = obtenerCasillero(posicion);
 		return casillero.esSoldadoAmigo(faccion);
 	}
 
-	private boolean enElCasilleroHayUnidad(Posicion unaPosicion){
+	private boolean enElCasilleroHayUnidad(Posicion unaPosicion) {
 		return obtenerCasillero(unaPosicion).poseesUnidad();
 
 	}
 
-	/*DFS*/
-	public void colectaUnidadesContiguas(Posicion origen, HashSet<Casillero> atacados){
+	/* DFS */
+	public void colectaUnidadesContiguas(Posicion origen, HashSet<Casillero> atacados) {
 		Stack<Posicion> stack = new Stack<>();
 		Posiciones visitados = new Posiciones();
 		HashSet<Posicion> posicionesPotenciales;
 		stack.add(origen);
 
-		while(stack.size() != 0){
+		while (stack.size() != 0) {
 			Posicion posicionActual = stack.pop();
-			posicionesPotenciales = posicionActual.generarPosicionesEnAlcance(1,1);
-			for(Posicion unaPosicion : posicionesPotenciales){
-				if(!visitados.contiene(unaPosicion)){
+			posicionesPotenciales = posicionActual.generarPosicionesEnAlcance(1, 1);
+			for (Posicion unaPosicion : posicionesPotenciales) {
+				if (!visitados.contiene(unaPosicion)) {
 					visitados.agregar(unaPosicion);
-					if(enElCasilleroHayUnidad(unaPosicion)){
+					if (enElCasilleroHayUnidad(unaPosicion)) {
 						stack.push(unaPosicion);
 						atacados.add(obtenerCasillero(unaPosicion));
 					}
@@ -114,7 +118,6 @@ public class Tablero extends Observable {
 		}
 	}
 }
-
 
 //	private boolean esMovimientoValido(Posicion origen, Posicion destino) {
 //		Calculadora calculadora = new Calculadora();

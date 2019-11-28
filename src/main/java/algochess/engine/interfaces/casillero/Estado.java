@@ -33,4 +33,6 @@ public interface Estado {
     boolean esSoldadoAmigo(Faccion faccion);
 
     boolean poseesUnidad();
+    
+    Entidad getEntidad();  //TODO sacar
 }

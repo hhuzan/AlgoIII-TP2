@@ -61,4 +61,9 @@ public class Vacio implements Estado {
         return false;
     }
 
+	@Override
+	public Entidad getEntidad() {
+		return null;
+	}
+
 }
