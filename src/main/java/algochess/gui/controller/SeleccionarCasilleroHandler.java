@@ -1,19 +1,19 @@
 package algochess.gui.controller;
 
 import algochess.engine.juego.Juego;
-import algochess.gui.vista.ContenedorPrincipal;
+import algochess.gui.vista.ContenedorCompras;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 	private Juego juego;
-	private ContenedorPrincipal contenedorPrincipal;
+	private ContenedorCompras contenedorCompras;
 	private int fila;
 	private int columna;
 
-	public SeleccionarCasilleroHandler(Juego juego,ContenedorPrincipal contenedorPrincipal,int fila,int columna) {
+	public SeleccionarCasilleroHandler(Juego juego, ContenedorCompras contenedorCompras, int fila, int columna) {
 		this.juego = juego;
-		this.contenedorPrincipal = contenedorPrincipal;
+		this.contenedorCompras = contenedorCompras;
 		this.fila = fila;
 		this.columna = columna;
 	}
@@ -21,6 +21,6 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
 		juego.comprarEntidad(fila, columna);
-    	contenedorPrincipal.refrescar();
+    	contenedorCompras.refrescar();
     }
 }

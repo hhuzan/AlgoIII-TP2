@@ -14,14 +14,14 @@ import algochess.gui.vista.VistaTablero;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 
-public class ContenedorPrincipal extends HBox {
+public class ContenedorCompras extends HBox {
 
 	Stage stage;
 	int aceptados = 0;
 	Juego juego;
 	VBox boxIzquierdo;
 
-	public ContenedorPrincipal(Stage stage, Juego juego) {
+	public ContenedorCompras(Stage stage, Juego juego) {
 		super();
 		this.stage = stage;
 		this.juego = juego;

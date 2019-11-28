@@ -7,17 +7,17 @@ import algochess.engine.juego.Juego;
 
 public class SeleccionarSoldadoHandler implements EventHandler<MouseEvent> {
 	private Juego juego;
-//	private ContenedorPrincipal contenedorPrincipal;
+//	private ContenedorCompras contenedorCompras;
 
 
 	public SeleccionarSoldadoHandler(Juego juego) {
 		this.juego = juego;
-//		this.contenedorPrincipal = contenedorPrincipal;
+//		this.contenedorCompras = contenedorCompras;
 	}
 	
     @Override
     public void handle(MouseEvent event) {
     	juego.seleccionarSodado();
-//		contenedorPrincipal.refrescar();
+//		contenedorCompras.refrescar();
     }
 }
