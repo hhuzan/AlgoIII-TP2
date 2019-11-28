@@ -9,92 +9,93 @@ import algochess.excepciones.NoEsTuTurnoException;
 
 public class Turno {
 
-    private Faccion faccionActual;
+	private Faccion faccionActual;
 
-    public Turno(Faccion faccion){
-        faccionActual = faccion;
+	public Turno(Faccion faccion) {
+		faccionActual = faccion;
 
-    }
+	}
 
-    public void cambiarTurno() {
-    	if (faccionActual==Faccion.ALIADOS)
-    		faccionActual = Faccion.ALIADOS;
-    	else
-    		faccionActual = Faccion.ENEMIGOS;
-    }
-    
-    public void colocarEntidad(Casillero casillero, Jugador jugador, Entidad entidad) {
+	public void cambiarTurno() {
+		if (faccionActual == Faccion.ALIADOS)
+			faccionActual = Faccion.ALIADOS;
+		else
+			faccionActual = Faccion.ENEMIGOS;
+	}
 
-        if (jugador.getFaccion() == this.faccionActual){
+	public void colocarEntidad(Casillero casillero, Jugador jugador, Entidad entidad) {
 
-            // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
-            // encapsular un poquito mas
+		if (jugador.getFaccion() == this.faccionActual) {
 
-            casillero.colocarEntidad(entidad);
-            faccionActual = Faccion.ENEMIGOS;
-        }
-        else{
+			// se puede crear un metodo en jugador que se llame sonMismoBando o algo asi
+			// para
+			// encapsular un poquito mas
 
-            throw new NoEsTuTurnoException();
+			casillero.colocarEntidad(entidad);
+			cambiarTurno();
+		} else {
 
-        }
-    }
+			throw new NoEsTuTurnoException();
 
-    public void atacarCasillero(Casillero casilleroAtacante, Casillero casilleroAtacado, Tablero tablero, Faccion faccionJugador) {
-        if (faccionJugador == this.faccionActual){
+		}
+	}
 
-            // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
-            // encapsular un poquito mas
+	public void atacarCasillero(Casillero casilleroAtacante, Casillero casilleroAtacado, Tablero tablero,
+			Faccion faccionJugador) {
+		if (faccionJugador == this.faccionActual) {
 
-            casilleroAtacante.atacar(casilleroAtacado, tablero, faccionJugador);
-            this.faccionActual = Faccion.ENEMIGOS;
-        }
-        else{
+			// se puede crear un metodo en jugador que se llame sonMismoBando o algo asi
+			// para
+			// encapsular un poquito mas
 
-            throw new NoEsTuTurnoException();
+			casilleroAtacante.atacar(casilleroAtacado, tablero, faccionJugador);
+			cambiarTurno();
+		} else {
 
-        }
+			throw new NoEsTuTurnoException();
 
-    }
+		}
 
-    public void curarCasillero(Casillero casilleroCurador, Casillero casilleroCurado, Tablero tablero, Faccion faccionJugador) {
+	}
 
-        if (faccionJugador == this.faccionActual){
+	public void curarCasillero(Casillero casilleroCurador, Casillero casilleroCurado, Tablero tablero,
+			Faccion faccionJugador) {
 
-            // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
-            // encapsular un poquito mas
+		if (faccionJugador == this.faccionActual) {
 
-            casilleroCurador.curar(casilleroCurado, tablero, faccionJugador);
-            this.faccionActual = Faccion.ENEMIGOS;
-        }
-        else{
+			// se puede crear un metodo en jugador que se llame sonMismoBando o algo asi
+			// para
+			// encapsular un poquito mas
 
-            throw new NoEsTuTurnoException();
+			casilleroCurador.curar(casilleroCurado, tablero, faccionJugador);
+			this.faccionActual = Faccion.ENEMIGOS;
+		} else {
 
-        }
+			throw new NoEsTuTurnoException();
 
-    }
+		}
 
-    public void moverEntidad(Casillero origen, Casillero destino, Tablero tablero, Faccion faccionJugador) {
+	}
 
+	public void moverEntidad(Casillero origen, Casillero destino, Tablero tablero, Faccion faccionJugador) {
 
-        if (faccionJugador == this.faccionActual){
+		if (faccionJugador == this.faccionActual) {
 
-            // se puede crear un metodo en jugador que se llame sonMismoBando o algo asi para
-            // encapsular un poquito mas
+			// se puede crear un metodo en jugador que se llame sonMismoBando o algo asi
+			// para
+			// encapsular un poquito mas
 
-            origen.moverEntidad(tablero,origen, destino, faccionJugador);
-            this.faccionActual = Faccion.ENEMIGOS;
-        }
-        else{
+			origen.moverEntidad(tablero, origen, destino, faccionJugador);
+			this.faccionActual = Faccion.ENEMIGOS;
+		} else {
 
-            throw new NoEsTuTurnoException();
+			throw new NoEsTuTurnoException();
 
-        }
+		}
 
-    }
-    
-    public Faccion getFaccionActual() {
-    	return faccionActual;
-    }
+	}
+
+	public Faccion getFaccionActual() {
+		return faccionActual;
+	}
 }
