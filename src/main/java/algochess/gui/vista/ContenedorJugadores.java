@@ -12,8 +12,7 @@ import algochess.gui.controller.BotonComenzarJuegoHandler;
 
 public class ContenedorJugadores extends VBox {
 //	Juego juego;
-	Stage stage;
-	int aceptados = 0;
+	private Stage stage;
 
 	public ContenedorJugadores(Stage stage) {
 
