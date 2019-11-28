@@ -1,34 +1,18 @@
 package algochess.gui.vista;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import algochess.gui.controller.BotonComenzarJuegoHandler;
 import algochess.engine.juego.Juego;
-import algochess.engine.jugador.Jugador;
-import algochess.engine.tablero.Tablero;
-import algochess.engine.facciones.Faccion;
 
 public class ContenedorJugadores extends VBox {
-	Jugador jugadorAliado;
-	Jugador jugadorEnemigo;
-	Tablero tablero;
 	Juego juego;
 	Stage stage;
 	int aceptados = 0;
@@ -77,7 +61,7 @@ public class ContenedorJugadores extends VBox {
 		 */
 		juego = new Juego(nombreJugador_1.getText(), nombreJugador_2.getText());
 
-		Scene proximaEscena = crearEscenaPrincipal(stage, juego, jugadorAliado, jugadorEnemigo, tablero);
+		Scene proximaEscena = crearEscenaPrincipal(stage, juego);
 
 		BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage, proximaEscena);
 		botonAceptar.setOnAction(botonAceptarHandler);
@@ -90,7 +74,7 @@ public class ContenedorJugadores extends VBox {
 		this.getChildren().addAll(jugadorContainer, botonAceptar);
 	}
 
-	private Scene crearEscenaPrincipal(Stage stage, Juego juego, Jugador aliado, Jugador enemigo, Tablero tablero) {
+	private Scene crearEscenaPrincipal(Stage stage, Juego juego) {
 		ContenedorCompras contenedorCompras = new ContenedorCompras(stage, juego);
 		Scene escenaPrincipal = new Scene(contenedorCompras, 1280, 720);
 
