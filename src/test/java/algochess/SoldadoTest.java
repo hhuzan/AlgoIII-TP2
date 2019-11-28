@@ -27,7 +27,7 @@ public class SoldadoTest {
 
 	@Test 
 	public void test01AtacamosConUnSoldadoYLaPiezaEnemigaPierdeVida() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 
         Soldado soldado = new Soldado();
         Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS), Faccion.ENEMIGOS);
@@ -51,7 +51,7 @@ public class SoldadoTest {
 
 	@Test 
     public void test02SoldadoNoAtacaADistanciaQueNoSeaCercanaUnicamente() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 
         Soldado soldado = new Soldado(new Jugador(Faccion.ALIADOS), Faccion.ALIADOS);
         Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS), Faccion.ENEMIGOS);
@@ -73,7 +73,7 @@ public class SoldadoTest {
 
     @Test 
     public void test03SoldadoSeMueveACasilleroDestino() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Soldado soldado = new Soldado(jugador1, Faccion.ALIADOS);
 

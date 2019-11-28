@@ -27,7 +27,7 @@ public class VaculoTest {
 
     @Test 
     public void test01AtacamosConVaculoConRangoCercanoYCuramosAUnaUnidad() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -51,7 +51,7 @@ public class VaculoTest {
 
     @Test 
     public void test02CuramosConVaculoConRangoMedianoYNoSeProduceLaCuracion() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -76,7 +76,7 @@ public class VaculoTest {
 
     @Test 
     public void test03CuramosConVaculoConRangoLejanoYNoSeProduceLaCuracion() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);

@@ -3,13 +3,13 @@ package algochess.engine.juego;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.tablero.Tablero;
-import algochess.engine.facciones.Faccion;
 import algochess.engine.vendedordeentidades.VendedorDeEntidades;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.entidades.Curandero;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
+import algochess.engine.facciones.Faccion;
 import algochess.engine.posicion.Posicion;
 
 public class Juego {
@@ -21,6 +21,14 @@ public class Juego {
 
 	public Juego(Jugador aliado, Jugador enemigo, Tablero tablero) {
 		this.tablero = tablero;
+		turno = new Turno(aliado, enemigo);
+		vendedor = new VendedorDeEntidades();
+	}
+
+	public Juego(String nombreAliado, String nombreEnemigo) {
+		tablero = new Tablero();
+		Jugador aliado = new Jugador(Faccion.ALIADOS, nombreAliado);
+		Jugador enemigo = new Jugador(Faccion.ENEMIGOS, nombreEnemigo);
 		turno = new Turno(aliado, enemigo);
 		vendedor = new VendedorDeEntidades();
 	}

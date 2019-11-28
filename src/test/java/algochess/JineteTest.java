@@ -30,7 +30,7 @@ public class JineteTest {
 
 	@Test
 	public void test01AumentamosLaVidaDeUnJineteYDichaVidaAumenta() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 		Jinete jinete = new Jinete(jugador, Faccion.ALIADOS);
 
@@ -48,7 +48,7 @@ public class JineteTest {
 
 	@Test
 	public void test02DisminuimosTodaLaVidaDelJineteYMuere() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador = new Jugador(Faccion.ALIADOS);
 		Jinete jinete = new Jinete(jugador, Faccion.ALIADOS);
 
@@ -63,7 +63,7 @@ public class JineteTest {
 
 	@Test
 	public void test03JineteAtacaAEntidadEnemigaYLeQuitaElEquivalenteAUnAtaqueCuerpoACuerpoDeUnJinete() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador_1 = new Jugador(Faccion.ALIADOS);
 		Jugador jugador_2 = new Jugador(Faccion.ENEMIGOS);
 		Jinete jinete = new Jinete(jugador_1, Faccion.ALIADOS);
@@ -85,7 +85,7 @@ public class JineteTest {
 
 	@Test
 	public void test04JineteAtacaAEntidadEnemigaConDagaDebidoACondicionesEstablecidas() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete();
         jinete.setFaccion(Faccion.ALIADOS);
@@ -112,7 +112,7 @@ public class JineteTest {
         // una catapulta1 enemiga distancia cercana (del jinete)
         // una catapulta2 enemiga distancia mediana (del jinete)
         // El jinete no debería poder atacar la catapulta2.
-        Tablero tablero = new Tablero(Faccion.ALIADOS,Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
         Jinete jinete = new Jinete();
         jinete.setFaccion(Faccion.ALIADOS);
@@ -141,7 +141,7 @@ public class JineteTest {
 
     @Test 
     public void test06MovemosAlJineteYSeMueveAlCasilleroDestino() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Jinete jinete = new Jinete(jugador1, Faccion.ALIADOS);
 

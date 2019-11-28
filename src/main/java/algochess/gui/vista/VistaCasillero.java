@@ -28,7 +28,7 @@ public class VistaCasillero extends StackPane {
 	private ContenedorCompras contenedorCompras;
 
 	VistaCasillero(int fila, int columna, int tamanio, Casillero casillero, Juego juego,
-			ContenedorCompras contenedorCompras) {
+			ContenedorCompras contenedorPrincipal) {
 		super();
 		if (casillero.getFaccion().toString() == "ALIADOS")
 			setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -39,9 +39,9 @@ public class VistaCasillero extends StackPane {
 		this.juego = juego;
 		this.fila = fila;
 		this.columna = columna;
-		this.contenedorCompras = contenedorCompras;
+		this.contenedorCompras = contenedorPrincipal;
 
-		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorCompras, fila, columna));
+		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorPrincipal, fila, columna));
 
 		// TODO refactorizar con reflexion
 		Image image = null;

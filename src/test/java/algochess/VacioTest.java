@@ -31,7 +31,7 @@
 //         Posicion posicion = new Posicion(1,1);
 //         Vacio vacio = new Vacio(posicion, Faccion.ALIADOS);
 //         assertThrows(ColocarEntidadException.class, () -> {
-//             vacio.colocarEntidad(new Jinete(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ENEMIGOS), new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS));
+//             vacio.colocarEntidad(new Jinete(new Jugador(Faccion.ALIADOS, "Lucas"), Faccion.ENEMIGOS), new Tablero());
 //         });
 //     }
 
@@ -56,7 +56,7 @@
 
 //     @Test
 //     public void test04ColocarEntidadEnVacioConvierteElCasilleroEnOcupado(){
-//         Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+//         Tablero tablero = new Tablero();
 //         Posicion posicion = new Posicion(1,1);
 //         Jugador jugador = new Jugador(Faccion.ALIADOS, "Lucas");
 //         Entidad jinete = new Jinete(jugador, Faccion.ALIADOS);

@@ -26,7 +26,7 @@ public class ArcoTest {
 
     @Test 
     public void test01AtacamosConArcoConRangoMedianoYDañamosAUnaUnidad() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -51,7 +51,7 @@ public class ArcoTest {
 
     @Test 
     public void test02AtacamosConArcoConRangoCercanoYNoSeProduceElAtaque() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -74,7 +74,7 @@ public class ArcoTest {
 
     @Test 
     public void test03AtacamosConArcoConRangoLejanoYNoSeProduceElAtaque() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);

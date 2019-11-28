@@ -26,13 +26,13 @@ public class TableroTest {
 
 	@Test
 	public void test00ConstructorTableroNoDevuelveNull() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		assertNotNull(tablero);
 	}
 
 	@Test
 	public void test01AgregoEntidadDeUnaFaccionEnSeccionDeEsaFaccionYSeColocaEnEsaPosicion() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Entidad soldado1 = new Soldado();
 		Entidad soldado2 = new Soldado();
 
@@ -48,7 +48,7 @@ public class TableroTest {
 
 	@Test
 	public void test02AgregarEntidadDeUnaFaccionEnCasilleroDeOtraTiraExcepcion() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Entidad soldado = new Soldado();
 		soldado.setFaccion(Faccion.ENEMIGOS);
 		Posicion posicion = new Posicion(1, 1); // Posicion faccionAliada
@@ -59,7 +59,7 @@ public class TableroTest {
 
 	@Test
 	public void test03MovemosHaciaUnCasilleroYElCasilleroSeOcupaConDichaEntidad() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Soldado soldado = new Soldado();
 		soldado.setFaccion(Faccion.ALIADOS);
 
@@ -75,7 +75,7 @@ public class TableroTest {
 
 	@Test 
 	public void test04MovemosHaciaArribaYElCasilleroOrigenQuedaLibre() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Soldado soldado = new Soldado();
 		soldado.setFaccion(Faccion.ALIADOS);
 
@@ -92,7 +92,7 @@ public class TableroTest {
 
 	@Test
 	public void test05MoverEntidadACasilleroOcupadoArrojaExcepcion() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Jinete jineteOrigen = new Jinete();
 		Soldado soldadoDestino = new Soldado();
 		jineteOrigen.setFaccion(Faccion.ALIADOS);
@@ -110,7 +110,7 @@ public class TableroTest {
 
 	@Test
 	public void test06EntidadAliadaAtacaEntidadEnemigaYRestaVidaALaEntidadEnemiga() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Soldado soldado = new Soldado();
 		Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS), Faccion.ENEMIGOS);
 		soldado.setFaccion(Faccion.ALIADOS);
@@ -132,7 +132,7 @@ public class TableroTest {
 	
 	@Test 
 	public void test07AtacarEntidadDeMismaFaccionArrojaExcepcion() {
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		Soldado soldado = new Soldado();
 		Jinete jinete = new Jinete();
 		soldado.setFaccion(Faccion.ALIADOS);
@@ -151,7 +151,7 @@ public class TableroTest {
 
 	@Test
 	public void test09UnJugadorSeQuedaSinEntidadesYPierde() { 
-		Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+		Tablero tablero = new Tablero();
 		
 		VendedorDeEntidades vendedor = new VendedorDeEntidades();
 		Jugador jugador = new Jugador(Faccion.ENEMIGOS);

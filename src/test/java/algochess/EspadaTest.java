@@ -26,7 +26,7 @@ public class EspadaTest {
 
     @Test 
     public void test01AtacamosConEspadaConRangoCercanoYDañamosAUnaUnidad() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -51,7 +51,7 @@ public class EspadaTest {
 
     @Test 
     public void test02AtacamosConEspadaConRangoMedianoYNoSeProduceElAtaque() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
@@ -78,7 +78,7 @@ public class EspadaTest {
 
     @Test 
     public void test03AtacamosConEspadaConRangoLejanoYNoSeProduceElAtaque() {
-        Tablero tablero = new Tablero(Faccion.ALIADOS, Faccion.ENEMIGOS);
+        Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);

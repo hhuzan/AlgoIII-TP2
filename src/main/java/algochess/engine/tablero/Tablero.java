@@ -19,21 +19,21 @@ import java.util.Observer;
 public class Tablero {
 	private Casillero[][] casilleros;
 
-	public Tablero(Faccion aliados, Faccion enemigos) {
+	public Tablero() {
 		int tamanio = TAMANIO_TABLERO;
 		casilleros = new Casillero[tamanio][tamanio];
 
 		// Arma sector aliado (parte superior)
 		for (int fila = 0; fila < tamanio / 2; fila++) {
 			for (int columna = 0; columna < tamanio; columna++) {
-				casilleros[fila][columna] = new Casillero(new Posicion(fila, columna), aliados);
+				casilleros[fila][columna] = new Casillero(new Posicion(fila, columna), Faccion.ALIADOS);
 			}
 		}
 
 		// Arma sector enemigo (parte inferior)
 		for (int fila = tamanio / 2; fila < tamanio; fila++) {
 			for (int columna = 0; columna < tamanio; columna++) {
-				casilleros[fila][columna] = new Casillero(new Posicion(fila, columna), enemigos);
+				casilleros[fila][columna] = new Casillero(new Posicion(fila, columna), Faccion.ENEMIGOS);
 			}
 		}
 	}

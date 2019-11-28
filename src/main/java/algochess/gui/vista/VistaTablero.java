@@ -11,7 +11,7 @@ public class VistaTablero {
 //	private Juego juego;
 	private GridPane paneTablero;
 
-	public VistaTablero(Juego juego, ContenedorCompras contenedorCompras) {
+	public VistaTablero(Juego juego, ContenedorCompras contenedorPrincipal) {
 //		this.juego = juego;
 
 		GridPane paneTablero = new GridPane();
@@ -26,7 +26,7 @@ public class VistaTablero {
 			for (int columna = 0; columna < casilleros[fila].length; columna++) {
 				{
 					VistaCasillero casillero = new VistaCasillero(fila, columna, tam_casillero,
-							casilleros[fila][columna], juego, contenedorCompras);
+							casilleros[fila][columna], juego, contenedorPrincipal);
 					GridPane.setConstraints(casillero, columna, fila);
 					paneTablero.getChildren().add(casillero);
 				}
