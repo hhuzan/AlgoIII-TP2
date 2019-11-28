@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.ToggleButton;
 import javafx.event.ActionEvent;
 import algochess.gui.vista.VistaTablero;
+import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 
 public class ContenedorPrincipal extends HBox {
@@ -18,12 +19,13 @@ public class ContenedorPrincipal extends HBox {
 	Stage stage;
 	int aceptados = 0;
 	Juego juego;
-	VBox panelDerecho;
-	
+	VBox boxIzquierdo;
+
 	public ContenedorPrincipal(Stage stage, Juego juego) {
 		super();
 		this.stage = stage;
 		this.juego = juego;
+
 		setAlignment(Pos.CENTER);
 		setSpacing(50);
 		refrescar();
@@ -31,14 +33,22 @@ public class ContenedorPrincipal extends HBox {
 
 	public void refrescar() {
 		this.getChildren().clear();
-		armarColumnaUno();
+		armarColumna();
 		VistaTablero tableroVista = new VistaTablero(juego, this);
-		this.getChildren().addAll(tableroVista.getPaneTablero(),panelDerecho);
+		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero());
 	}
-	
-	private void armarColumnaUno() {
-		panelDerecho = new VBox(20);
-		panelDerecho.setAlignment(Pos.CENTER_LEFT);
+
+	private void armarColumna() {
+		boxIzquierdo = new VBox(20);
+		boxIzquierdo.setAlignment(Pos.CENTER_LEFT);
+		String color;
+		if (juego.getTurno().getFaccionActual() == Faccion.ALIADOS)
+			color = "LIGHTPINK";
+		else
+			color = "AQUAMARINE";
+
+		boxIzquierdo.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + color + ";");
 
 		String[] imagePaths = new String[] { "images/SHOP_ICON.png", "images/CaballoNeutro.png",
 				"images/SoldadoNeutro.png", "images/CuranderoNeutro.png", "images/CatapultaNeutro.png" };
@@ -67,9 +77,9 @@ public class ContenedorPrincipal extends HBox {
 				}
 
 			});
-			panelDerecho.getChildren().add(toggleButton);
+			boxIzquierdo.getChildren().add(toggleButton);
 		}
-		
+
 	}
 
 	private void setBorder(Pane pane) {

@@ -64,4 +64,8 @@ public class Juego {
 	public Tablero getTablero() {
 		return tablero;
 	}
+
+	public Turno getTurno() {
+		return turno;
+	}
 }

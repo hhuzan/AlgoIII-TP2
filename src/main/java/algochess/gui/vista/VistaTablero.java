@@ -2,6 +2,7 @@ package algochess.gui.vista;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
+import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Casillero;
 import algochess.gui.vista.VistaCasillero;
@@ -10,10 +11,9 @@ public class VistaTablero {
 //	private Juego juego;
 	private GridPane paneTablero;
 
-	
 	public VistaTablero(Juego juego, ContenedorPrincipal contenedorPrincipal) {
 //		this.juego = juego;
-		
+
 		GridPane paneTablero = new GridPane();
 		int tam_casillero = 25;
 		paneTablero.setPadding(new Insets(10, 10, 10, 10));
@@ -31,6 +31,14 @@ public class VistaTablero {
 					paneTablero.getChildren().add(casillero);
 				}
 			}
+
+		String color;
+		if (juego.getTurno().getFaccionActual() == Faccion.ALIADOS)
+			color = "LIGHTPINK";
+		else
+			color = "AQUAMARINE";
+		paneTablero.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + color + ";");
 
 		this.paneTablero = paneTablero; // TODO ver
 	}
