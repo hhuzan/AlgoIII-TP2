@@ -38,6 +38,7 @@ import algochess.engine.entidades.Catapulta;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.NulaEntidad;
+import java.lang.reflect.Field;
 
 public class ContenedorPrincipal extends HBox implements Observer {
 
@@ -46,6 +47,12 @@ public class ContenedorPrincipal extends HBox implements Observer {
 
     public ContenedorPrincipal(Stage stage, Juego juego, Jugador aliado, Jugador enemigo, Tablero tablero) {
         super();
+
+        // Class jugadorCls = Class.forName("com.csa.mdm.Jugador");
+        // Field field = jugadorCls.getDeclaredField("dinero");
+        // field.setAccessible(true);
+        // String value = (String) field.get(aliado);
+        // System.out.println("Reflection -- Value: " + value);
 
         String[] imagePaths = new String[] {
             "images/SHOP_ICON.png",
