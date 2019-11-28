@@ -4,13 +4,10 @@ import algochess.engine.Dinero;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.vendedordeentidades.VendedorDeEntidades;
-import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.excepciones.JugadorPerdioException;
 import java.util.ArrayList;
 import java.util.List;
 import static algochess.engine.ConstantesUtils.DINERO_JUGADOR;
-import java.util.Observable;
-import java.util.Observer;
 
 //public class Jugador extends Observable {
 public class Jugador {

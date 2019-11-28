@@ -1,7 +1,5 @@
 package algochess.engine;
 
-import java.util.Observable;
-
 public class Dinero {
     private int monto;
 

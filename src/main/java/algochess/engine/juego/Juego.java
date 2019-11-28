@@ -10,7 +10,6 @@ import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.posicion.Posicion;
 
 public class Juego {
 
