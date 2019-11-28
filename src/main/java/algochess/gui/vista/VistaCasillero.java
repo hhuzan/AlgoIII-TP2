@@ -4,6 +4,7 @@ import algochess.engine.entidades.Catapulta;
 import algochess.engine.entidades.Curandero;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
+import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.tablero.Ocupado;
@@ -42,28 +43,41 @@ public class VistaCasillero extends StackPane {
 
 		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorPrincipal, fila, columna));
 
-		//TODO refactorizar con reflexion
-		if (casillero.getEstado().getEntidad() instanceof Jinete ) {
+		// TODO refactorizar con reflexion
+		Image image;
+		if (casillero.getEstado().getEntidad() instanceof Jinete) {
 			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
-			Image image = new Image("images/CaballoPink.png");
+			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
+				image = new Image("images/CaballoPink.png");
+			else
+				image = new Image("images/CaballoBlue.png");
 			rectangulo.setFill(new ImagePattern(image));
 			getChildren().add(rectangulo);
 		}
-		if (casillero.getEstado().getEntidad() instanceof Soldado ) {
+		if (casillero.getEstado().getEntidad() instanceof Soldado) {
 			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
-			Image image = new Image("images/SoldadoPink.png");
+			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
+				image = new Image("images/SoldadoPink.png");
+			else
+				image = new Image("images/SoldadoBlue.png");
 			rectangulo.setFill(new ImagePattern(image));
 			getChildren().add(rectangulo);
 		}
-		if (casillero.getEstado().getEntidad() instanceof Curandero ) {
+		if (casillero.getEstado().getEntidad() instanceof Curandero) {
 			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
-			Image image = new Image("images/CuranderoPink.png");
+			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
+				image = new Image("images/CuranderoPink.png");
+			else
+				image = new Image("images/CuranderoBlue.png");
 			rectangulo.setFill(new ImagePattern(image));
 			getChildren().add(rectangulo);
 		}
-		if (casillero.getEstado().getEntidad() instanceof Catapulta ) {
+		if (casillero.getEstado().getEntidad() instanceof Catapulta) {
 			Rectangle rectangulo = new Rectangle(tamanio, tamanio);
-			Image image = new Image("images/CatapultaPink.png");
+			if (casillero.getEstado().getEntidad().getPropietario().getFaccion() == Faccion.ALIADOS)
+				image = new Image("images/CatapultaPink.png");
+			else
+				image = new Image("images/CatapultaBlue.png");
 			rectangulo.setFill(new ImagePattern(image));
 			getChildren().add(rectangulo);
 		}

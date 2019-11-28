@@ -16,16 +16,12 @@ public class Juego {
 
 	private Turno turno;
 	private Tablero tablero;
-	private Jugador jugadorAliado = null;
-	private Jugador jugadorEnemigo = null;
 	private VendedorDeEntidades vendedor;
 	private Entidad entidadSeleccionada;
 
 	public Juego(Jugador aliado, Jugador enemigo, Tablero tablero) {
 		this.tablero = tablero;
 		turno = new Turno(aliado, enemigo);
-		jugadorAliado = aliado;
-		jugadorEnemigo = enemigo;
 		vendedor = new VendedorDeEntidades();
 	}
 
