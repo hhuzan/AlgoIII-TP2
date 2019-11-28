@@ -30,7 +30,7 @@ public class ContenedorJugadores extends VBox {
 		jugadorUnoContainer.setAlignment(Pos.CENTER);
 		jugadorDosContainer.setAlignment(Pos.CENTER);
 
-		Image jugadorUnoBackground = new Image("images/BACKGROUND_PLAYER_BLUE_CHOOSE_NAME.png");
+		Image jugadorUnoBackground = new Image("images/BACKGROUND_PLAYER_PINK_CHOOSE_NAME.png");
 		ImageView jugadorUnoBackgroundView = new ImageView();
 		jugadorUnoBackgroundView.setImage(jugadorUnoBackground);
 		jugadorUnoBackgroundView.setFitWidth(100);
@@ -38,7 +38,7 @@ public class ContenedorJugadores extends VBox {
 		jugadorUnoBackgroundView.setSmooth(true);
 		jugadorUnoBackgroundView.setCache(true);
 
-		Image jugadorDosBackground = new Image("images/BACKGROUND_PLAYER_PINK_CHOOSE_NAME.png");
+		Image jugadorDosBackground = new Image("images/BACKGROUND_PLAYER_BLUE_CHOOSE_NAME.png");
 		ImageView jugadorDosBackgroundView = new ImageView();
 		jugadorDosBackgroundView.setImage(jugadorDosBackground);
 		jugadorDosBackgroundView.setFitWidth(100);
