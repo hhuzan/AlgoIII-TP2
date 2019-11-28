@@ -4,8 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
-
 import algochess.engine.juego.Juego;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.tablero.Tablero;
