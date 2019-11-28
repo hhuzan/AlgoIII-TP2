@@ -1,12 +1,10 @@
 package algochess;
 
 import algochess.engine.entidades.Catapulta;
-import algochess.engine.entidades.Jinete;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.vendedordeentidades.VendedorDeEntidades;
 import algochess.excepciones.DineroInsuficienteException;
-import algochess.excepciones.EntidadDeMismaFaccionException;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

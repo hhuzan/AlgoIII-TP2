@@ -7,8 +7,6 @@ import algochess.engine.jugador.Jugador;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
-import static org.junit.Assert.assertSame;
-import algochess.engine.tablero.Vacio;
 import org.junit.Test;
 
 public class CatapultaBatallonJineteTests {
