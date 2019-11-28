@@ -27,7 +27,7 @@ public class VistaCasillero extends StackPane {
 	VistaCasillero(int fila, int columna, int tamanio, Casillero casillero, Juego juego,
 			ContenedorCompras contenedorCompras) {
 		super();
-		if (casillero.getFaccion().toString() == "ALIADOS")
+		if (casillero.getFaccion() == Faccion.ALIADOS)
 			setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
 		else
 			setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
