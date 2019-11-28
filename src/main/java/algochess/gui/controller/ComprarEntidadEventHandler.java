@@ -25,19 +25,19 @@ public class ComprarEntidadEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         if(entidadStr == "jinete") {
             Jinete jinete = new Jinete();
-            // juego.comprarEntidad(jinete);
+            juego.comprarEntidad(jinete);
 
         } else if(entidadStr == "soldado") {
             Soldado soldado = new Soldado();
-            // juego.comprarEntidad(soldado);
+            juego.comprarEntidad(soldado);
 
         } else if(entidadStr == "catapulta") {
             Catapulta catapulta = new Catapulta();
-            // juego.comprarEntidad(catapulta);
+            juego.comprarEntidad(catapulta);
 
         } else if(entidadStr == "curandero") {
             Curandero curandero = new Curandero();
-            // juego.comprarEntidad(curandero);
+            juego.comprarEntidad(curandero);
 
         }
     }

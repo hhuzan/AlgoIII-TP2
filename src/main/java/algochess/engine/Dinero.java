@@ -1,5 +1,7 @@
 package algochess.engine;
 
+import java.util.Observable;
+
 public class Dinero {
     private int monto;
 
@@ -18,5 +20,9 @@ public class Dinero {
 
     public boolean sonIguales(Dinero dinero) {
         return monto == dinero.monto;
+    }
+
+    public int getMonto() {
+        return monto;
     }
 }

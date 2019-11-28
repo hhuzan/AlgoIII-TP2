@@ -2,6 +2,8 @@ package algochess.gui.vista;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Observer;
+import java.util.Observable;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,13 +27,17 @@ import javafx.stage.Stage;
 import algochess.gui.vista.TableroVista;
 import algochess.gui.controller.ComprarEntidadEventHandler;
 import algochess.engine.juego.Juego;
+import algochess.engine.tablero.Tablero;
+import algochess.engine.jugador.Jugador;
+import algochess.engine.facciones.Faccion;
 
-public class ContenedorPrincipal extends HBox {
+
+public class ContenedorPrincipal extends HBox implements Observer {
 
     Stage stage;
     int aceptados = 0;
 
-    public ContenedorPrincipal(Stage stage, Juego juego) {
+    public ContenedorPrincipal(Stage stage, Juego juego, Jugador aliado, Jugador enemigo, Tablero tablero) {
         super();
 
         String[] imagePaths = new String[] {
@@ -48,7 +54,7 @@ public class ContenedorPrincipal extends HBox {
 
         VBox compraJugadorColumnaUno = new VBox(20);
         VBox compraJugadorColumnaDos = new VBox(20);
-        TableroVista tablero = new TableroVista();
+        TableroVista tableroVista = new TableroVista();
 
         compraJugadorColumnaUno.setAlignment(Pos.CENTER_LEFT);
 
@@ -67,12 +73,13 @@ public class ContenedorPrincipal extends HBox {
             compraJugadorColumnaUno.getChildren().add(button);
         }
 
-        
+        crearObservadores(aliado, enemigo, tablero, this);
+
         compraJugadorColumnaDos.setAlignment(Pos.CENTER_RIGHT);
 
         compraJugadorColumnaDos.getChildren().addAll(new Button("Hola"), new Button("Chau"));
 
-        this.getChildren().addAll(compraJugadorColumnaUno, tablero.getTablero(), compraJugadorColumnaDos);
+        this.getChildren().addAll(compraJugadorColumnaUno, tableroVista.getTablero(), compraJugadorColumnaDos);
     }
 
     public void crearHandler(String path, String[] imagePaths, Button button, Juego juego) {
@@ -89,6 +96,19 @@ public class ContenedorPrincipal extends HBox {
             ComprarEntidadEventHandler botonEntidadHandler = new ComprarEntidadEventHandler("catapulta", juego);
             button.setOnAction(botonEntidadHandler);
         }
+
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        System.out.println("Observing: caught something");
+        System.out.println(" got " + ((Integer) arg).intValue() + "$$$$");
+    }
+
+    public void crearObservadores(Jugador aliado, Jugador enemigo, Tablero tablero, Observer observer) {
+        aliado.addObserver(observer);
+        enemigo.addObserver(observer);
+        tablero.addObserver(observer);
 
     }
 }

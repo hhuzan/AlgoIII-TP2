@@ -9,8 +9,10 @@ import algochess.excepciones.JugadorPerdioException;
 import java.util.ArrayList;
 import java.util.List;
 import static algochess.engine.ConstantesUtils.DINERO_JUGADOR;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Jugador {
+public class Jugador extends Observable {
 
     private List<Entidad> entidades = new ArrayList<>();
     private Dinero dinero;
@@ -39,13 +41,8 @@ public class Jugador {
     }
 
     private void agregarEntidad(Entidad entidad) {
-        if (entidad.sosAmigo(this.faccion)){
-            // TODO: Ver de sacar el constructor que no tiene faccion
-            entidades.add(entidad);
-        }
-        else{
-            throw new EntidadDeMismaFaccionException();
-        }
+        // TODO: Ver de sacar el constructor que no tiene faccion
+        entidades.add(entidad);
     }
 
     public void removerEntidad(Entidad entidad) {
@@ -56,6 +53,9 @@ public class Jugador {
 
     public void comprarEntidad(VendedorDeEntidades vendedor, Entidad entidad) {
         Dinero gasto = entidad.restarDinero(dinero);
+        System.out.println("Voy a notificar a mis observers");
+        setChanged();
+        notifyObservers(gasto.getMonto());
         Entidad miEntidad = vendedor.venderEntidad(entidad, gasto);
         agregarEntidad(miEntidad);
     }

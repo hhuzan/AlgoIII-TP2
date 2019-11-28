@@ -43,21 +43,10 @@ public class JugadorTest {
 
         assertTrue(jugador.perdio());
 
-    }
-
-
-    @Test
-    public void test03JugadorNoPuedeComprarEntidadesDeOtraFaccion(){
-        Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
-        Jinete jinete = new Jinete(new Jugador(Faccion.ENEMIGOS, "Lucas"), Faccion.ENEMIGOS);
-
-        assertThrows(EntidadDeMismaFaccionException.class,()-> jugador.comprarEntidad(new VendedorDeEntidades(), jinete));
-
-    }
-    
+    } 
 
     @Test
-    public void test04CreoUnJugadorConUnaFaccionYObtengoLaFaccionQueLeColoque(){
+    public void test03CreoUnJugadorConUnaFaccionYObtengoLaFaccionQueLeColoque(){
         Jugador jugador = new Jugador(Faccion.ALIADOS,"Pedro");
        assertEquals(Faccion.ALIADOS, jugador.getFaccion());
 

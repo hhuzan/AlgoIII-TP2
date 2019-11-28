@@ -32,6 +32,8 @@ import javafx.stage.Stage;
 import algochess.gui.controller.BotonProximaEscenaHandler;
 import algochess.gui.Casillero;
 import algochess.engine.juego.Juego;
+import algochess.engine.jugador.Jugador;
+import algochess.engine.tablero.Tablero;
 
 
 public class AlgoChess extends Application  {
@@ -53,42 +55,40 @@ public class AlgoChess extends Application  {
         return panel;
     }*/
 
-    private GridPane crearVentaDeEntidades(){
+    // private GridPane crearVentaDeEntidades(){
 
-        GridPane ventas = new GridPane();
-        ventas.setPadding(new Insets(10,10,10,10));
-        ventas.setVgap(20);
-        ventas.setHgap(20);
+    //     GridPane ventas = new GridPane();
+    //     ventas.setPadding(new Insets(10,10,10,10));
+    //     ventas.setVgap(20);
+    //     ventas.setHgap(20);
 
-        Rectangle soldadoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
-        Rectangle caballoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
-        Rectangle curanderoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
-        Rectangle catapultaContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
+    //     Rectangle soldadoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
+    //     Rectangle caballoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
+    //     Rectangle curanderoContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
+    //     Rectangle catapultaContainer = new Rectangle(TAMANIO_CASILLERO*2,TAMANIO_CASILLERO*2);
 
-        Image soldadoNeutroImg = new Image("images/SoldadoNeutro.png");
-        Image caballoNeutroImg = new Image("images/CaballoNeutro.png");
-        Image curanderoNeutroImg = new Image("images/CuranderoNeutro.png");
-        Image catapultaNeutroImg = new Image("images/CatapultaNeutro.png");
+    //     Image soldadoNeutroImg = new Image("images/SoldadoNeutro.png");
+    //     Image caballoNeutroImg = new Image("images/CaballoNeutro.png");
+    //     Image curanderoNeutroImg = new Image("images/CuranderoNeutro.png");
+    //     Image catapultaNeutroImg = new Image("images/CatapultaNeutro.png");
 
-        soldadoContainer.setFill(new ImagePattern(soldadoNeutroImg));
-        caballoContainer.setFill(new ImagePattern(caballoNeutroImg));
-        curanderoContainer.setFill(new ImagePattern(curanderoNeutroImg));
-        catapultaContainer.setFill(new ImagePattern(catapultaNeutroImg));
+    //     soldadoContainer.setFill(new ImagePattern(soldadoNeutroImg));
+    //     caballoContainer.setFill(new ImagePattern(caballoNeutroImg));
+    //     curanderoContainer.setFill(new ImagePattern(curanderoNeutroImg));
+    //     catapultaContainer.setFill(new ImagePattern(catapultaNeutroImg));
 
-        GridPane.setConstraints(soldadoContainer,0,0);
-        GridPane.setConstraints(caballoContainer,0,1);
-        GridPane.setConstraints(curanderoContainer,0,2);
-        GridPane.setConstraints(catapultaContainer,0,3);
+    //     GridPane.setConstraints(soldadoContainer,0,0);
+    //     GridPane.setConstraints(caballoContainer,0,1);
+    //     GridPane.setConstraints(curanderoContainer,0,2);
+    //     GridPane.setConstraints(catapultaContainer,0,3);
 
-        ventas.getChildren().addAll(soldadoContainer,caballoContainer,curanderoContainer,catapultaContainer);
+    //     ventas.getChildren().addAll(soldadoContainer,caballoContainer,curanderoContainer,catapultaContainer);
 
-        return ventas;
-    }
+    //     return ventas;
+    // }
 
     @Override
     public void start(Stage stage) {
-
-        Juego juego = new Juego();
 
         stage.setTitle("AlgoChess - V 1.0");
 
@@ -112,7 +112,7 @@ public class AlgoChess extends Application  {
         Button botonSalir = new Button();
         botonSalir.setText("Salir");
 
-        Scene proximaEscena = crearEscenaEleccionJugadores(stage, juego);
+        Scene proximaEscena = crearEscenaEleccionJugadores(stage);
 
         BotonProximaEscenaHandler botonEntrarHandler = new BotonProximaEscenaHandler(stage, proximaEscena);
         botonEntrar.setOnAction(botonEntrarHandler);
@@ -125,8 +125,8 @@ public class AlgoChess extends Application  {
         stage.show();
     }
 
-    private Scene crearEscenaEleccionJugadores(Stage stage, Juego juego) {
-        ContenedorJugadores contenedorJugadores = new ContenedorJugadores(stage, juego);
+    private Scene crearEscenaEleccionJugadores(Stage stage) {
+        ContenedorJugadores contenedorJugadores = new ContenedorJugadores(stage);
         Scene escenaJugadores = new Scene(contenedorJugadores, 1280, 720);
 
         return escenaJugadores;

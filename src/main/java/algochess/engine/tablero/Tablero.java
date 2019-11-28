@@ -12,8 +12,10 @@ import java.util.HashSet;
 import java.util.Queue;
 import java.util.Stack;
 import static algochess.engine.ConstantesUtils.TAMANIO_TABLERO;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Tablero {
+public class Tablero extends Observable {
 	private Casillero[][] casilleros;
 
 	public Tablero(Faccion aliados, Faccion enemigos) {
