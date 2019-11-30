@@ -1,10 +1,15 @@
 package algochess.gui.vista;
 
 import java.lang.reflect.Constructor;
+import java.util.Map;
 
 import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 import algochess.engine.tablero.Casillero;
+import algochess.engine.entidades.Soldado;
+import algochess.engine.entidades.Jinete;
+import algochess.engine.entidades.Catapulta;
+import algochess.engine.entidades.Curandero;
 import algochess.gui.controller.SeleccionarCasilleroHandler;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
@@ -39,16 +44,25 @@ public class VistaCasillero extends StackPane {
 		this.tamanio = tamanio;
 		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorCompras, fila, columna));
 
-		String nombreClase = "algochess.gui.vista.Vista" + casillero.getEstado().getEntidad().getClass().getSimpleName()
-				+ casillero.getEstado().getEntidad().getPropietario().getFaccion();
+		Map<Class, String> vistaDict = Map.of(
+			 Catapulta.class, 	"algochess.gui.vista.VistaCatapulta",
+			 Jinete.class, 		"algochess.gui.vista.VistaJinete",
+			 Curandero.class, 	"algochess.gui.vista.VistaCurandero",
+			 Soldado.class, 	"algochess.gui.vista.VistaSoldado"
+		);
 
-		try {
-			Class<?> clase = Class.forName(nombreClase);
-			Constructor<?> constructor = clase.getConstructor(VistaCasillero.class);
-			vistaEntidad = (VistaEntidad) constructor.newInstance(this);
+		String nombreClase = vistaDict.get(casillero.getEntidad().getClass()); 
+		
+		System.out.println(nombreClase);
+		if(nombreClase != null) {
+			try {
+				Class<?> clase = Class.forName(nombreClase);
+				Constructor<?> constructor = clase.getConstructor(VistaCasillero.class, Faccion.class);
+				vistaEntidad = (VistaEntidad) constructor.newInstance(this, casillero.getEntidad().getPropietario().getFaccion());
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 	}
 
@@ -69,16 +83,25 @@ public class VistaCasillero extends StackPane {
 		this.tamanio = tamanio;
 		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorPrincipal, fila, columna));
 
-		String nombreClase = "algochess.gui.vista.Vista" + casillero.getEstado().getEntidad().getClass().getSimpleName()
-				+ casillero.getEstado().getEntidad().getPropietario().getFaccion();
+		Map<Class, String> vistaDict = Map.of(
+			 Catapulta.class, 	"algochess.gui.vista.VistaCatapulta",
+			 Jinete.class, 		"algochess.gui.vista.VistaJinete",
+			 Curandero.class, 	"algochess.gui.vista.VistaCurandero",
+			 Soldado.class, 	"algochess.gui.vista.VistaSoldado"
+		);
 
-		try {
-			Class<?> clase = Class.forName(nombreClase);
-			Constructor<?> constructor = clase.getConstructor(VistaCasillero.class);
-			vistaEntidad = (VistaEntidad) constructor.newInstance(this);
+		String nombreClase = vistaDict.get(casillero.getEntidad().getClass()); 
+		
+		System.out.println(nombreClase);
+		if(nombreClase != null) {
+			try {
+				Class<?> clase = Class.forName(nombreClase);
+				Constructor<?> constructor = clase.getConstructor(VistaCasillero.class, Faccion.class);
+				vistaEntidad = (VistaEntidad) constructor.newInstance(this, casillero.getEntidad().getPropietario().getFaccion());
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 	}
 

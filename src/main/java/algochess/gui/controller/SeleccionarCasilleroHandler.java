@@ -35,6 +35,7 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 		this.exHandler = new ExceptionHandler();
 	}
 	
+	// TODO: Ver como haces dos events separados
     @Override
     public void handle(MouseEvent event) {
     	if(contenedorCompras == null) {

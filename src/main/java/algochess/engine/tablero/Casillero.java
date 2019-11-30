@@ -89,8 +89,8 @@ public class Casillero  {
         estado = estadoCasillero;
     }
 
-    public Estado getEstado() {
-    	return estado;
+    public Entidad getEntidad() {
+    	return estado.getEntidad();
     }
 
     public void seleccionarEntidad(Juego juego) {
