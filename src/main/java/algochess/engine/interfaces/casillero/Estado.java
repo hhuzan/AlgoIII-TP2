@@ -6,6 +6,7 @@ import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.tablero.Casillero;
+import algochess.engine.juego.Juego;
 
 import java.util.HashSet;
 import java.util.Queue;
@@ -35,4 +36,6 @@ public interface Estado {
     boolean poseesUnidad();
     
     Entidad getEntidad();  //TODO sacar
+
+    void seleccionarEntidad(Juego juego);
 }

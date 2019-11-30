@@ -9,6 +9,7 @@ import algochess.engine.posicion.Posicion;
 import algochess.engine.interfaces.casillero.Estado;
 import algochess.excepciones.ColocarEntidadException;
 import algochess.excepciones.CasilleroVacioException;
+import algochess.engine.juego.Juego;
 import java.util.HashSet;
 import java.util.Queue;
 
@@ -66,5 +67,10 @@ public class Vacio implements Estado {
 	public Entidad getEntidad() {
 		return new NulaEntidad();
 	}
+
+    @Override 
+    public void seleccionarEntidad(Juego juego) {
+        
+    }
 
 }

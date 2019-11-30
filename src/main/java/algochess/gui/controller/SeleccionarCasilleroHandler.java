@@ -38,11 +38,13 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
     	if(contenedorCompras == null) {
-    		// Seleccion de casillero en desarrollo de juego
-    		// try {
-    		// 	juego.seleccionarEntidad(fila, columna);
-    		// 	contenedorPrincipal.refrescar();
-    		// } 
+    		//Seleccion de casillero en desarrollo de juego
+    		try {
+    			juego.seleccionarEntidad(fila, columna);
+    			contenedorPrincipal.refrescar();
+    		} catch(Exception ex) {
+    			System.out.println(ex);
+    		}
     	} else if(contenedorPrincipal == null) {
     		// Seleccion de casillero en fase inicial
 	    	try {

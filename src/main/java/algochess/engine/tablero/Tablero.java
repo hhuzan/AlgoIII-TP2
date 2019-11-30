@@ -6,6 +6,7 @@ import algochess.engine.jugador.Jugador;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.posicion.Posiciones;
+import algochess.engine.juego.Juego;
 import algochess.excepciones.CasilleroOcupadoException;
 import algochess.excepciones.CasilleroVacioException;
 import java.util.HashSet;
@@ -87,6 +88,12 @@ public class Tablero {
 	private boolean enElCasilleroHayUnidad(Posicion unaPosicion) {
 		return obtenerCasillero(unaPosicion).poseesUnidad();
 
+	}
+
+	public void seleccionarEntidad(int fila, int columna, Juego juego) {
+		Posicion posicion = new Posicion(fila, columna);
+		Casillero casillero = obtenerCasillero(posicion);
+		casillero.seleccionarEntidad(juego);
 	}
 
 	/* DFS */

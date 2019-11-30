@@ -8,6 +8,7 @@ import algochess.engine.tablero.Tablero;
 import algochess.engine.interfaces.casillero.Estado;
 import java.util.HashSet;
 import java.util.Queue;
+import algochess.engine.juego.Juego;
 
 public class Casillero  {
     private Posicion posicion;
@@ -90,5 +91,9 @@ public class Casillero  {
 
     public Estado getEstado() {
     	return estado;
+    }
+
+    public void seleccionarEntidad(Juego juego) {
+        estado.seleccionarEntidad(juego);
     }
 }

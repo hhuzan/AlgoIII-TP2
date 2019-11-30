@@ -18,6 +18,7 @@ import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.entidades.Curandero;
 import algochess.excepciones.CasilleroOcupadoException;
+import algochess.engine.juego.Juego;
 import java.util.HashSet;
 import java.util.Queue;
 
@@ -150,5 +151,10 @@ public class Ocupado implements Estado {
 
     public Entidad getEntidad() {
     	return entidad;
+    }
+
+    @Override
+    public void seleccionarEntidad(Juego juego) {
+        juego.seleccionarEntidad(entidad);
     }
 }

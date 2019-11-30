@@ -42,9 +42,9 @@ public class Juego {
 		fase.seleccionarEntidad(jugadorActual, faccionActual, entidad);
 	}
 
-	// public void seleccionarEntidad(int fila, int columna) {
-	// 	 tablero.seleccionarEntidad(fila, columna, this);
-	// }
+	public void seleccionarEntidad(int fila, int columna) {
+		 tablero.seleccionarEntidad(fila, columna, this);
+	}
 
 	public void comprarEntidad(int fila, int columna) {
 		try {

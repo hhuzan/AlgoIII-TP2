@@ -18,9 +18,10 @@ public class Final implements Fase {
 	private Entidad entidadSeleccionada;
 
 	public void seleccionarEntidad(Jugador jugador, Faccion faccion, Entidad entidad) {
-		entidad.setPropietario(jugador);
-		entidad.setFaccion(faccion);
-		entidadSeleccionada = entidad;
+		if(entidad.sosAmigo(faccion))
+			entidadSeleccionada = entidad;
+
+		System.out.println(entidadSeleccionada);
 	}
 
 	public void comprarEntidad(Jugador jugador, VendedorDeEntidades vendedor) {

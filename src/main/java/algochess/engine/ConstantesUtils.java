@@ -9,7 +9,7 @@ public final class ConstantesUtils {
     public static final int DINERO_JUGADOR = 20;
 
     public static final int CATAPULTA_VIDA = 50;
-    public static final int CATAPULTA_COSTO = 20; //TODO: Cambiar a 5
+    public static final int CATAPULTA_COSTO = 5;
     public static final int CURANDERO_VIDA = 75;
     public static final int CURANDERO_COSTO = 3;
     public static final int JINETE_VIDA = 100;
