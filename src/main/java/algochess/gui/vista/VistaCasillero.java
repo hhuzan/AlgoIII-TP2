@@ -18,6 +18,7 @@ public class VistaCasillero extends StackPane {
 	private final int columna;
 	private Juego juego;
 	private ContenedorCompras contenedorCompras;
+	private ContenedorPrincipal contenedorPrincipal;
 	private VistaEntidad vistaEntidad;
 	private int tamanio;
 
@@ -37,6 +38,36 @@ public class VistaCasillero extends StackPane {
 		this.contenedorCompras = contenedorCompras;
 		this.tamanio = tamanio;
 		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorCompras, fila, columna));
+
+		String nombreClase = "algochess.gui.vista.Vista" + casillero.getEstado().getEntidad().getClass().getSimpleName()
+				+ casillero.getEstado().getEntidad().getPropietario().getFaccion();
+
+		try {
+			Class<?> clase = Class.forName(nombreClase);
+			Constructor<?> constructor = clase.getConstructor(VistaCasillero.class);
+			vistaEntidad = (VistaEntidad) constructor.newInstance(this);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	VistaCasillero(int fila, int columna, int tamanio, Casillero casillero, Juego juego,
+			ContenedorPrincipal contenedorPrincipal) {
+		super();
+
+		if (casillero.getFaccion() == Faccion.ALIADOS)
+			setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
+		else
+			setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+
+		setPrefSize(tamanio, tamanio);
+		this.juego = juego;
+		this.fila = fila;
+		this.columna = columna;
+		this.contenedorPrincipal = contenedorPrincipal;
+		this.tamanio = tamanio;
+		setOnMouseClicked(new SeleccionarCasilleroHandler(juego, contenedorPrincipal, fila, columna));
 
 		String nombreClase = "algochess.gui.vista.Vista" + casillero.getEstado().getEntidad().getClass().getSimpleName()
 				+ casillero.getEstado().getEntidad().getPropietario().getFaccion();

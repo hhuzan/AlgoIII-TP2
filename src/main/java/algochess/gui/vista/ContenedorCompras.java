@@ -2,6 +2,7 @@ package algochess.gui.vista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -50,19 +51,6 @@ public class ContenedorCompras extends HBox {
 		armarColumnaDerecha();
 		VistaTablero tableroVista = new VistaTablero(juego, this);
 		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
-	}
-
-	public void refrescar(boolean finished) {
-		if(finished) {
-			// Pasar a ventana principal
-			System.out.println("Pasamos al juego");
-		} else {
-			this.getChildren().clear();
-			armarColumnaIzquierda();
-			armarColumnaDerecha();
-			VistaTablero tableroVista = new VistaTablero(juego, this);
-			this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);
-		}
 	}
 
 	private void armarColumnaDerecha() {
@@ -138,7 +126,14 @@ public class ContenedorCompras extends HBox {
 		btnPasar.setText("Pasar Turno");
 		btnPasar.setOnAction((ActionEvent e) -> {
 			boolean finished = juego.cambiarTurno();
-			refrescar(finished);
+			if(finished) {
+				ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
+				Scene escenaPrincipal = new Scene(contenedorPrincipal, 1120, 660);
+
+				stage.setScene(escenaPrincipal);
+			}
+
+			refrescar();
 		});
 		boxIzquierdo.getChildren().add(btnPasar);
 
