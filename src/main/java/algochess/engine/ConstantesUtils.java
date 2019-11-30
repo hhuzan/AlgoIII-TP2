@@ -17,6 +17,7 @@ public final class ConstantesUtils {
     public static final int SOLDADO_VIDA = 100;
     public static final int SOLDADO_COSTO = 1;
 
+    public static final int MINIMO_COSTO = 1;  
 
     public static final int ARCO_PODER = 15;
     public static final int ESPADA_PODER = 10;

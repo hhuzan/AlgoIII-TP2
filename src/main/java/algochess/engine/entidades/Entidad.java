@@ -84,4 +84,8 @@ public abstract class Entidad {
     public boolean costosIguales(Dinero pago){
         return (this.costo.sonIguales(pago));
     }
+
+    public Dinero obtenerCosto() {
+        return costo;
+    }
 }

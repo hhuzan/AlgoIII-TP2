@@ -27,4 +27,14 @@ public class Dinero {
     public String toString() {
     	return Integer.toString(monto);
     }
+
+    public boolean superoMinimo(int minimo) {
+        System.out.println("Viendo si supera el minimo...");
+        System.out.println(monto >= minimo);
+        return monto >= minimo;
+    }
+
+    public void set(int monto) {
+        this.monto += monto;
+    }
 }

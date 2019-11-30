@@ -34,7 +34,7 @@ public class ArcoTest {
         Posicion posOrigen = new Posicion(7, 1);
         Posicion posDestino = new Posicion(10, 1);
 
-        tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
@@ -59,7 +59,7 @@ public class ArcoTest {
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(10, 1);
 
-        tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 
@@ -82,7 +82,7 @@ public class ArcoTest {
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(15, 1);
 
-        tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 

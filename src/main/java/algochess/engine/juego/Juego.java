@@ -10,6 +10,7 @@ import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
+import algochess.engine.posicion.Posicion;
 
 public class Juego {
 
@@ -17,45 +18,64 @@ public class Juego {
 	private Tablero tablero;
 	private VendedorDeEntidades vendedor;
 	private Entidad entidadSeleccionada;
-
-	public Juego(Jugador aliado, Jugador enemigo, Tablero tablero) {
-		this.tablero = tablero;
-		turno = new Turno(aliado, enemigo);
-		vendedor = new VendedorDeEntidades();
-	}
+	private Jugador jugadorAliado;
+	private Jugador jugadorEnemigo;
+	private Jugador jugadorActual = null;
+	private Faccion faccionActual = null;
 
 	public Juego(String nombreAliado, String nombreEnemigo) {
 		tablero = new Tablero();
-		Jugador aliado = new Jugador(Faccion.ALIADOS, nombreAliado);
-		Jugador enemigo = new Jugador(Faccion.ENEMIGOS, nombreEnemigo);
-		turno = new Turno(aliado, enemigo);
+		jugadorAliado = new Jugador(Faccion.ALIADOS, nombreAliado);
+		jugadorEnemigo = new Jugador(Faccion.ENEMIGOS, nombreEnemigo);
+		turno = new Turno(jugadorAliado, jugadorEnemigo);
 		vendedor = new VendedorDeEntidades();
+		jugadorActual = turno.random();
+		faccionActual = turno.popFaccion();
 	}
 
-	public void seleccionarSodado() {
-		entidadSeleccionada = new Soldado(turno.getJugadorActual(), turno.getFaccionActual());
+	public void seleccionarSoldado() {
+		entidadSeleccionada = new Soldado(jugadorActual, faccionActual);
 	}
 
 	public void seleccionarJinete() {
-		entidadSeleccionada = new Jinete(turno.getJugadorActual(), turno.getFaccionActual());
+		entidadSeleccionada = new Jinete(jugadorActual, faccionActual);
 	}
 
 	public void seleccionarCatapulta() {
-		entidadSeleccionada = new Catapulta(turno.getJugadorActual(), turno.getFaccionActual());
+		entidadSeleccionada = new Catapulta(jugadorActual, faccionActual);
 	}
 
 	public void seleccionarCurandero() {
-		entidadSeleccionada = new Curandero(turno.getJugadorActual(), turno.getFaccionActual());
+		entidadSeleccionada = new Curandero(jugadorActual, faccionActual);
 	}
 
 	public void comprarEntidad(int fila, int columna) {
 		try {
-			Casillero casillero = tablero.getCasilleros()[fila][columna];
-			turno.getJugadorActual().comprarEntidad(vendedor, entidadSeleccionada);
-			turno.colocarEntidad(casillero, entidadSeleccionada);
+			Posicion posicion = new Posicion(fila, columna);
+			jugadorActual.comprarEntidad(vendedor, entidadSeleccionada);
+			System.out.println("Compraada la pieza");
+			tablero.colocarEntidad(entidadSeleccionada, posicion, jugadorActual);
+			System.out.println("Colocada la entidad");
+			jugadorActual = turno.cambiarTurno(jugadorActual);
+			faccionActual = turno.popFaccion();
+			System.out.println("Cambiado el turno");
 		} catch (Exception ex) {
+			System.out.println("Seteando dinero a jugador porque no pudo colocarse la pieza");
+			jugadorActual.setDinero(entidadSeleccionada);
 			throw ex;
 		}
+	}
+
+	public boolean cambiarTurno() {
+		System.out.println("Cambiando turno...");
+		System.out.println(jugadorAliado);
+		System.out.println(jugadorEnemigo);
+		if(jugadorAliado.noPuedeComprar() && jugadorEnemigo.noPuedeComprar())
+			return true;
+
+		jugadorActual = turno.cambiarTurno(jugadorActual);
+		faccionActual = turno.popFaccion();
+		return false;
 	}
 
 	public Tablero getTablero() {
@@ -64,5 +84,13 @@ public class Juego {
 
 	public Turno getTurno() {
 		return turno;
+	}
+
+	public Jugador getJugadorActual() {
+		return jugadorActual;
+	}
+
+	public Faccion getFaccionActual() {
+		return faccionActual;
 	}
 }

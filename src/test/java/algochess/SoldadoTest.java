@@ -38,8 +38,8 @@ public class SoldadoTest {
         soldado.setFaccion(Faccion.ALIADOS);
         jinete.setFaccion(Faccion.ENEMIGOS);
 
-        tablero.colocarEntidad(soldado, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-        tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(soldado, posOrigen, new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
         soldado.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
@@ -59,8 +59,8 @@ public class SoldadoTest {
         Posicion posOrigen = new Posicion(9, 1);
         Posicion posDestino = new Posicion(12, 1);
 
-        tablero.colocarEntidad(soldado, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-        tablero.colocarEntidad(jinete, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(soldado, posOrigen, new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
@@ -78,13 +78,13 @@ public class SoldadoTest {
 		Soldado soldado = new Soldado(jugador1, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
-		tablero.colocarEntidad(soldado, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(1, 2);
 		soldado.moverA(tablero, tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(CasilleroOcupadoException.class, () -> {
-			tablero.colocarEntidad(soldado, posicionDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+			tablero.colocarEntidad(soldado, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		});	
     }
 }

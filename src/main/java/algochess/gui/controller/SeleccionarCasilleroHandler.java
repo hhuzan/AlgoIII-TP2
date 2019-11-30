@@ -15,9 +15,9 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 	private int columna;
 	private ExceptionHandler exHandler;
 
-	public SeleccionarCasilleroHandler(Juego juego, ContenedorCompras contenedorPrincipal, int fila, int columna) {
+	public SeleccionarCasilleroHandler(Juego juego, ContenedorCompras contenedorCompras, int fila, int columna) {
 		this.juego = juego;
-		this.contenedorCompras = contenedorPrincipal;
+		this.contenedorCompras = contenedorCompras;
 		this.fila = fila;
 		this.columna = columna;
 		this.exHandler = new ExceptionHandler();

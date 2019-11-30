@@ -17,7 +17,7 @@ public class SeleccionarSoldadoHandler implements EventHandler<MouseEvent> {
 	
     @Override
     public void handle(MouseEvent event) {
-    	juego.seleccionarSodado();
+    	juego.seleccionarSoldado();
 //		contenedorCompras.refrescar();
     }
 }

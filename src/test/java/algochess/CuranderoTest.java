@@ -36,7 +36,7 @@ public class CuranderoTest {
 		Curandero curandero = new Curandero(jugador, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
-		tablero.colocarEntidad(curandero, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(curandero, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicion);
 		assertThrows(JugadorPerdioException.class, () -> {
@@ -52,7 +52,7 @@ public class CuranderoTest {
 		Curandero curandero = new Curandero(jugador, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
-		tablero.colocarEntidad(curandero, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(curandero, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicion);
 
 		assertThrows(EntidadDeMismaFaccionException.class, () -> {
@@ -69,10 +69,10 @@ public class CuranderoTest {
 		Jinete jinete = new Jinete(jugador1, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
-		tablero.colocarEntidad(curandero, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(curandero, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(1,2);
-		tablero.colocarEntidad(jinete, posicionDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 		
 		jinete.disminuirVida(VACULO_PODER, Faccion.ENEMIGOS, casilleroDestino);
@@ -96,10 +96,10 @@ public class CuranderoTest {
 		Jinete jinete = new Jinete(jugador2, Faccion.ENEMIGOS);
 
 		Posicion posicion = new Posicion(9,1);
-		tablero.colocarEntidad(curandero, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(curandero, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(10,2);
-		tablero.colocarEntidad(jinete, posicionDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 
 		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
@@ -119,10 +119,10 @@ public class CuranderoTest {
 		Catapulta catapulta = new Catapulta(jugador2, Faccion.ENEMIGOS);
 
 		Posicion posicion = new Posicion(9,1);
-		tablero.colocarEntidad(curandero, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(curandero, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(10,1);
-		tablero.colocarEntidad(catapulta, posicionDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(catapulta, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 		
 		catapulta.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
@@ -142,10 +142,10 @@ public class CuranderoTest {
 		Jinete jinete = new Jinete(jugador2, Faccion.ENEMIGOS);
 
 		Posicion posicion = new Posicion(9,1);
-		tablero.colocarEntidad(curandero, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(curandero, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(14,1);
-		tablero.colocarEntidad(jinete, posicionDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 
 		jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
@@ -163,13 +163,13 @@ public class CuranderoTest {
 		Curandero curandero = new Curandero(jugador1, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
-		tablero.colocarEntidad(curandero, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(curandero, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(1, 2);
 		curandero.moverA(tablero, tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(CasilleroOcupadoException.class, () -> {
-			tablero.colocarEntidad(curandero, posicionDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+			tablero.colocarEntidad(curandero, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		});	
 	}
 }

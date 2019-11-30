@@ -35,7 +35,7 @@ public class JineteTest {
 		Jinete jinete = new Jinete(jugador, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1, 1);
-		tablero.colocarEntidad(jinete, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicion);
 
 		jinete.disminuirVida(20, Faccion.ENEMIGOS, casilleroDestino);
@@ -53,7 +53,7 @@ public class JineteTest {
 		Jinete jinete = new Jinete(jugador, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1, 1);
-		tablero.colocarEntidad(jinete, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicion);
 
 		assertThrows(JugadorPerdioException.class, () -> {
@@ -70,10 +70,10 @@ public class JineteTest {
 		Soldado soldado = new Soldado(jugador_2, Faccion.ENEMIGOS);
 
 		Posicion posicion = new Posicion(9, 1);
-		tablero.colocarEntidad(jinete, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionAtaque = new Posicion(10, 1);
-		tablero.colocarEntidad(soldado, posicionAtaque, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado, posicionAtaque, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicionAtaque);
 
 		jinete.atacar(tablero.obtenerCasillero(posicionAtaque), tablero, Faccion.ALIADOS);
@@ -96,11 +96,11 @@ public class JineteTest {
         catapulta.setFaccion(Faccion.ENEMIGOS);
         Posicion posCatapulta = new Posicion(10,10);
 
-        tablero.colocarEntidad(jinete,posJinete, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-        tablero.colocarEntidad(catapulta, posCatapulta, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete,posJinete, new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(catapulta, posCatapulta, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posCatapulta);
 
-        tablero.atacarCasillero(posJinete, posCatapulta, Faccion.ALIADOS, new Turno(Faccion.ALIADOS));
+        tablero.atacarCasillero(posJinete, posCatapulta, Faccion.ALIADOS);
 		
 		assertThrows(JugadorPerdioException.class, () -> {
 			catapulta.disminuirVida( (SOLDADO_VIDA - DAGA_PODER), Faccion.ALIADOS, casilleroDestino);
@@ -126,12 +126,12 @@ public class JineteTest {
         Posicion posCatapulta1 = new Posicion(10,10);
         Posicion posCatapulta2 = new Posicion(12,10);
 
-        tablero.colocarEntidad(jinete,posJinete, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-        tablero.colocarEntidad(catapulta1,posCatapulta1, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-        tablero.colocarEntidad(catapulta2,posCatapulta2, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(jinete,posJinete, new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(catapulta1,posCatapulta1, new Jugador(Faccion.ALIADOS, "Lucas"));
+        tablero.colocarEntidad(catapulta2,posCatapulta2, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posCatapulta2);
 
-        tablero.atacarCasillero(posJinete,posCatapulta2,Faccion.ALIADOS, new Turno(Faccion.ALIADOS));
+        tablero.atacarCasillero(posJinete,posCatapulta2,Faccion.ALIADOS);
         
         assertThrows(JugadorPerdioException.class, () -> {
 			catapulta2.disminuirVida(CATAPULTA_VIDA, Faccion.ALIADOS, casilleroDestino);
@@ -146,13 +146,13 @@ public class JineteTest {
 		Jinete jinete = new Jinete(jugador1, Faccion.ALIADOS);
 
 		Posicion posicion = new Posicion(1,1);
-		tablero.colocarEntidad(jinete, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(1, 2);
 		jinete.moverA(tablero, tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(CasilleroOcupadoException.class, () -> {
-			tablero.colocarEntidad(jinete, posicionDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+			tablero.colocarEntidad(jinete, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		});	
     }
 }

@@ -49,13 +49,26 @@ public class ContenedorCompras extends HBox {
 		armarColumnaIzquierda();
 		armarColumnaDerecha();
 		VistaTablero tableroVista = new VistaTablero(juego, this);
-		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);
+		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
+	}
+
+	public void refrescar(boolean finished) {
+		if(finished) {
+			// Pasar a ventana principal
+			System.out.println("Pasamos al juego");
+		} else {
+			this.getChildren().clear();
+			armarColumnaIzquierda();
+			armarColumnaDerecha();
+			VistaTablero tableroVista = new VistaTablero(juego, this);
+			this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);
+		}
 	}
 
 	private void armarColumnaDerecha() {
 		boxDerecho = new VBox(30);
 		boxDerecho.setAlignment(Pos.CENTER);
-		Label lblNombre = new Label(juego.getTurno().getJugadorActual().getNombre());
+		Label lblNombre = new Label(juego.getJugadorActual().getNombre());
 		lblNombre.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
 		boxDerecho.getChildren().add(lblNombre);
 		Label lblLinea = new Label("========");
@@ -64,12 +77,12 @@ public class ContenedorCompras extends HBox {
 		Label lbl1 = new Label("Disponible:");
 		lbl1.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
 		boxDerecho.getChildren().add(lbl1);
-		Label lblMonto = new Label("$" + juego.getTurno().getJugadorActual().getDinero().toString());
+		Label lblMonto = new Label("$" + juego.getJugadorActual().obtenerBalance());
 		lblMonto.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
 		boxDerecho.getChildren().add(lblMonto);
 
 		String color;
-		if (juego.getTurno().getFaccionActual() == Faccion.ALIADOS)
+		if (juego.getFaccionActual() == Faccion.ALIADOS)
 			color = "LIGHTPINK";
 		else
 			color = "AQUAMARINE";
@@ -83,7 +96,7 @@ public class ContenedorCompras extends HBox {
 		boxIzquierdo = new VBox(12);
 		boxIzquierdo.setAlignment(Pos.CENTER);
 		String color;
-		if (juego.getTurno().getFaccionActual() == Faccion.ALIADOS)
+		if (juego.getFaccionActual() == Faccion.ALIADOS)
 			color = "LIGHTPINK";
 		else
 			color = "AQUAMARINE";
@@ -94,6 +107,9 @@ public class ContenedorCompras extends HBox {
 		String[] imagePaths = new String[] { "images/SHOP_ICON.png", "images/CaballoNeutro.png",
 				"images/SoldadoNeutro.png", "images/CuranderoNeutro.png", "images/CatapultaNeutro.png" };
 
+		// HashMap<String, > pathMap = new HashMap<String, String>() {
+			
+		// }
 		for (String path : imagePaths) {
 			Image image = new Image(path);
 			ImageView imageView = new ImageView();
@@ -109,7 +125,7 @@ public class ContenedorCompras extends HBox {
 				if (path == imagePaths[1]) { // jinete
 					juego.seleccionarJinete();
 				} else if (path == imagePaths[2]) { // soldado
-					juego.seleccionarSodado();
+					juego.seleccionarSoldado();
 				} else if (path == imagePaths[3]) { // curandero
 					juego.seleccionarCurandero();
 				} else if (path == imagePaths[4]) { // catapulta
@@ -121,8 +137,8 @@ public class ContenedorCompras extends HBox {
 		Button btnPasar = new Button();
 		btnPasar.setText("Pasar Turno");
 		btnPasar.setOnAction((ActionEvent e) -> {
-			juego.getTurno().cambiarTurno();
-			refrescar();
+			boolean finished = juego.cambiarTurno();
+			refrescar(finished);
 		});
 		boxIzquierdo.getChildren().add(btnPasar);
 

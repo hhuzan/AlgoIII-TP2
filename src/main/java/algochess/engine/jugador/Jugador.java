@@ -8,6 +8,7 @@ import algochess.excepciones.JugadorPerdioException;
 import java.util.ArrayList;
 import java.util.List;
 import static algochess.engine.ConstantesUtils.DINERO_JUGADOR;
+import static algochess.engine.ConstantesUtils.MINIMO_COSTO;
 
 //public class Jugador extends Observable {
 public class Jugador {
@@ -51,21 +52,27 @@ public class Jugador {
 
     public void comprarEntidad(VendedorDeEntidades vendedor, Entidad entidad) {
         Dinero gasto = entidad.restarDinero(dinero);
- //       System.out.println("Voy a notificar a mis observers");
- //       setChanged();
- //       notifyObservers(gasto.getMonto());
-        gasto.getMonto();
         Entidad miEntidad = vendedor.venderEntidad(entidad, gasto);
         agregarEntidad(miEntidad);
     }
 
-	public Dinero getDinero() {
-		return dinero;
+    public boolean noPuedeComprar() {
+        System.out.println("Verificando si no puede comprar...");
+        return !dinero.superoMinimo(MINIMO_COSTO);
+    }
+
+	public String obtenerBalance() {
+		return dinero.toString();
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
+
+    public void setDinero(Entidad entidad) {
+        Dinero gasto = entidad.obtenerCosto();
+        dinero.set(gasto.getMonto());
+    }
 
 	
 }

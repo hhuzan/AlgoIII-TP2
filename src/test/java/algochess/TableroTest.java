@@ -3,7 +3,6 @@ package algochess;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import algochess.engine.juego.Turno;
 import org.junit.Test;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import static algochess.engine.ConstantesUtils.ESPADA_PODER;
@@ -39,9 +38,9 @@ public class TableroTest {
 		soldado1.setFaccion(Faccion.ALIADOS);
 		soldado2.setFaccion(Faccion.ALIADOS);
 		Posicion posicion = new Posicion(5, 6);
-		tablero.colocarEntidad(soldado1, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado1, posicion, new Jugador(Faccion.ALIADOS));
 		assertThrows(CasilleroOcupadoException.class, () -> {
-			tablero.colocarEntidad(soldado2, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+			tablero.colocarEntidad(soldado2, posicion, new Jugador(Faccion.ALIADOS));
 		});		
 	}
 
@@ -53,7 +52,7 @@ public class TableroTest {
 		soldado.setFaccion(Faccion.ENEMIGOS);
 		Posicion posicion = new Posicion(1, 1); // Posicion faccionAliada
 		assertThrows(ColocarEntidadException.class, () -> {
-			tablero.colocarEntidad(soldado, posicion, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+			tablero.colocarEntidad(soldado, posicion, new Jugador(Faccion.ALIADOS));
 		});
 	}
 
@@ -66,10 +65,10 @@ public class TableroTest {
 		Posicion posOrigen = new Posicion(1, 1);
 		Posicion posDestino = new Posicion(1, 2);
 
-		tablero.colocarEntidad(soldado, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-		tablero.moverEntidad(posOrigen, posDestino, Faccion.ALIADOS, new Turno(Faccion.ALIADOS));
+		tablero.colocarEntidad(soldado, posOrigen, new Jugador(Faccion.ALIADOS));
+		tablero.moverEntidad(posOrigen, posDestino, Faccion.ALIADOS);
 			assertThrows(CasilleroOcupadoException.class, () -> {
-				tablero.colocarEntidad(soldado, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+				tablero.colocarEntidad(soldado, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 			});	
 	}
 
@@ -82,10 +81,10 @@ public class TableroTest {
 		Posicion posOrigen = new Posicion(1, 1);
 		Posicion posDestino = new Posicion(1, 2);
 
-		tablero.colocarEntidad(soldado, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-		tablero.moverEntidad(posOrigen, posDestino, Faccion.ALIADOS, new Turno(Faccion.ALIADOS));
+		tablero.colocarEntidad(soldado, posOrigen,  new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.moverEntidad(posOrigen, posDestino, Faccion.ALIADOS);
 		assertThrows(CasilleroVacioException.class, () -> {
-			tablero.atacarCasillero(posOrigen ,posDestino, Faccion.ALIADOS, new Turno(Faccion.ALIADOS));
+			tablero.atacarCasillero(posOrigen ,posDestino, Faccion.ALIADOS);
 		});			
 	}
 
@@ -101,10 +100,10 @@ public class TableroTest {
 		Posicion posOrigen = new Posicion(1, 1);
 		Posicion posDestino = new Posicion(1, 2);
 
-		tablero.colocarEntidad(jineteOrigen, posOrigen, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-		tablero.colocarEntidad(soldadoDestino, posDestino, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jineteOrigen, posOrigen, new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldadoDestino, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		assertThrows(CasilleroOcupadoException.class, () -> {
-			tablero.moverEntidad(posOrigen, posDestino, Faccion.ALIADOS, new Turno(Faccion.ALIADOS));
+			tablero.moverEntidad(posOrigen, posDestino, Faccion.ALIADOS);
 		});
 	}
 
@@ -119,9 +118,9 @@ public class TableroTest {
 		Posicion posSoldado = new Posicion(9, 1);
 		Posicion posJinete = new Posicion(10, 1);
 
-		tablero.colocarEntidad(soldado, posSoldado, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-		tablero.colocarEntidad(jinete, posJinete, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-		tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS, new Turno(Faccion.ALIADOS));
+		tablero.colocarEntidad(soldado, posSoldado, new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posJinete, new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS);
 
 		Casillero casilleroDestino = tablero.obtenerCasillero(posJinete);
 
@@ -141,10 +140,10 @@ public class TableroTest {
 		Posicion posSoldado = new Posicion(5, 1);
 		Posicion posJinete = new Posicion(6, 1);
 
-		tablero.colocarEntidad(soldado, posSoldado, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-		tablero.colocarEntidad(jinete, posJinete, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado, posSoldado, new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posJinete, new Jugador(Faccion.ALIADOS, "Lucas"));
 		assertThrows(EntidadDeMismaFaccionException.class, () -> {
-			tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS, new Turno(Faccion.ALIADOS));
+			tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS);
 		});
 	}
 
@@ -164,14 +163,14 @@ public class TableroTest {
 		Posicion posSoldado = new Posicion(9, 1);
 		Posicion posJinete = new Posicion(10, 1);
 
-		tablero.colocarEntidad(soldado, posSoldado, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
-		tablero.colocarEntidad(jinete, posJinete, new Turno(Faccion.ALIADOS), new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado, posSoldado, new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(jinete, posJinete, new Jugador(Faccion.ALIADOS, "Lucas"));
 		for (int i = 0; i < 9; i++) {
-			tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS,new Turno(Faccion.ALIADOS));
+			tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS);
 		}
 
 		assertThrows(JugadorPerdioException.class, () -> {
-			tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS,new Turno(Faccion.ALIADOS));
+			tablero.atacarCasillero(posSoldado, posJinete, Faccion.ALIADOS);
 		});
 	}
 }
