@@ -17,6 +17,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.beans.binding.Bindings;
 
 public class VistaCasillero extends StackPane {
 	private final int fila;
@@ -26,6 +27,7 @@ public class VistaCasillero extends StackPane {
 	private ContenedorPrincipal contenedorPrincipal;
 	private VistaEntidad vistaEntidad;
 	private int tamanio;
+	private Background backgroundColor;
 
 	VistaCasillero(int fila, int columna, int tamanio, Casillero casillero, Juego juego,
 			ContenedorCompras contenedorCompras) {
@@ -53,7 +55,6 @@ public class VistaCasillero extends StackPane {
 
 		String nombreClase = vistaDict.get(casillero.getEntidad().getClass()); 
 		
-		System.out.println(nombreClase);
 		if(nombreClase != null) {
 			try {
 				Class<?> clase = Class.forName(nombreClase);
@@ -70,11 +71,13 @@ public class VistaCasillero extends StackPane {
 			ContenedorPrincipal contenedorPrincipal) {
 		super();
 
-		if (casillero.getFaccion() == Faccion.ALIADOS)
-			setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
-		else
-			setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+		if (casillero.getFaccion() == Faccion.ALIADOS) 
+			backgroundColor = new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY));
+		else 
+			backgroundColor = new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY));
+		setBackground(backgroundColor);
 
+		setStyle("-fx-border-color: transparent;");
 		setPrefSize(tamanio, tamanio);
 		this.juego = juego;
 		this.fila = fila;
@@ -92,7 +95,6 @@ public class VistaCasillero extends StackPane {
 
 		String nombreClase = vistaDict.get(casillero.getEntidad().getClass()); 
 		
-		System.out.println(nombreClase);
 		if(nombreClase != null) {
 			try {
 				Class<?> clase = Class.forName(nombreClase);
@@ -103,6 +105,16 @@ public class VistaCasillero extends StackPane {
 				System.out.println(e);
 			}
 		}
+
+		setOnMouseClicked(event -> {
+			requestFocus();
+		});
+
+		backgroundProperty().bind( Bindings
+            .when( focusedProperty() )
+            .then( new Background( new BackgroundFill( Color.RED, CornerRadii.EMPTY, Insets.EMPTY ) ))
+            .otherwise( backgroundColor  )
+        );
 	}
 
 	public int getFila() {

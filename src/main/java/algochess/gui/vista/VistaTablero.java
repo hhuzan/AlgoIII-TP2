@@ -13,7 +13,7 @@ public class VistaTablero {
 	public VistaTablero(Juego juego, ContenedorCompras contenedorPrincipal) {
 
 		GridPane paneTablero = new GridPane();
-		int tam_casillero = 25;
+		int tam_casillero = 30;
 		paneTablero.setPadding(new Insets(10, 10, 10, 10));
 		paneTablero.setVgap(3);
 		paneTablero.setHgap(3);
@@ -38,7 +38,7 @@ public class VistaTablero {
 	public VistaTablero(Juego juego, ContenedorPrincipal contenedorPrincipal) {
 
 		GridPane paneTablero = new GridPane();
-		int tam_casillero = 25;
+		int tam_casillero = 30;
 		paneTablero.setPadding(new Insets(10, 10, 10, 10));
 		paneTablero.setVgap(3);
 		paneTablero.setHgap(3);
