@@ -20,6 +20,7 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 	public SeleccionarCasilleroHandler(Juego juego, ContenedorCompras contenedorCompras, int fila, int columna) {
 		this.juego = juego;
 		this.contenedorCompras = contenedorCompras;
+		this.contenedorPrincipal = null;
 		this.fila = fila;
 		this.columna = columna;
 		this.exHandler = new ExceptionHandler();
@@ -27,6 +28,7 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 
 	public SeleccionarCasilleroHandler(Juego juego, ContenedorPrincipal contenedorPrincipal, int fila, int columna) {
 		this.juego = juego;
+		this.contenedorCompras = null;
 		this.contenedorPrincipal = contenedorPrincipal;
 		this.fila = fila;
 		this.columna = columna;
@@ -35,13 +37,22 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 	
     @Override
     public void handle(MouseEvent event) {
-    	try {
-			juego.comprarEntidad(fila, columna);
-    		contenedorCompras.refrescar();
-    	} catch(ColocarEntidadException ex) {
-    		exHandler.manageException(ex);
-    	} catch(DineroInsuficienteException ex) {
-    		exHandler.manageException(ex);
+    	if(contenedorCompras == null) {
+    		// Seleccion de casillero en desarrollo de juego
+    		// try {
+    		// 	juego.seleccionarEntidad(fila, columna);
+    		// 	contenedorPrincipal.refrescar();
+    		// } 
+    	} else if(contenedorPrincipal == null) {
+    		// Seleccion de casillero en fase inicial
+	    	try {
+				juego.comprarEntidad(fila, columna);
+	    		contenedorCompras.refrescar();
+	    	} catch(ColocarEntidadException ex) {
+	    		exHandler.manageException(ex);
+	    	} catch(DineroInsuficienteException ex) {
+	    		exHandler.manageException(ex);
+	    	}
     	}
     }
 }

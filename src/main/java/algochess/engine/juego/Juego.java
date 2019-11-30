@@ -11,17 +11,21 @@ import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.posicion.Posicion;
+import algochess.engine.juego.Fase;
+import algochess.excepciones.DineroInsuficienteException;
+import algochess.excepciones.ColocarEntidadException;
+
 
 public class Juego {
 
 	private Turno turno;
 	private Tablero tablero;
 	private VendedorDeEntidades vendedor;
-	private Entidad entidadSeleccionada;
 	private Jugador jugadorAliado;
 	private Jugador jugadorEnemigo;
 	private Jugador jugadorActual = null;
 	private Faccion faccionActual = null;
+	private Fase fase;
 
 	public Juego(String nombreAliado, String nombreEnemigo) {
 		tablero = new Tablero();
@@ -31,47 +35,44 @@ public class Juego {
 		vendedor = new VendedorDeEntidades();
 		jugadorActual = turno.random();
 		faccionActual = turno.popFaccion();
+		fase = new Inicial();
 	}
 
-	public void seleccionarSoldado() {
-		entidadSeleccionada = new Soldado(jugadorActual, faccionActual);
+	public void seleccionarEntidad(Entidad entidad) {
+		fase.seleccionarEntidad(jugadorActual, faccionActual, entidad);
 	}
 
-	public void seleccionarJinete() {
-		entidadSeleccionada = new Jinete(jugadorActual, faccionActual);
-	}
-
-	public void seleccionarCatapulta() {
-		entidadSeleccionada = new Catapulta(jugadorActual, faccionActual);
-	}
-
-	public void seleccionarCurandero() {
-		entidadSeleccionada = new Curandero(jugadorActual, faccionActual);
-	}
+	// public void seleccionarEntidad(int fila, int columna) {
+	// 	 tablero.seleccionarEntidad(fila, columna, this);
+	// }
 
 	public void comprarEntidad(int fila, int columna) {
 		try {
 			Posicion posicion = new Posicion(fila, columna);
-			jugadorActual.comprarEntidad(vendedor, entidadSeleccionada);
-			System.out.println("Compraada la pieza");
-			tablero.colocarEntidad(entidadSeleccionada, posicion, jugadorActual);
-			System.out.println("Colocada la entidad");
+			System.out.println("Comprando entidad...");
+			fase.comprarEntidad(jugadorActual, vendedor);
+			System.out.println("Colocando entidad...");
+			fase.colocarEntidad(tablero, jugadorActual, posicion);
+
 			jugadorActual = turno.cambiarTurno(jugadorActual);
 			faccionActual = turno.popFaccion();
 			System.out.println("Cambiado el turno");
-		} catch (Exception ex) {
+		} catch (ColocarEntidadException ex) {
 			System.out.println("Seteando dinero a jugador porque no pudo colocarse la pieza");
-			jugadorActual.setDinero(entidadSeleccionada);
+			fase.devolverDinero(jugadorActual);
+			throw ex;
+		} catch (DineroInsuficienteException ex) {
 			throw ex;
 		}
 	}
 
 	public boolean cambiarTurno() {
-		System.out.println("Cambiando turno...");
-		System.out.println(jugadorAliado);
-		System.out.println(jugadorEnemigo);
-		if(jugadorAliado.noPuedeComprar() && jugadorEnemigo.noPuedeComprar())
+		boolean faseTerminada = fase.verificarFinDeFase(jugadorAliado, jugadorEnemigo);
+
+		if(faseTerminada) {
+			fase = new Final();
 			return true;
+		}
 
 		jugadorActual = turno.cambiarTurno(jugadorActual);
 		faccionActual = turno.popFaccion();

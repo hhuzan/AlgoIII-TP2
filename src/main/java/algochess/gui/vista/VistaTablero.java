@@ -28,10 +28,7 @@ public class VistaTablero {
 							casilleros[fila][columna], juego, contenedorPrincipal);
 					GridPane.setConstraints(casillero, columna, fila);
 					paneTablero.getChildren().add(casillero);
-
-					color = fila < (casilleros.length / 2) ? "LIGHTPINK" : "AQUAMARINE";
-					paneTablero.setStyle(	"-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
-					+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + color + ";");
+					
 				}
 			}
 		this.paneTablero = paneTablero;

@@ -22,6 +22,11 @@ import javafx.event.ActionEvent;
 import algochess.gui.vista.VistaTablero;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
+import algochess.engine.entidades.Soldado;
+import algochess.engine.entidades.Jinete;
+import algochess.engine.entidades.Catapulta;
+import algochess.engine.entidades.Curandero;
+
 
 public class ContenedorCompras extends HBox {
 
@@ -111,13 +116,13 @@ public class ContenedorCompras extends HBox {
 			toggleButton.setPadding(new Insets(-1, -1, -1, -1));
 			toggleButton.setOnAction((ActionEvent e) -> {
 				if (path == imagePaths[1]) { // jinete
-					juego.seleccionarJinete();
+					juego.seleccionarEntidad(new Jinete());
 				} else if (path == imagePaths[2]) { // soldado
-					juego.seleccionarSoldado();
+					juego.seleccionarEntidad(new Soldado());
 				} else if (path == imagePaths[3]) { // curandero
-					juego.seleccionarCurandero();
+					juego.seleccionarEntidad(new Curandero());
 				} else if (path == imagePaths[4]) { // catapulta
-					juego.seleccionarCatapulta();
+					juego.seleccionarEntidad(new Catapulta());
 				}
 			});
 			boxIzquierdo.getChildren().add(toggleButton);

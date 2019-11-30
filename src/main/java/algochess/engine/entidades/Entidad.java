@@ -54,6 +54,10 @@ public abstract class Entidad {
         faccion = faccion_;
     }
 
+    public void setPropietario(Jugador jugador) {
+        propietario = jugador;
+    }
+
     public Dinero getCosto() {
         return costo;
     }
