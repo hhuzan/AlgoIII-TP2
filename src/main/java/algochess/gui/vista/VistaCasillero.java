@@ -117,7 +117,8 @@ public class VistaCasillero extends StackPane {
 				System.out.println("Seleccionamos la entidad tocada");
 	    		try {
 	    			juego.seleccionarEntidad(fila, columna);
-	    			contenedorPrincipal.refrescar(fila, columna);
+	    			entidad = juego.obtenerEntidadSeleccionada();
+	    			contenedorPrincipal.datosEntidad(entidad, fila, columna);
 	    			System.out.println("Finalizamos de refrescar");
 	    		} catch(Exception ex) {
 	    			System.out.println(ex);

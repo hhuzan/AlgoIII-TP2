@@ -32,6 +32,9 @@ import algochess.gui.controller.AtacarCasilleroHandler;
 import algochess.gui.controller.CurarCasilleroHandler;
 import algochess.gui.controller.MoverCasilleroHandler;
 import javafx.event.EventHandler;
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.ArrayList;
 
 public class ContenedorPrincipal extends HBox {
 
@@ -64,11 +67,11 @@ public class ContenedorPrincipal extends HBox {
 		setBackground(new Background(imagenDeFondo));
 	}
 
-	public void refrescar(int fila, int columna) {
+	public void datosEntidad(Entidad entidad, int fila, int columna) {
 		this.filaOrigen = fila;
 		this.columnaOrigen = columna;
 		this.getChildren().clear();
-		armarColumnaIzquierda();
+		armarColumnaIzquierda(entidad);
 		armarColumnaDerecha();
 		VistaTablero tableroVista = new VistaTablero(juego, this);
 		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
@@ -159,4 +162,76 @@ public class ContenedorPrincipal extends HBox {
 		boxIzquierdo.getChildren().add(btnPasar);
 
 	}
+
+	private void armarColumnaIzquierda(Entidad entidad) {
+		boxIzquierdo = new VBox(12);
+		boxIzquierdo.setAlignment(Pos.CENTER);
+
+		boxIzquierdo.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + 
+				colorFaccion.get(juego.getFaccionActual()) + ";");
+
+		List<Field> parentFields = new ArrayList<Field>();
+		parentFields.add(this.getField(Entidad.class, "vida"));
+		parentFields.add(this.getField(Entidad.class, "faccion"));
+		parentFields.add(this.getField(Entidad.class, "costo"));
+		parentFields.add(this.getField(Entidad.class, "posicion"));
+		parentFields.add(this.getField(Entidad.class, "propietario"));
+		
+		for (Field parentField : parentFields) {
+			try {
+				System.out.println(parentField.getName());
+				parentField.setAccessible(true);
+				Object value = parentField.get(entidad);
+				if(value != null) {
+					Label label = new Label(parentField.getName() + ": " +  value);
+					boxIzquierdo.getChildren().add(label);
+					System.out.println(parentField.getName() + "=" + value);
+				}
+			} catch(Exception ex) {
+				System.out.println(ex);
+			}
+		}
+		for (Field field : entidad.getClass().getDeclaredFields()) {
+			try {
+				System.out.println(field.getName());
+				field.setAccessible(true);
+				Object value = field.get(entidad);
+				if(value != null) {
+					Label label = new Label(field.getName() + value);
+					boxIzquierdo.getChildren().add(label);
+					System.out.println(field.getName() + "=" + value);
+				}
+			} catch(Exception ex) {
+				System.out.println(ex);
+			}
+		}
+
+		Button btnPasar = new Button();
+
+		btnPasar.setText("Pasar Turno");
+		btnPasar.setOnAction((ActionEvent e) -> {
+			boolean finished = juego.cambiarTurno();
+			if(finished) {
+				System.out.println("Termina el juego");
+			}
+
+			refrescar();
+		});
+		
+		boxIzquierdo.getChildren().add(btnPasar);
+
+	}
+
+	private Field getField(Class<?> clazz, String name) {
+	    Field field = null;
+	    while (clazz != null && field == null) {
+	        try {
+	            field = clazz.getDeclaredField(name);
+	        } catch (Exception e) {
+	        }
+	        clazz = clazz.getSuperclass();
+	    }
+	    return field;
+}
 }
