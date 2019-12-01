@@ -14,7 +14,7 @@ public class VistaJinete implements VistaEntidad {
 			Faccion.ENEMIGOS, 	"images/CaballoBlue.png"
 		);
 		Image image;
-		image = new Image("images/CaballoPink.png");
+		image = new Image(faccionImage.get(faccion));
 		int tamanio= vistaCasillero.getTamanio();
 		Rectangle rectangulo = new Rectangle(tamanio, tamanio);
 		rectangulo.setFill(new ImagePattern(image));

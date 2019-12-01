@@ -138,6 +138,8 @@ public class ContenedorCompras extends HBox {
 
 				stage.setScene(escenaPrincipal);
 			}
+
+			refrescar();
 		});
 		boxIzquierdo.getChildren().add(btnPasar);
 
