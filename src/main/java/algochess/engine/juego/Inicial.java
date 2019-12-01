@@ -54,6 +54,9 @@ public class Inicial implements Fase {
 	public void liberarEntidadSeleccionada() {
 		entidadSeleccionada = null;
 	}
+
+	public void atacar(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion) {
+	}
 	// public boolean cambiarTurno() {
 	// 	System.out.println("Cambiando turno...");
 	// 	System.out.println(jugadorAliado);

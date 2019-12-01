@@ -84,6 +84,12 @@ public class Juego {
 		return false;
 	}
 
+	public void atacar(int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
+		Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
+		Posicion posicionDestino = new Posicion(filaDestino, colDestino);
+		fase.atacar(tablero, posicionOrigen, posicionDestino, faccionActual);
+	}
+
 	public Tablero getTablero() {
 		return tablero;
 	}

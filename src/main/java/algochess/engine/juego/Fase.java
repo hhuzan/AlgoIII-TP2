@@ -23,6 +23,7 @@ public interface Fase {
 	boolean verificarFinDeFase(Jugador jugadorAliado, Jugador jugadorEnemigo);
 	Entidad obtenerEntidadSeleccionada();
 	void liberarEntidadSeleccionada();
+	void atacar(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion);
 	// boolean cambiarTurno();
 
 }

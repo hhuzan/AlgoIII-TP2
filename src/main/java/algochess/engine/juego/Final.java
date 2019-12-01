@@ -43,6 +43,11 @@ public class Final implements Fase {
 	public void liberarEntidadSeleccionada() {
 		entidadSeleccionada = null;
 	}
+
+	public void atacar(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion) {
+		tablero.atacarCasillero(posOrigen, posDestino, faccion);
+	}
+
 	// public boolean cambiarTurno() {
 	// 	if(jugadorAliado.noPuedeComprar() && jugadorEnemigo.noPuedeComprar())
 	// 		return true;

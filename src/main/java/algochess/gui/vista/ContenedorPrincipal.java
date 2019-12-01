@@ -28,7 +28,10 @@ import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.entidades.Curandero;
 import algochess.engine.entidades.Soldado;
-
+import algochess.gui.controller.AtacarCasilleroHandler;
+import algochess.gui.controller.CurarCasilleroHandler;
+import algochess.gui.controller.MoverCasilleroHandler;
+import javafx.event.EventHandler;
 
 public class ContenedorPrincipal extends HBox {
 
@@ -39,6 +42,10 @@ public class ContenedorPrincipal extends HBox {
 	private VBox boxIzquierdo;
 	private VBox boxDerecho;
 	private HashMap<Faccion, String> colorFaccion = new HashMap<Faccion, String>();
+	private int filaOrigen;
+	private int filaDestino;
+	private int columnaOrigen;
+	private int columnaDestino;		
 
 	public ContenedorPrincipal(Stage stage, Juego juego) {
 		super();
@@ -57,6 +64,16 @@ public class ContenedorPrincipal extends HBox {
 		setBackground(new Background(imagenDeFondo));
 	}
 
+	public void refrescar(int fila, int columna) {
+		this.filaOrigen = fila;
+		this.columnaOrigen = columna;
+		this.getChildren().clear();
+		armarColumnaIzquierda();
+		armarColumnaDerecha();
+		VistaTablero tableroVista = new VistaTablero(juego, this);
+		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
+	}
+
 	public void refrescar() {
 		this.getChildren().clear();
 		armarColumnaIzquierda();
@@ -65,8 +82,9 @@ public class ContenedorPrincipal extends HBox {
 		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
 	}
 
-	public void refrescar(Entidad entidad) {
-		
+	public void refrescar(Entidad entidad, int fila, int columna) {
+		this.filaDestino = fila;
+		this.columnaDestino = columna;
 		Map<Class, String[]> optionDict = Map.of(
 			 Catapulta.class, 	new String[]{"Atacar"},
 			 Jinete.class, 		new String[]{"Atacar", "Mover"},
@@ -97,10 +115,18 @@ public class ContenedorPrincipal extends HBox {
 	private void armarColumnaDerecha(String[] options) {
 		boxDerecho = new VBox(30);
 		boxDerecho.setAlignment(Pos.CENTER);
-		
+
+		Map<String, EventHandler<ActionEvent>> optionDict = Map.of(
+			 "Atacar", 	new AtacarCasilleroHandler(this, juego, filaOrigen, columnaOrigen, filaDestino, columnaDestino),
+			 "Mover", 	new MoverCasilleroHandler(juego, filaOrigen, columnaOrigen, filaDestino, columnaDestino),
+			 "Curar",	new CurarCasilleroHandler(juego, filaOrigen, columnaOrigen, filaDestino, columnaDestino)
+		);	
+
+
 		for (String option : options) {
 			Button button = new Button(option);
-			boxDerecho.getChildren().add(button);		
+			button.setOnAction(optionDict.get(option));
+			boxDerecho.getChildren().add(button);	
 		}
 
 		boxDerecho.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
