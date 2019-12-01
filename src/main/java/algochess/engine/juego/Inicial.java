@@ -26,7 +26,6 @@ public class Inicial implements Fase {
 	public void comprarEntidad(Jugador jugador, VendedorDeEntidades vendedor) {
 		try {
 			jugador.comprarEntidad(vendedor, entidadSeleccionada);
-			System.out.println("Comprada la pieza");
 		} catch (Exception ex) {
 			throw ex;
 		}
@@ -35,7 +34,6 @@ public class Inicial implements Fase {
 	public void colocarEntidad(Tablero tablero, Jugador jugador, Posicion posicion) {
 		try {
 			tablero.colocarEntidad(entidadSeleccionada, posicion, jugador);
-			System.out.println("Colocada la entidad");
 		} catch (Exception ex) {
 			throw ex;
 		}
@@ -49,6 +47,13 @@ public class Inicial implements Fase {
 		return (jugadorAliado.noPuedeComprar() && jugadorEnemigo.noPuedeComprar());
 	}
 
+	public Entidad obtenerEntidadSeleccionada() {
+		return entidadSeleccionada;
+	}
+
+	public void liberarEntidadSeleccionada() {
+		entidadSeleccionada = null;
+	}
 	// public boolean cambiarTurno() {
 	// 	System.out.println("Cambiando turno...");
 	// 	System.out.println(jugadorAliado);

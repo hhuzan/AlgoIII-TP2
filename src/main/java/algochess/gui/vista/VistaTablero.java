@@ -10,7 +10,7 @@ import algochess.gui.vista.VistaCasillero;
 public class VistaTablero {
 	private GridPane paneTablero;
 
-	public VistaTablero(Juego juego, ContenedorCompras contenedorPrincipal) {
+	public VistaTablero(Juego juego, ContenedorCompras contenedorCompras) {
 
 		GridPane paneTablero = new GridPane();
 		int tam_casillero = 30;
@@ -19,13 +19,12 @@ public class VistaTablero {
 		paneTablero.setHgap(3);
 
 		Casillero[][] casilleros = juego.getTablero().getCasilleros();
-		String color;
 
 		for (int fila = 0; fila < casilleros.length; fila++)
 			for (int columna = 0; columna < casilleros[fila].length ; columna++) {
 				{
 					VistaCasillero casillero = new VistaCasillero(fila, columna, tam_casillero,
-							casilleros[fila][columna], juego, contenedorPrincipal);
+							casilleros[fila][columna], juego, contenedorCompras);
 					GridPane.setConstraints(casillero, columna, fila);
 					paneTablero.getChildren().add(casillero);
 					
@@ -44,7 +43,6 @@ public class VistaTablero {
 		paneTablero.setHgap(3);
 
 		Casillero[][] casilleros = juego.getTablero().getCasilleros();
-		String color;
 
 		for (int fila = 0; fila < casilleros.length; fila++)
 			for (int columna = 0; columna < casilleros[fila].length ; columna++) {
@@ -54,9 +52,6 @@ public class VistaTablero {
 					GridPane.setConstraints(casillero, columna, fila);
 					paneTablero.getChildren().add(casillero);
 
-					color = fila < (casilleros.length / 2) ? "LIGHTPINK" : "AQUAMARINE";
-					paneTablero.setStyle(	"-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
-					+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + color + ";");
 				}
 			}
 		this.paneTablero = paneTablero;

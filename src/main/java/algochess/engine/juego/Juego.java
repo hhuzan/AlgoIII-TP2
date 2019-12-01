@@ -43,22 +43,27 @@ public class Juego {
 	}
 
 	public void seleccionarEntidad(int fila, int columna) {
+		System.out.println("Seleccionando entidad en juego...");
 		 tablero.seleccionarEntidad(fila, columna, this);
+	}
+
+	public Entidad obtenerEntidadSeleccionada() {
+		return fase.obtenerEntidadSeleccionada();
+	}
+
+	public void liberarEntidadSeleccionada() {
+		fase.liberarEntidadSeleccionada();
 	}
 
 	public void comprarEntidad(int fila, int columna) {
 		try {
 			Posicion posicion = new Posicion(fila, columna);
-			System.out.println("Comprando entidad...");
 			fase.comprarEntidad(jugadorActual, vendedor);
-			System.out.println("Colocando entidad...");
 			fase.colocarEntidad(tablero, jugadorActual, posicion);
 
 			jugadorActual = turno.cambiarTurno(jugadorActual);
 			faccionActual = turno.popFaccion();
-			System.out.println("Cambiado el turno");
 		} catch (ColocarEntidadException ex) {
-			System.out.println("Seteando dinero a jugador porque no pudo colocarse la pieza");
 			fase.devolverDinero(jugadorActual);
 			throw ex;
 		} catch (DineroInsuficienteException ex) {

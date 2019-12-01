@@ -34,10 +34,6 @@ public class Turno {
 
 	public Jugador cambiarTurno(Jugador jugador) {
 		faccionActual = (faccionActual == Faccion.ALIADOS) ? Faccion.ENEMIGOS : Faccion.ALIADOS;
-		System.out.println("Cambiando turno");
-		System.out.println(jugador);
-		System.out.println(jugadores.get(0));
-		System.out.println(jugadores.get(1));
 		return jugadores.stream().filter(x -> jugador != x).findFirst().get();
 	}
 

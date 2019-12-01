@@ -1,5 +1,6 @@
 package algochess.gui.vista;
 
+import java.util.Map;
 import java.util.HashMap;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,6 +23,12 @@ import javafx.event.ActionEvent;
 import algochess.gui.vista.VistaTablero;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
+import algochess.engine.entidades.Entidad;
+import algochess.engine.entidades.Jinete;
+import algochess.engine.entidades.Catapulta;
+import algochess.engine.entidades.Curandero;
+import algochess.engine.entidades.Soldado;
+
 
 public class ContenedorPrincipal extends HBox {
 
@@ -58,6 +65,23 @@ public class ContenedorPrincipal extends HBox {
 		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
 	}
 
+	public void refrescar(Entidad entidad) {
+		
+		Map<Class, String[]> optionDict = Map.of(
+			 Catapulta.class, 	new String[]{"Atacar"},
+			 Jinete.class, 		new String[]{"Atacar", "Mover"},
+			 Curandero.class, 	new String[]{"Curar", "Mover"},
+			 Soldado.class, 	new String[]{"Atacar", "Mover"}
+		);
+
+		String[] options = optionDict.get(entidad.getClass());
+		this.getChildren().clear();
+		armarColumnaIzquierda();
+		armarColumnaDerecha(options);
+		VistaTablero tableroVista = new VistaTablero(juego, this);
+		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
+	}
+
 	private void armarColumnaDerecha() {
 		boxDerecho = new VBox(30);
 		boxDerecho.setAlignment(Pos.CENTER);
@@ -70,6 +94,22 @@ public class ContenedorPrincipal extends HBox {
 
 	}
 
+	private void armarColumnaDerecha(String[] options) {
+		boxDerecho = new VBox(30);
+		boxDerecho.setAlignment(Pos.CENTER);
+		
+		for (String option : options) {
+			Button button = new Button(option);
+			boxDerecho.getChildren().add(button);		
+		}
+
+		boxDerecho.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + 
+				colorFaccion.get(juego.getFaccionActual()) + ";");
+
+
+	}
+
 	private void armarColumnaIzquierda() {
 		boxIzquierdo = new VBox(12);
 		boxIzquierdo.setAlignment(Pos.CENTER);
@@ -79,6 +119,7 @@ public class ContenedorPrincipal extends HBox {
 				colorFaccion.get(juego.getFaccionActual()) + ";");
 
 		Button btnPasar = new Button();
+
 		btnPasar.setText("Pasar Turno");
 		btnPasar.setOnAction((ActionEvent e) -> {
 			boolean finished = juego.cambiarTurno();
@@ -88,6 +129,7 @@ public class ContenedorPrincipal extends HBox {
 
 			refrescar();
 		});
+		
 		boxIzquierdo.getChildren().add(btnPasar);
 
 	}

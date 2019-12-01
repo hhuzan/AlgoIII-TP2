@@ -29,8 +29,6 @@ public class Dinero {
     }
 
     public boolean superoMinimo(int minimo) {
-        System.out.println("Viendo si supera el minimo...");
-        System.out.println(monto >= minimo);
         return monto >= minimo;
     }
 

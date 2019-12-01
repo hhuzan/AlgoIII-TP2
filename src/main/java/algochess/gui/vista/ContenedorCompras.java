@@ -132,13 +132,12 @@ public class ContenedorCompras extends HBox {
 		btnPasar.setOnAction((ActionEvent e) -> {
 			boolean finished = juego.cambiarTurno();
 			if(finished) {
+				System.out.println("------------------ FIN COMPRAS ------------------");
 				ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
 				Scene escenaPrincipal = new Scene(contenedorPrincipal, 1120, 660);
 
 				stage.setScene(escenaPrincipal);
 			}
-
-			refrescar();
 		});
 		boxIzquierdo.getChildren().add(btnPasar);
 

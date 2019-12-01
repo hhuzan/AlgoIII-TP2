@@ -2,60 +2,44 @@ package algochess.gui.controller;
 
 import algochess.engine.juego.Juego;
 import algochess.gui.vista.ContenedorCompras;
+import algochess.gui.vista.VistaCasillero;
 import algochess.gui.vista.ContenedorPrincipal;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import algochess.gui.ExceptionHandler;
 import algochess.excepciones.ColocarEntidadException;
 import algochess.excepciones.DineroInsuficienteException;
+import algochess.engine.entidades.Entidad;
 
 public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 	private Juego juego;
 	private ContenedorCompras contenedorCompras;
-	private ContenedorPrincipal contenedorPrincipal;
 	private int fila;
 	private int columna;
 	private ExceptionHandler exHandler;
+	private boolean entidadSeleccionada;
+	private VistaCasillero casillero;
 
 	public SeleccionarCasilleroHandler(Juego juego, ContenedorCompras contenedorCompras, int fila, int columna) {
 		this.juego = juego;
 		this.contenedorCompras = contenedorCompras;
-		this.contenedorPrincipal = null;
 		this.fila = fila;
 		this.columna = columna;
 		this.exHandler = new ExceptionHandler();
+		this.entidadSeleccionada = false;
 	}
 
-	public SeleccionarCasilleroHandler(Juego juego, ContenedorPrincipal contenedorPrincipal, int fila, int columna) {
-		this.juego = juego;
-		this.contenedorCompras = null;
-		this.contenedorPrincipal = contenedorPrincipal;
-		this.fila = fila;
-		this.columna = columna;
-		this.exHandler = new ExceptionHandler();
-	}
-	
-	// TODO: Ver como haces dos events separados
+	// TODO: Ver como haces dos events separados y refactor 
     @Override
     public void handle(MouseEvent event) {
-    	if(contenedorCompras == null) {
-    		//Seleccion de casillero en desarrollo de juego
-    		try {
-    			juego.seleccionarEntidad(fila, columna);
-    			contenedorPrincipal.refrescar();
-    		} catch(Exception ex) {
-    			System.out.println(ex);
-    		}
-    	} else if(contenedorPrincipal == null) {
-    		// Seleccion de casillero en fase inicial
-	    	try {
-				juego.comprarEntidad(fila, columna);
-	    		contenedorCompras.refrescar();
-	    	} catch(ColocarEntidadException ex) {
-	    		exHandler.manageException(ex);
-	    	} catch(DineroInsuficienteException ex) {
-	    		exHandler.manageException(ex);
-	    	}
+		System.out.println("Handler de contenedor compras");	
+    	try {
+			juego.comprarEntidad(fila, columna);
+    		contenedorCompras.refrescar();
+    	} catch(ColocarEntidadException ex) {
+    		exHandler.manageException(ex);
+    	} catch(DineroInsuficienteException ex) {
+    		exHandler.manageException(ex);
     	}
     }
 }

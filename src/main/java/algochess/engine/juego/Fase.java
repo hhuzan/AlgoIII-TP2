@@ -21,6 +21,8 @@ public interface Fase {
 	void colocarEntidad(Tablero tablero, Jugador jugador, Posicion posicion);
 	void devolverDinero(Jugador jugador);
 	boolean verificarFinDeFase(Jugador jugadorAliado, Jugador jugadorEnemigo);
+	Entidad obtenerEntidadSeleccionada();
+	void liberarEntidadSeleccionada();
 	// boolean cambiarTurno();
 
 }

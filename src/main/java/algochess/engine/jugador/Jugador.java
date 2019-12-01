@@ -57,7 +57,6 @@ public class Jugador {
     }
 
     public boolean noPuedeComprar() {
-        System.out.println("Verificando si no puede comprar...");
         return !dinero.superoMinimo(MINIMO_COSTO);
     }
 
