@@ -14,7 +14,6 @@ public class BotonProximaEscenaHandler implements EventHandler<ActionEvent> {
     public BotonProximaEscenaHandler(Stage stage, Scene proximaEscena) {
         this.stage = stage;
         this.proximaEscena = proximaEscena;
-
     }
 
     @Override
