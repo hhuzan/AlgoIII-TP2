@@ -94,6 +94,8 @@ public class AlgoChess extends Application {
             botonInstrucciones.setOnMouseEntered(botonMusicaOverButton);
             botonInstrucciones.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
+
+            botonSalir.setOnAction(new BotonSalirHandler());
             botonSalir.setOnMouseEntered(botonMusicaOverButton);
             botonSalir.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
