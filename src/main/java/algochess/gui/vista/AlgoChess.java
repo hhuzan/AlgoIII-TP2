@@ -1,8 +1,6 @@
 package algochess.gui.vista;
 
-import algochess.gui.controller.BotonPausarMusicaHandler;
-import algochess.gui.controller.BotonPlayMusicaHandler;
-import algochess.gui.controller.BotonStopMusicaHandler;
+import algochess.gui.controller.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import algochess.gui.controller.BotonProximaEscenaHandler;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
@@ -29,6 +26,12 @@ public class AlgoChess extends Application {
     String playTheme = "sounds/15_crytalscar_phase2_loop.wav";
     Media soundPlay = new Media(getClass().getClassLoader()
             .getResource(playTheme).toString());
+
+    String soundOnMouseEntered = "sounds/68_ui-generic_button_01.wav";
+    Media soundPlayOnMouseEntered = new Media(getClass().getClassLoader()
+            .getResource(soundOnMouseEntered).toString());
+
+    MediaPlayer mediaPlayerOnButton = new MediaPlayer(soundPlayOnMouseEntered);
 
     MediaPlayer mediaPlayer2 = new MediaPlayer(soundPlay);
 
@@ -85,23 +88,40 @@ public class AlgoChess extends Application {
             Scene proximaEscena = crearEscenaEleccionJugadores(stage, mediaPlayer, mediaPlayer2);
 
             BotonProximaEscenaHandler botonEntrarHandler = new BotonProximaEscenaHandler(stage, proximaEscena);
+            MusicaOverButtonHandler botonMusicaOverButton = new MusicaOverButtonHandler(mediaPlayerOnButton);
+            MusicaOverButtonOnMouseExited botonMusicaOverButtonOnMouseExited = new MusicaOverButtonOnMouseExited(mediaPlayerOnButton);
+
+            botonInstrucciones.setOnMouseEntered(botonMusicaOverButton);
+            botonInstrucciones.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
+
+            botonSalir.setOnMouseEntered(botonMusicaOverButton);
+            botonSalir.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
+
             botonEntrar.setOnAction(botonEntrarHandler);
+            botonEntrar.setOnMouseEntered(botonMusicaOverButton);
+            botonEntrar.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
             BotonPlayMusicaHandler botonPlayMusicaHandler = new BotonPlayMusicaHandler(mediaPlayer);
             botonPlay.setOnAction(botonPlayMusicaHandler);
+            botonPlay.setOnMouseEntered(botonMusicaOverButton);
+            botonPlay.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
             BotonStopMusicaHandler botonStopMusicaHandler = new BotonStopMusicaHandler(mediaPlayer);
             botonStop.setOnAction(botonStopMusicaHandler);
+            botonStop.setOnMouseEntered(botonMusicaOverButton);
+            botonStop.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
             BotonPausarMusicaHandler botonPausarMusicaHandler = new BotonPausarMusicaHandler(mediaPlayer);
             botonPause.setOnAction(botonPausarMusicaHandler);
+            botonPause.setOnMouseEntered(botonMusicaOverButton);
+            botonPause.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
             Image fondo = new Image("images/chess.png");
             BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
                     BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));
 
            musicContainter.getChildren().addAll(botonPlay, botonPause, botonStop);
-           welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir);
+           welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir, musicContainter);
 
     		welcomeContainer.setBackground(new Background(imagenDeFondo));
 
