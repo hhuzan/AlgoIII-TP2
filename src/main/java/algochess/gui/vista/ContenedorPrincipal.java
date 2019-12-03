@@ -179,7 +179,7 @@ public class ContenedorPrincipal extends HBox {
 		parentFields.add(this.getField(Entidad.class, "propietario"));
 		
 		List<String> careAttributes = new ArrayList<String>();
-		careAttributes.add("vida");
+		careAttributes.add("puntosdevida");
 		careAttributes.add("fila");
 		careAttributes.add("columna");
 		careAttributes.add("nombre");
@@ -189,7 +189,6 @@ public class ContenedorPrincipal extends HBox {
 		
 		for (Field parentField : parentFields) {
 			try {
-				System.out.println("HERE123123");
 				System.out.println(parentField.getName());
 				parentField.setAccessible(true);
 				Object value = parentField.get(entidad);
