@@ -12,6 +12,8 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import algochess.gui.controller.BotonComenzarJuegoHandler;
 
@@ -19,7 +21,8 @@ public class ContenedorJugadores extends VBox {
 //	Juego juego;
 	private Stage stage;
 
-	public ContenedorJugadores(Stage stage) {
+
+	public ContenedorJugadores(Stage stage, MediaPlayer player, MediaPlayer mediaPlayer) {
 
 		super();
 
@@ -59,7 +62,7 @@ public class ContenedorJugadores extends VBox {
 
 
 		BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage,
-				nombreJugador_1, nombreJugador_2);
+				nombreJugador_1, nombreJugador_2, player, mediaPlayer);
 		botonAceptar.setOnAction(botonAceptarHandler);
 
 		jugadorUnoContainer.getChildren().addAll(jugadorUnoBackgroundView, nombreJugador_1);

@@ -3,6 +3,7 @@ package algochess.gui.controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class BotonProximaEscenaHandler implements EventHandler<ActionEvent> {
@@ -13,6 +14,7 @@ public class BotonProximaEscenaHandler implements EventHandler<ActionEvent> {
     public BotonProximaEscenaHandler(Stage stage, Scene proximaEscena) {
         this.stage = stage;
         this.proximaEscena = proximaEscena;
+
     }
 
     @Override
