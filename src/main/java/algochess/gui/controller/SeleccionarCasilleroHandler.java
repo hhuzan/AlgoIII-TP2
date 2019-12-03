@@ -36,9 +36,7 @@ public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
     	try {
 			juego.comprarEntidad(fila, columna);
     		contenedorCompras.refrescar();
-    	} catch(ColocarEntidadException ex) {
-    		exHandler.manageException(ex);
-    	} catch(DineroInsuficienteException ex) {
+    	} catch (Exception ex) {
     		exHandler.manageException(ex);
     	}
     }

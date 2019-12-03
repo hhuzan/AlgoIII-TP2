@@ -14,7 +14,7 @@ import algochess.engine.posicion.Posicion;
 import algochess.engine.juego.Fase;
 import algochess.excepciones.DineroInsuficienteException;
 import algochess.excepciones.ColocarEntidadException;
-
+import algochess.excepciones.CasilleroOcupadoException;
 
 public class Juego {
 
@@ -67,6 +67,9 @@ public class Juego {
 			fase.devolverDinero(jugadorActual);
 			throw ex;
 		} catch (DineroInsuficienteException ex) {
+			throw ex;
+		} catch (CasilleroOcupadoException ex) {
+			fase.devolverDinero(jugadorActual);
 			throw ex;
 		}
 	}

@@ -12,34 +12,10 @@ import javafx.scene.control.ButtonType;
 
 public class ExceptionHandler  {
 
-    public void manageException(CasilleroOcupadoException ex) {
-
-    }
-
-    public void manageException(CasilleroVacioException ex) {
-        
-    }
-
-    public void manageException(ColocarEntidadException ex) {
+    public void manageException(Exception ex) {
         System.out.println(ex);
         Alert alert = new Alert(AlertType.ERROR, ex.toString(), ButtonType.OK);
         alert.setHeaderText(null);
         alert.showAndWait();
-    }
-
-    public void manageException(DineroInsuficienteException ex) {
-        System.out.println(ex);
-        Alert alert = new Alert(AlertType.ERROR, ex.toString(), ButtonType.OK);
-        alert.setHeaderText(null);
-        alert.showAndWait();
-        
-    }
-
-    public void manageException(EntidadDeMismaFaccionException ex) {
-        
-    }
-
-    public void manageException(JugadorPerdioException ex) {
-        
     }
 }

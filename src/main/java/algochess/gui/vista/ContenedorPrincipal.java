@@ -226,7 +226,6 @@ public class ContenedorPrincipal extends HBox {
 		
 		for (Field field : entidad.getClass().getDeclaredFields()) {
 			try {
-				System.out.println("HERE");
 				System.out.println(field.getName());
 				field.setAccessible(true);
 				Object value = field.get(entidad);
@@ -241,7 +240,6 @@ public class ContenedorPrincipal extends HBox {
 					
 				}
 			} catch(Exception ex) {
-				System.out.println("ACA");
 				System.out.println(ex);
 			}
 		}
