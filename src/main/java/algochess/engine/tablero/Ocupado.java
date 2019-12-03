@@ -154,7 +154,8 @@ public class Ocupado implements Estado {
     }
 
     @Override
-    public void seleccionarEntidad(Juego juego) {
+    public Entidad seleccionarEntidad(Juego juego) {
         juego.seleccionarEntidad(entidad);
+        return entidad;
     }
 }

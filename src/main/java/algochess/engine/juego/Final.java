@@ -20,7 +20,7 @@ public class Final implements Fase {
 	public void seleccionarEntidad(Jugador jugador, Faccion faccion, Entidad entidad) {
 		if(entidad.sosAmigo(faccion))
 			entidadSeleccionada = entidad;
-
+		
 	}
 
 	public void comprarEntidad(Jugador jugador, VendedorDeEntidades vendedor) {

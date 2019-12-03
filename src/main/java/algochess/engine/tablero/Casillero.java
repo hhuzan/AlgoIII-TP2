@@ -93,7 +93,7 @@ public class Casillero  {
     	return estado.getEntidad();
     }
 
-    public void seleccionarEntidad(Juego juego) {
-        estado.seleccionarEntidad(juego);
+    public Entidad seleccionarEntidad(Juego juego) {
+        return estado.seleccionarEntidad(juego);
     }
 }

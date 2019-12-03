@@ -90,10 +90,10 @@ public class Tablero {
 
 	}
 
-	public void seleccionarEntidad(int fila, int columna, Juego juego) {
+	public Entidad seleccionarEntidad(int fila, int columna, Juego juego) {
 		Posicion posicion = new Posicion(fila, columna);
 		Casillero casillero = obtenerCasillero(posicion);
-		casillero.seleccionarEntidad(juego);
+		return casillero.seleccionarEntidad(juego);
 	}
 
 	/* DFS */

@@ -69,8 +69,8 @@ public class Vacio implements Estado {
 	}
 
     @Override 
-    public void seleccionarEntidad(Juego juego) {
-        
+    public Entidad seleccionarEntidad(Juego juego) {
+        return new NulaEntidad();
     }
 
 }

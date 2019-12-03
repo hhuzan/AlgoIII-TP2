@@ -178,23 +178,56 @@ public class ContenedorPrincipal extends HBox {
 		parentFields.add(this.getField(Entidad.class, "posicion"));
 		parentFields.add(this.getField(Entidad.class, "propietario"));
 		
+		List<String> careAttributes = new ArrayList<String>();
+		careAttributes.add("vida");
+		careAttributes.add("fila");
+		careAttributes.add("columna");
+		careAttributes.add("nombre");
+		careAttributes.add("faccion");
+
+		HashMap<String, String> entityData = new HashMap<String, String>();
+		
 		for (Field parentField : parentFields) {
 			try {
+				System.out.println("HERE123123");
 				System.out.println(parentField.getName());
 				parentField.setAccessible(true);
 				Object value = parentField.get(entidad);
 				if(value != null) {
-					Label label = new Label(parentField.getName() + ": " +  value);
-					boxIzquierdo.getChildren().add(label);
 					System.out.println(parentField.getName() + "=" + value);
+					for(Field valueField : value.getClass().getDeclaredFields()) {
+						try {
+							System.out.println(valueField.getName());
+							if(valueField != null) {
+								valueField.setAccessible(true);
+								Object _value = valueField.get(value);
+								if(_value != null) {
+									System.out.println(valueField.getName() + "=" + _value);
+									if(careAttributes.contains(valueField.getName()))
+										entityData.put(valueField.getName(), _value.toString());
+								}
+							}
+						} catch (Exception ex) {
+							System.out.println("Exception rec.");
+							System.out.println(ex);
+						}
+					}
 				}
 			} catch(Exception ex) {
 				System.out.println(ex);
 			}
 		}
+
+		HashMap<String, String> attributeAlias = new HashMap<String, String>();
+
+		for (Map.Entry<String, String> entry : entityData.entrySet()) {
+			Label label = new Label(entry.getKey() + ": " + entry.getValue());
+			boxIzquierdo.getChildren().add(label);
+		}
 		
 		for (Field field : entidad.getClass().getDeclaredFields()) {
 			try {
+				System.out.println("HERE");
 				System.out.println(field.getName());
 				field.setAccessible(true);
 				Object value = field.get(entidad);
@@ -202,8 +235,14 @@ public class ContenedorPrincipal extends HBox {
 					Label label = new Label(field.getName() + value);
 					boxIzquierdo.getChildren().add(label);
 					System.out.println(field.getName() + "=" + value);
+					System.out.println("...");
+					System.out.println(value.getClass());
+					System.out.println(value.getClass().getDeclaredFields());
+
+					
 				}
 			} catch(Exception ex) {
+				System.out.println("ACA");
 				System.out.println(ex);
 			}
 		}
@@ -230,6 +269,8 @@ public class ContenedorPrincipal extends HBox {
 	        try {
 	            field = clazz.getDeclaredField(name);
 	        } catch (Exception e) {
+	        	System.out.println("getField fail");
+	        	System.out.println(e);
 	        }
 	        clazz = clazz.getSuperclass();
 	    }

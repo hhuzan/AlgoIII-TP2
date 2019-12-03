@@ -42,9 +42,9 @@ public class Juego {
 		fase.seleccionarEntidad(jugadorActual, faccionActual, entidad);
 	}
 
-	public void seleccionarEntidad(int fila, int columna) {
+	public Entidad seleccionarEntidad(int fila, int columna) {
 		System.out.println("Seleccionando entidad en juego...");
-		 tablero.seleccionarEntidad(fila, columna, this);
+		return tablero.seleccionarEntidad(fila, columna, this);
 	}
 
 	public Entidad obtenerEntidadSeleccionada() {

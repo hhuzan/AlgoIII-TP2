@@ -116,8 +116,11 @@ public class VistaCasillero extends StackPane {
 			} else {
 				System.out.println("Seleccionamos la entidad tocada");
 	    		try {
-	    			juego.seleccionarEntidad(fila, columna);
-	    			entidad = juego.obtenerEntidadSeleccionada();
+	    			// Si es aliada la guarda en entidadSeleccionada, sino no la guarda.
+	    			// La devuelve para que podamos verla, pero no usarla.
+	    			entidad = juego.seleccionarEntidad(fila, columna);
+	    			System.out.println("Entidad: ");
+	    			System.out.println(entidad);
 	    			contenedorPrincipal.datosEntidad(entidad, fila, columna);
 	    			System.out.println("Finalizamos de refrescar");
 	    		} catch(Exception ex) {

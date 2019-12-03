@@ -37,5 +37,5 @@ public interface Estado {
     
     Entidad getEntidad();  //TODO sacar
 
-    void seleccionarEntidad(Juego juego);
+    Entidad seleccionarEntidad(Juego juego);
 }
