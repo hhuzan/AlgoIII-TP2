@@ -23,6 +23,13 @@ import java.io.File;
 
 
 public class AlgoChess extends Application {
+
+    String mainTheme = "sounds/introSong.mp3";     // For example
+    Media sound = new Media(getClass().getClassLoader()
+            .getResource(mainTheme).toString());
+
+    MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -71,10 +78,7 @@ public class AlgoChess extends Application {
             Scene escenaBienvenidos = new Scene(welcomeContainer, 1120, 660);
             stage.setScene(escenaBienvenidos);
 
-            String mainTheme = "sounds/introSong.mp3";     // For example
 
-            Media sound = new Media(getClass().getClassLoader()
-             .getResource(mainTheme).toString());
             System.out.println(sound);
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             System.out.println(mediaPlayer);
