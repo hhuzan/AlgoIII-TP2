@@ -1,5 +1,6 @@
 package algochess.gui.vista;
 
+
 import algochess.gui.controller.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -90,10 +91,11 @@ public class AlgoChess extends Application {
             BotonProximaEscenaHandler botonEntrarHandler = new BotonProximaEscenaHandler(stage, proximaEscena);
             MusicaOverButtonHandler botonMusicaOverButton = new MusicaOverButtonHandler(mediaPlayerOnButton);
             MusicaOverButtonOnMouseExited botonMusicaOverButtonOnMouseExited = new MusicaOverButtonOnMouseExited(mediaPlayerOnButton);
+            BotonInstruccionesHandler botonInstruccionesHandler = new BotonInstruccionesHandler();
 
             botonInstrucciones.setOnMouseEntered(botonMusicaOverButton);
             botonInstrucciones.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
-
+            botonInstrucciones.setOnAction(botonInstruccionesHandler);
 
             botonSalir.setOnAction(new BotonSalirHandler());
             botonSalir.setOnMouseEntered(botonMusicaOverButton);
