@@ -14,6 +14,9 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import algochess.gui.controller.BotonProximaEscenaHandler;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 public class AlgoChess extends Application {
     public static void main(String[] args) {
@@ -23,6 +26,7 @@ public class AlgoChess extends Application {
     @Override
     public void start(Stage stage) {
         try {
+
 
             stage.setTitle("AlgoChess - V 0.3");
 
@@ -61,10 +65,22 @@ public class AlgoChess extends Application {
             
             Scene escenaBienvenidos = new Scene(welcomeContainer, 1120, 660);
             stage.setScene(escenaBienvenidos);
+  
+            String musicFile = "sounds/introSong.mp3";     // For example
+
+            Media sound = new Media(getClass().getClassLoader()
+             .getResource(musicFile).toString());
+            System.out.println(sound);
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            System.out.println(mediaPlayer);
+
+            mediaPlayer.play();
 
             stage.show();
 
+
         } catch (Exception ex) {
+            System.out.println(ex);
             // exceptionHandler = new ExceptionHandler();
             // exceptionHandler.manageException(ex);
         }

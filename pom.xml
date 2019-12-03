@@ -54,6 +54,14 @@
       <artifactId>javafx-controls</artifactId>
       <version>13</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-media -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-media</artifactId>
+        <version>13</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
@@ -114,6 +122,7 @@
                 <mainClass>algochess.gui.vista.AlgoChess</mainClass>
             </configuration>
         </plugin>
+
       </plugins>
     </pluginManagement>
   </build>

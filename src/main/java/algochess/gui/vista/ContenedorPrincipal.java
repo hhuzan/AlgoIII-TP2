@@ -192,6 +192,7 @@ public class ContenedorPrincipal extends HBox {
 				System.out.println(ex);
 			}
 		}
+		
 		for (Field field : entidad.getClass().getDeclaredFields()) {
 			try {
 				System.out.println(field.getName());
