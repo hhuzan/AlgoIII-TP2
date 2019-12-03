@@ -90,6 +90,12 @@ public class Juego {
 		fase.atacar(tablero, posicionOrigen, posicionDestino, faccionActual);
 	}
 
+	public void curar(int filaOrigen, int colOrigen, int filaDestino, int colDestino){
+		Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
+		Posicion posicionDestino = new Posicion(filaDestino, colDestino);
+		fase.curar(tablero,posicionOrigen,posicionDestino,faccionActual);
+	}
+
 	public Tablero getTablero() {
 		return tablero;
 	}

@@ -30,7 +30,7 @@ public class CurarCasilleroHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent actionEvent) {
 		try {
-			// juego.atacar(filaOrigen, colOrigen, filaDestino, colDestino);
+			juego.curar(filaOrigen, colOrigen, filaDestino, colDestino);
 		} catch (Exception ex) {
 			System.out.println(ex);
 			// exHandler.manageException(ex);
