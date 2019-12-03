@@ -3,6 +3,8 @@ package algochess.gui.vista;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
@@ -17,6 +19,8 @@ import algochess.gui.controller.BotonProximaEscenaHandler;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
+
+
 
 public class AlgoChess extends Application {
     public static void main(String[] args) {
@@ -55,7 +59,8 @@ public class AlgoChess extends Application {
             BotonProximaEscenaHandler botonEntrarHandler = new BotonProximaEscenaHandler(stage, proximaEscena);
             botonEntrar.setOnAction(botonEntrarHandler);
 
-            welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir);
+           welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir);
+
 
     		Image fondo = new Image("images/chess.png");
     		BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
@@ -65,18 +70,19 @@ public class AlgoChess extends Application {
             
             Scene escenaBienvenidos = new Scene(welcomeContainer, 1120, 660);
             stage.setScene(escenaBienvenidos);
-  
-            String musicFile = "sounds/introSong.mp3";     // For example
+
+            String mainTheme = "sounds/introSong.mp3";     // For example
 
             Media sound = new Media(getClass().getClassLoader()
-             .getResource(musicFile).toString());
+             .getResource(mainTheme).toString());
             System.out.println(sound);
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             System.out.println(mediaPlayer);
-
-            mediaPlayer.play();
+            mediaPlayer.setAutoPlay(true);
 
             stage.show();
+
+
 
 
         } catch (Exception ex) {
