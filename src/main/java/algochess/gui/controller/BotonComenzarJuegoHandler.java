@@ -1,6 +1,7 @@
 package algochess.gui.controller;
 
 import algochess.engine.juego.Juego;
+import algochess.gui.vista.AlgoChess;
 import algochess.gui.vista.ContenedorCompras;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,6 +27,7 @@ public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
 		this.nombre2 = nombreJugador_2;
 		this.mediaPlayer = mediaPlayer;
 		this.mediaPlayer2 = mediaplayer2;
+
 	}
 
 	@Override

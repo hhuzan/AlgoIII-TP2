@@ -1,6 +1,8 @@
 package algochess.gui.vista;
 
+import algochess.gui.controller.BotonVolverHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -18,20 +20,27 @@ import javafx.stage.Stage;
 import algochess.gui.controller.BotonComenzarJuegoHandler;
 
 public class ContenedorJugadores extends VBox {
-//	Juego juego;
+
+	//	Juego juego;
 	private Stage stage;
+	private AlgoChess algoChess;
 
 
-	public ContenedorJugadores(Stage stage, MediaPlayer player, MediaPlayer mediaPlayer) {
+	public ContenedorJugadores(Stage stage, MediaPlayer player, MediaPlayer mediaPlayer, AlgoChess algoChess) {
 
 		super();
 
 		this.stage = stage;
 		this.setAlignment(Pos.CENTER);
 		this.setSpacing(50);
+		this.algoChess = algoChess;
 
 		HBox jugadorContainer = new HBox(20);
 		jugadorContainer.setAlignment(Pos.CENTER);
+
+		Button volverButton = new Button();
+		volverButton.setText("Volver");
+		volverButton.setOnAction(new BotonVolverHandler(algoChess));
 
 		VBox jugadorUnoContainer = new VBox(20);
 		VBox jugadorDosContainer = new VBox(20);
@@ -70,7 +79,7 @@ public class ContenedorJugadores extends VBox {
 
 		jugadorContainer.getChildren().addAll(jugadorUnoContainer, jugadorDosContainer);
 
-		this.getChildren().addAll(jugadorContainer, botonAceptar);
+		this.getChildren().addAll(jugadorContainer, botonAceptar, volverButton);
 		Image fondo = new Image("images/chess.png");
 		BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
 				BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));
