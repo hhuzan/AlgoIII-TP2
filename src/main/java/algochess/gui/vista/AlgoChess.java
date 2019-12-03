@@ -1,5 +1,8 @@
 package algochess.gui.vista;
 
+import algochess.gui.controller.BotonPausarMusicaHandler;
+import algochess.gui.controller.BotonPlayMusicaHandler;
+import algochess.gui.controller.BotonStopMusicaHandler;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -52,6 +55,10 @@ public class AlgoChess extends Application {
             logoView.setSmooth(true);
             logoView.setCache(true);
 
+            mediaPlayer.setAutoPlay(true);
+            mediaPlayer.setVolume(0.5);
+
+
             Button botonEntrar = new Button();
             botonEntrar.setText("Jugar");
             
@@ -61,12 +68,30 @@ public class AlgoChess extends Application {
             Button botonSalir = new Button();
             botonSalir.setText("Salir");
 
+            Button botonPlay = new Button();
+            botonPlay.setText("Play");
+
+            Button botonStop = new Button();
+            botonStop.setText("Stop");
+
+            Button botonPause = new Button();
+            botonPause.setText("Pause");
+
             Scene proximaEscena = crearEscenaEleccionJugadores(stage);
 
             BotonProximaEscenaHandler botonEntrarHandler = new BotonProximaEscenaHandler(stage, proximaEscena);
             botonEntrar.setOnAction(botonEntrarHandler);
 
-           welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir);
+            BotonPlayMusicaHandler botonPlayMusicaHandler = new BotonPlayMusicaHandler(mediaPlayer);
+            botonPlay.setOnAction(botonPlayMusicaHandler);
+
+            BotonStopMusicaHandler botonStopMusicaHandler = new BotonStopMusicaHandler(mediaPlayer);
+            botonStop.setOnAction(botonStopMusicaHandler);
+
+            BotonPausarMusicaHandler botonPausarMusicaHandler = new BotonPausarMusicaHandler(mediaPlayer);
+            botonPause.setOnAction(botonPausarMusicaHandler);
+
+           welcomeContainer.getChildren().addAll(logoView, botonEntrar, botonInstrucciones, botonSalir, botonPlay, botonPause, botonStop);
 
 
     		Image fondo = new Image("images/chess.png");
@@ -78,11 +103,6 @@ public class AlgoChess extends Application {
             Scene escenaBienvenidos = new Scene(welcomeContainer, 1120, 660);
             stage.setScene(escenaBienvenidos);
 
-
-            System.out.println(sound);
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            System.out.println(mediaPlayer);
-            mediaPlayer.setAutoPlay(true);
 
             stage.show();
 
