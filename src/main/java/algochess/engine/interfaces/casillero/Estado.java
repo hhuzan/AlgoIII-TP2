@@ -38,4 +38,6 @@ public interface Estado {
     Entidad getEntidad();  //TODO sacar
 
     Entidad seleccionarEntidad(Juego juego);
+
+    boolean enRangoMovimiento(Posicion posicion, Casillero destino);
 }

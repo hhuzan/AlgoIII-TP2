@@ -1,6 +1,7 @@
 package algochess.excepciones;
 
 @SuppressWarnings("serial")
+
 public class DineroInsuficienteException extends RuntimeException {
 
 	public String toString(){

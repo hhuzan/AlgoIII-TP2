@@ -75,11 +75,12 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
     }
 
     @Override
-    public boolean moverA(Tablero tablero, Casillero casillero, Faccion faccionJugador) {
-        if (sosAmigo(faccionJugador)) {return casillero.recibirEntidad(this);}
-        return false;
+    public boolean moverA(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
+        if(origen.enRangoMovimiento(destino))
+            return destino.recibirEntidad(this);
+        else 
+            return false;
     }
-
 
     private void definirArma(Tablero tablero){
         HashSet<Posicion> amigosPotenciales = getPosicion().generarPosicionesEnAlcance(RANGO_CERCANO_MINIMO,RANGO_CERCANO_MAXIMO);

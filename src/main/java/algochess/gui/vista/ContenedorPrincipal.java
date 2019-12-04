@@ -121,8 +121,8 @@ public class ContenedorPrincipal extends HBox {
 
 		Map<String, EventHandler<ActionEvent>> optionDict = Map.of(
 			 "Atacar", 	new AtacarCasilleroHandler(this, juego, filaOrigen, columnaOrigen, filaDestino, columnaDestino),
-			 "Mover", 	new MoverCasilleroHandler(juego, filaOrigen, columnaOrigen, filaDestino, columnaDestino),
-			 "Curar",	new CurarCasilleroHandler(juego, filaOrigen, columnaOrigen, filaDestino, columnaDestino)
+			 "Mover", 	new MoverCasilleroHandler(this, juego, filaOrigen, columnaOrigen, filaDestino, columnaDestino),
+			 "Curar",	new CurarCasilleroHandler(this, juego, filaOrigen, columnaOrigen, filaDestino, columnaDestino)
 		);	
 
 

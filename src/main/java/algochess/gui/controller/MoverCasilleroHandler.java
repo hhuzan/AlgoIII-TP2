@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import algochess.gui.vista.ContenedorPrincipal;
 import javafx.stage.Stage;
 import algochess.gui.ExceptionHandler;
 
@@ -16,24 +17,26 @@ public class MoverCasilleroHandler implements EventHandler<ActionEvent> {
 	private int colOrigen;
 	private int colDestino;
 	private ExceptionHandler exHandler;
+	private ContenedorPrincipal contenedor;
 	private Juego juego;
 
-	public MoverCasilleroHandler(Juego juego, int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
+	public MoverCasilleroHandler(ContenedorPrincipal contenedor, Juego juego, int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
 		this.juego = juego;
 		this.filaOrigen = filaOrigen;
 		this.filaDestino = filaDestino;
 		this.colOrigen = colOrigen;
 		this.colDestino = colDestino;
+		this.contenedor = contenedor;
 		this.exHandler = new ExceptionHandler();
 	}
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
 		try {
-			// juego.atacar(filaOrigen, colOrigen, filaDestino, colDestino);
+			juego.mover(filaOrigen, colOrigen, filaDestino, colDestino);
+			contenedor.refrescar();
 		} catch (Exception ex) {
-			System.out.println(ex);
-			// exHandler.manageException(ex);
+			exHandler.manageException(ex);
 		}
 	}
 }

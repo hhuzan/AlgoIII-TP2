@@ -96,4 +96,14 @@ public class Casillero  {
     public Entidad seleccionarEntidad(Juego juego) {
         return estado.seleccionarEntidad(juego);
     }
+
+    public boolean enRangoMovimiento(Casillero casilleroDestino) {
+        Posicion posicionOrigen = this.posicion;
+        return estado.enRangoMovimiento(posicionOrigen, casilleroDestino);
+    }
+
+    public boolean chequearRango(Posicion posicionOrigen) {
+        Posicion posicionDestino = this.posicion;
+        return posicionOrigen.chequearRango(posicionDestino);
+    }
 }

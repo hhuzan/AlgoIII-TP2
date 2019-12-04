@@ -92,6 +92,9 @@ public class Juego {
 			Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
 			Posicion posicionDestino = new Posicion(filaDestino, colDestino);
 			fase.atacar(tablero, posicionOrigen, posicionDestino, faccionActual);
+
+			jugadorActual = turno.cambiarTurno(jugadorActual);
+			faccionActual = turno.popFaccion();
 		} catch (Exception ex) {
 			throw ex;
 		}
@@ -102,6 +105,20 @@ public class Juego {
 			Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
 			Posicion posicionDestino = new Posicion(filaDestino, colDestino);
 			fase.curar(tablero, posicionOrigen, posicionDestino, faccionActual);
+
+			jugadorActual = turno.cambiarTurno(jugadorActual);
+			faccionActual = turno.popFaccion();
+		} catch (Exception ex) {
+			throw ex;
+		}
+	}
+
+	public void mover(int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
+		try {
+			Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
+			Posicion posicionDestino = new Posicion(filaDestino, colDestino);
+			fase.mover(tablero, posicionOrigen, posicionDestino, faccionActual);
+
 		} catch (Exception ex) {
 			throw ex;
 		}

@@ -18,6 +18,7 @@ import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import static algochess.engine.ConstantesUtils.ROCA_PODER;
 import algochess.excepciones.EntidadFueraDeAlcanceException;
 import algochess.excepciones.CasilleroOcupadoException;
+import algochess.excepciones.EntidadNoPuedeMoverseException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -95,10 +96,9 @@ public class CatapultaTest {
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
         Casillero casilleroOrigen = tablero.obtenerCasillero(posOrigen);
 
-        casilleroOrigen.moverEntidad(tablero, casilleroOrigen, casilleroDestino, Faccion.ALIADOS); 
 
-        Assertions.assertThrows(CasilleroOcupadoException.class, () -> {
-            tablero.colocarEntidad(catapulta, posOrigen, new Jugador(Faccion.ALIADOS, "Lucas"));
+        Assertions.assertThrows(EntidadNoPuedeMoverseException.class, () -> {
+          casilleroOrigen.moverEntidad(tablero, casilleroOrigen, casilleroDestino, Faccion.ALIADOS); 
         });
 	}
 

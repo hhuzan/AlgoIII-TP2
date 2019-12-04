@@ -165,7 +165,7 @@ public class CuranderoTest {
 		tablero.colocarEntidad(curandero, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(1, 2);
-		curandero.moverA(tablero, tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
+		curandero.moverA(tablero, tablero.obtenerCasillero(posicion), tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(CasilleroOcupadoException.class, () -> {
 			tablero.colocarEntidad(curandero, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));

@@ -1,6 +1,7 @@
 package algochess.engine.posicion;
 
 import java.util.HashSet;
+import java.lang.*;
 
 public class Posicion {
     private int fila;
@@ -21,6 +22,12 @@ public class Posicion {
 
     public boolean esIgual(Posicion posicion) {
         return posicion.columna == columna && posicion.fila == fila;
+    }
+
+    public boolean chequearRango(Posicion destino) {
+        return
+            (Math.abs(this.fila - destino.fila) == 1 && Math.abs(this.columna - destino.columna) < 1) || 
+            (Math.abs(this.fila - destino.fila) < 1 && Math.abs(this.columna - destino.columna) == 1);
     }
 
     public HashSet<Posicion> generarPosicionesEnAlcance(int min, int max){

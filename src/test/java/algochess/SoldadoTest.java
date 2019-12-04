@@ -80,7 +80,7 @@ public class SoldadoTest {
 		tablero.colocarEntidad(soldado, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(1, 2);
-		soldado.moverA(tablero, tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
+		soldado.moverA(tablero, tablero.obtenerCasillero(posicion), tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
 
 		assertThrows(CasilleroOcupadoException.class, () -> {
 			tablero.colocarEntidad(soldado, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));

@@ -36,7 +36,7 @@ public class NulaEntidad extends Entidad implements PuedeAtacar, PuedeFormarBata
 
 
     @Override
-    public boolean moverA(Tablero tablero, Casillero casillero, Faccion faccionJugador) {
+    public boolean moverA(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
         return false;
     }
 

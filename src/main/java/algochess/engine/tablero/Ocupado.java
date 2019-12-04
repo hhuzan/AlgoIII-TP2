@@ -18,6 +18,7 @@ import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.entidades.Curandero;
 import algochess.excepciones.CasilleroOcupadoException;
+import algochess.excepciones.EntidadNoPuedeMoverseException;
 import algochess.engine.juego.Juego;
 import java.util.HashSet;
 import java.util.Queue;
@@ -132,8 +133,11 @@ public class Ocupado implements Estado {
 
 
     public void moverEntidad(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
-        if (puedeMoverse.moverA(tablero, destino, faccionJugador)) 
-            origen.cambiarEstado(new Vacio());            
+        boolean moved = puedeMoverse.moverA(tablero, origen, destino, faccionJugador);
+        if(moved)
+            origen.cambiarEstado(new Vacio());
+        else 
+            throw new EntidadNoPuedeMoverseException();
     }
 
     public void reclutarEntidad(HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidadOrigen) {
@@ -157,5 +161,10 @@ public class Ocupado implements Estado {
     public Entidad seleccionarEntidad(Juego juego) {
         juego.seleccionarEntidad(entidad);
         return entidad;
+    }
+
+    @Override 
+    public boolean enRangoMovimiento(Posicion posicionOrigen, Casillero casilleroDestino) {
+        return casilleroDestino.chequearRango(posicionOrigen);
     }
 }

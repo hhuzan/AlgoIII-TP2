@@ -74,20 +74,15 @@ public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, Puede
     }
 
     @Override
-    public boolean moverA(Tablero tablero, Casillero casillero, Faccion faccionJugador) {
-        if (sosEnemigo(faccionJugador))
-            return false;
-
+    public boolean moverA(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
         Comandante comandante = new Comandante(tablero);
         comandante.recluteMisCercanos(this);
-        boolean batallonSeMovio = comandante.moverBatallon(tablero, casillero, this);
+        boolean batallonSeMovio = comandante.moverBatallon(tablero, destino, this);
         if (!batallonSeMovio) 
-            return casillero.recibirEntidad(this);
+            return destino.recibirEntidad(this);
         else
             return false;
-
     }
-
 
     @Override
     public void reclutarParaBatallon(HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidad) {

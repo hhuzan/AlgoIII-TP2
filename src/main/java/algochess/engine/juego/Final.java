@@ -52,6 +52,9 @@ public class Final implements Fase {
 		tablero.curarCasillero(posOrigen,posDestino,faccion);
 	}
 
+	public void mover(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion) {
+		tablero.moverEntidad(posOrigen, posDestino, faccion);
+	}
 	// public boolean cambiarTurno() {
 	// 	if(jugadorAliado.noPuedeComprar() && jugadorEnemigo.noPuedeComprar())
 	// 		return true;

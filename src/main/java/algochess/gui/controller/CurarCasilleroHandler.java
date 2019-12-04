@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import algochess.gui.vista.ContenedorPrincipal;
 import javafx.stage.Stage;
 import algochess.gui.ExceptionHandler;
 
@@ -15,15 +16,17 @@ public class CurarCasilleroHandler implements EventHandler<ActionEvent> {
 	private int filaDestino;
 	private int colOrigen;
 	private int colDestino;
+	private ContenedorPrincipal contenedor;
 	private ExceptionHandler exHandler;
 	private Juego juego;
 
-	public CurarCasilleroHandler(Juego juego, int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
+	public CurarCasilleroHandler(ContenedorPrincipal contenedor, Juego juego, int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
 		this.juego = juego;
 		this.filaOrigen = filaOrigen;
 		this.filaDestino = filaDestino;
 		this.colOrigen = colOrigen;
 		this.colDestino = colDestino;
+		this.contenedor = contenedor;
 		this.exHandler = new ExceptionHandler();
 	}
 
@@ -31,6 +34,7 @@ public class CurarCasilleroHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent actionEvent) {
 		try {
 			juego.curar(filaOrigen, colOrigen, filaDestino, colDestino);
+			contenedor.refrescar();
 		} catch (Exception ex) {
 			exHandler.manageException(ex);
 		}

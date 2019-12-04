@@ -73,4 +73,8 @@ public class Vacio implements Estado {
         return new NulaEntidad();
     }
 
+    @Override 
+    public boolean enRangoMovimiento(Posicion posicion, Casillero destino) {
+        return false;
+    }
 }
