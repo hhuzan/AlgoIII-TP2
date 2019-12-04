@@ -3,13 +3,10 @@ package algochess.gui.controller;
 import algochess.engine.juego.Juego;
 import algochess.gui.vista.ContenedorCompras;
 import algochess.gui.vista.VistaCasillero;
-import algochess.gui.vista.ContenedorPrincipal;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import algochess.gui.ExceptionHandler;
-import algochess.excepciones.ColocarEntidadException;
-import algochess.excepciones.DineroInsuficienteException;
-import algochess.engine.entidades.Entidad;
+
 
 public class SeleccionarCasilleroHandler implements EventHandler<MouseEvent> {
 	private Juego juego;

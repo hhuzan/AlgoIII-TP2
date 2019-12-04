@@ -3,7 +3,6 @@ package algochess;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import algochess.engine.juego.Turno;
 import org.junit.Test;
 import algochess.engine.entidades.Curandero;
 import algochess.engine.entidades.Jinete;

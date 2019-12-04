@@ -3,13 +3,10 @@
  import algochess.engine.facciones.Faccion;
  import algochess.engine.juego.Turno;
  import algochess.engine.jugador.Jugador;
- import algochess.engine.posicion.Posicion;
- import algochess.engine.tablero.Casillero;
- import algochess.engine.tablero.Tablero;
  import org.junit.Test;
  import static org.junit.Assert.assertNotNull;
  import static org.junit.jupiter.api.Assertions.assertEquals;
- import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 
 public class TurnoTest {

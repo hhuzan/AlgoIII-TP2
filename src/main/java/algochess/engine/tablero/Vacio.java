@@ -3,7 +3,6 @@ package algochess.engine.tablero;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.entidades.NulaEntidad;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.tablero.Casillero;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.interfaces.casillero.Estado;

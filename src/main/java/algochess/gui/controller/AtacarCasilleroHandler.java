@@ -1,12 +1,8 @@
 package algochess.gui.controller;
 
 import algochess.engine.juego.Juego;
-import algochess.gui.vista.ContenedorCompras;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import algochess.gui.ExceptionHandler;
 import algochess.gui.vista.ContenedorPrincipal;
 

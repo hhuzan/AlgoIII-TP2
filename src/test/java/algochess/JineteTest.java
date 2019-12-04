@@ -3,7 +3,7 @@ package algochess;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import algochess.engine.juego.Turno;
+
 import org.junit.Test;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
@@ -15,7 +15,6 @@ import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
-import static algochess.engine.ConstantesUtils.CATAPULTA_VIDA;
 import static algochess.engine.ConstantesUtils.DAGA_PODER;
 import algochess.excepciones.JugadorPerdioException;
 import algochess.excepciones.EntidadFueraDeAlcanceException;

@@ -6,7 +6,6 @@ import algochess.engine.facciones.Faccion;
 import algochess.engine.juego.Juego;
 import algochess.engine.jugador.Jugador;
 import org.junit.Test;
-import org.mockito.internal.matchers.Null;
 
 import static org.junit.Assert.*;
 

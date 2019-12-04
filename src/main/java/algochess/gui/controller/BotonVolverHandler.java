@@ -3,8 +3,6 @@ package algochess.gui.controller;
 import algochess.gui.vista.AlgoChess;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class BotonVolverHandler implements EventHandler<ActionEvent> {
 
