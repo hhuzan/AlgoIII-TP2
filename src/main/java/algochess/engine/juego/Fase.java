@@ -17,7 +17,6 @@ public interface Fase {
 	Entidad obtenerEntidadSeleccionada();
 	void liberarEntidadSeleccionada();
 	void atacar(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion);
-	// boolean cambiarTurno();
 	void curar(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion);
 	void mover(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion);
 

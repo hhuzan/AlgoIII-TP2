@@ -12,7 +12,6 @@ public interface PuedeSerHerida {
 
     boolean sosAmigo(Faccion unaFaccion);
 
-    boolean sosEnemigo(Faccion unaFaccion);
 
     Posicion getPosicion();
 

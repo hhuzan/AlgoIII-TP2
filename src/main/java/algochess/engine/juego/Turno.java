@@ -1,10 +1,8 @@
 package algochess.engine.juego;
 
-import algochess.engine.entidades.Entidad;
+
 import algochess.engine.facciones.Faccion;
 import algochess.engine.jugador.Jugador;
-import algochess.engine.tablero.Casillero;
-import algochess.engine.tablero.Tablero;
 import java.util.ArrayList;
 
 public class Turno {

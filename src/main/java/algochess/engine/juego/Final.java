@@ -1,17 +1,12 @@
 package algochess.engine.juego;
 
 import algochess.engine.jugador.Jugador;
-import algochess.engine.tablero.Casillero;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.vendedordeentidades.VendedorDeEntidades;
-import algochess.engine.entidades.Catapulta;
-import algochess.engine.entidades.Curandero;
 import algochess.engine.entidades.Entidad;
-import algochess.engine.entidades.Jinete;
-import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.posicion.Posicion;
-import algochess.engine.juego.Fase;
+
 
 public class Final implements Fase {
 
@@ -55,12 +50,5 @@ public class Final implements Fase {
 	public void mover(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion) {
 		tablero.moverEntidad(posOrigen, posDestino, faccion);
 	}
-	// public boolean cambiarTurno() {
-	// 	if(jugadorAliado.noPuedeComprar() && jugadorEnemigo.noPuedeComprar())
-	// 		return true;
 
-	// 	jugadorActual = turno.cambiarTurno(jugadorActual);
-	// 	faccionActual = turno.popFaccion();
-	// 	return false;
-	// }
 }

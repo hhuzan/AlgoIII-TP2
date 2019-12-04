@@ -61,15 +61,4 @@ public class Inicial implements Fase {
 
 	}
 
-	// public boolean cambiarTurno() {
-	// 	System.out.println("Cambiando turno...");
-	// 	System.out.println(jugadorAliado);
-	// 	System.out.println(jugadorEnemigo);
-	// 	if(jugadorAliado.noPuedeComprar() && jugadorEnemigo.noPuedeComprar())
-	// 		return true;
-
-	// 	jugadorActual = turno.cambiarTurno(jugadorActual);
-	// 	faccionActual = turno.popFaccion();
-	// 	return false;
-	// }
 }

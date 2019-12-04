@@ -4,8 +4,6 @@ public final class ConstantesUtils {
     public static final int TAMANIO_TABLERO = 20;
     public static final int TAMANIO_BATALLON = 3;
 
-    public static final int MAXIMA_DISTANCIA_POR_MOVIMIENTO = 1;
-
     public static final int DINERO_JUGADOR = 20;
 
     public static final int CATAPULTA_VIDA = 50;

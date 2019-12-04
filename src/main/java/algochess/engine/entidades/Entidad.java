@@ -58,9 +58,6 @@ public abstract class Entidad {
         propietario = jugador;
     }
 
-    public Dinero getCosto() {
-        return costo;
-    }
 
     public Posicion getPosicion() {
         return posicion;
