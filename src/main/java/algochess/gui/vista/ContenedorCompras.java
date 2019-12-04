@@ -26,6 +26,7 @@ import algochess.engine.entidades.Soldado;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.entidades.Curandero;
+import algochess.gui.PathEntidadFactory;
 
 
 public class ContenedorCompras extends HBox {
@@ -97,12 +98,19 @@ public class ContenedorCompras extends HBox {
 		boxIzquierdo.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + color + ";");
 
-		String[] imagePaths = new String[] { "images/SHOP_ICON.png", "images/CaballoNeutro.png",
-				"images/SoldadoNeutro.png", "images/CuranderoNeutro.png", "images/CatapultaNeutro.png" };
+		String[] imagePaths = new String[] {  	"images/CaballoNeutro.png", "images/SoldadoNeutro.png", 
+												"images/CuranderoNeutro.png", "images/CatapultaNeutro.png" };
 
-		// HashMap<String, > pathMap = new HashMap<String, String>() {
-			
-		// }
+		Image shopImage = new Image("images/SHOP_ICON.png");
+		ImageView shopView = new ImageView();
+		shopView.setImage(shopImage);
+		shopView.setFitWidth(100);
+		shopView.setPreserveRatio(true);
+		shopView.setSmooth(true);
+		shopView.setCache(true);
+		boxIzquierdo.getChildren().add(shopView);
+
+		PathEntidadFactory entityFactory = new PathEntidadFactory();
 		for (String path : imagePaths) {
 			Image image = new Image(path);
 			ImageView imageView = new ImageView();
@@ -115,15 +123,7 @@ public class ContenedorCompras extends HBox {
 			toggleButton.setGraphic(imageView);
 			toggleButton.setPadding(new Insets(-1, -1, -1, -1));
 			toggleButton.setOnAction((ActionEvent e) -> {
-				if (path == imagePaths[1]) { // jinete
-					juego.seleccionarEntidad(new Jinete());
-				} else if (path == imagePaths[2]) { // soldado
-					juego.seleccionarEntidad(new Soldado());
-				} else if (path == imagePaths[3]) { // curandero
-					juego.seleccionarEntidad(new Curandero());
-				} else if (path == imagePaths[4]) { // catapulta
-					juego.seleccionarEntidad(new Catapulta());
-				}
+				juego.seleccionarEntidad(entityFactory.create(path));
 			});
 			boxIzquierdo.getChildren().add(toggleButton);
 		}
