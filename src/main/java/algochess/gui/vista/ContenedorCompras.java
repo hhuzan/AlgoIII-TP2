@@ -62,17 +62,18 @@ public class ContenedorCompras extends HBox {
 	private void armarColumnaDerecha() {
 		boxDerecho = new VBox(30);
 		boxDerecho.setAlignment(Pos.CENTER);
+
 		Label lblNombre = new Label(juego.getJugadorActual().getNombre());
-		lblNombre.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		lblNombre.setFont(Font.font("Amble CN", FontWeight.BOLD, 18));
+		lblNombre.setStyle("-fx-margin-bottom: 20px;");
 		boxDerecho.getChildren().add(lblNombre);
-		Label lblLinea = new Label("========");
-		lblLinea.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
-		boxDerecho.getChildren().add(lblLinea);
+
 		Label lbl1 = new Label("Disponible:");
-		lbl1.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		lbl1.setFont(Font.font("Amble CN", FontWeight.BOLD, 16));
 		boxDerecho.getChildren().add(lbl1);
+		
 		Label lblMonto = new Label("$" + juego.getJugadorActual().obtenerBalance());
-		lblMonto.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		lblMonto.setFont(Font.font("Amble CN", FontWeight.BOLD, 16));
 		boxDerecho.getChildren().add(lblMonto);
 
 		String color;

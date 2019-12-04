@@ -11,6 +11,8 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -103,7 +105,7 @@ public class ContenedorPrincipal extends HBox {
 		
 		// TODO: Ver de gettear entidades y cantidad de entidades para mostrar
 
-		boxDerecho.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+		boxDerecho.setStyle("-fx-min-width: 150px; -fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + 
 				colorFaccion.get(juego.getFaccionActual()) + ";");
 
@@ -126,7 +128,7 @@ public class ContenedorPrincipal extends HBox {
 			boxDerecho.getChildren().add(button);	
 		}
 
-		boxDerecho.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+		boxDerecho.setStyle("-fx-min-width: 150px; -fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + 
 				colorFaccion.get(juego.getFaccionActual()) + ";");
 
@@ -137,9 +139,12 @@ public class ContenedorPrincipal extends HBox {
 		boxIzquierdo = new VBox(12);
 		boxIzquierdo.setAlignment(Pos.CENTER);
 
-		boxIzquierdo.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+		boxIzquierdo.setStyle("-fx-min-width: 150px; -fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + 
 				colorFaccion.get(juego.getFaccionActual()) + ";");
+
+		Label lblNombre = new Label(juego.getJugadorActual().getNombre());
+		lblNombre.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
 
 		Button btnPasar = new Button();
 
@@ -153,17 +158,22 @@ public class ContenedorPrincipal extends HBox {
 			refrescar();
 		});
 		
-		boxIzquierdo.getChildren().add(btnPasar);
+		boxIzquierdo.getChildren().addAll(lblNombre, btnPasar);
 
 	}
 
 	private void armarColumnaIzquierda(Entidad entidad) {
 		boxIzquierdo = new VBox(12);
-		boxIzquierdo.setAlignment(Pos.CENTER);
+		boxIzquierdo.setAlignment(Pos.SPACE);
 
-		boxIzquierdo.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
+		boxIzquierdo.setStyle("-fx-min-width: 150px; -fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + 
 				colorFaccion.get(juego.getFaccionActual()) + ";");
+
+		Label lblNombre = new Label(juego.getJugadorActual().getNombre());
+		lblNombre.setFont(Font.font("Amble CN", FontWeight.BOLD, 24));
+		lblNombre.setStyle("-fx-margin-bottom: 30px;");
+		boxIzquierdo.getChildren().add(lblNombre);
 
 		List<Field> parentFields = new ArrayList<Field>();
 		parentFields.add(this.getField(Entidad.class, "vida"));
@@ -187,12 +197,21 @@ public class ContenedorPrincipal extends HBox {
 			System.out.println(ex);
 		}
 
-		
-
 		HashMap<String, String> attributeAlias = new HashMap<String, String>();
+		attributeAlias.put("columna", "Columna");
+		attributeAlias.put("fila", "Fila");
+		attributeAlias.put("puntosdevida", "Vida");
+		attributeAlias.put("nombre", "Propietario");
+		attributeAlias.put("faccion", "Faccion");
+
+		Label lblEntidad = new Label(entidad.getClass().getSimpleName());
+		lblEntidad.setFont(Font.font("Amble CN", FontWeight.BOLD, 18));
+		boxIzquierdo.getChildren().add(lblEntidad);
 
 		for (Map.Entry<String, String> entry : entityData.entrySet()) {
-			Label label = new Label(entry.getKey() + ": " + entry.getValue());
+			Label label = new Label(attributeAlias.get(entry.getKey()) + ": " + entry.getValue());
+			if(attributeAlias.get(entry.getKey()) == "Faccion")
+				label.setFont(Font.font("Amble CN", FontWeight.BOLD, 16));
 			boxIzquierdo.getChildren().add(label);
 		}
 		
