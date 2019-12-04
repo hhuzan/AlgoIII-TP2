@@ -32,10 +32,12 @@ public class VistaCasillero extends StackPane {
 			ContenedorCompras contenedorCompras) {
 		super();
 
-		if (casillero.getFaccion() == Faccion.ALIADOS)
-			setBackground(new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
-		else
-			setBackground(new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY)));
+		Map<Faccion, Color> faccionDict = Map.of(
+			Faccion.ALIADOS, Color.LIGHTPINK,
+			Faccion.ENEMIGOS, Color.AQUAMARINE
+		);
+
+		setBackground(new Background(new BackgroundFill(faccionDict.get(casillero.getFaccion()), CornerRadii.EMPTY, Insets.EMPTY)));
 
 		setPrefSize(tamanio, tamanio);
 		this.juego = juego;
@@ -70,10 +72,12 @@ public class VistaCasillero extends StackPane {
 			ContenedorPrincipal contenedorPrincipal) {
 		super();
 
-		if (casillero.getFaccion() == Faccion.ALIADOS) 
-			backgroundColor = new Background(new BackgroundFill(Color.LIGHTPINK, CornerRadii.EMPTY, Insets.EMPTY));
-		else 
-			backgroundColor = new Background(new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY));
+		Map<Faccion, Color> faccionDict = Map.of(
+			Faccion.ALIADOS, Color.LIGHTPINK,
+			Faccion.ENEMIGOS, Color.AQUAMARINE
+		);
+
+		backgroundColor = new Background(new BackgroundFill(faccionDict.get(casillero.getFaccion()), CornerRadii.EMPTY, Insets.EMPTY));
 		setBackground(backgroundColor);
 
 		setStyle("-fx-border-color: transparent;");
