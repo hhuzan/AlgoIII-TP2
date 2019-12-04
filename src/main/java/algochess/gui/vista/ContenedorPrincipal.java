@@ -164,7 +164,7 @@ public class ContenedorPrincipal extends HBox {
 
 	private void armarColumnaIzquierda(Entidad entidad) {
 		boxIzquierdo = new VBox(12);
-		boxIzquierdo.setAlignment(Pos.SPACE);
+		boxIzquierdo.setAlignment(Pos.CENTER);
 
 		boxIzquierdo.setStyle("-fx-min-width: 150px; -fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 8;"
 				+ "-fx-border-insets: 5;" + "-fx-border-radius: 8;" + "-fx-border-color: " + 
