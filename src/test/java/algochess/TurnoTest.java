@@ -1,69 +1,58 @@
-// package algochess;
+ package algochess;
 
-// import algochess.engine.facciones.Faccion;
-// import algochess.engine.juego.Turno;
-// import algochess.engine.posicion.Posicion;
-// import algochess.engine.tablero.Casillero;
-// import algochess.engine.tablero.Tablero;
-// import algochess.excepciones.NoEsTuTurnoException;
-// import org.junit.Test;
-// import static org.junit.Assert.assertNotNull;
-// import static org.junit.jupiter.api.Assertions.assertThrows;
-
-// public class TurnoTest {
-
-//     @Test
-//     public void test00CreoUnTurnoYEsValido(){
-
-//         Turno turno = new Turno(Faccion.ALIADOS);
-//         assertNotNull(turno);
-
-//     }
-
-//     @Test
-//     public void test02AtacoEnTurnoIncorrectoYTiraError(){
-
-//         Posicion posicion = new Posicion(1,1);
-//         Posicion posicion2= new Posicion(2,2);
-//         Turno turno = new Turno(Faccion.ENEMIGOS);
-//         Casillero casillero = new Casillero(posicion, Faccion.ALIADOS);
-//         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
-
-//         assertThrows(NoEsTuTurnoException.class, () -> {
-//             turno.atacarCasillero(casillero,casillero2,new Tablero(),Faccion.ALIADOS);
-//         });
-//     }
-
-//     @Test
-//     public void test03CuroEnTurnoIncorrectoYTiraError(){
-
-//         Posicion posicion = new Posicion(1,1);
-//         Posicion posicion2= new Posicion(2,2);
-//         Turno turno = new Turno(Faccion.ENEMIGOS);
-//         Casillero casillero = new Casillero(posicion, Faccion.ALIADOS);
-//         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
-
-//         assertThrows(NoEsTuTurnoException.class, () -> {
-//             turno.curarCasillero(casillero,casillero2,new Tablero(),Faccion.ALIADOS);
-//         });
-
-//     }
+ import algochess.engine.facciones.Faccion;
+ import algochess.engine.juego.Turno;
+ import algochess.engine.jugador.Jugador;
+ import algochess.engine.posicion.Posicion;
+ import algochess.engine.tablero.Casillero;
+ import algochess.engine.tablero.Tablero;
+ import org.junit.Test;
+ import static org.junit.Assert.assertNotNull;
+ import static org.junit.jupiter.api.Assertions.assertEquals;
+ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-//     @Test
-//     public void test04MuevoEntidadEnTurnoIncorrectoYTiraError(){
+public class TurnoTest {
 
-//         Posicion posicion = new Posicion(1,1);
-//         Posicion posicion2= new Posicion(2,2);
-//         Turno turno = new Turno(Faccion.ENEMIGOS);
-//         Casillero casillero = new Casillero(posicion, Faccion.ALIADOS);
-//         Casillero casillero2 = new Casillero(posicion2, Faccion.ENEMIGOS);
+     @Test
+     public void test00CreoUnTurnoYEsValido(){
 
-//         assertThrows(NoEsTuTurnoException.class, () -> {
-//             turno.moverEntidad(casillero,casillero2,new Tablero(),Faccion.ALIADOS);
-//         });
+         Turno turno = new Turno(Faccion.ALIADOS);
+         assertNotNull(turno);
 
-//     }
+     }
+
+    @Test
+    public void test01CreoUnTurnoYElPrimerTurnoEsAliado(){
+
+        Turno turno = new Turno(Faccion.ALIADOS);
+        assertEquals(turno.popFaccion(), Faccion.ALIADOS);
+
+    }
+
+    @Test
+    public void test02CreoUnTurnoYCuandoCambioDeTurnoElTurnoEsDelJugador2(){
+
+        Jugador jugador1 = new Jugador(Faccion.ALIADOS, "Lucas");
+        Jugador jugador2 = new Jugador(Faccion.ENEMIGOS, "Guido");
+
+        Turno turno = new Turno(jugador1,jugador2);
+        assertEquals(turno.cambiarTurno(jugador1), jugador2);
+
+    }
+
+    @Test
+    public void test03CreoUnTurnoYCuandoCambioDeTurnoElTurnoEsDelJugador1SiElTurnoEraDelJugador2(){
+
+        Jugador jugador1 = new Jugador(Faccion.ALIADOS, "Lucas");
+        Jugador jugador2 = new Jugador(Faccion.ENEMIGOS, "Guido");
+
+        Turno turno = new Turno(jugador1,jugador2);
+        Jugador jugadorTurnado = turno.cambiarTurno(jugador1);
+
+        assertEquals(turno.cambiarTurno(jugadorTurnado), jugador1);
+
+    }
 
 
 
@@ -71,4 +60,6 @@
 
 
 
-// }
+
+
+}
