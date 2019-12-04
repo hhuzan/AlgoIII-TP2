@@ -2,7 +2,6 @@ package algochess.gui.vista;
 
 import algochess.gui.controller.BotonVolverHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -14,7 +13,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import algochess.gui.controller.BotonComenzarJuegoHandler;
@@ -37,6 +35,9 @@ public class ContenedorJugadores extends VBox {
 
 		HBox jugadorContainer = new HBox(20);
 		jugadorContainer.setAlignment(Pos.CENTER);
+
+		VBox volverContainer = new VBox(20);
+		volverContainer.setAlignment(Pos.TOP_LEFT);
 
 		Button volverButton = new Button();
 		volverButton.setText("Volver");
@@ -78,8 +79,9 @@ public class ContenedorJugadores extends VBox {
 		jugadorDosContainer.getChildren().addAll(jugadorDosBackgroundView, nombreJugador_2);
 
 		jugadorContainer.getChildren().addAll(jugadorUnoContainer, jugadorDosContainer);
+		volverContainer.getChildren().add(volverButton);
 
-		this.getChildren().addAll(jugadorContainer, botonAceptar, volverButton);
+		this.getChildren().addAll(jugadorContainer, botonAceptar, volverContainer);
 		Image fondo = new Image("images/chess.png");
 		BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
 				BackgroundPosition.DEFAULT, new BackgroundSize(1, 1, true, true, false, false));

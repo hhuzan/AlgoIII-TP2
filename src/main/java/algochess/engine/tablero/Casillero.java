@@ -4,7 +4,6 @@ import algochess.engine.facciones.Faccion;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.interfaces.entidades.PuedeFormarBatallon;
-import algochess.engine.tablero.Tablero;
 import algochess.engine.interfaces.casillero.Estado;
 import java.util.HashSet;
 import java.util.Queue;

@@ -3,7 +3,6 @@ package algochess;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import algochess.engine.juego.Turno;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.facciones.Faccion;
@@ -17,7 +16,6 @@ import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import static algochess.engine.ConstantesUtils.ROCA_PODER;
 import algochess.excepciones.EntidadFueraDeAlcanceException;
-import algochess.excepciones.CasilleroOcupadoException;
 import algochess.excepciones.EntidadNoPuedeMoverseException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;

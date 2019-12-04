@@ -1,8 +1,6 @@
 package algochess;
 
 import static org.junit.Assert.assertNotNull;
-
-import algochess.engine.juego.Turno;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.entidades.armas.Arco;
 import algochess.engine.facciones.Faccion;

@@ -4,7 +4,6 @@ import algochess.engine.comandante.Comandante;
 import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Soldado;
 import algochess.engine.facciones.Faccion;
-import algochess.engine.juego.Turno;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.jugador.Jugador;
 import algochess.engine.posicion.Posicion;

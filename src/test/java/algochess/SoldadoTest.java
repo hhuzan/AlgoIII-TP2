@@ -3,7 +3,7 @@ package algochess;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import algochess.engine.juego.Turno;
+
 import org.junit.Test;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import static algochess.engine.ConstantesUtils.ESPADA_PODER;

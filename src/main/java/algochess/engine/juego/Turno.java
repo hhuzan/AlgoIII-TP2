@@ -37,7 +37,4 @@ public class Turno {
 		return jugadores.stream().filter(x -> jugador != x).findFirst().get();
 	}
 
-	public Faccion getFaccionActual() {
-		return faccionActual;
-	}
 }

@@ -1,7 +1,6 @@
 package algochess.gui.controller;
 
 import algochess.engine.juego.Juego;
-import algochess.gui.vista.AlgoChess;
 import algochess.gui.vista.ContenedorCompras;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
 
 
 public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
