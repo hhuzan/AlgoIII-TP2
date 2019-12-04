@@ -16,6 +16,7 @@ import algochess.excepciones.JugadorPerdioException;
 import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import static algochess.engine.ConstantesUtils.ROCA_PODER;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 import algochess.excepciones.CasilleroOcupadoException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -116,7 +117,9 @@ public class CatapultaTest {
         tablero.colocarEntidad(catapulta, posOrigen, new Jugador(Faccion.ALIADOS, "Lucas"));
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+          catapulta.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
+        });    
     }
 
     @Test

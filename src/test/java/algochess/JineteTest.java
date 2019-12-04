@@ -18,6 +18,7 @@ import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
 import static algochess.engine.ConstantesUtils.CATAPULTA_VIDA;
 import static algochess.engine.ConstantesUtils.DAGA_PODER;
 import algochess.excepciones.JugadorPerdioException;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 import algochess.excepciones.CasilleroOcupadoException;
 
 public class JineteTest {
@@ -131,12 +132,9 @@ public class JineteTest {
         tablero.colocarEntidad(catapulta2,posCatapulta2, new Jugador(Faccion.ALIADOS, "Lucas"));
 		Casillero casilleroDestino = tablero.obtenerCasillero(posCatapulta2);
 
-        tablero.atacarCasillero(posJinete,posCatapulta2,Faccion.ALIADOS);
-        
-        assertThrows(JugadorPerdioException.class, () -> {
-			catapulta2.disminuirVida(CATAPULTA_VIDA, Faccion.ALIADOS, casilleroDestino);
-		});
-
+        assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+        	tablero.atacarCasillero(posJinete, posCatapulta2, Faccion.ALIADOS);
+        });  
     }
 
     @Test 

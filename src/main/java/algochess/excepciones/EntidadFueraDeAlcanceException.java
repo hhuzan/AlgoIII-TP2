@@ -1,4 +1,4 @@
-package algochess.excepciones.nousadas;
+package algochess.excepciones;
 
 @SuppressWarnings("serial")
 public class EntidadFueraDeAlcanceException extends RuntimeException {

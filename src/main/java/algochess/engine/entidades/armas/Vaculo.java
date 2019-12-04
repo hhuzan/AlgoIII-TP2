@@ -5,6 +5,7 @@ import algochess.engine.facciones.Faccion;
 import algochess.engine.interfaces.armas.ArmaCura;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 import static algochess.engine.ConstantesUtils.VACULO_PODER;
 
 public class Vaculo extends Arma implements ArmaCura {
@@ -16,8 +17,9 @@ public class Vaculo extends Arma implements ArmaCura {
 
     @Override
     public void curar(Posicion origen, Casillero casilleroCurado, Faccion faccion) {
-        if (getRango().casilleroEstaEnRango(casilleroCurado, origen)) {
+        if (getRango().casilleroEstaEnRango(casilleroCurado, origen)) 
             casilleroCurado.infligirCuracionEnEntidad(getPower(), faccion);
-        }
+        else
+            throw new EntidadFueraDeAlcanceException();
     }
 }

@@ -15,6 +15,7 @@ import algochess.engine.entidades.Soldado;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import algochess.excepciones.JugadorPerdioException;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 import algochess.excepciones.CasilleroOcupadoException;
 
 public class SoldadoTest {
@@ -64,11 +65,9 @@ public class SoldadoTest {
 
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
-        soldado.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
-
-        assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, casilleroDestino);
-        });
+        assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            soldado.atacar(casilleroDestino, tablero, Faccion.ALIADOS);
+        });   
     }
 
     @Test 

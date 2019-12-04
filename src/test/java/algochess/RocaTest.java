@@ -15,6 +15,8 @@ import static algochess.engine.ConstantesUtils.ROCA_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import algochess.excepciones.JugadorPerdioException;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 
 public class RocaTest {
 
@@ -63,14 +65,9 @@ public class RocaTest {
 
 		Roca roca = new Roca();
 
-		roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-		for (int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
-			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, casilleroDestino);
-		}
-
-		assertThrows(JugadorPerdioException.class, () -> {
-			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, casilleroDestino);
-		});
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+			roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        });  
 
 	}
 
@@ -88,15 +85,10 @@ public class RocaTest {
 		Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
 
 		Roca roca = new Roca();
-
-		roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-		for (int i = 0; i < (JINETE_VIDA / ROCA_PODER) - 1; i++) {
-			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, casilleroDestino);
-		}
-
-		assertThrows(JugadorPerdioException.class, () -> {
-			jinete.disminuirVida(ROCA_PODER, Faccion.ALIADOS, casilleroDestino);
-		});
+        
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+			roca.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        });  
 
 	}
 }

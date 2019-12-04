@@ -7,6 +7,7 @@ import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import algochess.engine.tablero.Tablero;
 import java.util.HashSet;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 import static algochess.engine.ConstantesUtils.ROCA_PODER;
 
 public class Roca extends Arma implements ArmaAtaca {
@@ -17,18 +18,17 @@ public class Roca extends Arma implements ArmaAtaca {
 
     @Override
     public void atacar(Posicion posicion, Casillero casilleroAtacado, Faccion faccionEntidad, Tablero tablero) {
-        if (!getRango().casilleroEstaEnRango(casilleroAtacado, posicion)) { return;}
+        if (!getRango().casilleroEstaEnRango(casilleroAtacado, posicion)) 
+            throw new EntidadFueraDeAlcanceException();
+        else {
+            HashSet<Casillero> casillerosAtacados = new HashSet<>();
+            casillerosAtacados.add(casilleroAtacado);
 
-        HashSet<Casillero> casillerosAtacados = new HashSet<>();
-        casillerosAtacados.add(casilleroAtacado);
+            tablero.colectaUnidadesContiguas(casilleroAtacado.getPosicion(),casillerosAtacados);
 
-        tablero.colectaUnidadesContiguas(casilleroAtacado.getPosicion(),casillerosAtacados);
-
-        for(Casillero casillero:casillerosAtacados){
-            casillero.infigirDanioEnEntidadIgnorandoFaccionAtacante(getPower());
+            for(Casillero casillero:casillerosAtacados){
+                casillero.infigirDanioEnEntidadIgnorandoFaccionAtacante(getPower());
+            }
         }
-
-
-
     }
 }

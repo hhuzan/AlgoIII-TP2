@@ -15,6 +15,7 @@ import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import algochess.excepciones.JugadorPerdioException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 
 public class EspadaTest {
 
@@ -65,14 +66,9 @@ public class EspadaTest {
 
         Espada espada = new Espada();
 
-        espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-        for(int i = 0; i < (JINETE_VIDA / ESPADA_PODER) - 1; i++) {
-            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
-        }
-
-        Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
-        });
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        });  
 
     }
 
@@ -92,14 +88,9 @@ public class EspadaTest {
 
         Espada espada = new Espada();
 
-        espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-        for(int i = 0; i < (JINETE_VIDA / ESPADA_PODER) - 1; i++) {
-            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
-        }
-
-        Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(ESPADA_PODER, Faccion.ALIADOS, casilleroDestino);
-        });
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            espada.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        });  
 
     }
 

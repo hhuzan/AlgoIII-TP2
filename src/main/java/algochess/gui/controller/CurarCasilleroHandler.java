@@ -32,8 +32,7 @@ public class CurarCasilleroHandler implements EventHandler<ActionEvent> {
 		try {
 			juego.curar(filaOrigen, colOrigen, filaDestino, colDestino);
 		} catch (Exception ex) {
-			System.out.println(ex);
-			// exHandler.manageException(ex);
+			exHandler.manageException(ex);
 		}
 	}
 }

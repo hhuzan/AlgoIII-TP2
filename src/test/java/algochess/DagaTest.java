@@ -15,6 +15,7 @@ import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import algochess.excepciones.JugadorPerdioException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 
 public class DagaTest {
 
@@ -65,15 +66,9 @@ public class DagaTest {
 
         Daga daga = new Daga();
 
-        daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-
-        for(int i = 0; i < (JINETE_VIDA / DAGA_PODER) - 1; i++) {
-            jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, casilleroDestino);
-        }
-
-        Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, casilleroDestino);
-        });
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        });     
 
     }
 
@@ -93,14 +88,9 @@ public class DagaTest {
 
         Daga daga = new Daga();
 
-        daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-        for(int i = 0; i < (JINETE_VIDA / DAGA_PODER) - 1; i++) {
-            jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, casilleroDestino);
-        }
-
-        Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(DAGA_PODER, Faccion.ALIADOS, casilleroDestino);
-        });
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            daga.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        });  
 
     }
 

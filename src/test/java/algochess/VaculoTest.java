@@ -13,7 +13,8 @@ import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import static algochess.engine.ConstantesUtils.VACULO_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
-
+import algochess.excepciones.EntidadFueraDeAlcanceException;
+import org.junit.jupiter.api.Assertions;
 import algochess.excepciones.JugadorPerdioException;
 import org.junit.Test;
 
@@ -33,7 +34,7 @@ public class VaculoTest {
         Jinete jinete = new Jinete(jugador, Faccion.ENEMIGOS);
 
         Posicion posOrigen = new Posicion(9, 1);
-        Posicion posDestino = new Posicion(15, 1);
+        Posicion posDestino = new Posicion(10, 1);
 
         tablero.colocarEntidad(jinete, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
         Casillero casilleroDestino = tablero.obtenerCasillero(posDestino);
@@ -65,12 +66,9 @@ public class VaculoTest {
 
         Vaculo vaculo = new Vaculo();
         
-        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
-        vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
-
-        assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
-        });
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
+        });  
 
     }
 
@@ -90,12 +88,9 @@ public class VaculoTest {
 
         Vaculo vaculo = new Vaculo();
         
-        jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
-        vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
-
-        assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
-        });
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            vaculo.curar(posOrigen, casilleroDestino, Faccion.ALIADOS);
+        });  
 
     }
 }

@@ -88,15 +88,23 @@ public class Juego {
 	}
 
 	public void atacar(int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
-		Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
-		Posicion posicionDestino = new Posicion(filaDestino, colDestino);
-		fase.atacar(tablero, posicionOrigen, posicionDestino, faccionActual);
+		try {
+			Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
+			Posicion posicionDestino = new Posicion(filaDestino, colDestino);
+			fase.atacar(tablero, posicionOrigen, posicionDestino, faccionActual);
+		} catch (Exception ex) {
+			throw ex;
+		}
 	}
 
 	public void curar(int filaOrigen, int colOrigen, int filaDestino, int colDestino){
-		Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
-		Posicion posicionDestino = new Posicion(filaDestino, colDestino);
-		fase.curar(tablero,posicionOrigen,posicionDestino,faccionActual);
+		try {
+			Posicion posicionOrigen = new Posicion(filaOrigen, colOrigen);
+			Posicion posicionDestino = new Posicion(filaDestino, colDestino);
+			fase.curar(tablero, posicionOrigen, posicionDestino, faccionActual);
+		} catch (Exception ex) {
+			throw ex;
+		}
 	}
 
 	public Tablero getTablero() {

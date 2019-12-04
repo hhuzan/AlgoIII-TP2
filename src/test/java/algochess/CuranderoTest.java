@@ -19,6 +19,7 @@ import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
 import algochess.excepciones.JugadorPerdioException;
 import algochess.excepciones.EntidadDeMismaFaccionException;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 import algochess.excepciones.CasilleroOcupadoException;
 
 public class CuranderoTest {
@@ -149,11 +150,9 @@ public class CuranderoTest {
 		Casillero casilleroDestino = tablero.obtenerCasillero(posicionDestino);
 
 		jinete.disminuirVida(VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
-		curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
-
-		assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA - VACULO_PODER, Faccion.ALIADOS, casilleroDestino);
-        });
+       	assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+			curandero.curar(tablero.obtenerCasillero(posicionDestino), Faccion.ALIADOS);
+        });   
 	}
 
 	@Test

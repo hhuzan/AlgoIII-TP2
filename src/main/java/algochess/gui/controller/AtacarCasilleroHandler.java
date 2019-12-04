@@ -36,8 +36,7 @@ public class AtacarCasilleroHandler implements EventHandler<ActionEvent> {
 			juego.atacar(filaOrigen, colOrigen, filaDestino, colDestino);
 			contenedor.refrescar();
 		} catch (Exception ex) {
-			System.out.println(ex);
-			// exHandler.manageException(ex);
+			exHandler.manageException(ex);
 		}
 	}
 }

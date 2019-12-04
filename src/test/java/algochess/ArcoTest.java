@@ -13,6 +13,7 @@ import algochess.engine.posicion.Posicion;
 import static algochess.engine.ConstantesUtils.ARCO_PODER;
 import static algochess.engine.ConstantesUtils.JINETE_VIDA;
 import algochess.excepciones.JugadorPerdioException;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -50,7 +51,7 @@ public class ArcoTest {
     }
 
     @Test 
-    public void test02AtacamosConArcoConRangoCercanoYNoSeProduceElAtaque() {
+    public void test02AtacamosConArcoConRangoCercanoYSeLanzaUnaExcepcion() {
         Tablero tablero = new Tablero();
         Jugador jugador = new Jugador(Faccion.ENEMIGOS);
 
@@ -65,10 +66,9 @@ public class ArcoTest {
 
         Arco arco = new Arco();
 
-        arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         
-        Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, casilleroDestino);
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
         });        
     }
 
@@ -88,10 +88,9 @@ public class ArcoTest {
 
         Arco arco = new Arco();
 
-        arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
-        Assertions.assertThrows(JugadorPerdioException.class, () -> {
-            jinete.disminuirVida(JINETE_VIDA, Faccion.ALIADOS, casilleroDestino);
-        });
+        Assertions.assertThrows(EntidadFueraDeAlcanceException.class, () -> {
+            arco.atacar(posOrigen, casilleroDestino, Faccion.ALIADOS, tablero);
+        });    
 
     }
 }
