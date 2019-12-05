@@ -111,8 +111,8 @@ public class Comandante {
                     } 
                     catch (CasilleroOcupadoException ignored){
                         count++;
-                        if(count == 3) 
-                            return false;
+                        /*if(count == 3)
+                            return false;*/
                     };
 
                     if (seMovio)
@@ -120,7 +120,8 @@ public class Comandante {
                 }
             }
         }
-        return true;
+        return count > 0;
+
     }
 
 }
