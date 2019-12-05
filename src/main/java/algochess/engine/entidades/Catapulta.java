@@ -9,7 +9,6 @@ import algochess.engine.interfaces.entidades.PuedeSerHerida;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.tablero.Vacio;
 import algochess.excepciones.EntidadDeMismaFaccionException;
-import algochess.excepciones.EntidadOtraFaccionException;
 import algochess.engine.jugador.Jugador;
 import static algochess.engine.ConstantesUtils.CATAPULTA_COSTO;
 import static algochess.engine.ConstantesUtils.CATAPULTA_VIDA;
@@ -58,9 +57,6 @@ public class Catapulta extends Entidad implements PuedeAtacar, PuedeSerHerida {
 
     @Override
     public void atacar(Casillero casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
-        if (sosAmigo(ordenDeFaccion)) 
-            arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);
-        else
-            throw new EntidadOtraFaccionException();
+        arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);
     }
 }

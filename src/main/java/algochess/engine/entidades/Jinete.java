@@ -68,10 +68,8 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
 
     @Override
     public void atacar(Casillero casilleroAtacado, Tablero tablero, Faccion ordenDeFaccion) {
-        if (sosAmigo(ordenDeFaccion)) {
             definirArma(tablero);
             arma.atacar(getPosicion(), casilleroAtacado, getFaccion(), tablero);
-        }
     }
 
     @Override
