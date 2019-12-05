@@ -115,8 +115,11 @@ public class Comandante {
                             return false;*/
                     };
 
-                    if (seMovio)
+                    if (seMovio){
+                        count++;
                         origen.cambiarEstado(new Vacio());
+
+                    }
                 }
             }
         }
