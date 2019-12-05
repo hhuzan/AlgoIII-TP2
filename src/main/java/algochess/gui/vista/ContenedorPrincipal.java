@@ -1,5 +1,7 @@
 package algochess.gui.vista;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import java.util.Map;
 import java.util.HashMap;
 import javafx.geometry.Pos;
@@ -12,6 +14,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import javafx.scene.Scene;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -46,12 +49,14 @@ public class ContenedorPrincipal extends HBox {
 	private int filaOrigen;
 	private int filaDestino;
 	private int columnaOrigen;
-	private int columnaDestino;		
+	private int columnaDestino;	
+	private MediaPlayer mediaPlayer;	
 
-	public ContenedorPrincipal(Stage stage, Juego juego) {
+	public ContenedorPrincipal(Stage stage, Juego juego, MediaPlayer mediaPlayer) {
 		super();
 		this.stage = stage;
 		this.juego = juego;
+		this.mediaPlayer = mediaPlayer;
 		colorFaccion.put(Faccion.ALIADOS, colorAliados);
 		colorFaccion.put(Faccion.ENEMIGOS, colorEnemigos);
 
@@ -109,11 +114,12 @@ public class ContenedorPrincipal extends HBox {
         alert.setTitle(title);
         alert.setHeaderText(title);
         alert.showAndWait();
+		
+		mediaPlayer.stop();
+        ContenedorFinal contenedorFinal = new ContenedorFinal(stage);
+		Scene escenaFinal = new Scene(contenedorFinal, 1120, 660);
 
-  //       ContenedorFinal contenedorFinal = new ContenedorPrincipal(stage, juego);
-		// Scene escenaPrincipal = new Scene(contenedorPrincipal, 1120, 660);
-
-		// stage.setScene(escenaPrincipal);
+		stage.setScene(escenaFinal);
 	}
 	
 	private void armarColumnaDerecha() {

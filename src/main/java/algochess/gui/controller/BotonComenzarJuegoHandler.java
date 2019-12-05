@@ -33,7 +33,7 @@ public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
 		mediaPlayer.stop();
 		mediaPlayer2.play();
 		Juego juego = new Juego(nombre1.getText(), nombre2.getText());
-		ContenedorCompras contenedorCompras = new ContenedorCompras(stage, juego);
+		ContenedorCompras contenedorCompras = new ContenedorCompras(stage, juego, mediaPlayer2);
 		Scene escenaPrincipal = new Scene(contenedorCompras, 1120, 660);
 
 		stage.setScene(escenaPrincipal);

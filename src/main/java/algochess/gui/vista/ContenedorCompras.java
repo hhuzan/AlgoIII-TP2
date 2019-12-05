@@ -1,5 +1,7 @@
 package algochess.gui.vista;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -35,11 +37,13 @@ public class ContenedorCompras extends HBox {
 	private Juego juego;
 	private VBox boxIzquierdo;
 	private VBox boxDerecho;
+	private MediaPlayer mediaPlayer;
 
-	public ContenedorCompras(Stage stage, Juego juego) {
+	public ContenedorCompras(Stage stage, Juego juego, MediaPlayer mediaPlayer) {
 		super();
 		this.stage = stage;
 		this.juego = juego;
+		this.mediaPlayer = mediaPlayer;
 
 		setAlignment(Pos.CENTER);
 		setSpacing(50);
@@ -134,7 +138,7 @@ public class ContenedorCompras extends HBox {
 			boolean finished = juego.cambiarTurno();
 			if(finished) {
 				System.out.println("------------------ FIN COMPRAS ------------------");
-				ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego);
+				ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego, mediaPlayer);
 				Scene escenaPrincipal = new Scene(contenedorPrincipal, 1120, 660);
 
 				stage.setScene(escenaPrincipal);
