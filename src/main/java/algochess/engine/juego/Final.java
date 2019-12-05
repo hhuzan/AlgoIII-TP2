@@ -35,7 +35,7 @@ public class Final implements Fase {
 	}
 
 	public boolean verificarFinDeFase(Jugador jugadorAliado, Jugador jugadorEnemigo) {
-		return (jugadorAliado.perdio() || jugadorEnemigo.perdio());
+		return false;
 	}
 
 	public Entidad obtenerEntidadSeleccionada() {

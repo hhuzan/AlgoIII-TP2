@@ -75,9 +75,7 @@ public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, Puede
 
     @Override
     public boolean moverA(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
-        System.out.println("Mover a soldado");
         if(origen.enRangoMovimiento(destino)) {
-            System.out.println("En rango");
             Comandante comandante = new Comandante(tablero);
             comandante.recluteMisCercanos(this);
             boolean batallonSeMovio = comandante.moverBatallon(tablero, destino, this);
@@ -88,7 +86,6 @@ public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, Puede
                 return destino.recibirEntidad(this);
             }
         } else {
-            System.out.println("Fuera de rango");
             return false;
         }
     }

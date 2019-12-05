@@ -99,6 +99,10 @@ public class ContenedorPrincipal extends HBox {
 		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
 	}
 
+	public void finalizarJuego() {
+		System.out.println("Perdio alguien");
+	}
+	
 	private void armarColumnaDerecha() {
 		boxDerecho = new VBox(30);
 		boxDerecho.setAlignment(Pos.CENTER);

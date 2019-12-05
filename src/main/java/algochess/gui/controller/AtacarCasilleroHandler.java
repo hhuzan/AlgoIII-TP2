@@ -33,6 +33,7 @@ public class AtacarCasilleroHandler implements EventHandler<ActionEvent> {
 			contenedor.refrescar();
 		} catch (Exception ex) {
 			exHandler.manageException(ex);
+			contenedor.finalizarJuego();
 		}
 	}
 }
