@@ -21,9 +21,9 @@ public class Turno {
 	}
 
 	public Jugador random() {
-		// TODO: Hacer random 50-50
-		faccionActual = Faccion.ALIADOS;
-		return jugadores.get(0);
+		int rand = Math.random() < 0.5 ? 0 : 1;
+		faccionActual = rand == 0 ? Faccion.ALIADOS : Faccion.ENEMIGOS;
+		return jugadores.get(rand);
 	}
 
 	public Faccion popFaccion() {
