@@ -92,9 +92,6 @@ public class Comandante {
         int count = 0;
 
         while (batallon.size() != 0) {
-            if(batallon.size() < 3)
-                return false;
-
             for (PuedeFormarBatallon recluta : batallonParaLoop) {
                 if(reclutasYaMovidos.contains(recluta)) continue;
                 Posicion posicionPotencial = generarPosicionPotencial(recluta, instrucciones);
@@ -110,18 +107,19 @@ public class Comandante {
                         seMovio = recluta.moverComoRecluta(tablero, casillero);
                     } 
                     catch (CasilleroOcupadoException ignored){
-                        System.out.println("Casillero ocupado");
                     };
 
                     if (seMovio){
                         count++;
                         origen.cambiarEstado(new Vacio());
-
                     }
                 }
             }
         }
-        return count > 0;
+        if(count == 0)
+            throw new CasilleroOcupadoException();
+
+        return true;
 
     }
 

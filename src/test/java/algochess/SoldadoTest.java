@@ -76,7 +76,7 @@ public class SoldadoTest {
 		Jugador jugador1 = new Jugador(Faccion.ALIADOS);
 		Soldado soldado = new Soldado(jugador1, Faccion.ALIADOS);
 
-		Posicion posicion = new Posicion(1,1);
+		Posicion posicion = new Posicion(1, 1);
 		tablero.colocarEntidad(soldado, posicion, new Jugador(Faccion.ALIADOS, "Lucas"));
 
 		Posicion posicionDestino = new Posicion(1, 2);
