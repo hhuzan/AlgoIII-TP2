@@ -5,6 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import algochess.gui.ExceptionHandler;
 import algochess.gui.vista.ContenedorPrincipal;
+import algochess.excepciones.EntidadDeMismaFaccionException;
+import algochess.excepciones.EntidadFueraDeAlcanceException;
+import algochess.excepciones.JugadorPerdioException;
 
 public class AtacarCasilleroHandler implements EventHandler<ActionEvent> {
 
@@ -31,9 +34,13 @@ public class AtacarCasilleroHandler implements EventHandler<ActionEvent> {
 		try {
 			juego.atacar(filaOrigen, colOrigen, filaDestino, colDestino);
 			contenedor.refrescar();
-		} catch (Exception ex) {
+		} catch (EntidadDeMismaFaccionException ex) {
 			exHandler.manageException(ex);
-			contenedor.finalizarJuego();
+		} catch (EntidadFueraDeAlcanceException ex) {
+			exHandler.manageException(ex);
+		} catch(JugadorPerdioException ex) {
+			contenedor.refrescar();
+			contenedor.finalizarJuego(ex.getJugador());
 		}
 	}
 }

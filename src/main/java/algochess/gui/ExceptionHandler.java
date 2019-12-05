@@ -8,7 +8,6 @@ import algochess.excepciones.JugadorPerdioException;
 public class ExceptionHandler  {
 
     public void manageException(Exception ex) {
-    	System.out.println("Entre aca");
         System.out.println(ex);
         Alert alert = createAlert(ex);
         alert.setHeaderText(null);

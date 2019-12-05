@@ -24,6 +24,7 @@ import algochess.engine.entidades.Jinete;
 import algochess.engine.entidades.Catapulta;
 import algochess.engine.entidades.Curandero;
 import algochess.engine.entidades.Soldado;
+import algochess.engine.jugador.Jugador;
 import algochess.gui.controller.AtacarCasilleroHandler;
 import algochess.gui.controller.CurarCasilleroHandler;
 import algochess.gui.controller.MoverCasilleroHandler;
@@ -31,6 +32,7 @@ import javafx.event.EventHandler;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.ArrayList;
+import javafx.scene.control.*;
 
 public class ContenedorPrincipal extends HBox {
 
@@ -99,8 +101,19 @@ public class ContenedorPrincipal extends HBox {
 		this.getChildren().addAll(boxIzquierdo, tableroVista.getPaneTablero(), boxDerecho);		
 	}
 
-	public void finalizarJuego() {
-		System.out.println("Perdio alguien");
+	public void finalizarJuego(Jugador jugadorPerdedor) {
+		Alert alert = new Alert(Alert.AlertType.WARNING, 
+								"El jugador: " + jugadorPerdedor.getNombre() + " ha perdido la partida",
+								ButtonType.OK);
+        String title = "El juego ha terminado";
+        alert.setTitle(title);
+        alert.setHeaderText(title);
+        alert.showAndWait();
+
+  //       ContenedorFinal contenedorFinal = new ContenedorPrincipal(stage, juego);
+		// Scene escenaPrincipal = new Scene(contenedorPrincipal, 1120, 660);
+
+		// stage.setScene(escenaPrincipal);
 	}
 	
 	private void armarColumnaDerecha() {

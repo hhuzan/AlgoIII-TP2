@@ -47,7 +47,7 @@ public class Jugador {
     public void removerEntidad(Entidad entidad) {
         entidades.remove(entidad);
         if(perdio())
-            throw new JugadorPerdioException();
+            throw new JugadorPerdioException(this);
     }
 
     public void comprarEntidad(VendedorDeEntidades vendedor, Entidad entidad) {
