@@ -17,20 +17,6 @@ import javafx.scene.image.ImageView;
 
 public class AlgoChess extends Application {
 
-    String mainTheme = "sounds/introSong.mp3";
-    Media sound = new Media(getClass().getClassLoader().getResource(mainTheme).toString());
-
-    String playTheme = "sounds/15_crytalscar_phase2_loop.wav";
-    Media soundPlay = new Media(getClass().getClassLoader().getResource(playTheme).toString());
-
-    String soundOnMouseEntered = "sounds/68_ui-generic_button_01.wav";
-    Media soundPlayOnMouseEntered = new Media(getClass().getClassLoader().getResource(soundOnMouseEntered).toString());
-
-    MediaPlayer mediaPlayerOnButton = new MediaPlayer(soundPlayOnMouseEntered);
-
-    MediaPlayer mediaPlayer2 = new MediaPlayer(soundPlay);
-
-    MediaPlayer mediaPlayer = new MediaPlayer(sound);
 
     private Stage stage;
     public static void main(String[] args) {
@@ -53,8 +39,8 @@ public class AlgoChess extends Application {
         }
     }
 
-    private Scene crearEscenaEleccionJugadores(Stage stage, MediaPlayer mediaPlayer, MediaPlayer mediaPlayer2, AlgoChess algoChess) {
-        ContenedorJugadores contenedorJugadores = new ContenedorJugadores(stage, mediaPlayer, mediaPlayer2, algoChess);
+    private Scene crearEscenaEleccionJugadores(Stage stage, Musica musica, AlgoChess algoChess) {
+        ContenedorJugadores contenedorJugadores = new ContenedorJugadores(stage, musica, algoChess);
         Scene escenaJugadores = new Scene(contenedorJugadores, 1120, 660);
 
         return escenaJugadores;
@@ -75,11 +61,16 @@ public class AlgoChess extends Application {
         logoView.setSmooth(true);
         logoView.setCache(true);
 
-        mediaPlayer.setAutoPlay(true);
+        /*mediaPlayer.setAutoPlay(true);
         mediaPlayer.setVolume(0.5);
         mediaPlayer2.setVolume(0.5);
         mediaPlayer.setCycleCount(mediaPlayer.INDEFINITE);
         mediaPlayer2.setCycleCount(mediaPlayer2.INDEFINITE);
+
+         */
+        Musica musica = new Musica();
+
+        musica.reproducirIntro();
 
         Button botonEntrar = new Button();
         botonEntrar.setText("Jugar");
@@ -99,11 +90,11 @@ public class AlgoChess extends Application {
         Button botonPause = new Button();
         botonPause.setText("Pausar musica");
 
-        Scene proximaEscena = crearEscenaEleccionJugadores(stage, mediaPlayer, mediaPlayer2, this);
+        Scene proximaEscena = crearEscenaEleccionJugadores(stage,musica, this);
 
         BotonProximaEscenaHandler botonEntrarHandler = new BotonProximaEscenaHandler(stage, proximaEscena);
-        MusicaOverButtonHandler botonMusicaOverButton = new MusicaOverButtonHandler(mediaPlayerOnButton);
-        MusicaOverButtonOnMouseExited botonMusicaOverButtonOnMouseExited = new MusicaOverButtonOnMouseExited(mediaPlayerOnButton);
+        MusicaOverButtonHandler botonMusicaOverButton = new MusicaOverButtonHandler(musica);
+        MusicaOverButtonOnMouseExited botonMusicaOverButtonOnMouseExited = new MusicaOverButtonOnMouseExited(musica);
         BotonInstruccionesHandler botonInstruccionesHandler = new BotonInstruccionesHandler();
 
         botonInstrucciones.setOnMouseEntered(botonMusicaOverButton);
@@ -118,17 +109,17 @@ public class AlgoChess extends Application {
         botonEntrar.setOnMouseEntered(botonMusicaOverButton);
         botonEntrar.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
-        BotonPlayMusicaHandler botonPlayMusicaHandler = new BotonPlayMusicaHandler(mediaPlayer);
+        BotonPlayMusicaHandler botonPlayMusicaHandler = new BotonPlayMusicaHandler(musica);
         botonPlay.setOnAction(botonPlayMusicaHandler);
         botonPlay.setOnMouseEntered(botonMusicaOverButton);
         botonPlay.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
-        BotonStopMusicaHandler botonStopMusicaHandler = new BotonStopMusicaHandler(mediaPlayer);
+        BotonStopMusicaHandler botonStopMusicaHandler = new BotonStopMusicaHandler(musica);
         botonStop.setOnAction(botonStopMusicaHandler);
         botonStop.setOnMouseEntered(botonMusicaOverButton);
         botonStop.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 
-        BotonPausarMusicaHandler botonPausarMusicaHandler = new BotonPausarMusicaHandler(mediaPlayer);
+        BotonPausarMusicaHandler botonPausarMusicaHandler = new BotonPausarMusicaHandler(musica);
         botonPause.setOnAction(botonPausarMusicaHandler);
         botonPause.setOnMouseEntered(botonMusicaOverButton);
         botonPause.setOnMouseExited(botonMusicaOverButtonOnMouseExited);

@@ -1,6 +1,8 @@
 package algochess.gui.vista;
 
 import algochess.gui.controller.BotonVolverHandler;
+import algochess.gui.controller.MusicaOverButtonHandler;
+import algochess.gui.controller.MusicaOverButtonOnMouseExited;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -24,7 +26,7 @@ public class ContenedorJugadores extends VBox {
 	private AlgoChess algoChess;
 
 
-	public ContenedorJugadores(Stage stage, MediaPlayer player, MediaPlayer mediaPlayer, AlgoChess algoChess) {
+	public ContenedorJugadores(Stage stage, Musica musica, AlgoChess algoChess) {
 
 		super();
 
@@ -39,8 +41,13 @@ public class ContenedorJugadores extends VBox {
 		VBox volverContainer = new VBox(20);
 		volverContainer.setAlignment(Pos.TOP_LEFT);
 
+		MusicaOverButtonHandler botonMusicaOverButton = new MusicaOverButtonHandler(musica);
+		MusicaOverButtonOnMouseExited botonMusicaOverButtonOnMouseExited = new MusicaOverButtonOnMouseExited(musica);
+
 		Button volverButton = new Button();
 		volverButton.setText("Volver");
+		volverButton.setOnMouseEntered(botonMusicaOverButton);
+		volverButton.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 		volverButton.setOnAction(new BotonVolverHandler(algoChess));
 
 		VBox jugadorUnoContainer = new VBox(20);
@@ -72,8 +79,11 @@ public class ContenedorJugadores extends VBox {
 
 
 		BotonComenzarJuegoHandler botonAceptarHandler = new BotonComenzarJuegoHandler(stage,
-				nombreJugador_1, nombreJugador_2, player, mediaPlayer);
+				nombreJugador_1, nombreJugador_2, musica, algoChess);
+		botonAceptar.setOnMouseEntered(botonMusicaOverButton);
+		botonAceptar.setOnMouseExited(botonMusicaOverButtonOnMouseExited);
 		botonAceptar.setOnAction(botonAceptarHandler);
+
 
 		jugadorUnoContainer.getChildren().addAll(jugadorUnoBackgroundView, nombreJugador_1);
 		jugadorDosContainer.getChildren().addAll(jugadorDosBackgroundView, nombreJugador_2);

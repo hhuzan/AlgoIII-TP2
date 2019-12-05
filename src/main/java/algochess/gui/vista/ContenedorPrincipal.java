@@ -50,13 +50,15 @@ public class ContenedorPrincipal extends HBox {
 	private int filaDestino;
 	private int columnaOrigen;
 	private int columnaDestino;	
-	private MediaPlayer mediaPlayer;	
+	private Musica musica;
+	private AlgoChess algoChess;
 
-	public ContenedorPrincipal(Stage stage, Juego juego, MediaPlayer mediaPlayer) {
+	public ContenedorPrincipal(Stage stage, Juego juego, Musica musica, AlgoChess algoChess) {
 		super();
 		this.stage = stage;
 		this.juego = juego;
-		this.mediaPlayer = mediaPlayer;
+		this.musica = musica;
+		this.algoChess = algoChess;
 		colorFaccion.put(Faccion.ALIADOS, colorAliados);
 		colorFaccion.put(Faccion.ENEMIGOS, colorEnemigos);
 
@@ -115,8 +117,8 @@ public class ContenedorPrincipal extends HBox {
         alert.setHeaderText(title);
         alert.showAndWait();
 		
-		mediaPlayer.stop();
-        ContenedorFinal contenedorFinal = new ContenedorFinal(stage);
+		musica.pararMusicaBatalla();
+        ContenedorFinal contenedorFinal = new ContenedorFinal(stage, musica, algoChess);
 		Scene escenaFinal = new Scene(contenedorFinal, 1120, 660);
 
 		stage.setScene(escenaFinal);

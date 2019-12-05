@@ -1,5 +1,6 @@
 package algochess.gui.controller;
 
+import algochess.gui.vista.Musica;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.MediaPlayer;
@@ -7,10 +8,10 @@ import javafx.scene.media.MediaPlayer;
 public class MusicaOverButtonOnMouseExited implements EventHandler<MouseEvent> {
 
 
-    MediaPlayer mediaPlayer;
+    Musica mediaPlayer;
 
 
-    public MusicaOverButtonOnMouseExited(MediaPlayer mediaPlayer) {
+    public MusicaOverButtonOnMouseExited(Musica mediaPlayer) {
         this.mediaPlayer = mediaPlayer;
     }
 
@@ -19,7 +20,7 @@ public class MusicaOverButtonOnMouseExited implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
 
 
-        mediaPlayer.stop();
+        mediaPlayer.pararSonidoBoton();
 
 
     }

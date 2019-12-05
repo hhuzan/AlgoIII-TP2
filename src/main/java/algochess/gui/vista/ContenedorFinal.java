@@ -2,6 +2,10 @@
 
 import java.util.Map;
 import java.util.HashMap;
+
+import algochess.gui.controller.BotonVolverHandler;
+import algochess.gui.controller.MusicaOverButtonHandler;
+import algochess.gui.controller.MusicaOverButtonOnMouseExited;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
@@ -19,23 +23,24 @@ import javafx.scene.media.Media;
 import javafx.scene.paint.Color;
 import javafx.scene.media.MediaPlayer;
 import javafx.event.EventHandler;
+import javafx.util.Duration;
 
-public class ContenedorFinal extends VBox {
+	public class ContenedorFinal extends VBox {
 
 	Stage stage;
+	AlgoChess algoChess;
 
-	public ContenedorFinal(Stage stage) {
+	public ContenedorFinal(Stage stage, Musica musica, AlgoChess algoChess) {
 		super();
 		this.stage = stage;
+		this.algoChess = algoChess;
+
 
 		setAlignment(Pos.CENTER);
 		setSpacing(50);
 
-		String mainTheme = "sounds/endGameSong.mp3";
-    	Media sound = new Media(getClass().getClassLoader().getResource(mainTheme).toString());
+		musica.reproducirSonidoAlFinalizarPartida();
 
-    	MediaPlayer mediaPlayer = new MediaPlayer(sound);
-    	mediaPlayer.play();
 
 		Image fondo = new Image("images/finJuego.jpg");
 		BackgroundImage imagenDeFondo = new BackgroundImage(fondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
@@ -47,10 +52,18 @@ public class ContenedorFinal extends VBox {
 
         Button botonSalir = new Button();
         botonSalir.setText("Salir");
+        botonSalir.setOnMouseEntered(new MusicaOverButtonHandler(musica));
+		botonSalir.setOnMouseExited(new MusicaOverButtonOnMouseExited(musica));
         botonSalir.setOnAction((ActionEvent e) -> {
 			System.exit(0);
 		});
 
-		this.getChildren().add(botonSalir);
+        Button botonVolverAJugar = new Button();
+        botonVolverAJugar.setText("Volver al inicio");
+		botonVolverAJugar.setOnMouseEntered(new MusicaOverButtonHandler(musica));
+		botonVolverAJugar.setOnMouseExited(new MusicaOverButtonOnMouseExited(musica));
+        botonVolverAJugar.setOnAction(new BotonVolverHandler(algoChess));
+
+		this.getChildren().addAll(botonSalir, botonVolverAJugar);
 	}
 }
