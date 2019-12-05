@@ -67,9 +67,9 @@ public class TableroTest {
 
 		tablero.colocarEntidad(soldado, posOrigen, new Jugador(Faccion.ALIADOS));
 		tablero.moverEntidad(posOrigen, posDestino, Faccion.ALIADOS);
-			assertThrows(CasilleroOcupadoException.class, () -> {
-				tablero.colocarEntidad(soldado, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
-			});	
+		assertThrows(CasilleroOcupadoException.class, () -> {
+			tablero.colocarEntidad(soldado, posDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
+		});	
 	}
 
 	@Test 

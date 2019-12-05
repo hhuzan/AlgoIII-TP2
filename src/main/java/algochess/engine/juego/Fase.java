@@ -19,5 +19,6 @@ public interface Fase {
 	void atacar(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion);
 	void curar(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion);
 	void mover(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion);
+	void setMoved(boolean moved);
 
 }

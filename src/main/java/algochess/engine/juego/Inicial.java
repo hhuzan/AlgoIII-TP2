@@ -61,4 +61,7 @@ public class Inicial implements Fase {
 
 	}
 
+	public void setMoved(boolean moved) {
+	}
+
 }

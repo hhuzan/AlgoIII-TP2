@@ -89,8 +89,12 @@ public class Comandante {
 
         moverSetup();
         generarInstrucciones(destino, entidad);
+        int count = 0;
 
         while (batallon.size() != 0) {
+            if(batallon.size() < 3)
+                return false;
+
             for (PuedeFormarBatallon recluta : batallonParaLoop) {
                 if(reclutasYaMovidos.contains(recluta)) continue;
                 Posicion posicionPotencial = generarPosicionPotencial(recluta, instrucciones);
@@ -105,7 +109,11 @@ public class Comandante {
                     try {
                         seMovio = recluta.moverComoRecluta(tablero, casillero);
                     } 
-                    catch (CasilleroOcupadoException ignored){};
+                    catch (CasilleroOcupadoException ignored){
+                        count++;
+                        if(count == 3) 
+                            return false;
+                    };
 
                     if (seMovio)
                         origen.cambiarEstado(new Vacio());

@@ -6,11 +6,18 @@ import algochess.engine.vendedordeentidades.VendedorDeEntidades;
 import algochess.engine.entidades.Entidad;
 import algochess.engine.facciones.Faccion;
 import algochess.engine.posicion.Posicion;
+import algochess.excepciones.JugadorYaHaMovidoException;
 
 
 public class Final implements Fase {
 
 	private Entidad entidadSeleccionada;
+	private boolean hasMoved;
+
+	public Final() {
+		entidadSeleccionada = null;
+		hasMoved = false;
+	}
 
 	public void seleccionarEntidad(Jugador jugador, Faccion faccion, Entidad entidad) {
 		if(entidad.sosAmigo(faccion))
@@ -48,7 +55,20 @@ public class Final implements Fase {
 	}
 
 	public void mover(Tablero tablero, Posicion posOrigen, Posicion posDestino, Faccion faccion) {
-		tablero.moverEntidad(posOrigen, posDestino, faccion);
+		try {
+			if(!hasMoved)
+				tablero.moverEntidad(posOrigen, posDestino, faccion);
+			else 
+				throw new JugadorYaHaMovidoException();
+
+			hasMoved = true;
+		} catch (Exception ex) {
+			throw ex;
+		}
+	}
+
+	public void setMoved(boolean moved) {
+		hasMoved = moved;
 	}
 
 }

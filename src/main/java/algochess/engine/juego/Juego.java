@@ -78,6 +78,7 @@ public class Juego {
 
 		jugadorActual = turno.cambiarTurno(jugadorActual);
 		faccionActual = turno.popFaccion();
+		fase.setMoved(false);
 		return false;
 	}
 
@@ -89,6 +90,7 @@ public class Juego {
 
 			jugadorActual = turno.cambiarTurno(jugadorActual);
 			faccionActual = turno.popFaccion();
+			fase.setMoved(false);
 		} catch (Exception ex) {
 			throw ex;
 		}
@@ -102,6 +104,7 @@ public class Juego {
 
 			jugadorActual = turno.cambiarTurno(jugadorActual);
 			faccionActual = turno.popFaccion();
+			fase.setMoved(false);
 		} catch (Exception ex) {
 			throw ex;
 		}
