@@ -230,8 +230,10 @@ public class ContenedorPrincipal extends HBox {
 		attributeAlias.put("faccion", "Faccion");
 
 		Label lblEntidad = new Label(entidad.getClass().getSimpleName());
-		lblEntidad.setFont(Font.font("Amble CN", FontWeight.BOLD, 18));
-		boxIzquierdo.getChildren().add(lblEntidad);
+		if (!lblEntidad.getText().equals("NulaEntidad")){
+			lblEntidad.setFont(Font.font("Amble CN", FontWeight.BOLD, 18));
+			boxIzquierdo.getChildren().add(lblEntidad);
+		}
 
 		for (Map.Entry<String, String> entry : entityData.entrySet()) {
 			Label label = new Label(attributeAlias.get(entry.getKey()) + ": " + entry.getValue());
@@ -239,6 +241,7 @@ public class ContenedorPrincipal extends HBox {
 				label.setFont(Font.font("Amble CN", FontWeight.BOLD, 16));
 			boxIzquierdo.getChildren().add(label);
 		}
+
 		
 		// for (Field field : entidad.getClass().getDeclaredFields()) {
 		// 	try {
