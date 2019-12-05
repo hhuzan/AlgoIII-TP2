@@ -18,6 +18,17 @@ public class Musica {
     String endGameTheme = "sounds/endGameSong.mp3";
     Media soundFinale = new Media(getClass().getClassLoader().getResource(endGameTheme).toString());
 
+    String atackSound = "sounds/01_vayne_basicattack_ohf_01.wav";
+    Media atackSoundMedia = new Media(getClass().getClassLoader().getResource(atackSound).toString());
+
+    String curarSound = "sounds/04_comehere.wav";
+    Media curarSoundMedia = new Media(getClass().getClassLoader().getResource(curarSound).toString());
+
+    String moverSound = "sounds/03_base.wav";
+    Media moverSoundMedia = new Media(getClass().getClassLoader().getResource(moverSound).toString());
+
+    MediaPlayer mediaCuracion = new MediaPlayer(curarSoundMedia);
+
     MediaPlayer mediaPlayerFinale = new MediaPlayer(soundFinale);
 
     MediaPlayer mediaPlayerOnButton = new MediaPlayer(soundPlayOnMouseEntered);
@@ -25,6 +36,10 @@ public class Musica {
     MediaPlayer mediaPlayer2 = new MediaPlayer(soundPlay);
 
     MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+    MediaPlayer mediaAtaque = new MediaPlayer(atackSoundMedia);
+
+    MediaPlayer mediaMover = new MediaPlayer(moverSoundMedia);
 
 
     public Musica(){
@@ -91,4 +106,26 @@ public class Musica {
         mediaPlayer2.stop();
 
     }
+
+    public void reproducirSonidoDeAtaque() {
+
+        mediaAtaque.setVolume(0.5);
+        mediaAtaque.play();
+
+    }
+
+    public void reproducirSonidoDeCuracion() {
+
+        mediaCuracion.setVolume(0.5);
+        mediaCuracion.play();
+
+    }
+
+    public void reproducirSonidoDeMover() {
+
+        mediaMover.setVolume(0.5);
+        mediaMover.play();
+
+    }
+
 }
