@@ -17,8 +17,8 @@ import algochess.excepciones.EntidadDeMismaFaccionException;
 import algochess.engine.jugador.Jugador;
 import java.util.HashSet;
 import java.util.Queue;
-import static algochess.engine.ConstantesUtils.SOLDADO_COSTO;
-import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
+
+import static algochess.engine.ConstantesUtils.*;
 
 public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeSerCurada, PuedeSerHerida, PuedeFormarBatallon {
     private ArmaAtaca arma;
@@ -90,6 +90,7 @@ public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, Puede
     @Override
     public void reclutarParaBatallon(HashSet<PuedeFormarBatallon> reclutados, Queue<Posicion> cola, PuedeFormarBatallon entidad) {
         if (somosIdenticos(entidad)) {
+            if(reclutados.size() == TAMANIO_BATALLON) return;
             reclutados.add(this);
             cola.add(getPosicion());
         }
