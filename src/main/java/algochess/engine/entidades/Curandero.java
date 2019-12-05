@@ -64,8 +64,10 @@ public class Curandero extends Entidad implements PuedeCurar, PuedeMoverse, Pued
 
     @Override
     public boolean moverA(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
-        if(origen.enRangoMovimiento(destino))
+        if(origen.enRangoMovimiento(destino)) {
+            origen.cambiarEstado(new Vacio());
             return destino.recibirEntidad(this);
+        }
         else 
             return false;
     }

@@ -105,4 +105,9 @@ public class Casillero  {
         Posicion posicionDestino = this.posicion;
         return posicionOrigen.chequearRango(posicionDestino);
     }
+
+    // TODO: Remover 
+    public boolean isOcupado() {
+        return estado.isOcupado();
+    }
 }

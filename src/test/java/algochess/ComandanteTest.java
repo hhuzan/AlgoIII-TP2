@@ -94,7 +94,10 @@ public class ComandanteTest {
 		Casillero destino = tablero.obtenerCasillero(new Posicion(2, 5));
 
 		comandante.moverBatallon(tablero, destino, soldado1);
-
+		
+		assertFalse(tablero.obtenerCasillero(posicion1).isOcupado());
+		assertFalse(tablero.obtenerCasillero(posicion1).isOcupado());
+		assertFalse(tablero.obtenerCasillero(posicion1).isOcupado());
 		// TODO: Verificar esto sin el tipo Vacio que no existe más
 		// assertTrue(tablero.obtenerCasillero(posicion1) instanceof Vacio);
 		// assertTrue(tablero.obtenerCasillero(posicion1) instanceof Vacio);
@@ -126,6 +129,9 @@ public class ComandanteTest {
 		comandante.moverBatallon(tablero, destino, soldado1);
 
 		// TODO: Idem test03 con ocupado
+		assertTrue(tablero.obtenerCasillero(new Posicion(2, 5)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(2, 6)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(2, 7)).isOcupado());
 		// assertTrue(tablero.obtenerCasillero(new Posicion(2,5)) instanceof Ocupado);
 		// assertTrue(tablero.obtenerCasillero(new Posicion(2,6)) instanceof Ocupado);
 		// assertTrue(tablero.obtenerCasillero(new Posicion(2,7)) instanceof Ocupado);
@@ -159,7 +165,10 @@ public class ComandanteTest {
 
 		comandante.moverBatallon(tablero, destino, soldado1);
 
-		// Idem test03, test04
+		assertTrue(tablero.obtenerCasillero(new Posicion(2, 5)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(1, 6)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(2, 7)).isOcupado());
+
 		// assertTrue(tablero.obtenerCasillero(new Posicion(2,5)) instanceof Ocupado);
 		// assertTrue(tablero.obtenerCasillero(new Posicion(1,6)) instanceof Ocupado);
 		// assertTrue(tablero.obtenerCasillero(new Posicion(2,7)) instanceof Ocupado);
@@ -195,11 +204,48 @@ public class ComandanteTest {
 		Casillero destino2 = tablero.obtenerCasillero(new Posicion(2, 5));
 		comandante.moverBatallon(tablero, destino2, soldado2);
 
+		assertTrue(tablero.obtenerCasillero(new Posicion(1, 6)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(2, 5)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(2, 6)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(2, 7)).isOcupado());
+
 		// TODO: ver tests anteriores
 		// assertTrue(tablero.obtenerCasillero(new Posicion(1,6)) instanceof Ocupado);
 		// assertTrue(tablero.obtenerCasillero(new Posicion(2,6)) instanceof Ocupado);
 		// assertTrue(tablero.obtenerCasillero(new Posicion(2,5)) instanceof Ocupado);
 		// assertTrue(tablero.obtenerCasillero(new Posicion(2,7)) instanceof Ocupado);
+	}
+
+
+	@Test
+	public void test07ComandanteMueveBatallonConObstaculoYSeDisuelve() {
+		Tablero tablero = new Tablero();
+		Jugador jugador = new Jugador(Faccion.ALIADOS);
+
+		Soldado soldado1 = new Soldado(jugador, Faccion.ALIADOS);
+		Soldado soldado2 = new Soldado(jugador, Faccion.ALIADOS);
+		Soldado soldado3 = new Soldado(jugador, Faccion.ALIADOS);
+		Posicion posicion1 = new Posicion(1, 5);
+		Posicion posicion2 = new Posicion(1, 6);
+		Posicion posicion3 = new Posicion(1, 7);
+
+		Jinete obstaculo = new Jinete(jugador, Faccion.ALIADOS);
+		Posicion pobstaculo = new Posicion(2, 6);
+
+		Comandante comandante = new Comandante(tablero);
+
+		tablero.colocarEntidad(soldado1, posicion1, new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado2, posicion2, new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(soldado3, posicion3, new Jugador(Faccion.ALIADOS, "Lucas"));
+		tablero.colocarEntidad(obstaculo, pobstaculo, new Jugador(Faccion.ALIADOS, "Lucas"));
+
+		Casillero destino1 = tablero.obtenerCasillero(new Posicion(1, 4));
+		comandante.recluteMisCercanos(soldado1);
+		comandante.moverBatallon(tablero, destino1, soldado1);
+
+		assertTrue(tablero.obtenerCasillero(new Posicion(1, 4)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(1, 5)).isOcupado());
+		assertTrue(tablero.obtenerCasillero(new Posicion(1, 6)).isOcupado());
 	}
 
 }

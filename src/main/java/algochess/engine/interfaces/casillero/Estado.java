@@ -40,4 +40,6 @@ public interface Estado {
     Entidad seleccionarEntidad(Juego juego);
 
     boolean enRangoMovimiento(Posicion posicion, Casillero destino);
+
+    boolean isOcupado();
 }

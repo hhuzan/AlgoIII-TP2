@@ -81,8 +81,10 @@ public class Soldado extends Entidad implements PuedeAtacar, PuedeMoverse, Puede
             boolean batallonSeMovio = comandante.moverBatallon(tablero, destino, this);
             if(batallonSeMovio) {
                 return true;
-            } else 
+            } else  {
+                origen.cambiarEstado(new Vacio());
                 return destino.recibirEntidad(this);
+            }
         } else 
             return false;
     }

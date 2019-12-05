@@ -76,8 +76,10 @@ public class Jinete extends Entidad implements PuedeAtacar, PuedeMoverse, PuedeS
 
     @Override
     public boolean moverA(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
-        if(origen.enRangoMovimiento(destino))
+        if(origen.enRangoMovimiento(destino)) {
+            origen.cambiarEstado(new Vacio());
             return destino.recibirEntidad(this);
+        }
         else 
             return false;
     }

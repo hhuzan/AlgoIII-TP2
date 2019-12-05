@@ -70,7 +70,7 @@ public class Tablero {
 			throws CasilleroVacioException, CasilleroOcupadoException {
 		Casillero origen = obtenerCasillero(origenP);
 		Casillero destino = obtenerCasillero(destinoP);
-
+		System.out.println("Tablero mover entidad");
 		origen.moverEntidad(this, origen, destino, faccionJugador);
 	}
 

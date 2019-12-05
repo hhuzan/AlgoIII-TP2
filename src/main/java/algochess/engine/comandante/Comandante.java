@@ -110,9 +110,7 @@ public class Comandante {
                         seMovio = recluta.moverComoRecluta(tablero, casillero);
                     } 
                     catch (CasilleroOcupadoException ignored){
-                        count++;
-                        /*if(count == 3)
-                            return false;*/
+                        System.out.println("Casillero ocupado");
                     };
 
                     if (seMovio){

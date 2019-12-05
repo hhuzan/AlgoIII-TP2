@@ -76,4 +76,9 @@ public class Vacio implements Estado {
     public boolean enRangoMovimiento(Posicion posicion, Casillero destino) {
         return false;
     }
+
+    //TODO: SACAR
+    public boolean isOcupado() {
+        return false;
+    }
 }

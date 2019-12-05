@@ -134,9 +134,7 @@ public class Ocupado implements Estado {
 
     public void moverEntidad(Tablero tablero, Casillero origen, Casillero destino, Faccion faccionJugador) {
         boolean moved = puedeMoverse.moverA(tablero, origen, destino, faccionJugador);
-        if(moved)
-            origen.cambiarEstado(new Vacio());
-        else 
+        if(!moved)
             throw new EntidadNoPuedeMoverseException();
     }
 
@@ -166,5 +164,10 @@ public class Ocupado implements Estado {
     @Override 
     public boolean enRangoMovimiento(Posicion posicionOrigen, Casillero casilleroDestino) {
         return casilleroDestino.chequearRango(posicionOrigen);
+    }
+
+    //TODO: SACAR
+    public boolean isOcupado() {
+        return true;
     }
 }
