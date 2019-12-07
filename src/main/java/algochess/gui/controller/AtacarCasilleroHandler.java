@@ -1,6 +1,7 @@
 package algochess.gui.controller;
 
 import algochess.engine.juego.Juego;
+import algochess.gui.vista.Musica;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import algochess.gui.ExceptionHandler;
@@ -18,6 +19,7 @@ public class AtacarCasilleroHandler implements EventHandler<ActionEvent> {
 	private ExceptionHandler exHandler;
 	private Juego juego;
 	private ContenedorPrincipal contenedor;
+	private Musica musica;
 
 	public AtacarCasilleroHandler(ContenedorPrincipal contenedor, Juego juego, int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
 		this.juego = juego;	
@@ -27,10 +29,14 @@ public class AtacarCasilleroHandler implements EventHandler<ActionEvent> {
 		this.colDestino = colDestino;
 		this.contenedor = contenedor;
 		this.exHandler = new ExceptionHandler();
+		this.musica = new Musica();
 	}
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
+
+		musica.reproducirSonidoDeAtaque();
+
 		try {
 			juego.atacar(filaOrigen, colOrigen, filaDestino, colDestino);
 			contenedor.refrescar();

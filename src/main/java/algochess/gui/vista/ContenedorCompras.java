@@ -37,13 +37,15 @@ public class ContenedorCompras extends HBox {
 	private Juego juego;
 	private VBox boxIzquierdo;
 	private VBox boxDerecho;
-	private MediaPlayer mediaPlayer;
+	private Musica musica;
+	private AlgoChess algoChess;
 
-	public ContenedorCompras(Stage stage, Juego juego, MediaPlayer mediaPlayer) {
+	public ContenedorCompras(Stage stage, Juego juego, Musica musica, AlgoChess algoChess) {
 		super();
 		this.stage = stage;
 		this.juego = juego;
-		this.mediaPlayer = mediaPlayer;
+		this.musica = musica;
+		this.algoChess = algoChess;
 
 		setAlignment(Pos.CENTER);
 		setSpacing(50);
@@ -138,7 +140,7 @@ public class ContenedorCompras extends HBox {
 			boolean finished = juego.cambiarTurno();
 			if(finished) {
 				System.out.println("------------------ FIN COMPRAS ------------------");
-				ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego, mediaPlayer);
+				ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(stage, juego, musica, algoChess);
 				Scene escenaPrincipal = new Scene(contenedorPrincipal, 1120, 660);
 
 				stage.setScene(escenaPrincipal);

@@ -1,5 +1,6 @@
 package algochess.gui.controller;
 
+import algochess.gui.vista.Musica;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.media.MediaPlayer;
@@ -7,10 +8,10 @@ import javafx.scene.media.MediaPlayer;
 
 public class BotonPlayMusicaHandler implements EventHandler<ActionEvent> {
 
-    MediaPlayer musicPlayer;
+    Musica musicPlayer;
 
 
-    public BotonPlayMusicaHandler(MediaPlayer musicPlayer){
+    public BotonPlayMusicaHandler(Musica musicPlayer){
 
 
       this.musicPlayer = musicPlayer;
@@ -21,7 +22,7 @@ public class BotonPlayMusicaHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        musicPlayer.play();
+        musicPlayer.reproducirIntro();
 
     }
 }

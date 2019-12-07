@@ -1,7 +1,9 @@
 package algochess.gui.controller;
 
 import algochess.engine.juego.Juego;
+import algochess.gui.vista.AlgoChess;
 import algochess.gui.vista.ContenedorCompras;
+import algochess.gui.vista.Musica;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,25 +17,26 @@ public class BotonComenzarJuegoHandler implements EventHandler<ActionEvent> {
 	private Stage stage;
 	private TextField nombre1;
 	private TextField nombre2;
+	private Musica musica;
+	private AlgoChess algoChess ;
 
-	MediaPlayer mediaPlayer;
-	MediaPlayer mediaPlayer2;
 
-	public BotonComenzarJuegoHandler(Stage stage, TextField nombreJugador_1, TextField nombreJugador_2, MediaPlayer mediaPlayer, MediaPlayer mediaplayer2) {
+	public BotonComenzarJuegoHandler(Stage stage, TextField nombreJugador_1, TextField nombreJugador_2, Musica musica, AlgoChess algoChess) {
 		this.stage = stage;
 		this.nombre1 = nombreJugador_1;
 		this.nombre2 = nombreJugador_2;
-		this.mediaPlayer = mediaPlayer;
-		this.mediaPlayer2 = mediaplayer2;
+		this.musica = musica;
+		this.algoChess = algoChess;
 
 	}
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
-		mediaPlayer.stop();
-		mediaPlayer2.play();
+
+		musica.pararIntro();
+		musica.reproducirMusicaBatalla();
 		Juego juego = new Juego(nombre1.getText(), nombre2.getText());
-		ContenedorCompras contenedorCompras = new ContenedorCompras(stage, juego, mediaPlayer2);
+		ContenedorCompras contenedorCompras = new ContenedorCompras(stage, juego, musica, algoChess);
 		Scene escenaPrincipal = new Scene(contenedorCompras, 1120, 660);
 
 		stage.setScene(escenaPrincipal);

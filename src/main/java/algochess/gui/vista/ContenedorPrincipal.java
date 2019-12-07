@@ -50,13 +50,15 @@ public class ContenedorPrincipal extends HBox {
 	private int filaDestino;
 	private int columnaOrigen;
 	private int columnaDestino;	
-	private MediaPlayer mediaPlayer;	
+	private Musica musica;
+	private AlgoChess algoChess;
 
-	public ContenedorPrincipal(Stage stage, Juego juego, MediaPlayer mediaPlayer) {
+	public ContenedorPrincipal(Stage stage, Juego juego, Musica musica, AlgoChess algoChess) {
 		super();
 		this.stage = stage;
 		this.juego = juego;
-		this.mediaPlayer = mediaPlayer;
+		this.musica = musica;
+		this.algoChess = algoChess;
 		colorFaccion.put(Faccion.ALIADOS, colorAliados);
 		colorFaccion.put(Faccion.ENEMIGOS, colorEnemigos);
 
@@ -115,8 +117,8 @@ public class ContenedorPrincipal extends HBox {
         alert.setHeaderText(title);
         alert.showAndWait();
 		
-		mediaPlayer.stop();
-        ContenedorFinal contenedorFinal = new ContenedorFinal(stage);
+		musica.pararMusicaBatalla();
+        ContenedorFinal contenedorFinal = new ContenedorFinal(stage, musica, algoChess);
 		Scene escenaFinal = new Scene(contenedorFinal, 1120, 660);
 
 		stage.setScene(escenaFinal);
@@ -228,8 +230,10 @@ public class ContenedorPrincipal extends HBox {
 		attributeAlias.put("faccion", "Faccion");
 
 		Label lblEntidad = new Label(entidad.getClass().getSimpleName());
-		lblEntidad.setFont(Font.font("Amble CN", FontWeight.BOLD, 18));
-		boxIzquierdo.getChildren().add(lblEntidad);
+		if (!lblEntidad.getText().equals("NulaEntidad")){
+			lblEntidad.setFont(Font.font("Amble CN", FontWeight.BOLD, 18));
+			boxIzquierdo.getChildren().add(lblEntidad);
+		}
 
 		for (Map.Entry<String, String> entry : entityData.entrySet()) {
 			Label label = new Label(attributeAlias.get(entry.getKey()) + ": " + entry.getValue());
@@ -237,6 +241,7 @@ public class ContenedorPrincipal extends HBox {
 				label.setFont(Font.font("Amble CN", FontWeight.BOLD, 16));
 			boxIzquierdo.getChildren().add(label);
 		}
+
 		
 		// for (Field field : entidad.getClass().getDeclaredFields()) {
 		// 	try {
