@@ -1,6 +1,8 @@
 package algochess;
 
+import static algochess.engine.ConstantesUtils.*;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
@@ -13,9 +15,6 @@ import algochess.engine.jugador.Jugador;
 import algochess.engine.tablero.Tablero;
 import algochess.engine.tablero.Casillero;
 import algochess.engine.posicion.Posicion;
-import static algochess.engine.ConstantesUtils.JINETE_VIDA;
-import static algochess.engine.ConstantesUtils.SOLDADO_VIDA;
-import static algochess.engine.ConstantesUtils.DAGA_PODER;
 import algochess.excepciones.JugadorPerdioException;
 import algochess.excepciones.EntidadFueraDeAlcanceException;
 import algochess.excepciones.CasilleroOcupadoException;
@@ -81,6 +80,39 @@ public class JineteTest {
 		assertThrows(JugadorPerdioException.class, () -> {
 			soldado.disminuirVida(SOLDADO_VIDA - DAGA_PODER, Faccion.ALIADOS, casilleroDestino);
 		});
+	}
+
+	//TEST AÑADIDO 12/6/19
+	@Test
+	public void test03JineteAtacaAEntidadEnemigaYLeQuitaElEquivalenteAUnAtaqueADistanciaDeUnJinete() {
+		/* Se coloca un jinete y un soldado junto, y un soldado enemigo a distancia media del jinete
+		el jinete ataca con su arco.
+		 */
+		Tablero tablero = new Tablero();
+		Jugador jugador_1 = new Jugador(Faccion.ALIADOS);
+		Jugador jugador_2 = new Jugador(Faccion.ENEMIGOS);
+
+		Jinete jinete = new Jinete(jugador_1, Faccion.ALIADOS);
+		Soldado soldado1 = new Soldado(jugador_1,Faccion.ALIADOS);
+		Soldado soldado = new Soldado(jugador_2, Faccion.ENEMIGOS);
+
+
+		Posicion posicionJinete = new Posicion(9, 1);
+		Posicion posicionSoldado1 = new Posicion(9,2);
+		Posicion posicionSoldado = new Posicion(13, 1);
+
+		tablero.colocarEntidad(jinete, posicionJinete, jugador_1);
+		tablero.colocarEntidad(soldado1,posicionSoldado1,jugador_1);
+		tablero.colocarEntidad(soldado, posicionSoldado, jugador_2);
+
+		Casillero casilleroAtacado = tablero.obtenerCasillero(posicionSoldado);
+
+		jinete.atacar(casilleroAtacado, tablero, Faccion.ALIADOS);
+
+		assertTrue(soldado.tenesEstaVida(SOLDADO_VIDA-ARCO_PODER));
+		/*assertThrows(JugadorPerdioException.class, () -> {
+			soldado.disminuirVida(SOLDADO_VIDA - ARCO_PODER, Faccion.ALIADOS, casilleroAtacado);
+		});*/
 	}
 
 	@Test
@@ -152,4 +184,7 @@ public class JineteTest {
 			tablero.colocarEntidad(jinete, posicionDestino, new Jugador(Faccion.ALIADOS, "Lucas"));
 		});	
     }
+
+
+
 }
