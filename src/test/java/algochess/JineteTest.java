@@ -145,27 +145,24 @@ public class JineteTest {
         // una catapulta2 enemiga distancia mediana (del jinete)
         // El jinete no debería poder atacar la catapulta2.
         Tablero tablero = new Tablero();
-        Jugador jugador = new Jugador(Faccion.ENEMIGOS);
+		Jugador jugadorAliados = new Jugador(Faccion.ALIADOS);
+		Jugador jugadorEnemigos = new Jugador(Faccion.ENEMIGOS);
+
         Jinete jinete = new Jinete();
-        jinete.setFaccion(Faccion.ALIADOS);
+		Soldado soldado = new Soldado();
+		jinete.setFaccion(Faccion.ALIADOS);
+        soldado.setFaccion(Faccion.ENEMIGOS);
+
         Posicion posJinete = new Posicion(9,10);
+		Posicion posSoldado = new Posicion(10,10);
 
 
-        Catapulta catapulta1 = new Catapulta();
-        Catapulta catapulta2 = new Catapulta(jugador, Faccion.ENEMIGOS);
-        catapulta1.setFaccion(Faccion.ENEMIGOS);
-        catapulta2.setFaccion(Faccion.ENEMIGOS);
-        Posicion posCatapulta1 = new Posicion(10,10);
-        Posicion posCatapulta2 = new Posicion(12,10);
+        tablero.colocarEntidad(jinete,posJinete, jugadorAliados);
+        tablero.colocarEntidad(soldado,posSoldado,jugadorEnemigos);
+		Casillero casilleroDestino = tablero.obtenerCasillero(posSoldado);
 
-        tablero.colocarEntidad(jinete,posJinete, new Jugador(Faccion.ALIADOS, "Lucas"));
-        tablero.colocarEntidad(catapulta1,posCatapulta1, new Jugador(Faccion.ALIADOS, "Lucas"));
-        tablero.colocarEntidad(catapulta2,posCatapulta2, new Jugador(Faccion.ALIADOS, "Lucas"));
-		Casillero casilleroDestino = tablero.obtenerCasillero(posCatapulta2);
-
-        assertThrows(EntidadFueraDeAlcanceException.class, () -> {
-        	tablero.atacarCasillero(posJinete, posCatapulta2, Faccion.ALIADOS);
-        });  
+		tablero.atacarCasillero(posJinete,posSoldado,Faccion.ALIADOS);
+        assertTrue(soldado.tenesEstaVida(SOLDADO_VIDA-DAGA_PODER));
     }
 
     @Test 
