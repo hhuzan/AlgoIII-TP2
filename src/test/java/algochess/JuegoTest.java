@@ -49,15 +49,6 @@ public class JuegoTest {
 
     }
 
-    @Test
-    public void test03LaPrimerFaccionEsAliada(){
-
-
-        Juego juego = new Juego("Lucas", "Guido");
-        assertEquals(Faccion.ALIADOS, juego.getFaccionActual());
-
-
-    }
 
     @Test
     public void test04CreoUnJuegoYMeDevuelveUnTablero(){
